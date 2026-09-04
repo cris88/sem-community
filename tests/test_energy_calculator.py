@@ -3,10 +3,10 @@ import pytest
 from unittest.mock import MagicMock, patch
 from datetime import datetime, date, timedelta
 
-from custom_components.solar_energy_management.coordinator.energy_calculator import (
+from custom_components.xxx_cristiano.coordinator.energy_calculator import (
     EnergyCalculator,
 )
-from custom_components.solar_energy_management.coordinator.types import (
+from custom_components.xxx_cristiano.coordinator.types import (
     PowerReadings,
     EnergyTotals,
 )
@@ -67,7 +67,7 @@ def _freeze_now(year=2026, month=4, day=18, hour=12, minute=0, second=0):
 # Tests
 # ──────────────────────────────────────────────
 
-@patch("custom_components.solar_energy_management.coordinator.energy_calculator.dt_util")
+@patch("custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util")
 def test_calculate_energy_basic(mock_dt, calculator):
     """Test basic power * time = energy calculation."""
     now = _freeze_now(hour=12, minute=0)
@@ -82,7 +82,7 @@ def test_calculate_energy_basic(mock_dt, calculator):
     assert energy.daily_home > 0
 
 
-@patch("custom_components.solar_energy_management.coordinator.energy_calculator.dt_util")
+@patch("custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util")
 def test_calculate_energy_zero_power(mock_dt, calculator):
     """Test that zero power produces zero energy."""
     now = _freeze_now()
@@ -95,7 +95,7 @@ def test_calculate_energy_zero_power(mock_dt, calculator):
     assert energy.daily_grid_import == 0.0
 
 
-@patch("custom_components.solar_energy_management.coordinator.energy_calculator.dt_util")
+@patch("custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util")
 def test_daily_reset_at_midnight(mock_dt, calculator):
     """Test that daily accumulators reset on date change."""
     # First update at 23:59
@@ -114,7 +114,7 @@ def test_daily_reset_at_midnight(mock_dt, calculator):
     assert energy.daily_solar >= 0
 
 
-@patch("custom_components.solar_energy_management.coordinator.energy_calculator.dt_util")
+@patch("custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util")
 def test_monthly_reset(mock_dt, calculator):
     """Test that monthly accumulators reset on month change."""
     # First update at end of month
@@ -142,7 +142,7 @@ def test_monthly_reset(mock_dt, calculator):
     assert old_monthly == 0.0
 
 
-@patch("custom_components.solar_energy_management.coordinator.energy_calculator.dt_util")
+@patch("custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util")
 def test_trapezoidal_integration(mock_dt, calculator):
     """Test energy integration over two updates with different time deltas."""
     # First update
@@ -161,7 +161,7 @@ def test_trapezoidal_integration(mock_dt, calculator):
     assert energy.daily_solar > 0.1
 
 
-@patch("custom_components.solar_energy_management.coordinator.energy_calculator.dt_util")
+@patch("custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util")
 def test_min_power_threshold(mock_dt, calculator):
     """Test that power below MIN_POWER_THRESHOLD does not accumulate energy."""
     now = _freeze_now()
@@ -187,7 +187,7 @@ def test_min_power_threshold(mock_dt, calculator):
     assert energy3.daily_solar > 0
 
 
-@patch("custom_components.solar_energy_management.coordinator.energy_calculator.dt_util")
+@patch("custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util")
 def test_restore_state_roundtrip(mock_dt, calculator):
     """Test get_state / restore_state round-trip."""
     now = _freeze_now()
@@ -218,7 +218,7 @@ def test_restore_state_none(calculator):
     assert calculator._daily_accumulators == {}
 
 
-@patch("custom_components.solar_energy_management.coordinator.energy_calculator.dt_util")
+@patch("custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util")
 def test_calculate_costs(mock_dt, calculator):
     """Test cost calculation via incremental accumulation path."""
     from datetime import date
@@ -255,7 +255,7 @@ def test_calculate_costs(mock_dt, calculator):
     assert costs.yearly_battery_savings == pytest.approx(84.0)
 
 
-@patch("custom_components.solar_energy_management.coordinator.energy_calculator.dt_util")
+@patch("custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util")
 def test_dynamic_tariff_cost_accumulation(mock_dt, calculator):
     """Costs accumulate at rate active during each interval, not recalculated (#218)."""
     from datetime import timedelta
@@ -302,7 +302,7 @@ def test_dynamic_tariff_cost_accumulation(mock_dt, calculator):
     assert cost_after_phase1 == pytest.approx(expected_phase1, abs=0.05)
 
 
-@patch("custom_components.solar_energy_management.coordinator.energy_calculator.dt_util")
+@patch("custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util")
 def test_static_tariff_backward_compatible(mock_dt, calculator):
     """With a fixed rate, accumulated cost equals energy × rate."""
     now = datetime(2026, 5, 19, 12, 0, 0)
@@ -348,7 +348,7 @@ def test_cost_persistence_roundtrip(calculator):
     assert new_calc._yearly_cost_accumulators["cost_import_2026"] == 890.12
 
 
-@patch("custom_components.solar_energy_management.coordinator.energy_calculator.dt_util")
+@patch("custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util")
 def test_tariff_change_midday_multiple(mock_dt, calculator):
     """Multiple rate changes throughout the day, each segment costed correctly."""
     now = datetime(2026, 5, 19, 8, 0, 0)
@@ -374,7 +374,7 @@ def test_tariff_change_midday_multiple(mock_dt, calculator):
     assert costs.daily_costs == pytest.approx(expected_cost, abs=0.02)
 
 
-@patch("custom_components.solar_energy_management.coordinator.energy_calculator.dt_util")
+@patch("custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util")
 def test_export_revenue_dynamic(mock_dt, calculator):
     """Export revenue accumulates correctly with changing export rates."""
     now = datetime(2026, 5, 19, 12, 0, 0)
@@ -404,7 +404,7 @@ def test_export_revenue_dynamic(mock_dt, calculator):
     assert costs.daily_export_revenue == pytest.approx(expected, abs=0.01)
 
 
-@patch("custom_components.solar_energy_management.coordinator.energy_calculator.dt_util")
+@patch("custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util")
 def test_calculate_performance_autarky(mock_dt, calculator):
     """Test performance metrics: self-consumption and autarky rates."""
     mock_dt.now.return_value = _freeze_now()
@@ -434,10 +434,10 @@ def test_calculate_performance_autarky(mock_dt, calculator):
 # Integration gap protection (#123)
 # ──────────────────────────────────────────────
 
-@patch("custom_components.solar_energy_management.coordinator.energy_calculator.dt_util")
+@patch("custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util")
 def test_integration_gap_skips_accumulation(mock_dt, calculator, time_manager):
     """Test that a large time gap skips energy integration to prevent spikes."""
-    from custom_components.solar_energy_management.coordinator.energy_calculator import (
+    from custom_components.xxx_cristiano.coordinator.energy_calculator import (
         MAX_INTEGRATION_GAP_SECONDS,
     )
 
@@ -470,7 +470,7 @@ def test_integration_gap_skips_accumulation(mock_dt, calculator, time_manager):
     assert energy4.daily_solar > solar_before_gap
 
 
-@patch("custom_components.solar_energy_management.coordinator.energy_calculator.dt_util")
+@patch("custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util")
 def test_normal_interval_accumulates(mock_dt, calculator, time_manager):
     """Test that normal intervals accumulate energy correctly."""
     time_manager.get_current_meter_day_sunrise_based.return_value = date(2026, 4, 29)
@@ -505,7 +505,7 @@ def test_normal_interval_accumulates(mock_dt, calculator, time_manager):
 # SEM's own recorded monthly cost statistics (measured at the prices actually
 # in force) and estimates only months with no cost record at all.
 
-import custom_components.solar_energy_management.coordinator.energy_calculator as ec_module
+import custom_components.xxx_cristiano.coordinator.energy_calculator as ec_module
 
 _NOW_794 = datetime(2026, 8, 17, 12, 0, 0)
 _YEAR_794 = "2026"
@@ -525,7 +525,7 @@ class _Registry794:
 
     def async_get_entity_id(self, domain, platform, unique_id):
         assert domain == "sensor"
-        assert platform == "solar_energy_management"
+        assert platform == "xxx_cristiano"
         return self.mapping.get(unique_id)
 
 
@@ -864,7 +864,7 @@ def test_794_bucket_month_agrees_between_a_timestamp_and_its_datetime(monkeypatc
     """
     import zoneinfo
     from datetime import timezone
-    from custom_components.solar_energy_management.coordinator.energy_calculator import (
+    from custom_components.xxx_cristiano.coordinator.energy_calculator import (
         _stat_bucket_year_month,
     )
 

@@ -24,11 +24,11 @@ import { formatLegendLabels } from '../util/legend-format.js';
    The CDN remains only as a fallback for installs whose static path
    registration failed. */
 const _CHARTJS_SOURCES = [
-    '/local/custom_components/solar_energy_management/dashboard/card/vendor/chart.umd.min.js',
+    '/local/custom_components/xxx_cristiano/dashboard/card/vendor/chart.umd.min.js',
     'https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js',
 ];
 const _ADAPTER_SOURCES = [
-    '/local/custom_components/solar_energy_management/dashboard/card/vendor/chartjs-adapter-date-fns.bundle.min.js',
+    '/local/custom_components/xxx_cristiano/dashboard/card/vendor/chartjs-adapter-date-fns.bundle.min.js',
     'https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js',
 ];
 

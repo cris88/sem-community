@@ -17,7 +17,7 @@ from types import SimpleNamespace
 
 import pytest
 
-from custom_components.solar_energy_management import (
+from custom_components.xxx_cristiano import (
     _warn_missing_charger_entities,
 )
 

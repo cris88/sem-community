@@ -30,7 +30,7 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.devices.base import (
+from custom_components.xxx_cristiano.devices.base import (
     DeviceControlMode,
     DeviceState,
     SwitchDevice,
@@ -55,7 +55,7 @@ class _Clock:
 
 @pytest.fixture(autouse=True)
 def _clock(monkeypatch):
-    import custom_components.solar_energy_management.devices.base as base_mod
+    import custom_components.xxx_cristiano.devices.base as base_mod
 
     _CURSOR["t"] = _START
     fake = MagicMock()

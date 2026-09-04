@@ -7,13 +7,13 @@ import pytest
 from unittest.mock import patch
 from datetime import datetime
 
-from custom_components.solar_energy_management.coordinator.forecast_tracker import (
+from custom_components.xxx_cristiano.coordinator.forecast_tracker import (
     ForecastTracker,
     DailyForecastRecord,
     MIN_FORECAST_KWH,
 )
 
-DT_PATH = "custom_components.solar_energy_management.coordinator.forecast_tracker.dt_util"
+DT_PATH = "custom_components.xxx_cristiano.coordinator.forecast_tracker.dt_util"
 
 
 def _dt(year=2026, month=5, day=7, hour=12, minute=0):

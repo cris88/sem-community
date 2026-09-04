@@ -334,7 +334,7 @@ class SEMConfigCard extends SEMLitBase {
         try {
             const entries = await this._hass.callWS({
                 type: 'config_entries/get',
-                domain: 'solar_energy_management',
+                domain: 'xxx_cristiano',
             });
             if (Array.isArray(entries) && entries.length > 0) {
                 this._entryId = entries[0].entry_id;
@@ -347,7 +347,7 @@ class SEMConfigCard extends SEMLitBase {
     }
 
     // Write one option key (or several) to ``entry.options`` via the
-    // SEM-side ``solar_energy_management.set_option`` service. We can't
+    // SEM-side ``xxx_cristiano.set_option`` service. We can't
     // use HA's public ``config_entries/update`` WS call here — it
     // explicitly rejects the ``options`` field (reserved for the
     // OptionsFlow round-trip). The service is SEM's supported escape
@@ -358,7 +358,7 @@ class SEMConfigCard extends SEMLitBase {
         this._saveStatus = { ...this._saveStatus, [fieldKey || key]: 'saving' };
         try {
             await this._hass.callService(
-                'solar_energy_management',
+                'xxx_cristiano',
                 'set_option',
                 {
                     options: { [key]: value },
@@ -395,7 +395,7 @@ class SEMConfigCard extends SEMLitBase {
             // security. SEM's ``get_config`` service is the supported
             // way to read the merged config dict the OptionsFlow uses.
             const resp = await this._hass.callService(
-                'solar_energy_management',
+                'xxx_cristiano',
                 'get_config',
                 {},
                 undefined,
@@ -596,8 +596,8 @@ class SEMConfigCard extends SEMLitBase {
         // requested step. The user lands on Settings → Devices &
         // Services → SEM with the options dialog already open.
         const url = stepId
-            ? `/config/integrations/integration/solar_energy_management`
-            : `/config/integrations/integration/solar_energy_management`;
+            ? `/config/integrations/integration/xxx_cristiano`
+            : `/config/integrations/integration/xxx_cristiano`;
         window.history.pushState(null, '', url);
         // Trigger HA's frontend router via popstate
         window.dispatchEvent(new PopStateEvent('popstate'));
@@ -1482,7 +1482,7 @@ class SEMConfigCard extends SEMLitBase {
         this._pendingRemove = '';
         this.requestUpdate();
         try {
-            await this._hass.callService('solar_energy_management', 'remove_charger',
+            await this._hass.callService('xxx_cristiano', 'remove_charger',
                 { charger_id: cid });
             // Re-read so the removed block disappears without a page refresh.
             await this._refreshOptions();
@@ -1732,7 +1732,7 @@ class SEMConfigCard extends SEMLitBase {
         this.requestUpdate();
         try {
             const options = { ...this._pending };
-            await this._hass.callService('solar_energy_management', 'set_option', {
+            await this._hass.callService('xxx_cristiano', 'set_option', {
                 options, ...(entryId ? { entry_id: entryId } : {}),
             });
             // Reflect locally; the entry reload will re-publish authoritative state.
@@ -1848,7 +1848,7 @@ class SEMConfigCard extends SEMLitBase {
             }
             if (Object.keys(optPayload).length) {
                 const entryId = await this._ensureEntryId();
-                await this._hass.callService('solar_energy_management', 'set_option', {
+                await this._hass.callService('xxx_cristiano', 'set_option', {
                     options: optPayload, ...(entryId ? { entry_id: entryId } : {}),
                 });
                 this._options = { ...this._options, ...optPayload };
@@ -2366,7 +2366,7 @@ class SEMConfigCard extends SEMLitBase {
         this.requestUpdate();
         try {
             await this._hass.callService(
-                'solar_energy_management', 'purge_status_history', {});
+                'xxx_cristiano', 'purge_status_history', {});
             this._retentionMsg = 'OK';
         } catch (e) {
             this._retentionMsg = String(e && e.message ? e.message : e).slice(0, 60);
@@ -2428,7 +2428,7 @@ class SEMConfigCard extends SEMLitBase {
 
     _resetSignDetection() {
         if (!this._hass) return;
-        this._hass.callService('solar_energy_management', 'reset_sign_detection', {});
+        this._hass.callService('xxx_cristiano', 'reset_sign_detection', {});
         this._signMsg = this._t('sign_relearn_started');
         this.requestUpdate();
         setTimeout(() => { this._signMsg = ''; this.requestUpdate(); }, 4000);
@@ -2442,7 +2442,7 @@ class SEMConfigCard extends SEMLitBase {
         let payload = null;
         try {
             const res = await this._hass.callService(
-                'solar_energy_management', 'flip_grid_sign', {},
+                'xxx_cristiano', 'flip_grid_sign', {},
                 undefined, false, true,
             );
             payload = (res && res.response) ? res.response : res;
@@ -2474,7 +2474,7 @@ class SEMConfigCard extends SEMLitBase {
         let payload = null;
         try {
             const res = await this._hass.callService(
-                'solar_energy_management', 'flip_battery_sign', {},
+                'xxx_cristiano', 'flip_battery_sign', {},
                 undefined, false, true,
             );
             payload = (res && res.response) ? res.response : res;

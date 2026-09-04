@@ -17,20 +17,20 @@ from types import SimpleNamespace
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.energy_plan_actuation import (
+from custom_components.xxx_cristiano.coordinator.energy_plan_actuation import (
     UNCOVERED,
     PlanGate,
     ev_overlay,
     plan_gate,
 )
-from custom_components.solar_energy_management.coordinator.surplus_controller import (
+from custom_components.xxx_cristiano.coordinator.surplus_controller import (
     compute_load_intent,
 )
-from custom_components.solar_energy_management.coordinator.plan_verdict import (
+from custom_components.xxx_cristiano.coordinator.plan_verdict import (
     NO_OPINION,
     PlanVerdict,
 )
-from custom_components.solar_energy_management.devices.base import (
+from custom_components.xxx_cristiano.devices.base import (
     DeviceControlMode,
 )
 
@@ -210,7 +210,7 @@ def _load(**kw):
     base.update(kw)
     dev = SimpleNamespace(**base)
     # control_mode default: SURPLUS — import lazily to keep module scope light
-    from custom_components.solar_energy_management.devices.base import (
+    from custom_components.xxx_cristiano.devices.base import (
         DeviceControlMode,
     )
     if dev.control_mode is None:
@@ -288,7 +288,7 @@ class TestEverySiteThatComputesANightPlanAppliesTheOverlay:
     def test_overlay_count_matches_plan_count(self):
         from pathlib import Path
 
-        import custom_components.solar_energy_management.coordinator.coordinator as m
+        import custom_components.xxx_cristiano.coordinator.coordinator as m
         src = Path(m.__file__).read_text()
         plans = src.count("self._compute_night_plan(")
         overlays = src.count("ev_overlay(")
@@ -323,7 +323,7 @@ class TestAuthorityBeginsAtTheStamp:
         }
 
     def test_the_pre_first_slot_sliver_is_covered_and_vetoes(self):
-        from custom_components.solar_energy_management.coordinator.energy_plan_actuation import (
+        from custom_components.xxx_cristiano.coordinator.energy_plan_actuation import (
             plan_gate,
         )
         now = datetime.fromisoformat("2026-08-05T22:00:57+02:00")
@@ -335,7 +335,7 @@ class TestAuthorityBeginsAtTheStamp:
         )
 
     def test_inside_the_block_still_opens(self):
-        from custom_components.solar_energy_management.coordinator.energy_plan_actuation import (
+        from custom_components.xxx_cristiano.coordinator.energy_plan_actuation import (
             plan_gate,
         )
         now = datetime.fromisoformat("2026-08-05T23:30:00+02:00")
@@ -346,7 +346,7 @@ class TestAuthorityBeginsAtTheStamp:
         """No retroactive authority: a cycle evaluated before computed_at
         (clock skew, replayed stash) must not be gated by a plan from its
         own future."""
-        from custom_components.solar_energy_management.coordinator.energy_plan_actuation import (
+        from custom_components.xxx_cristiano.coordinator.energy_plan_actuation import (
             plan_gate,
         )
         now = datetime.fromisoformat("2026-08-05T21:30:00+02:00")
@@ -388,16 +388,16 @@ class TestStage3LoadVerdict:
     raised while the remaining blocks can still deliver the deficit."""
 
     def test_uncovered_is_no_opinion(self):
-        from custom_components.solar_energy_management.coordinator.energy_plan_actuation import (
+        from custom_components.xxx_cristiano.coordinator.energy_plan_actuation import (
             load_verdict,
         )
-        from custom_components.solar_energy_management.coordinator.plan_verdict import (
+        from custom_components.xxx_cristiano.coordinator.plan_verdict import (
             NO_OPINION,
         )
         assert load_verdict(UNCOVERED, deficit_kwh=1.0) == NO_OPINION
 
     def test_in_block_is_go(self):
-        from custom_components.solar_energy_management.coordinator.energy_plan_actuation import (
+        from custom_components.xxx_cristiano.coordinator.energy_plan_actuation import (
             load_verdict,
         )
         g = PlanGate(covered=True, in_block=True, block_power_w=1000.0,
@@ -408,7 +408,7 @@ class TestStage3LoadVerdict:
     def test_out_of_block_holds_with_reason_and_until(self):
         g = PlanGate(covered=True, in_block=False, remaining_kwh=2.0,
                      next_block_start=NOW + timedelta(hours=1))
-        from custom_components.solar_energy_management.coordinator.energy_plan_actuation import (
+        from custom_components.xxx_cristiano.coordinator.energy_plan_actuation import (
             load_verdict,
         )
         v = load_verdict(g, deficit_kwh=1.0)
@@ -419,10 +419,10 @@ class TestStage3LoadVerdict:
     def test_a_hold_that_cannot_deliver_fails_open(self):
         """The blocks left can no longer cover the deficit — holding would
         strand the runtime guarantee. Same rule as the EV overlay."""
-        from custom_components.solar_energy_management.coordinator.energy_plan_actuation import (
+        from custom_components.xxx_cristiano.coordinator.energy_plan_actuation import (
             load_verdict,
         )
-        from custom_components.solar_energy_management.coordinator.plan_verdict import (
+        from custom_components.xxx_cristiano.coordinator.plan_verdict import (
             NO_OPINION,
         )
         g = PlanGate(covered=True, in_block=False, remaining_kwh=0.4,
@@ -470,7 +470,7 @@ class TestStage3IntentConsultsTheVerdict:
         assert intent.on is False
 
     def test_no_opinion_changes_nothing(self):
-        from custom_components.solar_energy_management.coordinator.plan_verdict import (
+        from custom_components.xxx_cristiano.coordinator.plan_verdict import (
             NO_OPINION,
         )
         intent = compute_load_intent(

@@ -19,7 +19,7 @@ import logging
 
 import pytest
 
-from custom_components.solar_energy_management.utils.log_gate import (
+from custom_components.xxx_cristiano.utils.log_gate import (
     log_on_change, reset_log_gate,
 )
 

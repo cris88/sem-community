@@ -20,7 +20,7 @@ from unittest.mock import patch
 
 import pytest
 
-from custom_components.solar_energy_management.config_flow import (
+from custom_components.xxx_cristiano.config_flow import (
     OPTIONS_FLOW_OWNED_KEYS,
     OptionsFlowHandler,
 )

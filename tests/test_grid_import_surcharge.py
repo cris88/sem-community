@@ -21,18 +21,18 @@ from datetime import datetime, timedelta
 
 from unittest.mock import MagicMock, patch
 
-from custom_components.solar_energy_management.tariff.tariff_provider import (
+from custom_components.xxx_cristiano.tariff.tariff_provider import (
     DynamicTariffProvider,
     PriceLevel,
     PricePoint,
 )
-from custom_components.solar_energy_management.coordinator.battery_charge_scheduler import (
+from custom_components.xxx_cristiano.coordinator.battery_charge_scheduler import (
     BatteryChargeScheduler,
     SchedulerConfig,
     SchedulerState,
 )
 
-DT_UTIL_PATH = "custom_components.solar_energy_management.tariff.tariff_provider.dt_util"
+DT_UTIL_PATH = "custom_components.xxx_cristiano.tariff.tariff_provider.dt_util"
 
 
 def _make_price_state(price, attributes=None):
@@ -232,7 +232,7 @@ class TestExportUnaffected:
 
 class TestCoordinatorWiring:
     def _coordinator(self, mock_hass, **overrides):
-        from custom_components.solar_energy_management.coordinator import SEMCoordinator
+        from custom_components.xxx_cristiano.coordinator import SEMCoordinator
         config = {
             "tariff_mode": "dynamic",
             "update_interval": 30,
@@ -253,7 +253,7 @@ class TestCoordinatorWiring:
 
     def test_upgraded_install_without_key_keeps_legacy_zero_cost(self, mock_hass):
         """A pre-#710 config entry has no key and must retain old behaviour."""
-        from custom_components.solar_energy_management.coordinator import SEMCoordinator
+        from custom_components.xxx_cristiano.coordinator import SEMCoordinator
 
         coord = SEMCoordinator(
             mock_hass, {"tariff_mode": "dynamic", "update_interval": 30},
@@ -368,14 +368,14 @@ class TestCorruptSurchargeNormalized:
 
 class TestOptionsFlow:
     def test_grid_import_surcharge_is_owned_key(self):
-        from custom_components.solar_energy_management.config_flow import (
+        from custom_components.xxx_cristiano.config_flow import (
             OPTIONS_FLOW_OWNED_KEYS,
         )
         assert "grid_import_surcharge" in OPTIONS_FLOW_OWNED_KEYS
 
     @pytest.mark.asyncio
     async def test_wizard_offers_surcharge_field(self, mock_hass, config_entry):
-        from custom_components.solar_energy_management.config_flow import (
+        from custom_components.xxx_cristiano.config_flow import (
             OptionsFlowHandler,
         )
 
@@ -397,7 +397,7 @@ class TestOptionsFlow:
     async def test_wizard_hides_surcharge_outside_dynamic_mode(
         self, mock_hass, config_entry, tariff_mode,
     ):
-        from custom_components.solar_energy_management.config_flow import (
+        from custom_components.xxx_cristiano.config_flow import (
             OptionsFlowHandler,
         )
 
@@ -419,7 +419,7 @@ class TestOptionsFlow:
         self, mock_hass, config_entry,
     ):
         """Mode-gating must not silently erase the dynamic-mode setting."""
-        from custom_components.solar_energy_management.config_flow import (
+        from custom_components.xxx_cristiano.config_flow import (
             OptionsFlowHandler,
         )
 

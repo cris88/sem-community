@@ -10,7 +10,7 @@ from homeassistant.components.sensor import (
     SensorStateClass,
 )
 
-from custom_components.solar_energy_management.sensor import (
+from custom_components.xxx_cristiano.sensor import (
     SEMSolarSensor,
     async_setup_entry,
 )
@@ -260,7 +260,7 @@ class TestEMSSensors:
     @pytest.mark.asyncio
     async def test_async_setup_entry(self, mock_hass, config_entry, mock_coordinator):
         """Test sensor setup from config entry."""
-        from custom_components.solar_energy_management.const import DOMAIN
+        from custom_components.xxx_cristiano.const import DOMAIN
         from homeassistant.helpers import entity_registry as er
 
         # Mock the coordinator in runtime_data (quality scale: runtime-data)

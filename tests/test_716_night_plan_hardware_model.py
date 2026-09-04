@@ -21,8 +21,8 @@ from unittest.mock import MagicMock, patch
 
 from homeassistant.util import dt as dt_util
 
-from custom_components.solar_energy_management.consts.states import ChargingState
-from custom_components.solar_energy_management.coordinator import SEMCoordinator
+from custom_components.xxx_cristiano.consts.states import ChargingState
+from custom_components.xxx_cristiano.coordinator import SEMCoordinator
 
 
 def _coordinator(fleet=None, charger=None):

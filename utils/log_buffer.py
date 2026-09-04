@@ -6,7 +6,7 @@ flat ``home-assistant.log`` to tail, so the diagnose payload's
 the installs that report bugs most (the entire #461/#462 triage ran
 without log visibility). A ``logging.Handler`` attached to the
 integration's root logger captures every SEM record regardless of where
-HA routes its output: child loggers (``…solar_energy_management.coordinator
+HA routes its output: child loggers (``…xxx_cristiano.coordinator
 .sensor_reader`` etc.) propagate to the ancestor logger, whose handlers
 see the records.
 
@@ -18,7 +18,7 @@ from __future__ import annotations
 import logging
 from collections import deque
 
-SEM_LOGGER_NAME = "custom_components.solar_energy_management"
+SEM_LOGGER_NAME = "custom_components.xxx_cristiano"
 
 _FORMAT = "%(asctime)s %(levelname)s (%(name)s) %(message)s"
 

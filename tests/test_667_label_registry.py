@@ -36,7 +36,7 @@ from pathlib import Path
 
 import pytest
 
-from custom_components.solar_energy_management.consts.labels import (
+from custom_components.xxx_cristiano.consts.labels import (
     SENSOR_LABEL_MAPPING,
 )
 

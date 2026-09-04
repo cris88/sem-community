@@ -17,7 +17,7 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.per_charger_context import (
+from custom_components.xxx_cristiano.coordinator.per_charger_context import (
     PerChargerContext,
 )
 
@@ -109,7 +109,7 @@ class TestSwapInvariant:
         context's device inside the block and to the primary outside —
         the property replacement for the retired swap."""
         from unittest.mock import MagicMock as MM
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
         coord = SEMCoordinator(MM(), {})
@@ -137,7 +137,7 @@ class TestSwapInvariant:
         _ev_charge_refused) both behave correctly together.
         """
         from unittest.mock import MagicMock as MM
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
         coord = SEMCoordinator(MM(), {})
@@ -170,7 +170,7 @@ class TestSwapInvariant:
         convention; the pcc-backed property prevents it by construction
         (there is no restore to forget)."""
         from unittest.mock import MagicMock as MM
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
         coord = SEMCoordinator(MM(), {})

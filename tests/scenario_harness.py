@@ -184,7 +184,7 @@ def _build_power_readings(effective: Dict[str, Any]):
     """Construct a PowerReadings from an effective row, applying
     calculate_derived(). The YAML may override home_consumption_power
     after the derivation."""
-    from custom_components.solar_energy_management.coordinator.types import PowerReadings
+    from custom_components.xxx_cristiano.coordinator.types import PowerReadings
     pr = PowerReadings(
         solar_power=float(effective.get("solar_power", 0.0)),
         grid_power=float(effective.get("grid_power", 0.0)),
@@ -237,8 +237,8 @@ def _build_coordinator(scenario: Dict[str, Any]):
     test_ev_target_ux.py:_make_coordinator) and set the fields the
     strategy / budget / state machine code touches.
     """
-    from custom_components.solar_energy_management.coordinator import SEMCoordinator
-    from custom_components.solar_energy_management.coordinator.flow_calculator import (
+    from custom_components.xxx_cristiano.coordinator import SEMCoordinator
+    from custom_components.xxx_cristiano.coordinator.flow_calculator import (
         FlowCalculator,
     )
 
@@ -304,7 +304,7 @@ def _build_coordinator(scenario: Dict[str, Any]):
     # #651 has since deleted that method — it allocated a fleet EV budget
     # nothing downstream read. Fixed: pass hass only and let
     # regulation_offset default.
-    from custom_components.solar_energy_management.coordinator.surplus_controller import (
+    from custom_components.xxx_cristiano.coordinator.surplus_controller import (
         SurplusController,
     )
     coord._surplus_controller = SurplusController(coord.hass)
@@ -541,7 +541,7 @@ async def run_scenario(yaml_path: Path) -> ScenarioRun:
         # Any failure here is now LOUD (raised), not swallowed. The whole
         # point of the harness is to catch decision-vs-enforcement drift —
         # silently catching the SUT call defeats that.
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             EnergyTotals,
         )
         energy = EnergyTotals(daily_ev=0.0, daily_solar=0.0)
@@ -615,10 +615,10 @@ async def run_scenario(yaml_path: Path) -> ScenarioRun:
         # that #315's regression class shows up on.
         ev_chargers_cfg = coord.config.get("ev_chargers") or []
         if len(ev_chargers_cfg) >= 2 and strategy is not None:
-            from custom_components.solar_energy_management.consts.states import (
+            from custom_components.xxx_cristiano.consts.states import (
                 ChargingState,
             )
-            from custom_components.solar_energy_management.coordinator import (
+            from custom_components.xxx_cristiano.coordinator import (
                 SEMCoordinator,
             )
             # Pick a fleet baseline that lets each charger's override
@@ -671,13 +671,13 @@ async def run_scenario(yaml_path: Path) -> ScenarioRun:
         # or to call it at all — a source-level guard, not a behavioural
         # one. ``tests/test_665_allocator_coverage.py`` holds that half.
         if len(ev_chargers_cfg) >= 2:
-            from custom_components.solar_energy_management.coordinator.build_view import (
+            from custom_components.xxx_cristiano.coordinator.build_view import (
                 build_charger_view,
             )
-            from custom_components.solar_energy_management.coordinator.charger_types import (
+            from custom_components.xxx_cristiano.coordinator.charger_types import (
                 solar_commitment_w,
             )
-            from custom_components.solar_energy_management.coordinator.decide import (
+            from custom_components.xxx_cristiano.coordinator.decide import (
                 decide,
             )
 

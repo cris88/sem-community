@@ -18,13 +18,13 @@ from unittest.mock import AsyncMock, MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.surplus_controller import (
+from custom_components.xxx_cristiano.coordinator.surplus_controller import (
     SurplusController, compute_load_intent,
 )
-from custom_components.solar_energy_management.coordinator.plan_verdict import (
+from custom_components.xxx_cristiano.coordinator.plan_verdict import (
     PlanVerdict,
 )
-from custom_components.solar_energy_management.devices.base import DeviceControlMode
+from custom_components.xxx_cristiano.devices.base import DeviceControlMode
 
 
 def _heizband(**kw):

@@ -10,18 +10,18 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.energy_calculator import (
+from custom_components.xxx_cristiano.coordinator.energy_calculator import (
     EnergyCalculator,
 )
-from custom_components.solar_energy_management.coordinator.flow_calculator import (
+from custom_components.xxx_cristiano.coordinator.flow_calculator import (
     FlowCalculator,
 )
-from custom_components.solar_energy_management.coordinator.forecast_tracker import (
+from custom_components.xxx_cristiano.coordinator.forecast_tracker import (
     ForecastTracker,
     SUNRISE_HOUR,
     SUNSET_HOUR,
 )
-from custom_components.solar_energy_management.coordinator.types import (
+from custom_components.xxx_cristiano.coordinator.types import (
     PowerReadings,
     EnergyTotals,
 )
@@ -99,7 +99,7 @@ class TestDynamicTariffBatterySavings:
     each increment at the rate in effect at that moment.
     """
 
-    @patch("custom_components.solar_energy_management.coordinator.energy_calculator.dt_util")
+    @patch("custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util")
     def test_battery_savings_uses_rate_at_discharge_time(self, mock_dt, calculator):
         """should accumulate battery savings at per-interval rate, not final rate."""
         now = _freeze(hour=10)
@@ -141,7 +141,7 @@ class TestDynamicTariffBatterySavings:
             "Savings match the bug total — rate-at-time not being used"
         )
 
-    @patch("custom_components.solar_energy_management.coordinator.energy_calculator.dt_util")
+    @patch("custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util")
     def test_battery_savings_rate_change_does_not_retroact(self, mock_dt, calculator):
         """should not recalculate past battery savings when rate changes mid-session."""
         now = _freeze(hour=11)
@@ -179,7 +179,7 @@ class TestMonthlyBatterySavingsAccuracy:
     when battery was the only source (returned too little).
     """
 
-    @patch("custom_components.solar_energy_management.coordinator.energy_calculator.dt_util")
+    @patch("custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util")
     def test_no_battery_discharge_means_zero_savings(self, mock_dt, calculator):
         """should return 0 monthly_battery_savings when no battery discharged."""
         mock_dt.now.return_value = _freeze(month=5)
@@ -196,7 +196,7 @@ class TestMonthlyBatterySavingsAccuracy:
             "monthly_battery_savings should be 0 when no battery discharged"
         )
 
-    @patch("custom_components.solar_energy_management.coordinator.energy_calculator.dt_util")
+    @patch("custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util")
     def test_battery_savings_equals_accumulator_not_30pct_of_solar(self, mock_dt, calculator):
         """should equal cost_batt_savings accumulator, not 30% of solar savings."""
         mock_dt.now.return_value = _freeze(month=5)
@@ -217,7 +217,7 @@ class TestMonthlyBatterySavingsAccuracy:
             "monthly_battery_savings appears to be 30%% of solar savings (old bug)"
         )
 
-    @patch("custom_components.solar_energy_management.coordinator.energy_calculator.dt_util")
+    @patch("custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util")
     def test_battery_only_day_savings_match_discharge_value(self, mock_dt, calculator):
         """should report full battery savings when battery is sole home supply."""
         mock_dt.now.return_value = _freeze(month=5)
@@ -246,7 +246,7 @@ class TestMidnightRolloverSnapshot:
     and skipped, losing the whole day's real data.
     """
 
-    @patch("custom_components.solar_energy_management.coordinator.energy_calculator.dt_util")
+    @patch("custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util")
     def test_zero_energy_snapshot_allows_retry_next_day(self, mock_dt, calculator, time_manager):
         """should allow re-snapshot when prior snapshot energy_kwh == 0."""
         yesterday = date(2026, 5, 14)
@@ -281,7 +281,7 @@ class TestMidnightRolloverSnapshot:
             "Savings not snapshotted: zero-energy prior snapshot blocked re-snapshot"
         )
 
-    @patch("custom_components.solar_energy_management.coordinator.energy_calculator.dt_util")
+    @patch("custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util")
     def test_nonzero_snapshot_is_not_duplicated(self, mock_dt, calculator, time_manager):
         """should not snapshot twice when prior snapshot had real data."""
         yesterday = date(2026, 5, 14)
@@ -310,7 +310,7 @@ class TestMidnightRolloverSnapshot:
             "Savings duplicated: non-zero prior snapshot was re-snapshotted"
         )
 
-    @patch("custom_components.solar_energy_management.coordinator.energy_calculator.dt_util")
+    @patch("custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util")
     def test_normal_day_rollover_captures_correct_totals(self, mock_dt, calculator, time_manager):
         """should capture day's real cost data during normal midnight rollover."""
         day1 = date(2026, 5, 14)
@@ -514,7 +514,7 @@ class TestForecastSunriseSunsetFromSunEntity:
         hass.states.get.return_value = sun_state
 
         with patch(
-            "custom_components.solar_energy_management.coordinator.forecast_tracker.dt_util"
+            "custom_components.xxx_cristiano.coordinator.forecast_tracker.dt_util"
         ) as mock_dt:
             mock_dt.DEFAULT_TIME_ZONE = timezone.utc
             # #416 sub#3 — _get_sun_hours reads now().date() to roll
@@ -567,7 +567,7 @@ class TestForecastSunriseSunsetFromSunEntity:
         hass.states.get.return_value = sun_state
 
         with patch(
-            "custom_components.solar_energy_management.coordinator.forecast_tracker.dt_util"
+            "custom_components.xxx_cristiano.coordinator.forecast_tracker.dt_util"
         ) as mock_dt:
             mock_dt.DEFAULT_TIME_ZONE = timezone.utc
             mock_dt.now.return_value = datetime(
@@ -610,7 +610,7 @@ class TestSavingsNoDoubleCount:
     the battery (not the sun) delivered — double-counting battery savings.
     """
 
-    @patch("custom_components.solar_energy_management.coordinator.energy_calculator.dt_util")
+    @patch("custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util")
     def test_pure_solar_day_no_battery_savings(self, mock_dt, calculator):
         """should have zero daily_battery_savings when no battery discharged."""
         now = _freeze(hour=12)
@@ -631,7 +631,7 @@ class TestSavingsNoDoubleCount:
             "Battery savings > 0 despite no battery discharge — double-counting"
         )
 
-    @patch("custom_components.solar_energy_management.coordinator.energy_calculator.dt_util")
+    @patch("custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util")
     def test_battery_discharge_not_counted_in_solar_savings(self, mock_dt, calculator):
         """should exclude battery discharge from cost_savings accumulation.
 
@@ -671,7 +671,7 @@ class TestSavingsNoDoubleCount:
             f"Ratio {ratio:.2f} is close to 3:1 — battery discharge subtraction may be missing"
         )
 
-    @patch("custom_components.solar_energy_management.coordinator.energy_calculator.dt_util")
+    @patch("custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util")
     def test_solar_savings_plus_battery_savings_equals_total(self, mock_dt, calculator):
         """daily_savings + daily_battery_savings should sum to total self-consumption value."""
         now = _freeze(hour=12)

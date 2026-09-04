@@ -30,10 +30,10 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.coordinator import (
+from custom_components.xxx_cristiano.coordinator.coordinator import (
     SEMCoordinator,
 )
-from custom_components.solar_energy_management.devices.base import (
+from custom_components.xxx_cristiano.devices.base import (
     DeviceControlMode,
     DeviceState,
     SwitchDevice,
@@ -73,7 +73,7 @@ _CURSOR = {"t": _START}
 def _clock(monkeypatch):
     """The house pattern (test_device_cooldown): patch the module's
     ``datetime`` so ``now()`` walks a cursor the test advances."""
-    import custom_components.solar_energy_management.devices.base as base_mod
+    import custom_components.xxx_cristiano.devices.base as base_mod
 
     _CURSOR["t"] = _START
     fake = MagicMock()

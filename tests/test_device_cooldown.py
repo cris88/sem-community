@@ -3,7 +3,7 @@ import pytest
 from datetime import date, datetime, timedelta
 from unittest.mock import AsyncMock, MagicMock, patch
 
-from custom_components.solar_energy_management.devices.base import (
+from custom_components.xxx_cristiano.devices.base import (
     CurrentControlDevice,
     SetpointDevice,
     SwitchDevice,
@@ -117,7 +117,7 @@ class TestSetpointCooldown:
 
     def test_heat_pump_inherits_cooldown(self, mock_hass):
         """HeatPumpController should inherit 300s cooldown."""
-        from custom_components.solar_energy_management.devices.heat_pump_controller import (
+        from custom_components.xxx_cristiano.devices.heat_pump_controller import (
             HeatPumpController,
         )
         dev = HeatPumpController(mock_hass)
@@ -146,7 +146,7 @@ class TestDailyRuntime:
         t1 = datetime(2026, 3, 21, 12, 0, 0)
         t2 = datetime(2026, 3, 21, 12, 0, 10)
 
-        with patch("custom_components.solar_energy_management.devices.base.datetime") as mock_dt:
+        with patch("custom_components.xxx_cristiano.devices.base.datetime") as mock_dt:
             mock_dt.now.return_value = t1
             mock_dt.side_effect = lambda *a, **kw: datetime(*a, **kw)
             dev.update_daily_runtime(today)
@@ -164,7 +164,7 @@ class TestDailyRuntime:
         t1 = datetime(2026, 3, 21, 12, 0, 0)
         t2 = datetime(2026, 3, 21, 12, 0, 10)
 
-        with patch("custom_components.solar_energy_management.devices.base.datetime") as mock_dt:
+        with patch("custom_components.xxx_cristiano.devices.base.datetime") as mock_dt:
             mock_dt.now.return_value = t1
             mock_dt.side_effect = lambda *a, **kw: datetime(*a, **kw)
             dev.update_daily_runtime(today)
@@ -185,7 +185,7 @@ class TestDailyRuntime:
         t2 = datetime(2026, 3, 21, 12, 0, 10)
         t3 = datetime(2026, 3, 22, 7, 0, 0)
 
-        with patch("custom_components.solar_energy_management.devices.base.datetime") as mock_dt:
+        with patch("custom_components.xxx_cristiano.devices.base.datetime") as mock_dt:
             mock_dt.now.return_value = t1
             mock_dt.side_effect = lambda *a, **kw: datetime(*a, **kw)
             dev.update_daily_runtime(day1)
@@ -196,7 +196,7 @@ class TestDailyRuntime:
         assert dev._daily_runtime_accumulated_sec == pytest.approx(10.0, abs=0.1)
 
         # Now rollover
-        with patch("custom_components.solar_energy_management.devices.base.datetime") as mock_dt:
+        with patch("custom_components.xxx_cristiano.devices.base.datetime") as mock_dt:
             mock_dt.now.return_value = t3
             mock_dt.side_effect = lambda *a, **kw: datetime(*a, **kw)
             dev.update_daily_runtime(day2)
@@ -212,7 +212,7 @@ class TestDailyRuntime:
         t1 = datetime(2026, 3, 21, 12, 0, 0)
         t2 = datetime(2026, 3, 21, 12, 5, 0)  # 300s gap
 
-        with patch("custom_components.solar_energy_management.devices.base.datetime") as mock_dt:
+        with patch("custom_components.xxx_cristiano.devices.base.datetime") as mock_dt:
             mock_dt.now.return_value = t1
             mock_dt.side_effect = lambda *a, **kw: datetime(*a, **kw)
             dev.update_daily_runtime(today)
@@ -258,7 +258,7 @@ class TestHotWaterOffpeakTemperature:
 
     def test_hot_water_offpeak_respects_temperature(self, mock_hass):
         """At max temp, needs_offpeak_activation should return False."""
-        from custom_components.solar_energy_management.devices.hot_water_controller import (
+        from custom_components.xxx_cristiano.devices.hot_water_controller import (
             HotWaterController,
         )
         dev = HotWaterController(
@@ -278,7 +278,7 @@ class TestHotWaterOffpeakTemperature:
 
     def test_hot_water_offpeak_allows_when_cold(self, mock_hass):
         """Below max temp, needs_offpeak_activation should return True."""
-        from custom_components.solar_energy_management.devices.hot_water_controller import (
+        from custom_components.xxx_cristiano.devices.hot_water_controller import (
             HotWaterController,
         )
         dev = HotWaterController(

@@ -30,16 +30,16 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.energy_calculator import (
+from custom_components.xxx_cristiano.coordinator.energy_calculator import (
     EV_CATEGORY,
     MIDNIGHT_EV_CATEGORY,
     EnergyCalculator,
 )
-from custom_components.solar_energy_management.coordinator.types import (
+from custom_components.xxx_cristiano.coordinator.types import (
     EnergyTotals,
     SEMData,
 )
-from custom_components.solar_energy_management.utils.time_manager import TimeManager
+from custom_components.xxx_cristiano.utils.time_manager import TimeManager
 
 DAY = date(2026, 8, 17)
 

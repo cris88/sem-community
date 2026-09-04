@@ -14,8 +14,8 @@ from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
 
-from custom_components.solar_energy_management.const import LoadManagementState
-from custom_components.solar_energy_management.load_management import (
+from custom_components.xxx_cristiano.const import LoadManagementState
+from custom_components.xxx_cristiano.load_management import (
     LoadManagementCoordinator,
 )
 
@@ -51,9 +51,9 @@ def config_entry_disabled():
 @pytest.fixture
 def lm(mock_hass, config_entry_lm):
     with patch(
-        "custom_components.solar_energy_management.features.load_management.LoadDeviceDiscovery"
+        "custom_components.xxx_cristiano.features.load_management.LoadDeviceDiscovery"
     ) as MockDiscovery, patch(
-        "custom_components.solar_energy_management.features.load_management.Store"
+        "custom_components.xxx_cristiano.features.load_management.Store"
     ) as MockStore:
         mock_discovery = MagicMock()
         mock_discovery.discover_from_energy_dashboard = AsyncMock(return_value={})
@@ -79,9 +79,9 @@ def lm(mock_hass, config_entry_lm):
 @pytest.fixture
 def lm_disabled(mock_hass, config_entry_disabled):
     with patch(
-        "custom_components.solar_energy_management.features.load_management.LoadDeviceDiscovery"
+        "custom_components.xxx_cristiano.features.load_management.LoadDeviceDiscovery"
     ), patch(
-        "custom_components.solar_energy_management.features.load_management.Store"
+        "custom_components.xxx_cristiano.features.load_management.Store"
     ):
         c = LoadManagementCoordinator(mock_hass, config_entry_disabled)
         yield c

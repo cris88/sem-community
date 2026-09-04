@@ -33,7 +33,7 @@ pytestmark = pytest.mark.skipif(
 )
 
 
-from custom_components.solar_energy_management.const import DOMAIN
+from custom_components.xxx_cristiano.const import DOMAIN
 
 _DEVICE_ID = "zwembad_warmtepomp"
 _ACCRUED_SEC = 9000.0  # 2.5 h already run toward a 5.5 h daily target
@@ -123,7 +123,7 @@ from datetime import date
 from types import SimpleNamespace
 from unittest.mock import MagicMock
 
-from custom_components.solar_energy_management.features.device_registry import (
+from custom_components.xxx_cristiano.features.device_registry import (
     UnifiedDeviceRegistry,
 )
 

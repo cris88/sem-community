@@ -28,7 +28,7 @@ is only the multi-charger distribution consumer that is gone.
 """
 from unittest.mock import MagicMock, patch
 
-from custom_components.solar_energy_management.coordinator import SEMCoordinator
+from custom_components.xxx_cristiano.coordinator import SEMCoordinator
 
 
 class TestLegacyBudgetMethodStaysDeleted:

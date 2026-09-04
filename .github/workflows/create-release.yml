@@ -129,6 +129,6 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          bash scripts/build_release_zip.sh solar_energy_management.zip
-          python3 scripts/verify_release_zip.py solar_energy_management.zip
-          gh release upload "$TAG" solar_energy_management.zip --clobber
+          bash scripts/build_release_zip.sh xxx_cristiano.zip
+          python3 scripts/verify_release_zip.py xxx_cristiano.zip
+          gh release upload "$TAG" xxx_cristiano.zip --clobber

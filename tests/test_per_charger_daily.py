@@ -7,7 +7,7 @@ chargers report their own (now-persisted) accumulators.
 import pytest
 from unittest.mock import MagicMock
 
-from custom_components.solar_energy_management.coordinator.coordinator import SEMCoordinator
+from custom_components.xxx_cristiano.coordinator.coordinator import SEMCoordinator
 
 
 @pytest.mark.unit

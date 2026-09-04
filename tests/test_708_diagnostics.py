@@ -10,7 +10,7 @@ something SEM cannot know; the observation is: the charge completed."""
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.ev_taper_detector import (
+from custom_components.xxx_cristiano.coordinator.ev_taper_detector import (
     EVTaperDetector,
 )
 
@@ -64,7 +64,7 @@ class TestTheAnnouncementReportsTheObservation:
 class TestDiagnosticsWiring:
     def test_the_download_carries_the_ev_stability_block(self):
         import inspect
-        from custom_components.solar_energy_management import diagnostics
+        from custom_components.xxx_cristiano import diagnostics
         src = inspect.getsource(diagnostics)
         assert "ev_stability" in src
         assert "diagnostics_view" in src

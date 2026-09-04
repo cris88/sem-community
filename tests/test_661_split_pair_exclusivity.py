@@ -15,13 +15,13 @@ from __future__ import annotations
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.health_check import (
+from custom_components.xxx_cristiano.coordinator.health_check import (
     HealthCheck,
 )
-from custom_components.solar_energy_management.coordinator.sign_audit import (
+from custom_components.xxx_cristiano.coordinator.sign_audit import (
     SplitSensorExclusivityAudit,
 )
-from custom_components.solar_energy_management.coordinator.types import PowerReadings
+from custom_components.xxx_cristiano.coordinator.types import PowerReadings
 
 
 @pytest.mark.unit
@@ -186,7 +186,7 @@ class TestSplitPairAudit661:
 # while the assembled pipeline never runs the code.
 # ──────────────────────────────────────────────────────────────────────────
 
-from custom_components.solar_energy_management.tests.test_split_grid_integration import (  # noqa: E402
+from custom_components.xxx_cristiano.tests.test_split_grid_integration import (  # noqa: E402
     _make_energy_dashboard_config,
     _make_reader_with_states,
     _state,

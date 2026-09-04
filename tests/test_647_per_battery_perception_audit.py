@@ -19,13 +19,13 @@ from unittest.mock import MagicMock, Mock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.sensor_reader import (
+from custom_components.xxx_cristiano.coordinator.sensor_reader import (
     SensorReader,
 )
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     BatteryPower,
 )
-from custom_components.solar_energy_management.coordinator.types import PowerReadings
+from custom_components.xxx_cristiano.coordinator.types import PowerReadings
 
 
 def _state(value):

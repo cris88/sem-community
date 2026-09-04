@@ -34,10 +34,10 @@ class TestEnergyPrecisionMatchesTheHouseStandard:
     daily row. 1 Wh granularity ticks every cycle at any real load."""
 
     def test_true_baseload_today_is_10wh(self):
-        from custom_components.solar_energy_management.coordinator.energy_calculator import (
+        from custom_components.xxx_cristiano.coordinator.energy_calculator import (
             EnergyCalculator,
         )
-        from custom_components.solar_energy_management.utils.time_manager import TimeManager
+        from custom_components.xxx_cristiano.utils.time_manager import TimeManager
         calc = EnergyCalculator({"update_interval": 10}, TimeManager(MagicMock()))
         from datetime import date
         today = date(2026, 8, 22)
@@ -53,7 +53,7 @@ class TestEnergyPrecisionMatchesTheHouseStandard:
         """The calculator keeps 1 Wh internally (its own tests pin that); what
         the ENTITIES publish is 10 Wh — at 1 Wh flow_battery_to_home wrote
         2,916 rows/day on PROD."""
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             EnergyFlows, SEMData,
         )
         d = SEMData(energy_flows=EnergyFlows(battery_to_home=1.23456,
@@ -67,7 +67,7 @@ class TestTickersPublishOnChangeNotOnCycle:
 
     def test_battery_session_duration_is_whole_minutes(self):
         """A duration in tenths of a minute changes every 6 s — every cycle."""
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             BatterySessionData,
         )
         s = BatterySessionData()
@@ -80,7 +80,7 @@ class TestTickersPublishOnChangeNotOnCycle:
         assert pub["energy_kwh"] == 1.23
 
     def test_ev_session_duration_is_whole_minutes(self):
-        from custom_components.solar_energy_management.coordinator.types import SessionData
+        from custom_components.xxx_cristiano.coordinator.types import SessionData
         s = SessionData()
         s.duration_minutes = 45.4
         s.avg_power_w = 3333.3
@@ -91,7 +91,7 @@ class TestTickersPublishOnChangeNotOnCycle:
     def test_derived_powers_are_whole_watts(self):
         """solar_power (1,777 rows/day) is an integer from the inverter; the
         derived baseload/available powers carried float jitter (5.6k/5.4k)."""
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             EnergyTotals, SEMData,
         )
         d = SEMData(energy=EnergyTotals(true_baseload_power=1234.567),
@@ -109,7 +109,7 @@ class TestLiveValuesDoNotRideStableEntities:
         raw live ``current_power``. Cards read live power from each row's own
         ``power_entity`` (the system-diagram card already did); the map keeps
         a 100 W-coarse fallback that changes only when the load really does."""
-        from custom_components.solar_energy_management.features.device_registry import (
+        from custom_components.xxx_cristiano.features.device_registry import (
             UnifiedDeviceRegistry,
         )
         assert UnifiedDeviceRegistry._coarse_w(37.5) == 0
@@ -164,7 +164,7 @@ class TestTipsRotateForTheEyeNotTheRecorder:
     def test_tips_do_not_rotate_every_cycle(self, monkeypatch):
         """Two analyze() calls 10 s apart must show the SAME tip; rotation is
         time-based (every few minutes), not per coordinator cycle."""
-        import custom_components.solar_energy_management.analytics.energy_assistant as ea_mod
+        import custom_components.xxx_cristiano.analytics.energy_assistant as ea_mod
         clock = {"t": 1000.0}
         monkeypatch.setattr(ea_mod.time, "monotonic", lambda: clock["t"])
         ea = ea_mod.EnergyAssistant(MagicMock())
@@ -187,7 +187,7 @@ class TestMismatchCounterDoesNotChurn:
     def test_persisted_cycles_is_exact_then_coarse(self):
         """The diagnosis window (first cycles) stays exact — the #589 test pins
         ==4 — but a standing mismatch must not write a row per cycle forever."""
-        from custom_components.solar_energy_management.binary_sensor import (
+        from custom_components.xxx_cristiano.binary_sensor import (
             coarse_cycles,
         )
         assert [coarse_cycles(n) for n in range(1, 7)] == [1, 2, 3, 4, 5, 5]
@@ -208,7 +208,7 @@ class TestChargingStateBlobDoesNotChurn:
     staying on the live state for the cards."""
 
     def test_churning_attrs_are_unrecorded(self):
-        from custom_components.solar_energy_management.sensor import SEMSolarSensor
+        from custom_components.xxx_cristiano.sensor import SEMSolarSensor
         must_exclude = {
             "battery_soc", "calculated_current", "available_power",
             "solar_sufficient", "battery_too_low", "battery_needs_priority",
@@ -247,7 +247,7 @@ class TestTheRemainingPerCycleWriters:
     """
 
     def test_surplus_watts_are_whole(self):
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             SEMData, SurplusControlData,
         )
         d = SEMData(surplus_control=SurplusControlData(
@@ -257,7 +257,7 @@ class TestTheRemainingPerCycleWriters:
         assert d["surplus_unallocated_w"] == 5875
 
     def test_session_savings_is_currency_precision(self):
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             BatterySessionData, SEMData,
         )
         d = SEMData(battery_session=BatterySessionData(
@@ -265,7 +265,7 @@ class TestTheRemainingPerCycleWriters:
         assert d["battery_session_savings"] == 0.01
 
     def test_dampening_factor_is_two_decimals(self):
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             ForecastSensorData, SEMData,
         )
         d = SEMData(forecast=ForecastSensorData(
@@ -310,7 +310,7 @@ class TestPlanRowsDoNotChurnOnTheirTimestamp:
 
     def test_row_when_has_no_seconds_or_microseconds(self):
         from datetime import datetime
-        from custom_components.solar_energy_management.coordinator.today_plan import (
+        from custom_components.xxx_cristiano.coordinator.today_plan import (
             PlanRow,
         )
         row = PlanRow(when=datetime(2026, 8, 22, 20, 30, 18, 946074),
@@ -320,7 +320,7 @@ class TestPlanRowsDoNotChurnOnTheirTimestamp:
     def test_two_rows_in_the_same_minute_serialise_identically(self):
         """The property that actually stops the recorder row."""
         from datetime import datetime
-        from custom_components.solar_energy_management.coordinator.today_plan import (
+        from custom_components.xxx_cristiano.coordinator.today_plan import (
             PlanRow,
         )
         a = PlanRow(when=datetime(2026, 8, 22, 20, 30, 18, 946074), kind="k", label="l")
@@ -358,7 +358,7 @@ class TestThePowerFamilyPublishesWholeWatts:
     decision can see."""
 
     def test_powers_are_integers(self):
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             PowerReadings, SEMData,
         )
         d = SEMData(power=PowerReadings(
@@ -373,7 +373,7 @@ class TestThePowerFamilyPublishesWholeWatts:
 
     def test_a_dark_source_stays_unknown_not_zero(self):
         """#818's rule survives the rounding: unavailable must not become 0 W."""
-        from custom_components.solar_energy_management.coordinator.types import _w
+        from custom_components.xxx_cristiano.coordinator.types import _w
         assert _w(None) is None
         assert _w("unavailable") is None
         assert _w(0) == 0

@@ -14,17 +14,17 @@ import logging
 import pytest
 from unittest.mock import MagicMock
 
-from custom_components.solar_energy_management.coordinator.health_check import (
+from custom_components.xxx_cristiano.coordinator.health_check import (
     HealthCheck,
 )
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     ChargerEnergy,
     ChargerIntent,
     ChargerPower,
     ChargerView,
     FleetContext,
 )
-from custom_components.solar_energy_management.coordinator.decide import decide
+from custom_components.xxx_cristiano.coordinator.decide import decide
 
 
 def _power(**overrides):

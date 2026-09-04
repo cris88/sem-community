@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.charger_adapters.status_enum import (
+from custom_components.xxx_cristiano.coordinator.charger_adapters.status_enum import (
     classify_charger_status as C,
 )
 
@@ -100,7 +100,7 @@ class TestGenericAndEdges:
 
     def test_no_charging_collisions(self):
         # Nothing classified "charging" may also be a known idle/locked word.
-        from custom_components.solar_energy_management.coordinator.charger_adapters import status_enum as se
+        from custom_components.xxx_cristiano.coordinator.charger_adapters import status_enum as se
         assert se._CHARGING.isdisjoint(se._NOT_CHARGING)
         assert se._CHARGING.isdisjoint(se._LOCKED)
         assert se._NOT_CHARGING.isdisjoint(se._LOCKED)

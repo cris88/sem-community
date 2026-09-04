@@ -1,5 +1,5 @@
 """Regression for stale legacy EV sensors without a registered charger device."""
-from custom_components.solar_energy_management.coordinator.ev_availability import (
+from custom_components.xxx_cristiano.coordinator.ev_availability import (
     operational_ev_connected,
     operational_night_target,
 )

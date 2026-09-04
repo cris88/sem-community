@@ -38,7 +38,7 @@ from __future__ import annotations
 from unittest.mock import AsyncMock, MagicMock
 
 
-from custom_components.solar_energy_management.coordinator.battery_adapters.base import (  # noqa: E501
+from custom_components.xxx_cristiano.coordinator.battery_adapters.base import (  # noqa: E501
     BatteryControlAdapter,
 )
 
@@ -133,7 +133,7 @@ class TestItStopsPlanningForIt:
 class TestItSaysSoOnce:
     async def test_the_warning_is_not_written_every_cycle(self, caplog):
         import logging
-        from custom_components.solar_energy_management.coordinator.battery_adapters import (  # noqa: E501
+        from custom_components.xxx_cristiano.coordinator.battery_adapters import (  # noqa: E501
             base as _base,
         )
         caplog.set_level(logging.DEBUG, logger=_base.__name__)
@@ -148,7 +148,7 @@ class TestItSaysSoOnce:
 
     async def test_it_names_the_entity_so_the_line_is_actionable(self, caplog):
         import logging
-        from custom_components.solar_energy_management.coordinator.battery_adapters import (  # noqa: E501
+        from custom_components.xxx_cristiano.coordinator.battery_adapters import (  # noqa: E501
             base as _base,
         )
         caplog.set_level(logging.DEBUG, logger=_base.__name__)
@@ -217,7 +217,7 @@ class TestItDoesNotRepeatARefusedWrite:
 
     async def test_the_probe_is_silent(self, caplog):
         import logging
-        from custom_components.solar_energy_management.coordinator.battery_adapters import (  # noqa: E501
+        from custom_components.xxx_cristiano.coordinator.battery_adapters import (  # noqa: E501
             base as _base,
         )
         caplog.set_level(logging.DEBUG, logger=_base.__name__)

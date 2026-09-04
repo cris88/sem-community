@@ -24,7 +24,7 @@ from unittest.mock import Mock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.ev_control import (
+from custom_components.xxx_cristiano.coordinator.ev_control import (
     EVControlMixin,
 )
 
@@ -66,7 +66,7 @@ class TestBothCallersReadTheSameNumber:
     """Structural parity — the two planning surfaces read the ONE accessor."""
 
     def test_the_ledger_reads_planning_peak(self):
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
         src = inspect.getsource(SEMCoordinator._shadow_energy_plan)

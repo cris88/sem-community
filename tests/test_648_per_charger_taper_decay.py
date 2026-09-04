@@ -22,7 +22,7 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator import SEMCoordinator
+from custom_components.xxx_cristiano.coordinator import SEMCoordinator
 
 
 def _det(last_full=1000.0):
@@ -166,7 +166,7 @@ class TestDecayIsWiredIntoTheRollover648:
         rollover calls ``_run_due_daily_decay``, which is the only caller of
         ``_apply_daily_taper_decay`` — pin both links."""
         import inspect
-        from custom_components.solar_energy_management.coordinator import coordinator as mod
+        from custom_components.xxx_cristiano.coordinator import coordinator as mod
 
         update_src = inspect.getsource(mod.SEMCoordinator._async_update_data)
         assert "self._run_due_daily_decay(now_time, today_date, power)" in update_src

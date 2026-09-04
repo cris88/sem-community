@@ -24,7 +24,7 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.consts.ev_charge_modes import (
+from custom_components.xxx_cristiano.consts.ev_charge_modes import (
     mode_allows_night_charging,
     solar_only_night_floor,
 )
@@ -32,7 +32,7 @@ from custom_components.solar_energy_management.consts.ev_charge_modes import (
 
 def _installed_config(**charger_overrides) -> dict:
     """A config shaped exactly like a fresh install, not a hand-built one."""
-    from custom_components.solar_energy_management.config_flow import (
+    from custom_components.xxx_cristiano.config_flow import (
             SolarEnergyManagementConfigFlow as ConfigFlow,
         )
 
@@ -47,7 +47,7 @@ def _installed_config(**charger_overrides) -> dict:
 class TestTheDefaultIsReachable:
     def test_install_defaults_really_do_seed_a_nonzero_global_floor(self):
         """Pin the premise. If this ever becomes 0, the bug is gone at source."""
-        from custom_components.solar_energy_management.config_flow import (
+        from custom_components.xxx_cristiano.config_flow import (
             SolarEnergyManagementConfigFlow as ConfigFlow,
         )
 
@@ -114,7 +114,7 @@ class TestTheTwinsCannotDrift:
     """Both gates were hand-copies carrying a "keep in sync" note (#679)."""
 
     def _state_machine(self, cfg):
-        from custom_components.solar_energy_management.coordinator.charging_control import (
+        from custom_components.xxx_cristiano.coordinator.charging_control import (
             ChargingStateMachine,
         )
         sm = ChargingStateMachine.__new__(ChargingStateMachine)
@@ -126,7 +126,7 @@ class TestTheTwinsCannotDrift:
         return sm
 
     def _coordinator(self, cfg):
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
         coord = SEMCoordinator.__new__(SEMCoordinator)

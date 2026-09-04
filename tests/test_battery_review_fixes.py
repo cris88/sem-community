@@ -16,10 +16,10 @@ from unittest.mock import AsyncMock, MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.battery_adapters.force_charge import (
+from custom_components.xxx_cristiano.coordinator.battery_adapters.force_charge import (
     ChargeCommand,
 )
-from custom_components.solar_energy_management.coordinator.battery_charge_scheduler import (
+from custom_components.xxx_cristiano.coordinator.battery_charge_scheduler import (
     SchedulerDecision,
     SchedulerState,
 )
@@ -46,7 +46,7 @@ def _hass():
 async def test_force_charge_builds_valid_charge_command(mod, cls, cfg):
     import importlib
     Adapter = getattr(importlib.import_module(
-        f"custom_components.solar_energy_management.coordinator.battery_adapters.{mod}"), cls)
+        f"custom_components.xxx_cristiano.coordinator.battery_adapters.{mod}"), cls)
     a = Adapter(_hass(), cfg)
     a._charge_adapter.start_forced_charge = AsyncMock()
     # The exact call decide_battery → actuate_battery makes for FORCE_CHARGE.

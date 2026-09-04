@@ -24,8 +24,8 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator import SEMCoordinator
-from custom_components.solar_energy_management.coordinator.types import (
+from custom_components.xxx_cristiano.coordinator import SEMCoordinator
+from custom_components.xxx_cristiano.coordinator.types import (
     LoadManagementData,
     PowerReadings,
     SEMData,

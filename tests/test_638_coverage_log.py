@@ -19,7 +19,7 @@ from datetime import timedelta
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.energy_plan_actuation import (
+from custom_components.xxx_cristiano.coordinator.energy_plan_actuation import (
     PlanGate,
     coverage_transition,
     plan_gate,
@@ -119,7 +119,7 @@ class TestTheLogTagIsTheHonestMode:
     def test_no_planner_line_hardcodes_the_mode(self):
         import inspect
 
-        from custom_components.solar_energy_management.coordinator import (
+        from custom_components.xxx_cristiano.coordinator import (
             coordinator as mod,
         )
         src = inspect.getsource(mod)

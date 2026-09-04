@@ -27,16 +27,16 @@ from datetime import datetime, timezone
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.day_ledger import (
+from custom_components.xxx_cristiano.coordinator.day_ledger import (
     build_day_slots,
 )
-from custom_components.solar_energy_management.coordinator.energy_planner import (
+from custom_components.xxx_cristiano.coordinator.energy_planner import (
     Demand,
     LedgerSlot,
     build_night_ledger,
     pack_night,
 )
-from custom_components.solar_energy_management.coordinator.self_consumption import (
+from custom_components.xxx_cristiano.coordinator.self_consumption import (
     predict_self_consumption,
 )
 
@@ -192,7 +192,7 @@ class TestTheCoordinatorStatesAndMeasuresIt:
         """The objective is only real if the real build path carries it —
         a pure module nobody passes the rate to optimises nothing."""
         import inspect
-        from custom_components.solar_energy_management.coordinator \
+        from custom_components.xxx_cristiano.coordinator \
             .coordinator import SEMCoordinator
 
         src = inspect.getsource(SEMCoordinator._shadow_energy_plan)
@@ -205,7 +205,7 @@ class TestTheCoordinatorStatesAndMeasuresIt:
         """A prediction nobody wrote down cannot be wrong, which is the same
         as not being an objective."""
         from unittest.mock import MagicMock
-        from custom_components.solar_energy_management.coordinator \
+        from custom_components.xxx_cristiano.coordinator \
             .coordinator import SEMCoordinator
 
         fake = _fake_self(devices=[_fake_load()])
@@ -220,7 +220,7 @@ class TestTheCoordinatorStatesAndMeasuresIt:
         record — or the morning compares a plan horizon against a
         calendar-day sensor and calls the difference an error."""
         import inspect
-        from custom_components.solar_energy_management.coordinator \
+        from custom_components.xxx_cristiano.coordinator \
             .coordinator import SEMCoordinator
 
         src = inspect.getsource(SEMCoordinator._record_demand_outcomes)
@@ -233,7 +233,7 @@ class TestTheAuditIsLikeForLike:
         """The plan's horizon is not a calendar day. Comparing its predicted
         share against the daily self_consumption_rate sensor would compare
         two different windows and call the difference an error."""
-        from custom_components.solar_energy_management.coordinator \
+        from custom_components.xxx_cristiano.coordinator \
             .demand_outcome import DemandOutcomeRecorder
 
         rec = DemandOutcomeRecorder(max_gap_s=3600)
@@ -251,7 +251,7 @@ class TestTheAuditIsLikeForLike:
         """Same guard as the per-demand energy: a hole is a hole. Inventing
         solar across a restart would show up as a plan that missed its
         target for no reason."""
-        from custom_components.solar_energy_management.coordinator \
+        from custom_components.xxx_cristiano.coordinator \
             .demand_outcome import DemandOutcomeRecorder
 
         rec = DemandOutcomeRecorder()          # shipped default guard
@@ -261,7 +261,7 @@ class TestTheAuditIsLikeForLike:
         assert _open_summary(rec).solar_kwh == pytest.approx(0.0, abs=0.01)
 
     def test_the_summary_survives_a_reboot(self):
-        from custom_components.solar_energy_management.coordinator \
+        from custom_components.xxx_cristiano.coordinator \
             .demand_outcome import DemandOutcomeRecorder
 
         rec = DemandOutcomeRecorder(max_gap_s=3600)
@@ -276,7 +276,7 @@ class TestTheAuditIsLikeForLike:
         assert _open_summary(revived).predicted_share == pytest.approx(0.8)
 
     def test_closing_the_night_files_the_summary_in_history(self):
-        from custom_components.solar_energy_management.coordinator \
+        from custom_components.xxx_cristiano.coordinator \
             .demand_outcome import DemandOutcomeRecorder
 
         rec = DemandOutcomeRecorder(max_gap_s=3600)
@@ -293,7 +293,7 @@ class TestTheAuditIsLikeForLike:
         """Midwinter, or a plan stamped at 23:00 that ends before sunrise.
         Reporting 0 % kept would read as a failure; there was nothing to
         keep."""
-        from custom_components.solar_energy_management.coordinator \
+        from custom_components.xxx_cristiano.coordinator \
             .demand_outcome import DemandOutcomeRecorder
 
         rec = DemandOutcomeRecorder(max_gap_s=3600)

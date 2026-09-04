@@ -80,8 +80,8 @@ Run from a replica of the CI layout, **not** from the repo root — a repo-root 
 shadows the stdlib `select` module, and Python 3.12+ is required for the `type` statement:
 
 ```bash
-rsync -a --delete --exclude=.git --exclude=node_modules ./ /tmp/ha-config/custom_components/solar_energy_management/
-cd /tmp/ha-config && PYTHONPATH=/tmp/ha-config python3.12 -m pytest custom_components/solar_energy_management/tests/ -q
+rsync -a --delete --exclude=.git --exclude=node_modules ./ /tmp/ha-config/custom_components/xxx_cristiano/
+cd /tmp/ha-config && PYTHONPATH=/tmp/ha-config python3.12 -m pytest custom_components/xxx_cristiano/tests/ -q
 ```
 
 CI runs the same layout on Python 3.12 and 3.13, plus Hassfest and HACS validation.

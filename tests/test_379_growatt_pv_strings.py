@@ -26,7 +26,7 @@ from __future__ import annotations
 from unittest.mock import MagicMock, patch
 
 
-from custom_components.solar_energy_management.hardware_detection import (
+from custom_components.xxx_cristiano.hardware_detection import (
     discover_pv_strings_from_registry,
 )
 
@@ -62,7 +62,7 @@ def _patch_registry(entries):
         side_effect=lambda eid: next((e for e in entries if e.entity_id == eid), None)
     )
     return patch(
-        "custom_components.solar_energy_management.hardware_detection."
+        "custom_components.xxx_cristiano.hardware_detection."
         "entity_registry.async_get",
         return_value=fake_reg,
     )
@@ -288,7 +288,7 @@ def test_379_diagnostic_marker_for_user_dump() -> None:
          Growatt-related entities. The discovery only finds PV strings
          that match the patterns in
          ``hardware_detection._PV_STRING_PATTERNS``.
-      2. The output of ``solar_energy_management.generate_dashboard``
+      2. The output of ``xxx_cristiano.generate_dashboard``
          service in DEBUG log mode — shows discovery's result dict.
       3. Their HA Energy Dashboard config — confirms that both PV
          sensors are listed there.

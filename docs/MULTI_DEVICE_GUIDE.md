@@ -129,7 +129,7 @@ The `sem-ev-status-card` on the EV tab automatically shows per-charger sections 
 
 When multiple chargers are configured, the global status row is hidden to avoid redundancy with per-charger sections.
 
-Regenerate the dashboard after adding a charger: **Developer Tools → Services → solar_energy_management.generate_dashboard**. The new per-charger sections show up immediately — no HA restart needed (v1.5.16+); hard-refresh the browser if cards look stale.
+Regenerate the dashboard after adding a charger: **Developer Tools → Services → xxx_cristiano.generate_dashboard**. The new per-charger sections show up immediately — no HA restart needed (v1.5.16+); hard-refresh the browser if cards look stale.
 
 ![EV Tab Multi-Charger](screenshots/ev-tab-multi-charger.png)
 
@@ -187,7 +187,7 @@ driven by SEM. One service call is enough; the registration **persists
 across restarts** and returns a summary response:
 
 ```yaml
-service: solar_energy_management.register_surplus_device
+service: xxx_cristiano.register_surplus_device
 data:
   device_id: kia_socket
   entity_id: switch.kia_socket
@@ -199,7 +199,7 @@ data:
 SEM then switches the load ON when the solar surplus covers its rated
 power and OFF when the surplus is gone (anti-flicker: min 5 min on /
 1 min off). Remove it again with
-`solar_energy_management.unregister_surplus_device`.
+`xxx_cristiano.unregister_surplus_device`.
 
 ### Air-conditioners / heat pumps via `climate.*` (#569)
 
@@ -211,7 +211,7 @@ daily-goal handling as any other surplus load, and the registration persists
 across restarts (it re-owns a running unit after a reboot).
 
 ```yaml
-service: solar_energy_management.register_surplus_device
+service: xxx_cristiano.register_surplus_device
 data:
   device_id: living_ac
   entity_id: climate.living_room_ac
@@ -301,7 +301,7 @@ SEM's surplus signal:
   (`number.sem_surplus_event_threshold`, default 1500 W) for 60 s; OFF
   once it has stayed below 80 % of the threshold for 120 s. The
   debounce means clouds can not flap your automations.
-- **`solar_energy_management_surplus` event** — fired on every
+- **`xxx_cristiano_surplus` event** — fired on every
   transition with `available`, `surplus_w`, `unallocated_w`,
   `threshold_w` in the payload.
 
@@ -339,7 +339,7 @@ The same goal can be set in the registration call or per field via
 `update_device_config`:
 
 ```yaml
-service: solar_energy_management.register_surplus_device
+service: xxx_cristiano.register_surplus_device
 data:
   device_id: pool_pump
   entity_id: switch.pool_pump
@@ -415,7 +415,7 @@ When registering a surplus device, set the `depends_on` field to the device ID(s
 
 ```yaml
 # Via service call:
-service: solar_energy_management.register_surplus_device
+service: xxx_cristiano.register_surplus_device
 data:
   device_id: pool_heater
   entity_id: switch.pool_heater

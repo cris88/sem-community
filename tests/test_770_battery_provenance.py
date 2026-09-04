@@ -30,13 +30,13 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.battery_provenance import (
+from custom_components.xxx_cristiano.coordinator.battery_provenance import (
     BatteryProvenance,
 )
 
 TODAY = date(2026, 8, 14)
 _DT = (
-    "custom_components.solar_energy_management.coordinator"
+    "custom_components.xxx_cristiano.coordinator"
     ".energy_calculator.dt_util"
 )
 
@@ -275,7 +275,7 @@ class TestTheFleetSplitFollowsThePower:
     honesty as the discharge draw."""
 
     def test_an_equal_split_for_equally_charging_batteries(self) -> None:
-        from custom_components.solar_energy_management.coordinator.battery_provenance import (
+        from custom_components.xxx_cristiano.coordinator.battery_provenance import (
             allocate_fleet_charge,
         )
         alloc = allocate_fleet_charge(
@@ -285,7 +285,7 @@ class TestTheFleetSplitFollowsThePower:
         assert alloc["b2"] == pytest.approx((1.0, 0.5))
 
     def test_the_bigger_draw_takes_the_bigger_share(self) -> None:
-        from custom_components.solar_energy_management.coordinator.battery_provenance import (
+        from custom_components.xxx_cristiano.coordinator.battery_provenance import (
             allocate_fleet_charge,
         )
         alloc = allocate_fleet_charge(
@@ -295,7 +295,7 @@ class TestTheFleetSplitFollowsThePower:
         assert alloc["b2"][0] == pytest.approx(1.0)
 
     def test_a_battery_that_is_not_charging_gets_nothing(self) -> None:
-        from custom_components.solar_energy_management.coordinator.battery_provenance import (
+        from custom_components.xxx_cristiano.coordinator.battery_provenance import (
             allocate_fleet_charge,
         )
         alloc = allocate_fleet_charge(
@@ -304,14 +304,14 @@ class TestTheFleetSplitFollowsThePower:
         assert alloc["b2"] == pytest.approx((0.0, 0.0))
 
     def test_no_charging_at_all_allocates_nothing(self) -> None:
-        from custom_components.solar_energy_management.coordinator.battery_provenance import (
+        from custom_components.xxx_cristiano.coordinator.battery_provenance import (
             allocate_fleet_charge,
         )
         assert allocate_fleet_charge({"b1": 0.0}, 1.0, 1.0) == {"b1": (0.0, 0.0)}
 
     def test_a_single_unnamed_battery_still_gets_the_whole_split(self) -> None:
         """The common install has one battery and no per-battery sensors."""
-        from custom_components.solar_energy_management.coordinator.battery_provenance import (
+        from custom_components.xxx_cristiano.coordinator.battery_provenance import (
             allocate_fleet_charge,
         )
         alloc = allocate_fleet_charge({}, solar_kwh=2.0, grid_kwh=1.0)
@@ -323,7 +323,7 @@ class TestTheFleetSplitFollowsThePower:
 # ───────────────────────────────────────────────────────────────────────
 
 def _calc(**cfg):
-    from custom_components.solar_energy_management.coordinator.energy_calculator import (
+    from custom_components.xxx_cristiano.coordinator.energy_calculator import (
         EnergyCalculator,
     )
     return EnergyCalculator(cfg, MagicMock())
@@ -364,10 +364,10 @@ class TestTheLedgerKeepsTheSplit:
 
 class TestSavingsPayForWhatTheEnergyCost:
     def test_a_solar_kwh_saves_the_whole_import_price(self) -> None:
-        from custom_components.solar_energy_management.coordinator.battery_provenance import (
+        from custom_components.xxx_cristiano.coordinator.battery_provenance import (
             discharge_savings,
         )
-        from custom_components.solar_energy_management.coordinator.battery_provenance import (
+        from custom_components.xxx_cristiano.coordinator.battery_provenance import (
             DischargeMix,
         )
         mix = DischargeMix(solar_kwh=1.0, grid_kwh=0.0, grid_cost=0.0)
@@ -376,7 +376,7 @@ class TestSavingsPayForWhatTheEnergyCost:
     def test_a_grid_kwh_saves_only_the_spread(self) -> None:
         """The number in the issue: bought at 0.11, discharged against
         0.28 → 0.17 saved, not 0.28."""
-        from custom_components.solar_energy_management.coordinator.battery_provenance import (
+        from custom_components.xxx_cristiano.coordinator.battery_provenance import (
             DischargeMix, discharge_savings,
         )
         mix = DischargeMix(solar_kwh=0.0, grid_kwh=1.0, grid_cost=0.11)
@@ -385,7 +385,7 @@ class TestSavingsPayForWhatTheEnergyCost:
     def test_a_losing_arbitrage_is_reported_as_a_loss(self) -> None:
         """Bought at 0.30, discharged against 0.20. Clamping this to zero
         would hide exactly the mistake the user needs to see."""
-        from custom_components.solar_energy_management.coordinator.battery_provenance import (
+        from custom_components.xxx_cristiano.coordinator.battery_provenance import (
             DischargeMix, discharge_savings,
         )
         mix = DischargeMix(solar_kwh=0.0, grid_kwh=1.0, grid_cost=0.30)
@@ -394,7 +394,7 @@ class TestSavingsPayForWhatTheEnergyCost:
     def test_unknown_energy_keeps_the_legacy_credit(self) -> None:
         """We don't know, so we don't change the number — but we count the
         kWh so #773 can audit how much of the total rests on that."""
-        from custom_components.solar_energy_management.coordinator.battery_provenance import (
+        from custom_components.xxx_cristiano.coordinator.battery_provenance import (
             DischargeMix, discharge_savings,
         )
         mix = DischargeMix(unknown_kwh=2.0)
@@ -409,7 +409,7 @@ class TestAutarkyStopsCountingBoughtEnergyAsOwn:
             battery_to_home=4.0, battery_to_ev=0.0,
             grid_to_home=2.0, grid_to_ev=0.0,
         )
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             EnergyTotals,
         )
         m = c.calculate_performance(
@@ -427,7 +427,7 @@ class TestAutarkyStopsCountingBoughtEnergyAsOwn:
             battery_to_home=4.0, battery_to_ev=0.0,
             grid_to_home=2.0, grid_to_ev=0.0,
         )
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             EnergyTotals,
         )
         m = c.calculate_performance(
@@ -443,7 +443,7 @@ class TestAutarkyStopsCountingBoughtEnergyAsOwn:
             battery_to_home=4.0, battery_to_ev=0.0,
             grid_to_home=2.0, grid_to_ev=0.0,
         )
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             EnergyTotals,
         )
         m = c.calculate_performance(
@@ -456,7 +456,7 @@ class TestAutarkyStopsCountingBoughtEnergyAsOwn:
         — it was already right, and #770 must not 'fix' it."""
         c = _calc()
         c.set_battery_grid_origin_share(1.0)
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             EnergyTotals,
         )
         m = c.calculate_performance(
@@ -502,7 +502,7 @@ class TestAnEmptyPoolHasNoOpinion:
 
     def test_the_published_share_degrades_to_unknown(self) -> None:
         """calculate_performance must publish None, not round(0.0)."""
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             EnergyTotals,
         )
         c = _calc()
@@ -510,7 +510,7 @@ class TestAnEmptyPoolHasNoOpinion:
         assert m.battery_stored_grid_share is None
 
     def test_the_published_share_is_a_number_once_measured(self) -> None:
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             EnergyTotals,
         )
         c = _calc()
@@ -538,7 +538,7 @@ class TestTheRowSurfaces:
         performance figure. The published NAMES are the contract — the
         dataclass a field sits on is not, and moving one must not rename an
         entity out from under an install."""
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             CostData, EnergyTotals, PerformanceMetrics, SEMData,
         )
         data = SEMData()
@@ -555,14 +555,14 @@ class TestTheRowSurfaces:
         assert d["daily_battery_grid_cost"] == 0.11
 
     def test_every_key_has_an_entity(self) -> None:
-        from custom_components.solar_energy_management import sensor as sensor_mod
+        from custom_components.xxx_cristiano import sensor as sensor_mod
 
         keys = {d.key for d in sensor_mod.SENSOR_TYPES}
         for k in self.KEYS:
             assert k in keys, f"{k} is published but has no entity (#666)"
 
     def test_every_key_is_labelled(self) -> None:
-        from custom_components.solar_energy_management.consts.labels import (
+        from custom_components.xxx_cristiano.consts.labels import (
             SENSOR_LABEL_MAPPING,
         )
         for k in self.KEYS:
@@ -591,7 +591,7 @@ class TestTheCycleFilesTheSplit:
         }
 
     def _run(self, calc, mock_dt, minute, **kw):
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             PowerReadings, PowerFlows,
         )
         from datetime import datetime
@@ -610,7 +610,7 @@ class TestTheCycleFilesTheSplit:
         lands on a battery whose measured contents SEM fully accounts for —
         no unknown remainder to blur the arithmetic.
         """
-        from custom_components.solar_energy_management.coordinator.energy_calculator import (
+        from custom_components.xxx_cristiano.coordinator.energy_calculator import (
             EnergyCalculator,
         )
         c = EnergyCalculator(self._cfg(), MagicMock())
@@ -634,7 +634,7 @@ class TestTheCycleFilesTheSplit:
 
     @staticmethod
     def _stored_share(calc, energy):
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             PowerReadings,
         )
         return calc.calculate_performance(
@@ -712,7 +712,7 @@ class TestTheCycleFilesTheSplit:
     def test_a_silent_soc_sensor_does_not_reconcile(self, mock_dt) -> None:
         """#755 contract 1. An offline SOC sensor is not a measurement of an
         empty battery, and reconciling to it would wipe the cost basis."""
-        from custom_components.solar_energy_management.coordinator.battery_provenance import (
+        from custom_components.xxx_cristiano.coordinator.battery_provenance import (
             FLEET_KEY,
         )
         c = self._calc(mock_dt)
@@ -761,10 +761,10 @@ class TestTheCycleFilesTheSplit:
 
     @patch(_DT)
     def test_the_cost_basis_survives_a_restart(self, mock_dt) -> None:
-        from custom_components.solar_energy_management.coordinator.energy_calculator import (
+        from custom_components.xxx_cristiano.coordinator.energy_calculator import (
             EnergyCalculator,
         )
-        from custom_components.solar_energy_management.coordinator.battery_provenance import (
+        from custom_components.xxx_cristiano.coordinator.battery_provenance import (
             FLEET_KEY,
         )
         c = self._calc(mock_dt)
@@ -784,7 +784,7 @@ class TestTheCycleFilesTheSplit:
         # Here that would silently re-credit every purchase at the full
         # import price after each restart, which is the bug this whole row
         # exists to fix. The #658 guard caught it the day it was written.
-        from custom_components.solar_energy_management.coordinator.storage import (
+        from custom_components.xxx_cristiano.coordinator.storage import (
             CALCULATOR_STATE_KEYS,
         )
         assert "battery_provenance" in CALCULATOR_STATE_KEYS

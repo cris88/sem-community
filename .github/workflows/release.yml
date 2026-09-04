@@ -36,14 +36,14 @@ jobs:
       - name: Set up importable package structure
         run: |
           mkdir -p /tmp/ha-config/custom_components
-          cp -r $GITHUB_WORKSPACE /tmp/ha-config/custom_components/solar_energy_management
+          cp -r $GITHUB_WORKSPACE /tmp/ha-config/custom_components/xxx_cristiano
 
       - name: Run tests
         working-directory: /tmp/ha-config
         env:
           PYTHONPATH: /tmp/ha-config
         run: |
-          python -m pytest custom_components/solar_energy_management/tests/ \
+          python -m pytest custom_components/xxx_cristiano/tests/ \
             -v --tb=short
 
   release-info:

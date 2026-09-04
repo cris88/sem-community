@@ -17,7 +17,7 @@ from unittest.mock import AsyncMock, MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.devices.base import (
+from custom_components.xxx_cristiano.devices.base import (
     CurrentControlDevice,
 )
 
@@ -180,7 +180,7 @@ async def test_adapter_charge_command_reconciles_guard(keba, mock_hass):
     """KebaAdapter.command_current must run the guard reconcile even on a
     session it believes is already open (_session_active True) — that was
     the burst-loop window: WRITEs only, no start, guard never re-released."""
-    from custom_components.solar_energy_management.coordinator.charger_adapters import (
+    from custom_components.xxx_cristiano.coordinator.charger_adapters import (
         adapter_for,
     )
     keba._session_active = True     # reconciler in WRITE-only mode

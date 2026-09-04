@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from types import SimpleNamespace
 
-from custom_components.solar_energy_management.coordinator.coordinator import (
+from custom_components.xxx_cristiano.coordinator.coordinator import (
     SEMCoordinator,
 )
 
@@ -132,7 +132,7 @@ def test_persist_global_option_writes_scalar_no_reload():
     # reload — mirrored into coordinator.config + reload-skip armed.
     from types import SimpleNamespace
     from unittest.mock import MagicMock
-    from custom_components.solar_energy_management import persist_global_option
+    from custom_components.xxx_cristiano import persist_global_option
 
     entry = SimpleNamespace(data={"a": 1}, options={"battery_mode": "auto"})
     coordinator = SimpleNamespace(config={"a": 1, "battery_mode": "auto"})

@@ -257,7 +257,7 @@ Still deliberately held back (the #533 decision):
 
 1. `allow_arbitrage` stays **out of the battery-mode selector** and the
    global toggle has **no config-flow section** — enabling today is the
-   expert route (`solar_energy_management.set_option` →
+   expert route (`xxx_cristiano.set_option` →
    `battery_grid_arbitrage_enabled: true`, batteries in `auto` mode).
 2. Migration v14 forces the toggle off **once** on upgrade from ≤ v13; a
    deliberate re-enable afterwards sticks.

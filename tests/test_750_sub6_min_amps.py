@@ -16,7 +16,7 @@ import re
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.decide import (
+from custom_components.xxx_cristiano.coordinator.decide import (
     effective_min_amps,
 )
 

@@ -12,7 +12,7 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.tariff.tariff_provider import (
+from custom_components.xxx_cristiano.tariff.tariff_provider import (
     DynamicTariffProvider,
     PriceLevel,
     PricePoint,
@@ -454,7 +454,7 @@ class TestClassifierPathDiagnostic:
         """StaticTariffProvider hard-codes 'static_ht_nt' — gives users a
         clear indicator that their classification mode never engaged the
         percentile machinery at all."""
-        from custom_components.solar_energy_management.tariff.tariff_provider import (
+        from custom_components.xxx_cristiano.tariff.tariff_provider import (
             StaticTariffProvider,
         )
         sp = StaticTariffProvider(

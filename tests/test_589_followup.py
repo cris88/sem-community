@@ -84,7 +84,7 @@ class TestW7ElseBranchPerBatterySync:
     """read_power else-branch negate keeps the per-battery dict in lockstep."""
 
     def _reader(self):
-        from custom_components.solar_energy_management.coordinator.sensor_reader import (
+        from custom_components.xxx_cristiano.coordinator.sensor_reader import (
             SensorReader,
         )
         hass = MagicMock()
@@ -92,10 +92,10 @@ class TestW7ElseBranchPerBatterySync:
         return SensorReader(hass, {})
 
     def test_else_branch_negates_per_battery_dict(self):
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             PowerReadings,
         )
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             BatteryPower,
         )
         r = self._reader()
@@ -123,10 +123,10 @@ class TestW7ElseBranchPerBatterySync:
         )
 
     def test_else_branch_user_flip_negates_per_battery_dict(self):
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             PowerReadings,
         )
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             BatteryPower,
         )
         r = self._reader()
@@ -158,7 +158,7 @@ class TestSurfaceBTaperNoSwap:
 
     def _coord(self):
         from unittest.mock import MagicMock
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
         hass = MagicMock()
@@ -170,7 +170,7 @@ class TestSurfaceBTaperNoSwap:
         assert c._ev_taper_detector is c._ev_taper_detector_default
 
     def test_resolves_primary_from_per_charger_dict(self):
-        from custom_components.solar_energy_management.coordinator.ev_taper_detector import (
+        from custom_components.xxx_cristiano.coordinator.ev_taper_detector import (
             EVTaperDetector,
         )
         c = self._coord()
@@ -200,13 +200,13 @@ class TestSurfaceAStalledSinceIsolation:
 
     def _coord(self):
         from unittest.mock import MagicMock
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
         return SEMCoordinator(MagicMock(), {})
 
     def _ctx(self, coord, cid):
-        from custom_components.solar_energy_management.coordinator.per_charger_context import (
+        from custom_components.xxx_cristiano.coordinator.per_charger_context import (
             PerChargerContext,
         )
         return PerChargerContext(cid=cid, ev_dev=object(), charger_cfg={}, _coord=coord)
@@ -242,11 +242,11 @@ class TestSurfaceAEnableSurplusSinceIsolation:
 
     def _coord(self):
         from unittest.mock import MagicMock
-        from custom_components.solar_energy_management.coordinator.coordinator import SEMCoordinator
+        from custom_components.xxx_cristiano.coordinator.coordinator import SEMCoordinator
         return SEMCoordinator(MagicMock(), {})
 
     def _ctx(self, coord, cid):
-        from custom_components.solar_energy_management.coordinator.per_charger_context import PerChargerContext
+        from custom_components.xxx_cristiano.coordinator.per_charger_context import PerChargerContext
         return PerChargerContext(cid=cid, ev_dev=object(), charger_cfg={}, _coord=coord)
 
     def test_no_leak_and_persists_per_charger(self):
@@ -275,11 +275,11 @@ class TestSurfaceAChargeStartedAtIsolation:
 
     def _coord(self):
         from unittest.mock import MagicMock
-        from custom_components.solar_energy_management.coordinator.coordinator import SEMCoordinator
+        from custom_components.xxx_cristiano.coordinator.coordinator import SEMCoordinator
         return SEMCoordinator(MagicMock(), {})
 
     def _ctx(self, coord, cid):
-        from custom_components.solar_energy_management.coordinator.per_charger_context import PerChargerContext
+        from custom_components.xxx_cristiano.coordinator.per_charger_context import PerChargerContext
         return PerChargerContext(cid=cid, ev_dev=object(), charger_cfg={}, _coord=coord)
 
     def test_no_leak_and_persists_per_charger(self):
@@ -308,11 +308,11 @@ class TestSurfaceALastChangeTimeIsolation:
 
     def _coord(self):
         from unittest.mock import MagicMock
-        from custom_components.solar_energy_management.coordinator.coordinator import SEMCoordinator
+        from custom_components.xxx_cristiano.coordinator.coordinator import SEMCoordinator
         return SEMCoordinator(MagicMock(), {})
 
     def _ctx(self, coord, cid):
-        from custom_components.solar_energy_management.coordinator.per_charger_context import PerChargerContext
+        from custom_components.xxx_cristiano.coordinator.per_charger_context import PerChargerContext
         return PerChargerContext(cid=cid, ev_dev=object(), charger_cfg={}, _coord=coord)
 
     def test_no_leak_and_persists_per_charger(self):
@@ -341,11 +341,11 @@ class TestSurfaceAReenableAttemptsIsolation:
 
     def _coord(self):
         from unittest.mock import MagicMock
-        from custom_components.solar_energy_management.coordinator.coordinator import SEMCoordinator
+        from custom_components.xxx_cristiano.coordinator.coordinator import SEMCoordinator
         return SEMCoordinator(MagicMock(), {})
 
     def _ctx(self, coord, cid):
-        from custom_components.solar_energy_management.coordinator.per_charger_context import PerChargerContext
+        from custom_components.xxx_cristiano.coordinator.per_charger_context import PerChargerContext
         return PerChargerContext(cid=cid, ev_dev=object(), charger_cfg={}, _coord=coord)
 
     def test_no_leak_and_persists_per_charger(self):
@@ -374,11 +374,11 @@ class TestSurfaceAChargeRefusedIsolation:
 
     def _coord(self):
         from unittest.mock import MagicMock
-        from custom_components.solar_energy_management.coordinator.coordinator import SEMCoordinator
+        from custom_components.xxx_cristiano.coordinator.coordinator import SEMCoordinator
         return SEMCoordinator(MagicMock(), {})
 
     def _ctx(self, coord, cid):
-        from custom_components.solar_energy_management.coordinator.per_charger_context import PerChargerContext
+        from custom_components.xxx_cristiano.coordinator.per_charger_context import PerChargerContext
         return PerChargerContext(cid=cid, ev_dev=object(), charger_cfg={}, _coord=coord)
 
     def test_no_leak_and_persists_per_charger(self):
@@ -404,11 +404,11 @@ class TestSurfaceALastSetAmpsTsIsolation:
 
     def _coord(self):
         from unittest.mock import MagicMock
-        from custom_components.solar_energy_management.coordinator.coordinator import SEMCoordinator
+        from custom_components.xxx_cristiano.coordinator.coordinator import SEMCoordinator
         return SEMCoordinator(MagicMock(), {})
 
     def _ctx(self, coord, cid):
-        from custom_components.solar_energy_management.coordinator.per_charger_context import PerChargerContext
+        from custom_components.xxx_cristiano.coordinator.per_charger_context import PerChargerContext
         return PerChargerContext(cid=cid, ev_dev=object(), charger_cfg={}, _coord=coord)
 
     def test_no_leak_and_persists_per_charger(self):
@@ -450,13 +450,13 @@ class TestSwapRetirementInterleaved:
 
     def _coord(self):
         from unittest.mock import MagicMock
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
         return SEMCoordinator(MagicMock(), {})
 
     def _ctx(self, coord, cid, ev_dev=None):
-        from custom_components.solar_energy_management.coordinator.per_charger_context import (
+        from custom_components.xxx_cristiano.coordinator.per_charger_context import (
             PerChargerContext,
         )
         return PerChargerContext(

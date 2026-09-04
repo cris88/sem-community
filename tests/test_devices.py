@@ -3,7 +3,7 @@ import pytest
 from datetime import datetime, timedelta
 from unittest.mock import AsyncMock, MagicMock
 
-from custom_components.solar_energy_management.devices.base import (
+from custom_components.xxx_cristiano.devices.base import (
     ClimateDevice,
     CurrentControlDevice,
     DeviceState,
@@ -13,14 +13,14 @@ from custom_components.solar_energy_management.devices.base import (
     SwitchDevice,
     surplus_device_from_spec,
 )
-from custom_components.solar_energy_management.devices.heat_pump_controller import (
+from custom_components.xxx_cristiano.devices.heat_pump_controller import (
     HeatPumpController,
     SGReadyState,
 )
-from custom_components.solar_energy_management.devices.hot_water_controller import (
+from custom_components.xxx_cristiano.devices.hot_water_controller import (
     HotWaterController,
 )
-from custom_components.solar_energy_management.devices.appliance_scheduler import (
+from custom_components.xxx_cristiano.devices.appliance_scheduler import (
     ApplianceScheduler,
 )
 
@@ -497,7 +497,7 @@ async def test_failsafe_managed_nontripping_by_default(current_device):
     """#546 managed-neutralize default: SEM arms a LONG non-tripping persisted
     failsafe (overwrites the box's short built-in one, which a real P30 won't
     let us disable over UDP)."""
-    from custom_components.solar_energy_management.devices.base import (
+    from custom_components.xxx_cristiano.devices.base import (
         FAILSAFE_TIMEOUT_S,
     )
     assert current_device.arm_failsafe_enabled is True  # default = managed

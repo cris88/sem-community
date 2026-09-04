@@ -11,7 +11,7 @@
 # user's install — the failure mode reported in #219.
 #
 # This test runs over SSH on HA-TEST: HACS deploys the integration into
-# /homeassistant/custom_components/solar_energy_management/ so the
+# /homeassistant/custom_components/xxx_cristiano/ so the
 # truth is there, not in the local repo.
 #
 # Test shape (passive — no mutations):
@@ -35,7 +35,7 @@ case "$LIVE_HOST" in
     10.10.20.150) SSH_ALIAS="ha-prod" ;;
     *)            SSH_ALIAS="${SSH_ALIAS_OVERRIDE:-ha-test}" ;;
 esac
-CARD_DIR="/homeassistant/custom_components/solar_energy_management/dashboard/card"
+CARD_DIR="/homeassistant/custom_components/xxx_cristiano/dashboard/card"
 BUNDLE="$CARD_DIR/dist/sem-cards.js"
 SHADOW="$CARD_DIR/sem-cards.js"
 

@@ -4,7 +4,7 @@ flags so they don't draw ghost nodes."""
 
 from unittest.mock import MagicMock
 
-from custom_components.solar_energy_management.features.dashboard_generator import (
+from custom_components.xxx_cristiano.features.dashboard_generator import (
     DashboardGenerator,
 )
 
@@ -20,7 +20,7 @@ def _generator(full_config, *, ed_has_battery=None):
     if ed_has_battery is not None:
         coord = MagicMock()
         coord._energy_dashboard_config = MagicMock(has_battery=ed_has_battery)
-        from custom_components.solar_energy_management.const import DOMAIN
+        from custom_components.xxx_cristiano.const import DOMAIN
         hass.data[DOMAIN] = {"entry": coord}
     return DashboardGenerator(hass)
 

@@ -22,10 +22,10 @@ from types import SimpleNamespace
 from unittest.mock import MagicMock
 
 
-from custom_components.solar_energy_management.coordinator.ev_control import (
+from custom_components.xxx_cristiano.coordinator.ev_control import (
     EVControlMixin,
 )
-from custom_components.solar_energy_management.coordinator.per_charger_context import (
+from custom_components.xxx_cristiano.coordinator.per_charger_context import (
     PerChargerContext,
 )
 

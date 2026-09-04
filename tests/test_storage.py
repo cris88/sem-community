@@ -3,7 +3,7 @@ import pytest
 from datetime import datetime
 from unittest.mock import AsyncMock, MagicMock, patch
 
-from custom_components.solar_energy_management.coordinator.storage import (
+from custom_components.xxx_cristiano.coordinator.storage import (
     SEMStorage,
     STORAGE_VERSION,
     ENERGY_SAVE_DELAY,
@@ -45,7 +45,7 @@ def storage(mock_hass, mock_stores):
     """Create SEMStorage with mocked Store instances."""
     energy_store, daily_store = mock_stores
     with patch(
-        "custom_components.solar_energy_management.coordinator.storage.Store"
+        "custom_components.xxx_cristiano.coordinator.storage.Store"
     ) as MockStore:
         MockStore.side_effect = [energy_store, daily_store]
         s = SEMStorage(mock_hass, "test_entry")
@@ -62,13 +62,13 @@ def storage(mock_hass, mock_stores):
 def test_init(mock_hass):
     """Test SEMStorage creates two Store instances with correct keys."""
     with patch(
-        "custom_components.solar_energy_management.coordinator.storage.Store"
+        "custom_components.xxx_cristiano.coordinator.storage.Store"
     ) as MockStore:
         SEMStorage(mock_hass, "my_entry")
         assert MockStore.call_count == 2
         calls = MockStore.call_args_list
-        assert calls[0][0] == (mock_hass, STORAGE_VERSION, "solar_energy_management_my_entry_energy")
-        assert calls[1][0] == (mock_hass, STORAGE_VERSION, "solar_energy_management_my_entry_daily")
+        assert calls[0][0] == (mock_hass, STORAGE_VERSION, "xxx_cristiano_my_entry_energy")
+        assert calls[1][0] == (mock_hass, STORAGE_VERSION, "xxx_cristiano_my_entry_daily")
 
 
 def test_is_loaded_property(storage):

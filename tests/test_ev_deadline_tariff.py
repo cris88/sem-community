@@ -17,9 +17,9 @@ from unittest.mock import MagicMock, patch
 
 from homeassistant.util import dt as dt_util
 
-from custom_components.solar_energy_management.consts.states import ChargingState
-from custom_components.solar_energy_management.coordinator import SEMCoordinator
-from custom_components.solar_energy_management.tariff.tariff_provider import (
+from custom_components.xxx_cristiano.consts.states import ChargingState
+from custom_components.xxx_cristiano.coordinator import SEMCoordinator
+from custom_components.xxx_cristiano.tariff.tariff_provider import (
     DynamicTariffProvider,
     PriceLevel,
     PricePoint,
@@ -160,7 +160,7 @@ class TestComputeNightPlan:
 def test_spotmarket_provider_arg_order(monkeypatch):
     # H4 (#274): SpotMarketProvider must not land export_rate in the
     # forecast_entity positional slot.
-    from custom_components.solar_energy_management.tariff.tariff_provider import (
+    from custom_components.xxx_cristiano.tariff.tariff_provider import (
         SpotMarketProvider,
     )
     hass = MagicMock()

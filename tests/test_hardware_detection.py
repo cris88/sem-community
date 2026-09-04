@@ -3,7 +3,7 @@ import pytest
 from types import SimpleNamespace
 from unittest.mock import MagicMock, patch
 
-from custom_components.solar_energy_management.hardware_detection import (
+from custom_components.xxx_cristiano.hardware_detection import (
     EVChargerDetector,
     HardwareDetector,
 )
@@ -66,7 +66,7 @@ def detector_keba(mock_hass):
     mock_hass.states.async_entity_ids = MagicMock(return_value=KEBA_ENTITIES)
     mock_hass.states.get = _mock_get(KEBA_ENTITIES)
     with patch(
-        "custom_components.solar_energy_management.hardware_detection.entity_registry"
+        "custom_components.xxx_cristiano.hardware_detection.entity_registry"
     ) as mock_er:
         mock_er.async_get = MagicMock(return_value=MagicMock())
         yield EVChargerDetector(mock_hass)
@@ -78,7 +78,7 @@ def detector_easee(mock_hass):
     mock_hass.states.async_entity_ids = MagicMock(return_value=EASEE_ENTITIES)
     mock_hass.states.get = _mock_get(EASEE_ENTITIES)
     with patch(
-        "custom_components.solar_energy_management.hardware_detection.entity_registry"
+        "custom_components.xxx_cristiano.hardware_detection.entity_registry"
     ) as mock_er:
         mock_er.async_get = MagicMock(return_value=MagicMock())
         yield EVChargerDetector(mock_hass)
@@ -90,7 +90,7 @@ def detector_empty(mock_hass):
     mock_hass.states.async_entity_ids = MagicMock(return_value=[])
     mock_hass.states.get = MagicMock(return_value=None)
     with patch(
-        "custom_components.solar_energy_management.hardware_detection.entity_registry"
+        "custom_components.xxx_cristiano.hardware_detection.entity_registry"
     ) as mock_er:
         mock_er.async_get = MagicMock(return_value=MagicMock())
         yield EVChargerDetector(mock_hass)
@@ -110,7 +110,7 @@ def detector_generic(mock_hass):
     mock_hass.states.async_entity_ids = MagicMock(return_value=generic_entities)
     mock_hass.states.get = _mock_get(generic_entities)
     with patch(
-        "custom_components.solar_energy_management.hardware_detection.entity_registry"
+        "custom_components.xxx_cristiano.hardware_detection.entity_registry"
     ) as mock_er:
         mock_er.async_get = MagicMock(return_value=MagicMock())
         yield EVChargerDetector(mock_hass)
@@ -198,7 +198,7 @@ class TestValidateEntity:
         state.attributes = {}
         mock_hass.states.get = MagicMock(return_value=state)
         with patch(
-            "custom_components.solar_energy_management.hardware_detection.entity_registry"
+            "custom_components.xxx_cristiano.hardware_detection.entity_registry"
         ) as mock_er:
             mock_er.async_get = MagicMock(return_value=MagicMock())
             det = EVChargerDetector(mock_hass)
@@ -218,7 +218,7 @@ class TestValidateEntity:
         mock_hass.states.get = MagicMock(return_value=state)
         mock_hass.states.async_entity_ids = MagicMock(return_value=[])
         with patch(
-            "custom_components.solar_energy_management.hardware_detection.entity_registry"
+            "custom_components.xxx_cristiano.hardware_detection.entity_registry"
         ) as mock_er:
             mock_er.async_get = MagicMock(return_value=MagicMock())
             det = EVChargerDetector(mock_hass)
@@ -232,7 +232,7 @@ class TestValidateEntity:
         mock_hass.states.get = MagicMock(return_value=state)
         mock_hass.states.async_entity_ids = MagicMock(return_value=[])
         with patch(
-            "custom_components.solar_energy_management.hardware_detection.entity_registry"
+            "custom_components.xxx_cristiano.hardware_detection.entity_registry"
         ) as mock_er:
             mock_er.async_get = MagicMock(return_value=MagicMock())
             det = EVChargerDetector(mock_hass)
@@ -252,7 +252,7 @@ class TestValidateEntity:
         mock_hass.states.get = MagicMock(return_value=state)
         mock_hass.states.async_entity_ids = MagicMock(return_value=[])
         with patch(
-            "custom_components.solar_energy_management.hardware_detection.entity_registry"
+            "custom_components.xxx_cristiano.hardware_detection.entity_registry"
         ) as mock_er:
             mock_er.async_get = MagicMock(return_value=MagicMock())
             det = EVChargerDetector(mock_hass)
@@ -496,7 +496,7 @@ class TestDiscoverInverterFromRegistry:
     def _patch_registry(self, entries):
         """Patch hardware_detection.entity_registry.async_get to return
         a fake registry built from ``entries``."""
-        from custom_components.solar_energy_management import hardware_detection
+        from custom_components.xxx_cristiano import hardware_detection
 
         fake_reg = _build_fake_registry(entries)
         return patch.object(
@@ -506,14 +506,14 @@ class TestDiscoverInverterFromRegistry:
         )
 
     def test_returns_none_when_config_is_none(self):
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_inverter_from_registry,
         )
 
         assert discover_inverter_from_registry(MagicMock(), None) is None
 
     def test_returns_none_when_no_seed_sensors(self):
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_inverter_from_registry,
         )
 
@@ -521,7 +521,7 @@ class TestDiscoverInverterFromRegistry:
         assert discover_inverter_from_registry(MagicMock(), cfg) is None
 
     def test_returns_none_when_seed_not_in_registry(self):
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_inverter_from_registry,
         )
 
@@ -535,7 +535,7 @@ class TestDiscoverInverterFromRegistry:
         """Realistic Huawei Solar (DE locale) install — the entity name is
         ``number.batteries_maximale_entladeleistung`` and SEM should pick
         it up via the German pattern."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_inverter_from_registry,
         )
 
@@ -562,7 +562,7 @@ class TestDiscoverInverterFromRegistry:
 
     def test_english_max_discharge_power(self):
         """English ``number.huawei_battery_max_discharge_power`` matches."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_inverter_from_registry,
         )
 
@@ -583,7 +583,7 @@ class TestDiscoverInverterFromRegistry:
 
     def test_falls_back_to_solar_seed_if_no_battery(self):
         """If only a solar sensor is known, the discovery still works."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_inverter_from_registry,
         )
 
@@ -604,7 +604,7 @@ class TestDiscoverInverterFromRegistry:
 
     def test_skips_disabled_entities(self):
         """Disabled entities must not be returned."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_inverter_from_registry,
         )
 
@@ -625,7 +625,7 @@ class TestDiscoverInverterFromRegistry:
     def test_skips_entities_from_other_config_entry(self):
         """Number entities from a different config_entry_id (different
         inverter) must not contaminate the result."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_inverter_from_registry,
         )
 
@@ -647,7 +647,7 @@ class TestDiscoverInverterFromRegistry:
 
     def test_no_pattern_match(self):
         """Same platform but no number entity matches the discharge patterns."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_inverter_from_registry,
         )
 
@@ -663,7 +663,7 @@ class TestDiscoverInverterFromRegistry:
 
     def test_solax_discharge_entity(self):
         """SolAX discharge control entity should be detected."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_inverter_from_registry,
         )
 
@@ -681,7 +681,7 @@ class TestDiscoverInverterFromRegistry:
 
     def test_solarman_deye_discharge_entity(self):
         """Solarman/DEYE discharge control entity should be detected."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_inverter_from_registry,
         )
 
@@ -699,7 +699,7 @@ class TestDiscoverInverterFromRegistry:
 
     def test_solarman_deye_current_entity_is_not_power_control(self):
         """Do not mistake Deye's ampere register for a watt setpoint."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_inverter_from_registry,
         )
 
@@ -729,7 +729,7 @@ class TestDiscoverInverterFromRegistry:
 
     def test_growatt_discharge_entity(self):
         """Growatt discharge control entity should be detected."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_inverter_from_registry,
         )
 
@@ -746,7 +746,7 @@ class TestDiscoverInverterFromRegistry:
 
     def test_generic_discharge_power_limit(self):
         """Generic discharge_power_limit naming should match as fallback."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_inverter_from_registry,
         )
 
@@ -763,7 +763,7 @@ class TestDiscoverInverterFromRegistry:
 
     def test_sunsynk_discharge_entity(self):
         """Sunsynk (via solarman) discharge entity should be detected."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_inverter_from_registry,
         )
 
@@ -780,7 +780,7 @@ class TestDiscoverInverterFromRegistry:
 
     def test_solaredge_modbus_discharge_limit(self):
         """SolarEdge Modbus Multi storage discharge limit should be detected."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_inverter_from_registry,
         )
 
@@ -797,7 +797,7 @@ class TestDiscoverInverterFromRegistry:
 
     def test_enphase_reserve_battery_level(self):
         """Enphase reserve battery level should be detected."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_inverter_from_registry,
         )
 
@@ -814,7 +814,7 @@ class TestDiscoverInverterFromRegistry:
 
     def test_powerwall_backup_reserve(self):
         """Tesla Powerwall backup reserve should be detected."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_inverter_from_registry,
         )
 
@@ -831,7 +831,7 @@ class TestDiscoverInverterFromRegistry:
 
     def test_victron_ess_soclimit(self):
         """Victron ESS SOC limit should be detected."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_inverter_from_registry,
         )
 
@@ -848,7 +848,7 @@ class TestDiscoverInverterFromRegistry:
 
     def test_kostal_battery_dc_power(self):
         """Kostal Plenticore battery DC power control should be detected."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_inverter_from_registry,
         )
 
@@ -865,7 +865,7 @@ class TestDiscoverInverterFromRegistry:
 
     def test_sungrow_max_discharge(self):
         """Sungrow max discharge power should be detected."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_inverter_from_registry,
         )
 
@@ -890,7 +890,7 @@ class TestDiscoverPvStringsFromRegistry:
     """Test discover_pv_strings_from_registry()."""
 
     def _patch_registry(self, entries):
-        from custom_components.solar_energy_management import hardware_detection
+        from custom_components.xxx_cristiano import hardware_detection
 
         fake_reg = _build_fake_registry(entries)
         return patch.object(
@@ -900,7 +900,7 @@ class TestDiscoverPvStringsFromRegistry:
         )
 
     def test_returns_empty_when_config_is_none(self):
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_pv_strings_from_registry,
         )
 
@@ -908,7 +908,7 @@ class TestDiscoverPvStringsFromRegistry:
 
     def test_pv_string_huawei(self):
         """Huawei pv1_power / pv2_power pattern."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_pv_strings_from_registry,
         )
 
@@ -930,7 +930,7 @@ class TestDiscoverPvStringsFromRegistry:
 
     def test_pv_string_sungrow_mppt(self):
         """Sungrow mppt1_power / mppt2_power pattern."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_pv_strings_from_registry,
         )
 
@@ -952,7 +952,7 @@ class TestDiscoverPvStringsFromRegistry:
 
     def test_pv_string_fronius_dc(self):
         """Fronius / SolarEdge dc_power_1 / dc_power_2 pattern."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_pv_strings_from_registry,
         )
 
@@ -974,7 +974,7 @@ class TestDiscoverPvStringsFromRegistry:
 
     def test_pv_string_none_found(self):
         """No PV string entities — returns empty dict."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_pv_strings_from_registry,
         )
 
@@ -992,7 +992,7 @@ class TestDiscoverPvStringsFromRegistry:
 
     def test_pv_multi_inverter_fallback(self):
         """No strings found but 2 inverters in solar_power_list → uses totals."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_pv_strings_from_registry,
         )
 
@@ -1019,7 +1019,7 @@ class TestDiscoverPvStringsFromRegistry:
 
     def test_skips_disabled_entities(self):
         """Disabled PV string entities should not be detected."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_pv_strings_from_registry,
         )
 
@@ -1038,7 +1038,7 @@ class TestDiscoverPvStringsFromRegistry:
 
     def test_max_4_strings(self):
         """Only first 4 PV strings should be returned."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_pv_strings_from_registry,
         )
 
@@ -1067,7 +1067,7 @@ class TestDiscoverBatteryDetailsFromRegistry:
     """Test discover_battery_details_from_registry()."""
 
     def _patch_registry(self, entries):
-        from custom_components.solar_energy_management import hardware_detection
+        from custom_components.xxx_cristiano import hardware_detection
 
         fake_reg = _build_fake_registry(entries)
         return patch.object(
@@ -1077,7 +1077,7 @@ class TestDiscoverBatteryDetailsFromRegistry:
         )
 
     def test_returns_empty_when_config_is_none(self):
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_battery_details_from_registry,
         )
 
@@ -1085,7 +1085,7 @@ class TestDiscoverBatteryDetailsFromRegistry:
 
     def test_huawei_battery_temperature(self):
         """Huawei battery temperature and inverter temperature."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_battery_details_from_registry,
         )
 
@@ -1112,7 +1112,7 @@ class TestDiscoverBatteryDetailsFromRegistry:
 
     def test_jk_bms_cell_voltages(self):
         """JK BMS min/max cell voltage and MOS temperature."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_battery_details_from_registry,
         )
 
@@ -1143,7 +1143,7 @@ class TestDiscoverBatteryDetailsFromRegistry:
         sensor ``encharge_<serial>_temperature`` with no battery/cell/bms token.
         It must still be detected as battery_temp1, and it must NOT be mistaken
         for the inverter temperature by the bare-temperature fallback."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_battery_details_from_registry,
         )
 
@@ -1172,7 +1172,7 @@ class TestDiscoverBatteryDetailsFromRegistry:
 
     def test_no_details_found(self):
         """Integration with no matching detail sensors returns empty dict."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_battery_details_from_registry,
         )
 
@@ -1193,7 +1193,7 @@ class TestDiscoverBatteryDetailsFromRegistry:
     # ── #564 inverter-temperature coverage across supported brands ──
 
     def _detect(self, entries, cfg, states=None):
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_battery_details_from_registry,
         )
         hass = MagicMock()
@@ -1302,7 +1302,7 @@ class TestDiscoverBatteryDetailsFromRegistry:
 
     def test_skips_disabled_entities(self):
         """Disabled detail sensors should not be detected."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_battery_details_from_registry,
         )
 
@@ -1322,7 +1322,7 @@ class TestDiscoverBatteryDetailsFromRegistry:
 
     def test_huawei_dual_battery_temperatures(self):
         """Huawei with 2 battery modules — battery_1 and battery_2 temps must be separate."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_battery_details_from_registry,
         )
 
@@ -1344,7 +1344,7 @@ class TestDiscoverBatteryDetailsFromRegistry:
 
     def test_battery_voltage_excludes_cell_voltage(self):
         """battery_voltage must NOT match cell voltage sensors."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_battery_details_from_registry,
         )
 
@@ -1369,7 +1369,7 @@ class TestDiscoverBatteryDetailsFromRegistry:
         WITHOUT a "battery"/"1" token (``reserva_cell_temperature``).
         battery_temp1 autodetect must still find it, otherwise the SEM
         battery temperature stays *unknown* on these installs."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_battery_details_from_registry,
         )
 
@@ -1388,7 +1388,7 @@ class TestDiscoverBatteryDetailsFromRegistry:
     def test_bare_cell_temp_does_not_steal_temp2(self):
         """The bare-cell-temp fallback must not hijack a ``cell_temp_2``
         sensor into battery_temp1 (#564 disambiguation guard)."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_battery_details_from_registry,
         )
 
@@ -1408,7 +1408,7 @@ class TestDiscoverBatteryDetailsFromRegistry:
 
     def test_huawei_german_locale(self):
         """Huawei DE locale: busspannung, busstrom, interne_temperatur."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_battery_details_from_registry,
         )
 

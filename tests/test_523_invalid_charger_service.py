@@ -16,7 +16,7 @@ absent, so control falls through to the number entity.
 import pytest
 from unittest.mock import AsyncMock, MagicMock
 
-from custom_components.solar_energy_management.devices.base import (
+from custom_components.xxx_cristiano.devices.base import (
     CurrentControlDevice,
 )
 

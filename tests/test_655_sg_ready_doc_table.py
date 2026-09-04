@@ -24,7 +24,7 @@ import re
 
 import pytest
 
-from custom_components.solar_energy_management.devices.heat_pump_controller import (
+from custom_components.xxx_cristiano.devices.heat_pump_controller import (
     SG_READY_RELAY_MAP,
     SGReadyState,
 )

@@ -10,7 +10,7 @@ registration's fallback.
 import pytest
 from unittest.mock import patch
 
-from custom_components.solar_energy_management.coordinator import SEMCoordinator
+from custom_components.xxx_cristiano.coordinator import SEMCoordinator
 
 
 def _coord(config):

@@ -30,10 +30,10 @@ from types import SimpleNamespace
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.coordinator import (
+from custom_components.xxx_cristiano.coordinator.coordinator import (
     SEMCoordinator,
 )
-from custom_components.solar_energy_management.coordinator.curtailment import (
+from custom_components.xxx_cristiano.coordinator.curtailment import (
     CurtailmentProbe, ProbeInputs, PROBE_MARGIN_W, SUSPECT_HOLD_S,
 )
 

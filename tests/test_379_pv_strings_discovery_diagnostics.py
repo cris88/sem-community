@@ -28,7 +28,7 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.diagnostics import (
+from custom_components.xxx_cristiano.diagnostics import (
     async_get_config_entry_diagnostics,
 )
 
@@ -52,7 +52,7 @@ def _diag_entry():
     e.entry_id = "test_entry_379"
     e.version = 7
     e.title = "Solar Energy Management"
-    e.domain = "solar_energy_management"
+    e.domain = "xxx_cristiano"
     e.data = {"battery_capacity_kwh": 10}
     e.options = {}
     return e
@@ -91,7 +91,7 @@ class Test379PVStringsDiscovery:
         _diag_coordinator._sensor_reader = reader
         _diag_entry.runtime_data = _diag_coordinator
         _diag_hass.data = {
-            "solar_energy_management": {_diag_entry.entry_id: _diag_coordinator},
+            "xxx_cristiano": {_diag_entry.entry_id: _diag_coordinator},
         }
 
         result = await async_get_config_entry_diagnostics(_diag_hass, _diag_entry)
@@ -122,7 +122,7 @@ class Test379PVStringsDiscovery:
         _diag_coordinator._sensor_reader = reader
         _diag_entry.runtime_data = _diag_coordinator
         _diag_hass.data = {
-            "solar_energy_management": {_diag_entry.entry_id: _diag_coordinator},
+            "xxx_cristiano": {_diag_entry.entry_id: _diag_coordinator},
         }
 
         result = await async_get_config_entry_diagnostics(_diag_hass, _diag_entry)
@@ -150,7 +150,7 @@ class Test379PVStringsDiscovery:
         _diag_entry.runtime_data = _diag_coordinator
         _diag_entry.runtime_data = _diag_coordinator
         _diag_hass.data = {
-            "solar_energy_management": {_diag_entry.entry_id: _diag_coordinator},
+            "xxx_cristiano": {_diag_entry.entry_id: _diag_coordinator},
         }
 
         result = await async_get_config_entry_diagnostics(_diag_hass, _diag_entry)
@@ -169,7 +169,7 @@ class Test379PVStringsDiscovery:
         _diag_coordinator._sensor_reader = None
         _diag_entry.runtime_data = _diag_coordinator
         _diag_hass.data = {
-            "solar_energy_management": {_diag_entry.entry_id: _diag_coordinator},
+            "xxx_cristiano": {_diag_entry.entry_id: _diag_coordinator},
         }
 
         result = await async_get_config_entry_diagnostics(_diag_hass, _diag_entry)

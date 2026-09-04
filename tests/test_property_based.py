@@ -42,14 +42,14 @@ _ha_config_dir = str(Path(__file__).resolve().parent.parent.parent.parent)
 if _ha_config_dir not in sys.path:
     sys.path.insert(0, _ha_config_dir)
 
-from custom_components.solar_energy_management.coordinator.types import (
+from custom_components.xxx_cristiano.coordinator.types import (
     PowerReadings,
     EnergyTotals,
 )
-from custom_components.solar_energy_management.coordinator.flow_calculator import (
+from custom_components.xxx_cristiano.coordinator.flow_calculator import (
     FlowCalculator,
 )
-from custom_components.solar_energy_management.coordinator.energy_calculator import (
+from custom_components.xxx_cristiano.coordinator.energy_calculator import (
     EnergyCalculator,
 )
 
@@ -416,7 +416,7 @@ class TestGridMutualExclusion:
 def flow_calc():
     """Module-scoped FlowCalculator with mocked dt_util date."""
     with patch(
-        "custom_components.solar_energy_management.coordinator.flow_calculator.dt_util"
+        "custom_components.xxx_cristiano.coordinator.flow_calculator.dt_util"
     ) as mock_dt:
         mock_dt.now.return_value = datetime(2026, 5, 15, 12, 0, 0)
         calc = FlowCalculator()
@@ -531,7 +531,7 @@ class TestEVControlInvariants:
     def test_canonical_budget_never_negative(self):
         """Canonical EVBudget.net_w must never be negative regardless of inputs."""
         calc = FlowCalculator()
-        from custom_components.solar_energy_management.coordinator.flow_calculator import (
+        from custom_components.xxx_cristiano.coordinator.flow_calculator import (
             EVBudgetStrategy,
         )
         for p in _ALL_SCENARIOS[:NUM_SCENARIOS]:
@@ -553,7 +553,7 @@ class TestEVControlInvariants:
     def test_canonical_budget_never_negative_with_forecast(self):
         """Same invariant across random forecast / SOC combinations."""
         calc = FlowCalculator()
-        from custom_components.solar_energy_management.coordinator.flow_calculator import (
+        from custom_components.xxx_cristiano.coordinator.flow_calculator import (
             EVBudgetStrategy,
         )
         rng = random.Random(SEED + 23)
@@ -579,7 +579,7 @@ class TestEVControlInvariants:
         surplus ceiling by design — and verify the clamp holds.
         """
         calc = FlowCalculator()
-        from custom_components.solar_energy_management.coordinator.flow_calculator import (
+        from custom_components.xxx_cristiano.coordinator.flow_calculator import (
             EVBudgetStrategy,
         )
         rng = random.Random(SEED + 24)
@@ -644,7 +644,7 @@ class TestPerformanceMetricsRange:
         rng = random.Random(SEED + 30)
 
         with patch(
-            "custom_components.solar_energy_management.coordinator.energy_calculator.dt_util"
+            "custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util"
         ) as mock_dt:
             mock_dt.now.return_value = datetime(2026, 5, 15, 12, 0, 0)
 
@@ -680,7 +680,7 @@ class TestPerformanceMetricsRange:
         rng = random.Random(SEED + 31)
 
         with patch(
-            "custom_components.solar_energy_management.coordinator.energy_calculator.dt_util"
+            "custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util"
         ) as mock_dt:
             mock_dt.now.return_value = datetime(2026, 5, 15, 12, 0, 0)
 
@@ -715,7 +715,7 @@ class TestPerformanceMetricsRange:
         calc = _make_energy_calculator()
 
         with patch(
-            "custom_components.solar_energy_management.coordinator.energy_calculator.dt_util"
+            "custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util"
         ) as mock_dt:
             mock_dt.now.return_value = datetime(2026, 5, 15, 12, 0, 0)
             energy = EnergyTotals(daily_solar=0.0, daily_grid_import=5.0, daily_home=5.0)
@@ -727,7 +727,7 @@ class TestPerformanceMetricsRange:
         calc = _make_energy_calculator()
 
         with patch(
-            "custom_components.solar_energy_management.coordinator.energy_calculator.dt_util"
+            "custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util"
         ) as mock_dt:
             mock_dt.now.return_value = datetime(2026, 5, 15, 12, 0, 0)
             energy = EnergyTotals(daily_home=0.0, daily_ev=0.0, daily_solar=10.0)
@@ -760,7 +760,7 @@ class TestCostInvariants:
         for tick, p in enumerate(scenarios):
             ts = start + timedelta(seconds=30 * tick)
             with patch(
-                "custom_components.solar_energy_management.coordinator.energy_calculator.dt_util"
+                "custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util"
             ) as mock_dt:
                 mock_dt.now.return_value = ts
                 energy = calc.calculate_energy(p)
@@ -782,7 +782,7 @@ class TestCostInvariants:
         )
 
         with patch(
-            "custom_components.solar_energy_management.coordinator.energy_calculator.dt_util"
+            "custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util"
         ) as mock_dt:
             mock_dt.now.return_value = start + timedelta(seconds=30 * len(scenarios))
             costs = calc.calculate_costs(energy)
@@ -899,7 +899,7 @@ class TestEnergyCalculator24hSimulation:
         for tick, p in enumerate(_DAY_SCENARIOS):
             ts = start + timedelta(seconds=30 * tick)
             with patch(
-                "custom_components.solar_energy_management.coordinator.energy_calculator.dt_util"
+                "custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util"
             ) as mock_dt:
                 mock_dt.now.return_value = ts
                 energy = calc.calculate_energy(p)
@@ -923,7 +923,7 @@ class TestEnergyCalculator24hSimulation:
         for tick, p in enumerate(_DAY_SCENARIOS):
             ts = start + timedelta(seconds=30 * tick)
             with patch(
-                "custom_components.solar_energy_management.coordinator.energy_calculator.dt_util"
+                "custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util"
             ) as mock_dt:
                 mock_dt.now.return_value = ts
                 final_energy = calc.calculate_energy(p)
@@ -943,7 +943,7 @@ class TestEnergyCalculator24hSimulation:
         for tick, p in enumerate(_DAY_SCENARIOS):
             ts = start + timedelta(seconds=30 * tick)
             with patch(
-                "custom_components.solar_energy_management.coordinator.energy_calculator.dt_util"
+                "custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util"
             ) as mock_dt:
                 mock_dt.now.return_value = ts
                 energy = calc.calculate_energy(p)
@@ -963,7 +963,7 @@ class TestEnergyCalculator24hSimulation:
         p.calculate_derived()
 
         with patch(
-            "custom_components.solar_energy_management.coordinator.energy_calculator.dt_util"
+            "custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util"
         ) as mock_dt:
             # First call: sets _last_update
             mock_dt.now.return_value = datetime(2026, 5, 15, 12, 0, 0)
@@ -989,7 +989,7 @@ class TestEnergyCalculator24hSimulation:
         p.calculate_derived()
 
         with patch(
-            "custom_components.solar_energy_management.coordinator.energy_calculator.dt_util"
+            "custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util"
         ) as mock_dt:
             mock_dt.now.return_value = datetime(2026, 5, 15, 12, 5, 0)
             energy_before = calc.calculate_energy(p)

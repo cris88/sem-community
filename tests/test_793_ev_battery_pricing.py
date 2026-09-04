@@ -18,16 +18,16 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.battery_provenance import (
+from custom_components.xxx_cristiano.coordinator.battery_provenance import (
     BatteryProvenance,
 )
-from custom_components.solar_energy_management.coordinator.energy_calculator import (
+from custom_components.xxx_cristiano.coordinator.energy_calculator import (
     EnergyCalculator,
 )
-from custom_components.solar_energy_management.coordinator.ev_control import (
+from custom_components.xxx_cristiano.coordinator.ev_control import (
     EVControlMixin,
 )
-from custom_components.solar_energy_management.coordinator.types import (
+from custom_components.xxx_cristiano.coordinator.types import (
     PowerFlows, SessionData,
 )
 
@@ -150,7 +150,7 @@ class TestLifetimeSharesAreAThreeWaySplit:
     def test_battery_and_grid_shares_published_beside_solar(self):
         # storage already holds all three kWh; the coordinator must derive
         # all three shares, not just solar.
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             _lifetime_ev_shares,
         )
         shares = _lifetime_ev_shares({
@@ -162,7 +162,7 @@ class TestLifetimeSharesAreAThreeWaySplit:
         assert shares["lifetime_ev_grid_share"] == pytest.approx(14.6, abs=0.1)
 
     def test_an_empty_lifetime_publishes_zeros(self):
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             _lifetime_ev_shares,
         )
         shares = _lifetime_ev_shares({})

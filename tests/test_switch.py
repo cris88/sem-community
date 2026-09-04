@@ -4,7 +4,7 @@ from unittest.mock import AsyncMock, MagicMock
 
 from homeassistant.components.switch import SwitchEntityDescription
 
-from custom_components.solar_energy_management.switch import (
+from custom_components.xxx_cristiano.switch import (
     SEMSolarSwitch,
     SWITCH_TYPES,
     async_setup_entry,
@@ -206,7 +206,7 @@ class TestSEMSwitches:
     @pytest.mark.asyncio
     async def test_async_setup_entry(self, mock_hass, config_entry, mock_coordinator):
         """Test switch setup creates exactly 2 switches."""
-        from custom_components.solar_energy_management.const import DOMAIN
+        from custom_components.xxx_cristiano.const import DOMAIN
 
         config_entry.runtime_data = mock_coordinator
         mock_hass.data = {DOMAIN: {config_entry.entry_id: mock_coordinator}}
@@ -248,7 +248,7 @@ async def test_observer_toggle_persists_to_entry_options(monkeypatch):
     switch platform re-attached. The toggle must write through to
     entry.options (no-reload) so a rebuilt coordinator boots protected."""
     from unittest.mock import MagicMock
-    from custom_components.solar_energy_management.switch import SEMSolarSwitch, SWITCH_TYPES
+    from custom_components.xxx_cristiano.switch import SEMSolarSwitch, SWITCH_TYPES
     desc = next(s for s in SWITCH_TYPES if s.key == "observer_mode")
     coordinator = MagicMock()
     coordinator.config = {}
@@ -275,7 +275,7 @@ async def test_observer_toggle_persists_to_entry_options(monkeypatch):
 # ───────────────────────────────────────────────────────────────────────
 
 def _sw(key, *, options=None, data=None):
-    from custom_components.solar_energy_management.switch import (
+    from custom_components.xxx_cristiano.switch import (
         SEMSolarSwitch, SWITCH_TYPES,
     )
     desc = next(s for s in SWITCH_TYPES if s.key == key)
@@ -360,7 +360,7 @@ class TestExplicitConfigBeatsGhostRestore777:
         """async_added_to_hass must route through _apply_restored_state
         — a precedence nobody calls is the fix that never runs."""
         import inspect
-        from custom_components.solar_energy_management.switch import (
+        from custom_components.xxx_cristiano.switch import (
             SEMSolarSwitch,
         )
         src = inspect.getsource(SEMSolarSwitch.async_added_to_hass)
@@ -371,7 +371,7 @@ class TestExplicitConfigBeatsGhostRestore777:
         ghost can never speak for ANY of the three switches on a fresh
         install — only true legacy upgrades (no key) keep restore."""
         import inspect
-        from custom_components.solar_energy_management import config_flow
+        from custom_components.xxx_cristiano import config_flow
         src = inspect.getsource(config_flow)
         assert '_data["vacation_mode"]' in src
         assert '_data["energy_plan_actuation"]' in src

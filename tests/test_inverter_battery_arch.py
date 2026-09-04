@@ -14,24 +14,24 @@ from unittest.mock import AsyncMock, MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.actuate_battery import (
+from custom_components.xxx_cristiano.coordinator.actuate_battery import (
     actuate_battery,
 )
-from custom_components.solar_energy_management.coordinator.battery_adapters import (
+from custom_components.xxx_cristiano.coordinator.battery_adapters import (
     DeyeBatteryAdapter,
     GenericBatteryAdapter,
     GoodWeBatteryAdapter,
     HuaweiBatteryAdapter,
     adapter_for,
 )
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     BatteryDecision,
     BatteryIntent,
     BatteryRuntime,
     BatteryView,
     FleetContext,
 )
-from custom_components.solar_energy_management.coordinator.decide_battery import (
+from custom_components.xxx_cristiano.coordinator.decide_battery import (
     decide_battery,
 )
 

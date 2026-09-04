@@ -13,9 +13,9 @@
 ## Test runner (use for every "run tests" step)
 
 ```bash
-rsync -a --delete --exclude=.git --exclude=node_modules ./ /tmp/ha-config/custom_components/solar_energy_management/
+rsync -a --delete --exclude=.git --exclude=node_modules ./ /tmp/ha-config/custom_components/xxx_cristiano/
 cd /tmp/ha-config && PYTHONPATH=/tmp/ha-config python3.12 -m pytest \
-  custom_components/solar_energy_management/tests/test_charger_reconciler.py -q
+  custom_components/xxx_cristiano/tests/test_charger_reconciler.py -q
 ```
 
 Run from repo root for the rsync; the pytest must run from `/tmp/ha-config` (repo-root `select.py` shadows stdlib `select`).
@@ -55,13 +55,13 @@ from __future__ import annotations
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.charger_reconciler import (
+from custom_components.xxx_cristiano.coordinator.charger_reconciler import (
     ActionKind,
     DesiredState,
     ObservedState,
     desired_from_decision,
 )
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     ChargerDecision,
     ChargerIntent,
 )
@@ -186,7 +186,7 @@ git commit -m "feat(ev): charger reconciler value types + intent mapping (#392)"
 
 ```python
 # append to tests/test_charger_reconciler.py
-from custom_components.solar_energy_management.coordinator.charger_reconciler import (
+from custom_components.xxx_cristiano.coordinator.charger_reconciler import (
     Action, ActionKind, ChargerReconciler, ObservedState,
 )
 
@@ -360,7 +360,7 @@ git commit -m "feat(ev): reconciler pure decision table (idempotent idle/off) (#
 ```python
 # append to tests/test_charger_reconciler.py
 from unittest.mock import AsyncMock, MagicMock
-from custom_components.solar_energy_management.coordinator.charger_types import ChargerPower
+from custom_components.xxx_cristiano.coordinator.charger_types import ChargerPower
 
 
 def _mock_adapter(max_a=32):
@@ -468,7 +468,7 @@ git commit -m "feat(ev): reconciler apply layer (observe + execute) (#392)"
 
 ```python
 # append to tests/test_charger_reconciler.py
-from custom_components.solar_energy_management.coordinator.actuate import actuate
+from custom_components.xxx_cristiano.coordinator.actuate import actuate
 
 
 @pytest.mark.asyncio
@@ -524,7 +524,7 @@ Leave the rest of the function exactly as-is.
 
 ```bash
 cd /tmp/ha-config && PYTHONPATH=/tmp/ha-config python3.12 -m pytest \
-  custom_components/solar_energy_management/tests/ -q -k "actuate or keba or 392 or 315 or 346 or 353"
+  custom_components/xxx_cristiano/tests/ -q -k "actuate or keba or 392 or 315 or 346 or 353"
 ```
 
 Expected: all PASS.
@@ -574,9 +574,9 @@ python3 -c "import ast; ast.parse(open('coordinator/coordinator.py').read())" &&
 - [ ] **Step 4: Run the full suite**
 
 ```bash
-rsync -a --delete --exclude=.git --exclude=node_modules ./ /tmp/ha-config/custom_components/solar_energy_management/
+rsync -a --delete --exclude=.git --exclude=node_modules ./ /tmp/ha-config/custom_components/xxx_cristiano/
 cd /tmp/ha-config && PYTHONPATH=/tmp/ha-config python3.12 -m pytest \
-  custom_components/solar_energy_management/tests/ -q
+  custom_components/xxx_cristiano/tests/ -q
 ```
 
 Expected: all green (existing + new reconciler tests).
@@ -812,7 +812,7 @@ git commit -m "test(ev): drift correction covers CHARGE_MAX (#392)"
 
 ```bash
 cd /tmp/ha-config && PYTHONPATH=/tmp/ha-config python3.12 -m pytest \
-  custom_components/solar_energy_management/tests/ -q -k "debounce or idle" 2>&1 | tail
+  custom_components/xxx_cristiano/tests/ -q -k "debounce or idle" 2>&1 | tail
 grep -rn "attempt_idle\|reset_idle_debounce\|_consecutive_idle_count\|IDLE_DEBOUNCE_THRESHOLD" coordinator/ tests/
 ```
 
@@ -833,9 +833,9 @@ async def actuate(decision, adapter, power, reconciler) -> None:
 - [ ] **Step 4:** Full suite green:
 
 ```bash
-rsync -a --delete --exclude=.git --exclude=node_modules ./ /tmp/ha-config/custom_components/solar_energy_management/
+rsync -a --delete --exclude=.git --exclude=node_modules ./ /tmp/ha-config/custom_components/xxx_cristiano/
 cd /tmp/ha-config && PYTHONPATH=/tmp/ha-config python3.12 -m pytest \
-  custom_components/solar_energy_management/tests/ -q
+  custom_components/xxx_cristiano/tests/ -q
 ```
 
 - [ ] **Step 5: Commit**

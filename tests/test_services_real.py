@@ -32,7 +32,7 @@ from __future__ import annotations
 
 import pytest
 
-from custom_components.solar_energy_management.const import DOMAIN
+from custom_components.xxx_cristiano.const import DOMAIN
 
 
 # ---------------------------------------------------------------------------
@@ -446,11 +446,11 @@ async def test_diagnose_recent_logs_come_from_ring_buffer(
 
     marker = "ring-buffer-framework-test-marker"
     _logging.getLogger(
-        "custom_components.solar_energy_management.coordinator"
+        "custom_components.xxx_cristiano.coordinator"
     ).info("%s", marker)
 
     response = await sem_real_hass.services.async_call(
-        "solar_energy_management", "diagnose",
+        "xxx_cristiano", "diagnose",
         {"section": "overview"},
         blocking=True,
         return_response=True,

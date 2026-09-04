@@ -24,11 +24,11 @@ from __future__ import annotations
 
 from unittest.mock import MagicMock, Mock, patch
 
-from custom_components.solar_energy_management.coordinator.sensor_reader import (
+from custom_components.xxx_cristiano.coordinator.sensor_reader import (
     SensorReader,
 )
 
-_ER_PATCH = "custom_components.solar_energy_management.coordinator.sensor_reader.er.async_get"
+_ER_PATCH = "custom_components.xxx_cristiano.coordinator.sensor_reader.er.async_get"
 
 
 def _reader_with_grid(platform, entity="sensor.grid_power"):

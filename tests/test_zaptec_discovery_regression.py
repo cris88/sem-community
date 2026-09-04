@@ -2,7 +2,7 @@
 from types import SimpleNamespace
 from unittest.mock import MagicMock, patch
 
-from custom_components.solar_energy_management.hardware_detection import (
+from custom_components.xxx_cristiano.hardware_detection import (
     discover_all_ev_chargers_from_registry,
 )
 
@@ -37,7 +37,7 @@ def test_zaptec_variant_prefers_charger_device_and_infers_missing_device_classes
     registry.entities.values.return_value = entries
 
     with patch(
-        "custom_components.solar_energy_management.hardware_detection.entity_registry.async_get",
+        "custom_components.xxx_cristiano.hardware_detection.entity_registry.async_get",
         return_value=registry,
     ):
         found = discover_all_ev_chargers_from_registry(MagicMock())
@@ -61,7 +61,7 @@ def test_zaptec_service_fallback_keeps_device_id_without_power_sensor():
     registry.entities.values.return_value = entries
 
     with patch(
-        "custom_components.solar_energy_management.hardware_detection.entity_registry.async_get",
+        "custom_components.xxx_cristiano.hardware_detection.entity_registry.async_get",
         return_value=registry,
     ):
         found = discover_all_ev_chargers_from_registry(MagicMock())

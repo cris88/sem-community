@@ -6,12 +6,12 @@ which is not yet implemented. Skip the entire module until the feature lands.
 import pytest
 
 pytest.importorskip(
-    "custom_components.solar_energy_management.coordinator",
+    "custom_components.xxx_cristiano.coordinator",
     reason="Peak-aware night charging not yet implemented",
 )
 
 # Guard: skip if the method doesn't exist yet
-from custom_components.solar_energy_management.coordinator import SEMCoordinator
+from custom_components.xxx_cristiano.coordinator import SEMCoordinator
 if not hasattr(SEMCoordinator, "_calculate_peak_aware_night_current"):
     pytest.skip(
         "SEMCoordinator._calculate_peak_aware_night_current not yet implemented",
@@ -20,7 +20,7 @@ if not hasattr(SEMCoordinator, "_calculate_peak_aware_night_current"):
 
 from unittest.mock import AsyncMock
 from freezegun import freeze_time
-from custom_components.solar_energy_management.const import (
+from custom_components.xxx_cristiano.const import (
     ChargingState,
     DEFAULT_MAX_CHARGING_CURRENT,
 )
@@ -33,7 +33,7 @@ class TestPeakAwareNightCharging:
     async def test_calculates_safe_current_with_low_home_load(self, coordinator, mock_hass):
         """Test peak-aware current calculation with low home consumption."""
         # Setup load manager
-        from custom_components.solar_energy_management.load_management import LoadManager
+        from custom_components.xxx_cristiano.load_management import LoadManager
         coordinator._load_manager = LoadManager(
             hass=mock_hass,
             target_peak_limit=5.0,  # 5kW target
@@ -61,7 +61,7 @@ class TestPeakAwareNightCharging:
 
     async def test_calculates_safe_current_with_high_home_load(self, coordinator, mock_hass):
         """Test that charging pauses when home load too high."""
-        from custom_components.solar_energy_management.load_management import LoadManager
+        from custom_components.xxx_cristiano.load_management import LoadManager
         coordinator._load_manager = LoadManager(
             hass=mock_hass,
             target_peak_limit=5.0,
@@ -87,7 +87,7 @@ class TestPeakAwareNightCharging:
 
     async def test_accounts_for_current_ev_charging(self, coordinator, mock_hass):
         """Test that current EV charging power is subtracted from home load."""
-        from custom_components.solar_energy_management.load_management import LoadManager
+        from custom_components.xxx_cristiano.load_management import LoadManager
         coordinator._load_manager = LoadManager(
             hass=mock_hass,
             target_peak_limit=5.0,
@@ -113,7 +113,7 @@ class TestPeakAwareNightCharging:
 
     async def test_returns_zero_when_not_night_charging(self, coordinator, mock_hass):
         """Test that function returns 0 when not in night charging mode."""
-        from custom_components.solar_energy_management.load_management import LoadManager
+        from custom_components.xxx_cristiano.load_management import LoadManager
         coordinator._load_manager = LoadManager(
             hass=mock_hass,
             target_peak_limit=5.0,
@@ -154,7 +154,7 @@ class TestPeakAwareNightCharging:
 
     async def test_clamps_to_maximum_current(self, coordinator, mock_hass):
         """Test that calculated current is clamped to maximum (16A for KEBA)."""
-        from custom_components.solar_energy_management.load_management import LoadManager
+        from custom_components.xxx_cristiano.load_management import LoadManager
         coordinator._load_manager = LoadManager(
             hass=mock_hass,
             target_peak_limit=15.0,  # Very high limit
@@ -179,7 +179,7 @@ class TestPeakAwareNightCharging:
 
     async def test_buffer_prevents_oscillation(self, coordinator, mock_hass):
         """Test that 0.3kW buffer prevents rapid on/off cycling."""
-        from custom_components.solar_energy_management.load_management import LoadManager
+        from custom_components.xxx_cristiano.load_management import LoadManager
         coordinator._load_manager = LoadManager(
             hass=mock_hass,
             target_peak_limit=5.0,
@@ -283,7 +283,7 @@ class TestPeakAwareEdgeCases:
 
     async def test_handles_negative_home_power(self, coordinator, mock_hass):
         """Test handling of negative home power (shouldn't happen but be safe)."""
-        from custom_components.solar_energy_management.load_management import LoadManager
+        from custom_components.xxx_cristiano.load_management import LoadManager
         coordinator._load_manager = LoadManager(
             hass=mock_hass,
             target_peak_limit=5.0,
@@ -308,7 +308,7 @@ class TestPeakAwareEdgeCases:
 
     async def test_handles_missing_home_power_value(self, coordinator, mock_hass):
         """Test handling of missing home_consumption_power key."""
-        from custom_components.solar_energy_management.load_management import LoadManager
+        from custom_components.xxx_cristiano.load_management import LoadManager
         coordinator._load_manager = LoadManager(
             hass=mock_hass,
             target_peak_limit=5.0,
@@ -333,7 +333,7 @@ class TestPeakAwareEdgeCases:
 
     async def test_handles_very_high_peak_limit(self, coordinator, mock_hass):
         """Test with unrealistically high peak limit (commercial installation)."""
-        from custom_components.solar_energy_management.load_management import LoadManager
+        from custom_components.xxx_cristiano.load_management import LoadManager
         coordinator._load_manager = LoadManager(
             hass=mock_hass,
             target_peak_limit=100.0,  # 100kW!
@@ -366,7 +366,7 @@ class TestPeakAwareEdgeCases:
 
     async def test_integrates_with_load_management_sensors(self, coordinator, mock_hass):
         """Test that peak-aware charging updates load management sensors."""
-        from custom_components.solar_energy_management.load_management import LoadManager
+        from custom_components.xxx_cristiano.load_management import LoadManager
         coordinator._load_manager = LoadManager(
             hass=mock_hass,
             target_peak_limit=5.0,
@@ -391,7 +391,7 @@ class TestPeakAwareRealWorldScenarios:
 
     async def test_scenario_washing_machine_starts_during_charging(self, coordinator, mock_hass):
         """Test that charging current reduces when washing machine starts."""
-        from custom_components.solar_energy_management.load_management import LoadManager
+        from custom_components.xxx_cristiano.load_management import LoadManager
         coordinator._load_manager = LoadManager(
             hass=mock_hass,
             target_peak_limit=5.0,
@@ -424,7 +424,7 @@ class TestPeakAwareRealWorldScenarios:
 
     async def test_scenario_gradual_home_load_increase(self, coordinator, mock_hass):
         """Test gradual reduction in charging current as home load increases."""
-        from custom_components.solar_energy_management.load_management import LoadManager
+        from custom_components.xxx_cristiano.load_management import LoadManager
         coordinator._load_manager = LoadManager(
             hass=mock_hass,
             target_peak_limit=5.0,
@@ -460,7 +460,7 @@ class TestPeakAwareRealWorldScenarios:
 
     async def test_scenario_overnight_charging_with_variable_load(self, coordinator, mock_hass):
         """Simulate overnight charging with realistic load variations."""
-        from custom_components.solar_energy_management.load_management import LoadManager
+        from custom_components.xxx_cristiano.load_management import LoadManager
         coordinator._load_manager = LoadManager(
             hass=mock_hass,
             target_peak_limit=5.0,

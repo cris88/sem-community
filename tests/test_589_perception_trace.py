@@ -7,7 +7,7 @@ binary_sensor.sem_layer_mismatch.
 """
 from __future__ import annotations
 
-from custom_components.solar_energy_management.coordinator.cycle_trace import (
+from custom_components.xxx_cristiano.coordinator.cycle_trace import (
     TraceCollector, CrossCheck, LayerStatus,
 )
 
@@ -88,7 +88,7 @@ class TestLayerMismatchBinarySensor:
     (the single surface that replaced the retired sign-contradiction sensors)."""
 
     def test_key_registered(self):
-        from custom_components.solar_energy_management.binary_sensor import (
+        from custom_components.xxx_cristiano.binary_sensor import (
             BINARY_SENSOR_TYPES,
         )
         assert "layer_mismatch" in {d.key for d in BINARY_SENSOR_TYPES}
@@ -98,7 +98,7 @@ class TestLayerMismatchBinarySensor:
         from homeassistant.components.binary_sensor import (
             BinarySensorEntityDescription,
         )
-        from custom_components.solar_energy_management.binary_sensor import (
+        from custom_components.xxx_cristiano.binary_sensor import (
             SEMSolarBinarySensor,
         )
         coord = MagicMock()
@@ -121,7 +121,7 @@ class TestLayerMismatchBinarySensor:
         from homeassistant.components.binary_sensor import (
             BinarySensorEntityDescription,
         )
-        from custom_components.solar_energy_management.binary_sensor import (
+        from custom_components.xxx_cristiano.binary_sensor import (
             SEMSolarBinarySensor,
         )
         coord = MagicMock(); coord.data = {"ev_connected": True}

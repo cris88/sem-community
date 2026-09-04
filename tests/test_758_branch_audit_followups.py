@@ -13,7 +13,7 @@ import pytest
 from datetime import datetime, timedelta
 from unittest.mock import AsyncMock, MagicMock, Mock
 
-from custom_components.solar_energy_management.coordinator.demand_outcome import (
+from custom_components.xxx_cristiano.coordinator.demand_outcome import (
     battery_draw,
 )
 
@@ -62,7 +62,7 @@ class TestPlanAttributeBudget:
     """
 
     def test_the_budget_counts_the_extras(self) -> None:
-        from custom_components.solar_energy_management.sensor import (
+        from custom_components.xxx_cristiano.sensor import (
             _energy_plan_attrs, _PLAN_ATTR_BUDGET_BYTES,
         )
         base = datetime(2026, 8, 13, 22, 0)
@@ -97,7 +97,7 @@ class TestPlanAttributeBudget:
         )
 
     def test_a_small_plan_keeps_its_timeline(self) -> None:
-        from custom_components.solar_energy_management.sensor import (
+        from custom_components.xxx_cristiano.sensor import (
             _energy_plan_attrs,
         )
         base = datetime(2026, 8, 13, 22, 0)
@@ -124,7 +124,7 @@ class TestNoOrphanPlannerEntry:
         """The compat adapter forced ``level_cheap=True`` on every slot and a
         1e9 kWh battery, so the corpus that used it was proving things about
         a night that cannot happen."""
-        from custom_components.solar_energy_management.coordinator import (
+        from custom_components.xxx_cristiano.coordinator import (
             energy_planner,
         )
         assert not hasattr(energy_planner, "plan_overnight"), (
@@ -137,7 +137,7 @@ class TestNoOrphanPlannerEntry:
         noticed. Public module-level functions are just as orphanable, so
         the scanner must actually FIND them — asserted by naming one it
         could not see before and one it must not lose."""
-        from custom_components.solar_energy_management.tests import (
+        from custom_components.xxx_cristiano.tests import (
             test_653_orphan_methods as guard,
         )
         seen = guard._public_functions()
@@ -158,7 +158,7 @@ class TestArbitrageHonoursTheKillSwitch:
 
     def test_sell_gate_is_asked_only_when_actuation_is_on(self) -> None:
         import inspect
-        from custom_components.solar_energy_management.coordinator import (
+        from custom_components.xxx_cristiano.coordinator import (
             coordinator as coord_mod,
         )
         src = inspect.getsource(coord_mod)
@@ -184,7 +184,7 @@ class TestUpgradeConsent:
 
         The migration makes the value explicit (a recorded decision, not an
         implied one) and posts one notification naming the kill switch."""
-        from custom_components.solar_energy_management import async_migrate_entry
+        from custom_components.xxx_cristiano import async_migrate_entry
 
         hass = MagicMock()
         hass.services.async_call = AsyncMock(return_value=None)
@@ -221,7 +221,7 @@ class TestUpgradeConsent:
     @pytest.mark.asyncio
     async def test_an_explicit_off_is_never_overwritten(self) -> None:
         """A user who already turned it off keeps it off, silently."""
-        from custom_components.solar_energy_management import async_migrate_entry
+        from custom_components.xxx_cristiano import async_migrate_entry
 
         hass = MagicMock()
         hass.services.async_call = AsyncMock(return_value=None)

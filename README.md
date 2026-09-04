@@ -100,7 +100,7 @@ Beta releases are tested on real hardware before publishing but may contain roug
 ### Manual Installation
 
 1. Download the [latest release](https://github.com/traktore-org/sem-community/releases)
-2. Copy the `custom_components/solar_energy_management/` folder to your Home Assistant `config/custom_components/` directory
+2. Copy the `custom_components/xxx_cristiano/` folder to your Home Assistant `config/custom_components/` directory
 3. **Restart Home Assistant**
 
 ---
@@ -437,7 +437,7 @@ automation:
 2. Click the three-dot menu and select **Delete**
 3. Restart Home Assistant
 4. If installed via HACS: open HACS > Integrations, find SEM, click **Remove**
-5. If installed manually: delete the `custom_components/solar_energy_management/` directory
+5. If installed manually: delete the `custom_components/xxx_cristiano/` directory
 
 All SEM entities are removed automatically. Your Energy Dashboard and hardware sensors are not affected.
 

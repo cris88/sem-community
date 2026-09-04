@@ -10,10 +10,10 @@ from unittest.mock import MagicMock, AsyncMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.surplus_controller import (
+from custom_components.xxx_cristiano.coordinator.surplus_controller import (
     compute_load_intent, LoadIntent, reconcile_load,
 )
-from custom_components.solar_energy_management.devices.base import (
+from custom_components.xxx_cristiano.devices.base import (
     SwitchDevice, DeviceControlMode, DeviceState,
 )
 
@@ -332,10 +332,10 @@ async def test_reconcile_noop_when_off_and_idle():
 
 
 # ── Phase 3: parity harness (new desired-state path == old imperative passes) ─
-from custom_components.solar_energy_management.coordinator.surplus_controller import (
+from custom_components.xxx_cristiano.coordinator.surplus_controller import (
     SurplusController,
 )
-from custom_components.solar_energy_management.const import LoadManagementState
+from custom_components.xxx_cristiano.const import LoadManagementState
 
 
 class _PDev:

@@ -139,7 +139,7 @@ Both halves matter: `Solar only` with a non-zero floor still tops that floor up 
 **Fix:**
 1. Confirm the coordinator is running: `sensor.sem_charging_state` should NOT be `unavailable`. If it is, the integration failed to start — see HA logs.
 2. Verify power sensors have numeric values (not "unknown" or "unavailable")
-3. Check HA logs for SEM errors: **Settings > System > Logs**, filter for `solar_energy_management`
+3. Check HA logs for SEM errors: **Settings > System > Logs**, filter for `xxx_cristiano`
 4. Daily ENERGY values (solar / home / grid / battery) reset at **midnight** — matching HA's Energy Dashboard. Two deliberate exceptions: the EV daily counter rolls at the **Charge-by deadline** (default 07:00, so an overnight charge stays in one bucket; on multi-charger installs only while all chargers share one deadline — otherwise the fleet total rolls at midnight, #724), and load **runtime targets** roll at **sunrise** (see MULTI_DEVICE_GUIDE)
 
 ---
@@ -152,7 +152,7 @@ It should appear in the sidebar within a few seconds of finishing the
 config flow. If it doesn't:
 
 **Recovery:**
-1. Call the `solar_energy_management.generate_dashboard` service from
+1. Call the `xxx_cristiano.generate_dashboard` service from
    **Developer Tools > Actions** (search for "Solar Energy Management").
 2. The dashboard appears immediately under **Dashboards** in the sidebar
    — no HA restart required.
@@ -175,12 +175,12 @@ after an update is almost always a stale browser cache: hard-refresh
 HA log shows:
 
 ```
-WARNING ... solar_energy_management: SEM detected YAML-mode Lovelace; SEM
+WARNING ... xxx_cristiano: SEM detected YAML-mode Lovelace; SEM
 card resources cannot be registered automatically. Add the following to
 configuration.yaml under `lovelace.resources` and restart:
-  - url: /local/custom_components/solar_energy_management/dashboard/card/dist/sem-cards.js
+  - url: /local/custom_components/xxx_cristiano/dashboard/card/dist/sem-cards.js
     type: module
-  - url: /local/custom_components/solar_energy_management/dashboard/card/sem-localize.js
+  - url: /local/custom_components/xxx_cristiano/dashboard/card/sem-localize.js
     type: module
 ```
 
@@ -207,9 +207,9 @@ Add the two resources from the warning to your `configuration.yaml` under
 lovelace:
   mode: yaml
   resources:
-    - url: /local/custom_components/solar_energy_management/dashboard/card/dist/sem-cards.js
+    - url: /local/custom_components/xxx_cristiano/dashboard/card/dist/sem-cards.js
       type: module
-    - url: /local/custom_components/solar_energy_management/dashboard/card/sem-localize.js
+    - url: /local/custom_components/xxx_cristiano/dashboard/card/sem-localize.js
       type: module
     # plus the HACS cards SEM needs:
     - url: /hacsfiles/lovelace-card-mod/card-mod.js
@@ -345,7 +345,7 @@ derived, so older tooling keeps working.
 
 **Cause:** The configured price sensor doesn't expose a price array in a shape SEM recognises. SEM parses `prices_today`/`prices_tomorrow`, `today`/`tomorrow` (Tibber core), `prices`, `today_raw`/`tomorrow_raw` (Tibber Grid Reward), `raw_today`/`raw_tomorrow` (Nordpool), and `forecasts`/`rates` (Amber/Octopus).
 
-**Diagnose:** Run the `solar_energy_management.diagnose` action with `section: tariff`. `tariff_parsed_attribute` names the attribute that matched (or `null` if none), `tariff_parsed_count` the number of price points, and `tariff_parsed_interval_seconds` the detected granularity (3600 hourly / 900 for 15-min markets).
+**Diagnose:** Run the `xxx_cristiano.diagnose` action with `section: tariff`. `tariff_parsed_attribute` names the attribute that matched (or `null` if none), `tariff_parsed_count` the number of price points, and `tariff_parsed_interval_seconds` the detected granularity (3600 hourly / 900 for 15-min markets).
 
 **Fix:**
 1. Point **Dynamic tariff entity** at the provider's *native* sensor that carries the arrays — not a template/derivative sensor that only mirrors the current price
@@ -497,7 +497,7 @@ Alternatively, via `configuration.yaml` (persists across restarts):
 logger:
   default: warning
   logs:
-    custom_components.solar_energy_management: debug
+    custom_components.xxx_cristiano: debug
 ```
 
 To enable logging for a specific module only:
@@ -505,9 +505,9 @@ To enable logging for a specific module only:
 ```yaml
 logger:
   logs:
-    custom_components.solar_energy_management.coordinator.coordinator: debug
-    custom_components.solar_energy_management.coordinator.charging_control: debug
-    custom_components.solar_energy_management.coordinator.surplus_controller: debug
+    custom_components.xxx_cristiano.coordinator.coordinator: debug
+    custom_components.xxx_cristiano.coordinator.charging_control: debug
+    custom_components.xxx_cristiano.coordinator.surplus_controller: debug
 ```
 
 Levels can also be changed at runtime without a restart via

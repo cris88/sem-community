@@ -18,7 +18,7 @@ comparable value. These tests pin the two properties that matter:
 from types import SimpleNamespace
 
 
-from custom_components.solar_energy_management.coordinator.coordinator import (
+from custom_components.xxx_cristiano.coordinator.coordinator import (
     SEMCoordinator,
 )
 
@@ -347,7 +347,7 @@ class TestThePriceWindowSlides:
         return c
 
     def test_a_past_slot_expiring_is_not_a_changed_night(self):
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             demand_signature_changed,
         )
         full = [("2026-08-14T22:00:00+02:00", 0.42),
@@ -358,7 +358,7 @@ class TestThePriceWindowSlides:
         assert demand_signature_changed(old, new) is False
 
     def test_a_revised_price_at_a_shared_timestamp_replans(self):
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             demand_signature_changed,
         )
         old = self._coord_with_prices([
@@ -368,7 +368,7 @@ class TestThePriceWindowSlides:
         assert demand_signature_changed(old, new) is True
 
     def test_tomorrows_curve_landing_replans(self):
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             demand_signature_changed,
         )
         today = [("2026-08-14T23:00:00+02:00", 0.12)]
@@ -379,7 +379,7 @@ class TestThePriceWindowSlides:
         assert demand_signature_changed(old, new) is True
 
     def test_every_other_term_still_compares_strictly(self):
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             demand_signature_changed,
         )
         a = self._coord_with_prices([("2026-08-14T23:00:00+02:00", 0.12)])
@@ -389,7 +389,7 @@ class TestThePriceWindowSlides:
         assert demand_signature_changed(old, new) is True
 
     def test_a_stored_old_format_signature_replans_once_never_crashes(self):
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             demand_signature_changed,
         )
         new = self._coord_with_prices(
@@ -529,7 +529,7 @@ class TestAShrinkingDeficitIsProgress:
         return _coord(devices=(dev,))._energy_plan_demand_signature(_power())
 
     def _changed(self, old, new):
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             demand_signature_changed,
         )
         return demand_signature_changed(old, new)
@@ -620,7 +620,7 @@ class TestTheSignatureMirrorsTheCollectorsGates:
 
     def test_an_off_mode_loads_deficit_is_not_an_ask_change(self):
         """The collector's first load gate (finding #1): only SURPLUS packs."""
-        from custom_components.solar_energy_management.devices.base import (
+        from custom_components.xxx_cristiano.devices.base import (
             DeviceControlMode,
         )
         dev = _dev("heizband", 2.0)
@@ -638,7 +638,7 @@ class TestTheSignatureMirrorsTheCollectorsGates:
 
     def test_an_off_mode_rooms_comfort_ask_is_not_an_ask_change(self):
         """The comfort collector gates on control_mode too."""
-        from custom_components.solar_energy_management.devices.base import (
+        from custom_components.xxx_cristiano.devices.base import (
             DeviceControlMode,
         )
         dev = _comfort_ask_dev()

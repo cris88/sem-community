@@ -33,10 +33,10 @@ import pytest
 
 import homeassistant.util.dt as dt_util
 
-from custom_components.solar_energy_management.coordinator.coordinator import (
+from custom_components.xxx_cristiano.coordinator.coordinator import (
     SEMCoordinator,
 )
-from custom_components.solar_energy_management.features.device_registry import (
+from custom_components.xxx_cristiano.features.device_registry import (
     UnifiedDeviceRegistry,
 )
 
@@ -97,7 +97,7 @@ class TestRestoreIdempotent:
         # so the stale value never survives past one cycle.
         from datetime import date, timedelta
 
-        from custom_components.solar_energy_management.devices.base import (
+        from custom_components.xxx_cristiano.devices.base import (
             ControllableDevice,
             DeviceControlMode,
         )
@@ -169,11 +169,11 @@ async def test_refresh_invokes_runtime_restore_hook_after_inmemory_restore():
         "is_ev": False,
     }]
     with patch(
-        "custom_components.solar_energy_management.features."
+        "custom_components.xxx_cristiano.features."
         "device_registry.read_energy_dashboard_config",
         new=AsyncMock(return_value={"present": True}),
     ), patch(
-        "custom_components.solar_energy_management.features."
+        "custom_components.xxx_cristiano.features."
         "device_registry.get_all_individual_devices",
         return_value=one_device,
     ):
@@ -196,11 +196,11 @@ async def test_refresh_survives_hook_exception():
         "is_ev": False,
     }]
     with patch(
-        "custom_components.solar_energy_management.features."
+        "custom_components.xxx_cristiano.features."
         "device_registry.read_energy_dashboard_config",
         new=AsyncMock(return_value={"present": True}),
     ), patch(
-        "custom_components.solar_energy_management.features."
+        "custom_components.xxx_cristiano.features."
         "device_registry.get_all_individual_devices",
         return_value=one_device,
     ):

@@ -21,17 +21,17 @@ loudly, not just on the YAML scenario.
 """
 from __future__ import annotations
 
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     ChargerEnergy,
     ChargerIntent,
     ChargerPower,
     ChargerView,
     FleetContext,
 )
-from custom_components.solar_energy_management.coordinator.decide import (
+from custom_components.xxx_cristiano.coordinator.decide import (
     SolarOnlyMode,
 )
-from custom_components.solar_energy_management.coordinator.flow_calculator import (
+from custom_components.xxx_cristiano.coordinator.flow_calculator import (
     battery_redirect_w,
 )
 

@@ -24,7 +24,7 @@ Issues filed today:
     ``async_seed_from_history`` cannot bootstrap EV / forecast
     history. Filed at setup, cleared if recorder appears later.
 
-The legacy log-channel feedback ("the solar_energy_management
+The legacy log-channel feedback ("the xxx_cristiano
 component should handle unavailability gracefully instead of
 spamming", 2026-06-06) drove this work.
 """

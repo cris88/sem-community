@@ -10,7 +10,7 @@ Pins two contracts:
 import pytest
 from unittest.mock import MagicMock, AsyncMock, patch
 
-from custom_components.solar_energy_management.config_flow import (
+from custom_components.xxx_cristiano.config_flow import (
     SolarEnergyManagementConfigFlow,
     OptionsFlowHandler,
 )
@@ -39,16 +39,16 @@ async def test_install_flow_is_two_steps_only():
     detector.validate_ev_configuration.return_value = {}
 
     with patch(
-        "custom_components.solar_energy_management.config_flow.read_energy_dashboard_config",
+        "custom_components.xxx_cristiano.config_flow.read_energy_dashboard_config",
         new_callable=AsyncMock, return_value=energy_config,
     ), patch(
-        "custom_components.solar_energy_management.config_flow.HardwareDetector",
+        "custom_components.xxx_cristiano.config_flow.HardwareDetector",
         return_value=detector,
     ), patch(
-        "custom_components.solar_energy_management.config_flow.discover_ev_charger_from_registry",
+        "custom_components.xxx_cristiano.config_flow.discover_ev_charger_from_registry",
         return_value={},
     ), patch(
-        "custom_components.solar_energy_management.config_flow.discover_inverter_from_registry",
+        "custom_components.xxx_cristiano.config_flow.discover_inverter_from_registry",
         return_value=None,
     ):
         result = await flow.async_step_user(user_input={"observer_mode": False})

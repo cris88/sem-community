@@ -28,10 +28,10 @@ from __future__ import annotations
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.charge_stability import (
+from custom_components.xxx_cristiano.coordinator.charge_stability import (
     ChargeStability,
 )
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     ChargerDecision,
     ChargerEnergy,
     ChargerIntent,
@@ -183,7 +183,7 @@ class TestTheFlagIsActuallyRaised:
     def _reader(self):
         from unittest.mock import MagicMock
 
-        from custom_components.solar_energy_management.coordinator.sensor_reader import (
+        from custom_components.xxx_cristiano.coordinator.sensor_reader import (
             SensorReader,
         )
         hass = MagicMock()
@@ -213,10 +213,10 @@ class TestTheFlagIsActuallyRaised:
     def test_the_fleet_context_carries_it(self):
         from unittest.mock import MagicMock
 
-        from custom_components.solar_energy_management.coordinator.build_view import (
+        from custom_components.xxx_cristiano.coordinator.build_view import (
             build_charger_view,
         )
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             FleetCycleState,
         )
 
@@ -256,7 +256,7 @@ class TestTwoQuestionsTwoAnswers:
     def _reader(self):
         from unittest.mock import MagicMock
 
-        from custom_components.solar_energy_management.coordinator.sensor_reader import (
+        from custom_components.xxx_cristiano.coordinator.sensor_reader import (
             SensorReader,
         )
         hass = MagicMock()
@@ -308,7 +308,7 @@ class TestTheEntitySaysUnavailable:
     situation; the power readings now say the same thing."""
 
     def _data(self, **flags):
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             PowerReadings,
             SEMData,
         )
@@ -366,7 +366,7 @@ class TestTheBatteryClampDoesNotFlapEither:
         return a
 
     def _decision(self, intent, watts=0.0):
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             BatteryDecision,
         )
         return BatteryDecision(battery_id="b1", intent=intent,
@@ -374,14 +374,14 @@ class TestTheBatteryClampDoesNotFlapEither:
                                charge_power_w=watts, reason="test")
 
     async def _run(self, decision, adapter, degraded):
-        from custom_components.solar_energy_management.coordinator.actuate_battery import (
+        from custom_components.xxx_cristiano.coordinator.actuate_battery import (
             actuate_battery,
         )
         await actuate_battery(decision, adapter, inputs_degraded=degraded)
 
     @pytest.mark.asyncio
     async def test_a_dark_cycle_does_not_engage_the_clamp(self):
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             BatteryIntent,
         )
         a = self._adapter(last_intent=BatteryIntent.NORMAL)
@@ -390,7 +390,7 @@ class TestTheBatteryClampDoesNotFlapEither:
 
     @pytest.mark.asyncio
     async def test_a_dark_cycle_does_not_release_the_clamp(self):
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             BatteryIntent,
         )
         a = self._adapter(last_intent=BatteryIntent.LIMIT_DISCHARGE)
@@ -399,7 +399,7 @@ class TestTheBatteryClampDoesNotFlapEither:
 
     @pytest.mark.asyncio
     async def test_a_healthy_cycle_still_clamps(self):
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             BatteryIntent,
         )
         a = self._adapter(last_intent=BatteryIntent.NORMAL)
@@ -410,7 +410,7 @@ class TestTheBatteryClampDoesNotFlapEither:
     async def test_the_user_s_own_mode_is_never_frozen(self):
         """OFF is hands-off, chosen by the user — not decided from any power
         number, so a dark cycle has no business holding it back."""
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             BatteryIntent,
         )
         a = self._adapter(last_intent=BatteryIntent.NORMAL)
@@ -421,7 +421,7 @@ class TestTheBatteryClampDoesNotFlapEither:
     async def test_a_scheduled_force_charge_is_never_frozen(self):
         """The plan decides WHEN from the clock and the tariff, not from a
         power reading."""
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             BatteryIntent,
         )
         a = self._adapter(last_intent=BatteryIntent.NORMAL)

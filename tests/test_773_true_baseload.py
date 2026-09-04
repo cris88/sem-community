@@ -39,13 +39,13 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.energy_calculator import (
+from custom_components.xxx_cristiano.coordinator.energy_calculator import (
     EnergyCalculator,
 )
-from custom_components.solar_energy_management.coordinator.health_check import (
+from custom_components.xxx_cristiano.coordinator.health_check import (
     HealthCheck,
 )
-from custom_components.solar_energy_management.coordinator.types import (
+from custom_components.xxx_cristiano.coordinator.types import (
     EnergyTotals,
 )
 
@@ -407,7 +407,7 @@ class TestWiredIntoTheCycle773:
     def test_the_filing_seam_feeds_the_midnight_mirror(self) -> None:
         """Every filed increment lands in the mirror too, flagged by its
         provenance — the same one write that feeds the device ledger."""
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
 
@@ -447,7 +447,7 @@ class TestWiredIntoTheCycle773:
         import pathlib
 
         src = pathlib.Path(
-            "custom_components/solar_energy_management/coordinator/"
+            "custom_components/xxx_cristiano/coordinator/"
             "coordinator.py"
         )
         if not src.exists():

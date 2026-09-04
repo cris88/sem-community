@@ -14,10 +14,10 @@ EV and battery), so ``grid = home + ev`` stays <= peak regardless of the battery
 """
 from unittest.mock import Mock
 
-from custom_components.solar_energy_management.coordinator.ev_control import (
+from custom_components.xxx_cristiano.coordinator.ev_control import (
     EVControlMixin,
 )
-from custom_components.solar_energy_management.coordinator.types import PowerReadings
+from custom_components.xxx_cristiano.coordinator.types import PowerReadings
 
 
 def _amps(home_w, peak_w, wpa, *, min_a=6, max_a=16, ev_w=0.0, grid_w=0.0,

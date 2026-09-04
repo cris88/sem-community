@@ -2,11 +2,11 @@
 import pytest
 from unittest.mock import MagicMock
 
-from custom_components.solar_energy_management.coordinator.charging_control import (
+from custom_components.xxx_cristiano.coordinator.charging_control import (
     ChargingStateMachine,
     ChargingContext,
 )
-from custom_components.solar_energy_management.const import ChargingState
+from custom_components.xxx_cristiano.const import ChargingState
 
 
 # ──────────────────────────────────────────────
@@ -174,7 +174,7 @@ class TestPerChargerOffOverride:
 
     @staticmethod
     def _override(global_state, per_mode):
-        from custom_components.solar_energy_management.coordinator import SEMCoordinator
+        from custom_components.xxx_cristiano.coordinator import SEMCoordinator
         return SEMCoordinator._apply_per_charger_off_override(global_state, per_mode)
 
     def test_off_charger_forces_solar_idle(self):
@@ -465,7 +465,7 @@ class TestCalculateRemainingNeed:
 
     def _make_coordinator(self, config=None):
         """Create a minimal coordinator for remaining need tests."""
-        from custom_components.solar_energy_management.coordinator.coordinator import SEMCoordinator
+        from custom_components.xxx_cristiano.coordinator.coordinator import SEMCoordinator
         coord = SEMCoordinator.__new__(SEMCoordinator)
         coord.config = config or {
             "ev_target_soc": 80,

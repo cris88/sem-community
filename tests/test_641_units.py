@@ -12,7 +12,7 @@ from pathlib import Path
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.units import (
+from custom_components.xxx_cristiano.coordinator.units import (
     energy_state_to_kwh,
     is_energy_unit,
     is_power_unit,

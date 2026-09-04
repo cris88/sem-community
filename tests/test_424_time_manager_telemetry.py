@@ -20,7 +20,7 @@ from unittest.mock import MagicMock, patch
 
 from homeassistant.util import dt as dt_util
 
-from custom_components.solar_energy_management.utils.time_manager import TimeManager
+from custom_components.xxx_cristiano.utils.time_manager import TimeManager
 
 
 def _make(hass=None, **config):
@@ -142,7 +142,7 @@ def test_night_window_path_outside_night_window():
     from unittest.mock import patch
     tm = _make()
     with patch(
-        "custom_components.solar_energy_management.utils.time_manager.dt_util.now"
+        "custom_components.xxx_cristiano.utils.time_manager.dt_util.now"
     ) as mock_now:
         mock_now.return_value = datetime(2026, 6, 15, 14, 0)
         result = tm.is_night_mode()
@@ -154,7 +154,7 @@ def test_night_window_path_pre_midnight_in_night():
     from unittest.mock import patch
     tm = _make()
     with patch(
-        "custom_components.solar_energy_management.utils.time_manager.dt_util.now"
+        "custom_components.xxx_cristiano.utils.time_manager.dt_util.now"
     ) as mock_now:
         mock_now.return_value = datetime(2026, 6, 15, 23, 0)
         result = tm.is_night_mode()
@@ -166,7 +166,7 @@ def test_night_window_path_post_midnight_in_night():
     from unittest.mock import patch
     tm = _make()
     with patch(
-        "custom_components.solar_energy_management.utils.time_manager.dt_util.now"
+        "custom_components.xxx_cristiano.utils.time_manager.dt_util.now"
     ) as mock_now:
         mock_now.return_value = datetime(2026, 6, 15, 3, 0)
         result = tm.is_night_mode()
@@ -199,7 +199,7 @@ def test_meter_day_path_after_sunrise():
     from unittest.mock import patch
     tm = _make()  # uses fallback 06:00 sunrise
     with patch(
-        "custom_components.solar_energy_management.utils.time_manager.dt_util.now"
+        "custom_components.xxx_cristiano.utils.time_manager.dt_util.now"
     ) as mock_now:
         mock_now.return_value = datetime(2026, 6, 15, 10, 0)
         tm.get_current_meter_day_sunrise_based()
@@ -210,7 +210,7 @@ def test_meter_day_path_before_offset():
     from unittest.mock import patch
     tm = _make()
     with patch(
-        "custom_components.solar_energy_management.utils.time_manager.dt_util.now"
+        "custom_components.xxx_cristiano.utils.time_manager.dt_util.now"
     ) as mock_now:
         mock_now.return_value = datetime(2026, 6, 15, 3, 0)
         tm.get_current_meter_day_offset_based("06:00")

@@ -29,7 +29,7 @@ from __future__ import annotations
 from unittest.mock import MagicMock
 
 
-from custom_components.solar_energy_management.coordinator.ev_taper_detector import (
+from custom_components.xxx_cristiano.coordinator.ev_taper_detector import (
     EVTaperDetector,
 )
 
@@ -45,7 +45,7 @@ class _MockCoord:
 
     def __init__(self, *, ev_taper=None, predictor=None, forecast=None,
                  cycle_vehicle_soc=None, config=None):
-        from custom_components.solar_energy_management.coordinator.ev_control import (
+        from custom_components.xxx_cristiano.coordinator.ev_control import (
             EVControlMixin,
         )
         self.config = config or {}
@@ -154,7 +154,7 @@ class TestRemovedAPIs:
         assert not hasattr(det, "_consecutive_skips")
 
     def test_intelligence_data_has_no_charge_needed(self):
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             EVIntelligenceData,
         )
         d = EVIntelligenceData()
@@ -163,7 +163,7 @@ class TestRemovedAPIs:
         assert not hasattr(d, "charge_skip_reason")
 
     def test_notification_manager_has_no_skip_methods(self):
-        from custom_components.solar_energy_management.coordinator.notifications import (
+        from custom_components.xxx_cristiano.coordinator.notifications import (
             NotificationManager,
         )
         assert not hasattr(NotificationManager, "notify_ev_charge_skip")
@@ -176,7 +176,7 @@ class TestRemovedAPIs:
 
 
 def test_obsolete_sensor_keys_absent_from_registry():
-    from custom_components.solar_energy_management import sensor as sem_sensor
+    from custom_components.xxx_cristiano import sensor as sem_sensor
     keys = {d.key for d in sem_sensor.SENSOR_TYPES}
     for obsolete in ("ev_charge_needed", "ev_nights_until_charge",
                      "ev_charge_skip_reason"):

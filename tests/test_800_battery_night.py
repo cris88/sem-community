@@ -18,7 +18,7 @@ from __future__ import annotations
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.battery_night import (
+from custom_components.xxx_cristiano.coordinator.battery_night import (
     FULL_SOC, MAX_SAMPLE_GAP_S, BatteryNightTracker, Sample,
 )
 
@@ -246,7 +246,7 @@ class TestCoordinatorWiring:
     def _host(self, *, night):
         from types import SimpleNamespace
         from unittest.mock import MagicMock
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
 
@@ -353,7 +353,7 @@ class TestMorningVerdictLine:
         return base
 
     def test_clipping_wins_the_verdict(self):
-        from custom_components.solar_energy_management.coordinator.demand_review import (
+        from custom_components.xxx_cristiano.coordinator.demand_review import (
             review_battery_night,
         )
         v = review_battery_night(self._rec(
@@ -363,7 +363,7 @@ class TestMorningVerdictLine:
         assert v["clipped_h"] == pytest.approx(3.4)
 
     def test_refilled_reports_the_full_timestamp(self):
-        from custom_components.solar_energy_management.coordinator.demand_review import (
+        from custom_components.xxx_cristiano.coordinator.demand_review import (
             review_battery_night,
         )
         v = review_battery_night(self._rec(refill_full_at=1755500000.0))
@@ -371,21 +371,21 @@ class TestMorningVerdictLine:
         assert v["full_at_ts"] == pytest.approx(1755500000.0)
 
     def test_a_promised_refill_that_never_came_is_short(self):
-        from custom_components.solar_energy_management.coordinator.demand_review import (
+        from custom_components.xxx_cristiano.coordinator.demand_review import (
             review_battery_night,
         )
         v = review_battery_night(self._rec())
         assert v["code"] == "batt_short"
 
     def test_untrainable_nights_stay_silent(self):
-        from custom_components.solar_energy_management.coordinator.demand_review import (
+        from custom_components.xxx_cristiano.coordinator.demand_review import (
             review_battery_night,
         )
         assert review_battery_night(self._rec(trainable=False)) is None
         assert review_battery_night(None) is None
 
     def test_a_trivial_night_stays_silent(self):
-        from custom_components.solar_energy_management.coordinator.demand_review import (
+        from custom_components.xxx_cristiano.coordinator.demand_review import (
             review_battery_night,
         )
         v = review_battery_night(self._rec(
@@ -436,7 +436,7 @@ class TestCoordinatorPersistsEveryCycle:
     def test_a_mid_night_cycle_persists_the_open_record(self):
         from types import SimpleNamespace
         from unittest.mock import MagicMock
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
 
@@ -481,7 +481,7 @@ class TestTheNightActuallyReachesDisk:
     def test_storage_has_a_throttled_energy_save(self):
         import asyncio, time
         from unittest.mock import AsyncMock, MagicMock
-        from custom_components.solar_energy_management.coordinator.storage import (
+        from custom_components.xxx_cristiano.coordinator.storage import (
             SEMStorage,
         )
         st = SEMStorage.__new__(SEMStorage)
@@ -500,7 +500,7 @@ class TestTheNightActuallyReachesDisk:
         import asyncio
         from types import SimpleNamespace
         from unittest.mock import AsyncMock, MagicMock
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
 
@@ -541,7 +541,7 @@ class TestVerdictRefreshOnPhaseFlip:
     def _host(self):
         from types import SimpleNamespace
         from unittest.mock import AsyncMock, MagicMock
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
         h = SimpleNamespace()

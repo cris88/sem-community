@@ -28,10 +28,10 @@ from __future__ import annotations
 from unittest.mock import Mock
 
 
-from custom_components.solar_energy_management.coordinator.ev_control import (
+from custom_components.xxx_cristiano.coordinator.ev_control import (
     EVControlMixin,
 )
-from custom_components.solar_energy_management.coordinator.types import PowerReadings
+from custom_components.xxx_cristiano.coordinator.types import PowerReadings
 
 
 def _make_obj(

@@ -13,7 +13,7 @@ from unittest.mock import MagicMock, Mock
 
 import homeassistant.util.dt as dt_util
 
-from custom_components.solar_energy_management.coordinator.sensor_reader import (
+from custom_components.xxx_cristiano.coordinator.sensor_reader import (
     SensorReader,
 )
 
@@ -132,7 +132,7 @@ class TestFrozenSensorRepair:
         r = _reader()
         r.hass.states.get = lambda eid: _state(4000, age_s=700)
         with patch(
-            "custom_components.solar_energy_management.coordinator.repair_issues.raise_sensor_stale"
+            "custom_components.xxx_cristiano.coordinator.repair_issues.raise_sensor_stale"
         ) as raise_stale:
             r._read_sensor("sensor.solar", "solar")
         raise_stale.assert_called_once()
@@ -145,7 +145,7 @@ class TestFrozenSensorRepair:
         r._read_sensor("sensor.grid", "grid")   # freeze
         r.hass.states.get = lambda eid: _state(4000, age_s=2)  # recovered
         with patch(
-            "custom_components.solar_energy_management.coordinator.repair_issues.clear_sensor_stale"
+            "custom_components.xxx_cristiano.coordinator.repair_issues.clear_sensor_stale"
         ) as clear_stale:
             r._read_sensor("sensor.grid", "grid")
         clear_stale.assert_called_once()

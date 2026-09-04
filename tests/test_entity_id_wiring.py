@@ -2,9 +2,9 @@
 
 Background: the observer-mode switch was a silent no-op for a long time because
 ``ENTITY_OBSERVER_MODE_SWITCH`` held the ``domain.object`` form
-(``solar_energy_management.observer_mode``) and the coordinator looked it up as
+(``xxx_cristiano.observer_mode``) and the coordinator looked it up as
 ``hass.states.get(f"switch.{ENTITY_OBSERVER_MODE_SWITCH}")`` — building the
-three-segment string ``switch.solar_energy_management.observer_mode``, which is
+three-segment string ``switch.xxx_cristiano.observer_mode``, which is
 not a valid entity_id, so the lookup always returned ``None``. The real entity is
 ``switch.sem_observer_mode``.
 
@@ -21,8 +21,8 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.consts import core as C
-from custom_components.solar_energy_management.coordinator.coordinator import (
+from custom_components.xxx_cristiano.consts import core as C
+from custom_components.xxx_cristiano.coordinator.coordinator import (
     SEMCoordinator,
 )
 

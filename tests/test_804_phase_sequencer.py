@@ -7,7 +7,7 @@ buying away the whole quirk class. The sequencer is pure (clock passed
 in); the auto planner adds hysteresis + hard caps evcc doesn't have.
 """
 
-from custom_components.solar_energy_management.coordinator.ev_phase_sequencer import (
+from custom_components.xxx_cristiano.coordinator.ev_phase_sequencer import (
     MIN_SWITCH_GAP_S, SETTLE_S, AUTO_UP_DELAY_S, AUTO_DOWN_DELAY_S,
     AUTO_MIN_INTERVAL_S, AUTO_MAX_PER_SESSION,
     PhaseAutoPlanner, PhaseSwitchSequencer,
@@ -166,7 +166,7 @@ class TestInertness:
 
     def test_module_is_pure(self):
         import ast, inspect
-        from custom_components.solar_energy_management.coordinator import (
+        from custom_components.xxx_cristiano.coordinator import (
             ev_phase_sequencer,
         )
         tree = ast.parse(inspect.getsource(ev_phase_sequencer))
@@ -187,7 +187,7 @@ class TestCoordinatorWiring:
     def _host(self, observer=False, cfg=None):
         from types import SimpleNamespace
         from unittest.mock import AsyncMock, MagicMock
-        from custom_components.solar_energy_management.coordinator import (
+        from custom_components.xxx_cristiano.coordinator import (
             ev_control,
         )
         h = SimpleNamespace()
@@ -213,7 +213,7 @@ class TestCoordinatorWiring:
         return h
 
     def _decision(self, amps=10, budget=4600.0):
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             ChargerDecision, ChargerIntent,
         )
         return ChargerDecision(
@@ -222,7 +222,7 @@ class TestCoordinatorWiring:
             commanded_amps=amps, budget_w=budget, reason="test")
 
     def _cp(self, power_w, charging, connected=True):
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             ChargerPower,
         )
         return ChargerPower(charger_id="c1", power_w=power_w,
@@ -230,10 +230,10 @@ class TestCoordinatorWiring:
 
     def test_manual_switch_walks_the_sequence(self):
         import asyncio
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             ChargerIntent,
         )
-        from custom_components.solar_energy_management.coordinator.ev_phase_sequencer import (
+        from custom_components.xxx_cristiano.coordinator.ev_phase_sequencer import (
             SETTLE_S,
         )
         h = self._host()
@@ -282,7 +282,7 @@ class TestCoordinatorWiring:
         # showed 3 but the belief never learned it (CHARGE_MAX carries no
         # commanded amps). The adapter's setpoint is the offer.
         import asyncio
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             ChargerDecision, ChargerIntent,
         )
         h = self._host(cfg={"ev_phase_switch_entity": "number.keba_phases",
@@ -300,7 +300,7 @@ class TestCoordinatorWiring:
     def test_belief_frozen_while_a_switch_is_in_flight(self):
         # PROD: the wind-down ramp read 2 mid-stop and the belief followed.
         import asyncio
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             ChargerIntent,
         )
         h = self._host()
@@ -317,10 +317,10 @@ class TestCoordinatorWiring:
         # every 2 minutes forever. After two completed switches that the
         # measurement contradicted, the target is declared not-taking.
         import asyncio
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             ChargerIntent,
         )
-        from custom_components.solar_energy_management.coordinator.ev_phase_sequencer import (
+        from custom_components.xxx_cristiano.coordinator.ev_phase_sequencer import (
             MIN_SWITCH_GAP_S, SETTLE_S,
         )
         h = self._host()   # phase_mode "1"

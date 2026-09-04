@@ -8,7 +8,7 @@ from datetime import datetime
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.ev_tariff_planner import (
+from custom_components.xxx_cristiano.coordinator.ev_tariff_planner import (
     plan_night_charge,
     resolve_deadline,
 )

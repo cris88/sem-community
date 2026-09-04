@@ -15,7 +15,7 @@ from types import SimpleNamespace
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.sensor_reader import (
+from custom_components.xxx_cristiano.coordinator.sensor_reader import (
     EXPORT_LIMIT_KEYWORDS,
     SensorReader,
     parse_export_limited,

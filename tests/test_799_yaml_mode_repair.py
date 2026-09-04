@@ -7,7 +7,7 @@ resource URLs. The information existed (#283 added it); the surface
 didn't. A Repair issue is the surface: it appears in Settings, it carries
 the URLs, and it clears itself once the resources are in place.
 """
-from custom_components.solar_energy_management import yaml_mode_repair
+from custom_components.xxx_cristiano import yaml_mode_repair
 
 
 class TestRepairPayload:
@@ -15,8 +15,8 @@ class TestRepairPayload:
     def test_yaml_mode_repair_names_the_urls(self):
         r = yaml_mode_repair(
             yaml_mode=True,
-            urls=["/local/custom_components/solar_energy_management/dashboard/card/dist/sem-cards.js?v=2.0.0-abc",
-                  "/local/custom_components/solar_energy_management/dashboard/card/sem-localize.js?v=2.0.0-def"],
+            urls=["/local/custom_components/xxx_cristiano/dashboard/card/dist/sem-cards.js?v=2.0.0-abc",
+                  "/local/custom_components/xxx_cristiano/dashboard/card/sem-localize.js?v=2.0.0-def"],
         )
         assert r is not None
         assert r["translation_key"] == "lovelace_yaml_mode"

@@ -15,7 +15,7 @@ from pathlib import Path
 
 import pytest
 
-from custom_components.solar_energy_management.number import (
+from custom_components.xxx_cristiano.number import (
     NUMBER_TYPES,
     CONFIG_KEY_MAP,
 )
@@ -62,8 +62,8 @@ class TestEveryKnobHasAReader:
 # per-battery); the dynamic keys are pinned explicitly below — update the
 # map when adding one, and the test fails if its config key loses all readers.
 
-from custom_components.solar_energy_management.switch import SWITCH_TYPES
-from custom_components.solar_energy_management.select import SELECT_TYPES
+from custom_components.xxx_cristiano.switch import SWITCH_TYPES
+from custom_components.xxx_cristiano.select import SELECT_TYPES
 
 # entity key (or dynamic pattern) → the config key the logic layer must read.
 _DYNAMIC_SWITCH_SELECT_KEYS: dict[str, str] = {

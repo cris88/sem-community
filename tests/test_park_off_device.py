@@ -24,7 +24,7 @@ class _Hass:
 
 
 def _keba_device():
-    from custom_components.solar_energy_management.devices.base import (
+    from custom_components.xxx_cristiano.devices.base import (
         CurrentControlDevice,
     )
     dev = CurrentControlDevice.__new__(CurrentControlDevice)
@@ -39,7 +39,7 @@ def _keba_device():
     dev._session_active = True
     dev._current_setpoint = 16.0
     dev._last_write_at = 123.0
-    from custom_components.solar_energy_management.devices.base import (
+    from custom_components.xxx_cristiano.devices.base import (
         DeviceState,
         DeviceStatus,
     )

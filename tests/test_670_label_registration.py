@@ -25,11 +25,11 @@ from unittest.mock import patch
 import pytest
 from homeassistant.helpers import label_registry as lr
 
-from custom_components.solar_energy_management.consts.labels import (
+from custom_components.xxx_cristiano.consts.labels import (
     SEM_LABELS,
     SENSOR_LABEL_MAPPING,
 )
-from custom_components.solar_energy_management.sensor import (
+from custom_components.xxx_cristiano.sensor import (
     _ensure_labels_registered,
 )
 
@@ -111,7 +111,7 @@ class TestLabelRegistration670:
 
         ent_reg = er.async_get(hass)
         entry = ent_reg.async_get_or_create(
-            "sensor", "solar_energy_management", "test_670_unique",
+            "sensor", "xxx_cristiano", "test_670_unique",
             suggested_object_id="sem_monthly_solar_yield_energy",
         )
         ent_reg.async_update_entity(entry.entity_id, labels={"sem_monthly"})

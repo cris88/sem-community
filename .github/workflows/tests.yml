@@ -62,15 +62,15 @@ jobs:
           # Create custom_components structure outside the checkout
           # so pytest doesn't try to collect __init__.py from repo root
           mkdir -p /tmp/ha-config/custom_components
-          cp -r $GITHUB_WORKSPACE /tmp/ha-config/custom_components/solar_energy_management
+          cp -r $GITHUB_WORKSPACE /tmp/ha-config/custom_components/xxx_cristiano
 
       - name: Run tests with coverage
         working-directory: /tmp/ha-config
         env:
           PYTHONPATH: /tmp/ha-config
         run: |
-          python -m pytest custom_components/solar_energy_management/tests/ \
-            --cov=custom_components.solar_energy_management \
+          python -m pytest custom_components/xxx_cristiano/tests/ \
+            --cov=custom_components.xxx_cristiano \
             --cov-report=term-missing \
             --cov-report=xml:$GITHUB_WORKSPACE/coverage.xml \
             -v --tb=short

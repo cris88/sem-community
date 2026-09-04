@@ -14,11 +14,11 @@ from unittest.mock import AsyncMock, MagicMock, patch
 
 from homeassistant.data_entry_flow import FlowResultType
 
-from custom_components.solar_energy_management.config_flow import (
+from custom_components.xxx_cristiano.config_flow import (
     SolarEnergyManagementConfigFlow,
     OptionsFlowHandler,
 )
-from custom_components.solar_energy_management.ha_energy_reader import EnergyDashboardConfig
+from custom_components.xxx_cristiano.ha_energy_reader import EnergyDashboardConfig
 
 
 def _make_energy_dashboard_config(
@@ -86,7 +86,7 @@ class TestSolarEnergyManagementConfigFlow:
         flow = _create_flow(mock_hass)
 
         with patch(
-            "custom_components.solar_energy_management.config_flow.read_energy_dashboard_config",
+            "custom_components.xxx_cristiano.config_flow.read_energy_dashboard_config",
             new_callable=AsyncMock,
             return_value=energy_config,
         ):
@@ -102,7 +102,7 @@ class TestSolarEnergyManagementConfigFlow:
         flow = _create_flow(mock_hass)
 
         with patch(
-            "custom_components.solar_energy_management.config_flow.read_energy_dashboard_config",
+            "custom_components.xxx_cristiano.config_flow.read_energy_dashboard_config",
             new_callable=AsyncMock,
             return_value=None,
         ):
@@ -118,7 +118,7 @@ class TestSolarEnergyManagementConfigFlow:
         flow = _create_flow(mock_hass)
 
         with patch(
-            "custom_components.solar_energy_management.config_flow.read_energy_dashboard_config",
+            "custom_components.xxx_cristiano.config_flow.read_energy_dashboard_config",
             new_callable=AsyncMock,
             return_value=energy_config,
         ):
@@ -135,7 +135,7 @@ class TestSolarEnergyManagementConfigFlow:
         flow = _create_flow(mock_hass)
 
         with patch(
-            "custom_components.solar_energy_management.config_flow.read_energy_dashboard_config",
+            "custom_components.xxx_cristiano.config_flow.read_energy_dashboard_config",
             new_callable=AsyncMock,
             return_value=energy_config,
         ):
@@ -158,17 +158,17 @@ class TestSolarEnergyManagementConfigFlow:
         mock_detector.validate_ev_configuration.return_value = {}
 
         with patch(
-            "custom_components.solar_energy_management.config_flow.read_energy_dashboard_config",
+            "custom_components.xxx_cristiano.config_flow.read_energy_dashboard_config",
             new_callable=AsyncMock,
             return_value=energy_config,
         ), patch(
-            "custom_components.solar_energy_management.config_flow.HardwareDetector",
+            "custom_components.xxx_cristiano.config_flow.HardwareDetector",
             return_value=mock_detector,
         ), patch(
-            "custom_components.solar_energy_management.config_flow.discover_ev_charger_from_registry",
+            "custom_components.xxx_cristiano.config_flow.discover_ev_charger_from_registry",
             return_value={},
         ), patch(
-            "custom_components.solar_energy_management.config_flow.discover_inverter_from_registry",
+            "custom_components.xxx_cristiano.config_flow.discover_inverter_from_registry",
             return_value=None,
         ):
             result = await flow.async_step_user(user_input={"observer_mode": False})
@@ -190,17 +190,17 @@ class TestSolarEnergyManagementConfigFlow:
         mock_detector.validate_ev_configuration.return_value = {}
 
         with patch(
-            "custom_components.solar_energy_management.config_flow.read_energy_dashboard_config",
+            "custom_components.xxx_cristiano.config_flow.read_energy_dashboard_config",
             new_callable=AsyncMock,
             return_value=energy_config,
         ), patch(
-            "custom_components.solar_energy_management.config_flow.HardwareDetector",
+            "custom_components.xxx_cristiano.config_flow.HardwareDetector",
             return_value=mock_detector,
         ), patch(
-            "custom_components.solar_energy_management.config_flow.discover_ev_charger_from_registry",
+            "custom_components.xxx_cristiano.config_flow.discover_ev_charger_from_registry",
             return_value={},
         ), patch(
-            "custom_components.solar_energy_management.config_flow.discover_inverter_from_registry",
+            "custom_components.xxx_cristiano.config_flow.discover_inverter_from_registry",
             return_value=None,
         ):
             await flow.async_step_user(user_input={"observer_mode": True})
@@ -222,10 +222,10 @@ class TestSolarEnergyManagementConfigFlow:
         }
 
         with patch(
-            "custom_components.solar_energy_management.config_flow.HardwareDetector",
+            "custom_components.xxx_cristiano.config_flow.HardwareDetector",
             return_value=mock_detector,
         ), patch(
-            "custom_components.solar_energy_management.config_flow.discover_ev_charger_from_registry",
+            "custom_components.xxx_cristiano.config_flow.discover_ev_charger_from_registry",
             return_value={},
         ):
             result = await flow.async_step_ev_charger(
@@ -254,13 +254,13 @@ class TestSolarEnergyManagementConfigFlow:
         mock_detector.get_suggested_ev_defaults.return_value = {}
 
         with patch(
-            "custom_components.solar_energy_management.config_flow.HardwareDetector",
+            "custom_components.xxx_cristiano.config_flow.HardwareDetector",
             return_value=mock_detector,
         ), patch(
-            "custom_components.solar_energy_management.config_flow.discover_ev_charger_from_registry",
+            "custom_components.xxx_cristiano.config_flow.discover_ev_charger_from_registry",
             return_value={},
         ), patch(
-            "custom_components.solar_energy_management.config_flow.discover_inverter_from_registry",
+            "custom_components.xxx_cristiano.config_flow.discover_inverter_from_registry",
             return_value=None,
         ):
             result = await flow.async_step_ev_charger(user_input=VALID_EV_INPUT)
@@ -284,7 +284,7 @@ class TestSolarEnergyManagementConfigFlow:
         flow._abort_if_unique_id_configured = MagicMock()
 
         with patch(
-            "custom_components.solar_energy_management.config_flow.discover_inverter_from_registry",
+            "custom_components.xxx_cristiano.config_flow.discover_inverter_from_registry",
             return_value="number.batteries_maximale_entladeleistung",
         ):
             result = await flow.async_step_hardware(user_input=VALID_HARDWARE_INPUT)
@@ -327,10 +327,10 @@ class TestSolarEnergyManagementConfigFlow:
         mock_detector.get_suggested_ev_defaults.return_value = {}
 
         with patch(
-            "custom_components.solar_energy_management.config_flow.HardwareDetector",
+            "custom_components.xxx_cristiano.config_flow.HardwareDetector",
             return_value=mock_detector,
         ), patch(
-            "custom_components.solar_energy_management.config_flow.discover_ev_charger_from_registry",
+            "custom_components.xxx_cristiano.config_flow.discover_ev_charger_from_registry",
             return_value={},
         ):
             result = await flow.async_step_ev_charger(user_input=None)
@@ -381,7 +381,7 @@ class TestSolarEnergyManagementConfigFlow:
         flow._abort_if_unique_id_configured = MagicMock()
 
         with patch(
-            "custom_components.solar_energy_management.config_flow.discover_inverter_from_registry",
+            "custom_components.xxx_cristiano.config_flow.discover_inverter_from_registry",
             return_value="number.batteries_maximale_entladeleistung",
         ):
             result = await flow.async_step_hardware(user_input=VALID_HARDWARE_INPUT)
@@ -406,7 +406,7 @@ class TestSolarEnergyManagementConfigFlow:
         flow._abort_if_unique_id_configured = MagicMock()
 
         with patch(
-            "custom_components.solar_energy_management.config_flow.discover_inverter_from_registry",
+            "custom_components.xxx_cristiano.config_flow.discover_inverter_from_registry",
             return_value=None,
         ):
             result = await flow.async_step_hardware(user_input=VALID_HARDWARE_INPUT)
@@ -430,17 +430,17 @@ class TestSolarEnergyManagementConfigFlow:
         flow._abort_if_unique_id_configured = MagicMock()
 
         with patch(
-            "custom_components.solar_energy_management.config_flow.read_energy_dashboard_config",
+            "custom_components.xxx_cristiano.config_flow.read_energy_dashboard_config",
             new_callable=AsyncMock,
             return_value=energy_config,
         ), patch(
-            "custom_components.solar_energy_management.config_flow.HardwareDetector",
+            "custom_components.xxx_cristiano.config_flow.HardwareDetector",
             return_value=mock_detector,
         ), patch(
-            "custom_components.solar_energy_management.config_flow.discover_ev_charger_from_registry",
+            "custom_components.xxx_cristiano.config_flow.discover_ev_charger_from_registry",
             return_value={},
         ), patch(
-            "custom_components.solar_energy_management.config_flow.discover_inverter_from_registry",
+            "custom_components.xxx_cristiano.config_flow.discover_inverter_from_registry",
             return_value=None,
         ):
             # Step 1: user → routes to hardware (slim install)
@@ -479,7 +479,7 @@ class TestSolarEnergyManagementConfigFlow:
         )
 
         with patch(
-            "custom_components.solar_energy_management.config_flow.discover_inverter_from_registry",
+            "custom_components.xxx_cristiano.config_flow.discover_inverter_from_registry",
             return_value=None,
         ):
             result = await flow.async_step_hardware(user_input=VALID_HARDWARE_INPUT)
@@ -524,7 +524,7 @@ class TestSolarEnergyManagementConfigFlow:
         flow = _create_flow(mock_hass)
 
         with patch(
-            "custom_components.solar_energy_management.config_flow.read_energy_dashboard_config",
+            "custom_components.xxx_cristiano.config_flow.read_energy_dashboard_config",
             new_callable=AsyncMock,
             return_value=energy_config,
         ):
@@ -545,7 +545,7 @@ class TestSolarEnergyManagementConfigFlow:
         flow = _create_flow(mock_hass)
 
         with patch(
-            "custom_components.solar_energy_management.config_flow.read_energy_dashboard_config",
+            "custom_components.xxx_cristiano.config_flow.read_energy_dashboard_config",
             new_callable=AsyncMock,
             return_value=energy_config,
         ):

@@ -87,7 +87,7 @@ esac
 # replacement via `config.update({...})` is a common stumble point for
 # components that captured a charger-dict reference at init. A traceback
 # in the recent log means something didn't survive the swap.
-log_errors=$(ssh ha-test "ha core logs 2>/dev/null | tail -200 | grep -E 'ERROR.*solar_energy_management|solar_energy_management.*ERROR|solar_energy_management.*Traceback' | head -5" 2>/dev/null || echo "")
+log_errors=$(ssh ha-test "ha core logs 2>/dev/null | tail -200 | grep -E 'ERROR.*xxx_cristiano|xxx_cristiano.*ERROR|xxx_cristiano.*Traceback' | head -5" 2>/dev/null || echo "")
 if [[ -n "$log_errors" ]]; then
     echo "✗ FAIL: integration logged errors after per-charger slider change" >&2
     echo "$log_errors" >&2

@@ -30,10 +30,10 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.const import (
+from custom_components.xxx_cristiano.const import (
     DEFAULT_PEAK_LIMIT_UNLIMITED,
 )
-from custom_components.solar_energy_management.coordinator.ev_control import (
+from custom_components.xxx_cristiano.coordinator.ev_control import (
     amps_from_headroom,
 )
 
@@ -88,7 +88,7 @@ class TestAmpsFromHeadroom:
 # --------------------------------------------------------------------------
 def _ev_host(config):
     """Minimal object exposing the EVControlMixin methods under test."""
-    from custom_components.solar_energy_management.coordinator.ev_control import (
+    from custom_components.xxx_cristiano.coordinator.ev_control import (
         EVControlMixin,
     )
 
@@ -193,7 +193,7 @@ class TestPeakLimitRead:
 # 3. LoadManager: never escalate when unlimited; repair an inverted ladder.
 # --------------------------------------------------------------------------
 def _load_manager(**cfg):
-    from custom_components.solar_energy_management.features.load_management import (
+    from custom_components.xxx_cristiano.features.load_management import (
         LoadManagementCoordinator,
     )
 
@@ -213,7 +213,7 @@ def _load_manager(**cfg):
 class TestLoadManagerUnlimited:
     def test_default_ladder_still_escalates(self):
         """Control case — without the flag nothing about shedding changes."""
-        from custom_components.solar_energy_management.features.load_management import (
+        from custom_components.xxx_cristiano.features.load_management import (
             LoadManagementState,
         )
 
@@ -225,7 +225,7 @@ class TestLoadManagerUnlimited:
 
     @pytest.mark.parametrize("peak", [3.0, 4.6, 5.2, 7.0, 500.0])
     def test_unlimited_never_escalates(self, peak):
-        from custom_components.solar_energy_management.features.load_management import (
+        from custom_components.xxx_cristiano.features.load_management import (
             LoadManagementState,
         )
 
@@ -236,7 +236,7 @@ class TestLoadManagerUnlimited:
     def test_unlimited_ignores_stale_levels(self):
         """A user who opts out leaves the old kW numbers in config. They must
         not shed on the way past."""
-        from custom_components.solar_energy_management.features.load_management import (
+        from custom_components.xxx_cristiano.features.load_management import (
             LoadManagementState,
         )
 
@@ -287,7 +287,7 @@ class TestLadderRepairAtReadTime:
         """Why the repair can't simply clamp *to* the target: the EMERGENCY
         branch tests ``>=``, so ``emergency == target`` still swallows the
         whole SHEDDING stage."""
-        from custom_components.solar_energy_management.features.load_management import (
+        from custom_components.xxx_cristiano.features.load_management import (
             LoadManagementState,
         )
 
@@ -337,7 +337,7 @@ class TestBatterySchedulerSeed:
     the slot arithmetic downstream has no infinity handling."""
 
     def _cfg(self, **kw):
-        from custom_components.solar_energy_management.coordinator.battery_charge_scheduler import (
+        from custom_components.xxx_cristiano.coordinator.battery_charge_scheduler import (
             SchedulerConfig,
         )
 

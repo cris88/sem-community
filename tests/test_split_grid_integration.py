@@ -12,10 +12,10 @@ the full pipeline was never tested.
 import pytest
 from unittest.mock import MagicMock, AsyncMock, patch
 
-from custom_components.solar_energy_management.coordinator.sensor_reader import (
+from custom_components.xxx_cristiano.coordinator.sensor_reader import (
     SensorReader,
 )
-from custom_components.solar_energy_management.coordinator.types import PowerReadings
+from custom_components.xxx_cristiano.coordinator.types import PowerReadings
 
 
 def _state(value, unit="W", device_class=None):
@@ -385,7 +385,7 @@ class TestDSMRSplitGrid:
 
         reader = _make_reader_with_states(hass, states, ed)
 
-        with patch("custom_components.solar_energy_management.coordinator.sensor_reader.er.async_get", return_value=mock_registry):
+        with patch("custom_components.xxx_cristiano.coordinator.sensor_reader.er.async_get", return_value=mock_registry):
             power = reader.read_power()
 
         # Should pick meter sensors (same device), NOT heat pump
@@ -1453,7 +1453,7 @@ class TestChargerControlPipeline:
     @pytest.mark.asyncio
     async def test_service_control_keba(self):
         """KEBA: service call keba.set_current with 'current' param."""
-        from custom_components.solar_energy_management.devices.base import CurrentControlDevice
+        from custom_components.xxx_cristiano.devices.base import CurrentControlDevice
 
         hass = MagicMock()
         hass.services = MagicMock()
@@ -1478,7 +1478,7 @@ class TestChargerControlPipeline:
     @pytest.mark.asyncio
     async def test_number_control_wallbox(self):
         """Wallbox: number.set_value on max current entity."""
-        from custom_components.solar_energy_management.devices.base import CurrentControlDevice
+        from custom_components.xxx_cristiano.devices.base import CurrentControlDevice
 
         hass = MagicMock()
         hass.services = MagicMock()
@@ -1503,7 +1503,7 @@ class TestChargerControlPipeline:
     @pytest.mark.asyncio
     async def test_service_with_custom_param(self):
         """Easee: service with custom param name 'dynamicChargerCurrent'."""
-        from custom_components.solar_energy_management.devices.base import CurrentControlDevice
+        from custom_components.xxx_cristiano.devices.base import CurrentControlDevice
 
         hass = MagicMock()
         hass.services = MagicMock()
@@ -1594,7 +1594,7 @@ class TestChargerControlPipeline:
     @pytest.mark.asyncio
     async def test_number_entity_with_all_charger_brands(self):
         """All number-entity chargers use the same control path."""
-        from custom_components.solar_energy_management.devices.base import CurrentControlDevice
+        from custom_components.xxx_cristiano.devices.base import CurrentControlDevice
 
         brands = [
             ("Wallbox", "number.wallbox_max_current"),
@@ -1871,7 +1871,7 @@ class TestSplitGridStartupRace:
         reader = _make_reader_with_states(hass, phase1_states, ed)
 
         with patch(
-            "custom_components.solar_energy_management.coordinator.sensor_reader.er.async_get",
+            "custom_components.xxx_cristiano.coordinator.sensor_reader.er.async_get",
             return_value=phase1_registry,
         ):
             reader.read_power()
@@ -1910,7 +1910,7 @@ class TestSplitGridStartupRace:
         hass.states.async_all = _async_all2
 
         with patch(
-            "custom_components.solar_energy_management.coordinator.sensor_reader.er.async_get",
+            "custom_components.xxx_cristiano.coordinator.sensor_reader.er.async_get",
             return_value=self._meter_registry_mock(),
         ):
             reader.read_power()
@@ -1940,7 +1940,7 @@ class TestSplitGridStartupRace:
         reader = _make_reader_with_states(hass, states, ed)
 
         with patch(
-            "custom_components.solar_energy_management.coordinator.sensor_reader.er.async_get",
+            "custom_components.xxx_cristiano.coordinator.sensor_reader.er.async_get",
             return_value=self._meter_registry_mock(),
         ):
             reader.read_power()
@@ -1973,7 +1973,7 @@ class TestSplitGridStartupRace:
         reader = _make_reader_with_states(hass, states, ed)
 
         with patch(
-            "custom_components.solar_energy_management.coordinator.sensor_reader.er.async_get",
+            "custom_components.xxx_cristiano.coordinator.sensor_reader.er.async_get",
             return_value=self._meter_registry_mock(),
         ):
             reader.read_power()
@@ -1990,7 +1990,7 @@ class TestSplitGridStartupRace:
 
     def _make_coordinator_for_sign_flip(self, confidence="any-device"):
         """Create a minimal coordinator with mocked sensor reader for sign-flip tests."""
-        from custom_components.solar_energy_management.coordinator.coordinator import SEMCoordinator
+        from custom_components.xxx_cristiano.coordinator.coordinator import SEMCoordinator
 
         coord = SEMCoordinator.__new__(SEMCoordinator)
         coord._sensor_reader = MagicMock()
@@ -2136,7 +2136,7 @@ class TestSplitGridCombinedGuard:
         registry.async_get = lambda eid: None
 
         with patch(
-            "custom_components.solar_energy_management.coordinator.sensor_reader.er.async_get",
+            "custom_components.xxx_cristiano.coordinator.sensor_reader.er.async_get",
             return_value=registry,
         ):
             reader.read_power()
@@ -2171,7 +2171,7 @@ class TestSplitGridDiagnostics:
         registry.async_get = lambda eid: None
 
         with patch(
-            "custom_components.solar_energy_management.coordinator.sensor_reader.er.async_get",
+            "custom_components.xxx_cristiano.coordinator.sensor_reader.er.async_get",
             return_value=registry,
         ):
             reader.read_power()
@@ -2602,7 +2602,7 @@ class TestDualTariffAutoSignVote:
         return reader, states
 
     def test_other_tariff_counter_still_votes(self):
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             PowerReadings,
         )
         reader, states = self._reader()

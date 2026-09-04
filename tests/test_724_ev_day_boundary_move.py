@@ -27,7 +27,7 @@ from datetime import date, datetime, timedelta
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.energy_calculator import (
+from custom_components.xxx_cristiano.coordinator.energy_calculator import (
     EnergyCalculator,
 )
 
@@ -217,7 +217,7 @@ class TestMemoSurvivesRestart:
     def test_a_corrupt_stored_offset_never_restores(self, bad):
         """restore_state's gate: a memo with a junk offset is equivalent to
         no memo (the upgrade seam takes over), never adopted as-is."""
-        from custom_components.solar_energy_management.coordinator.energy_calculator import (
+        from custom_components.xxx_cristiano.coordinator.energy_calculator import (
             _valid_hhmm,
         )
         assert not _valid_hhmm(bad)

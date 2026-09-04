@@ -40,10 +40,10 @@ import voluptuous as vol
 import yaml
 from homeassistant.data_entry_flow import FlowResultType
 
-from custom_components.solar_energy_management.config_flow import (
+from custom_components.xxx_cristiano.config_flow import (
     OptionsFlowHandler,
 )
-from custom_components.solar_energy_management.const import (
+from custom_components.xxx_cristiano.const import (
     DEFAULT_EMERGENCY_PEAK_LEVEL,
     DEFAULT_PEAK_LIMIT_UNLIMITED,
     DEFAULT_TARGET_PEAK_LIMIT,
@@ -206,7 +206,7 @@ async def test_install_no_longer_asks_for_the_peak_limit(mock_hass):
     defaults for all four load-management keys, regardless of what the
     hardware step is submitted with — it has no way left to ask.
     """
-    from custom_components.solar_energy_management.config_flow import (
+    from custom_components.xxx_cristiano.config_flow import (
         SolarEnergyManagementConfigFlow,
     )
 
@@ -226,7 +226,7 @@ async def test_install_no_longer_asks_for_the_peak_limit(mock_hass):
     flow._abort_if_unique_id_configured = MagicMock()
 
     with patch(
-        "custom_components.solar_energy_management.config_flow."
+        "custom_components.xxx_cristiano.config_flow."
         "discover_inverter_from_registry",
         return_value=None,
     ):

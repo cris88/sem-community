@@ -41,19 +41,19 @@ from __future__ import annotations
 import pytest
 from unittest.mock import AsyncMock, MagicMock, Mock, patch
 
-from custom_components.solar_energy_management.coordinator.battery_adapters.base import (
+from custom_components.xxx_cristiano.coordinator.battery_adapters.base import (
     BatteryControlAdapter,
 )
-from custom_components.solar_energy_management.coordinator.battery_adapters.huawei import (
+from custom_components.xxx_cristiano.coordinator.battery_adapters.huawei import (
     HuaweiBatteryAdapter,
 )
-from custom_components.solar_energy_management.coordinator.battery_adapters.generic import (
+from custom_components.xxx_cristiano.coordinator.battery_adapters.generic import (
     GenericBatteryAdapter,
 )
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     BatteryIntent,
 )
-from custom_components.solar_energy_management.coordinator.battery_adapters.force_charge import (
+from custom_components.xxx_cristiano.coordinator.battery_adapters.force_charge import (
     ChargeCommandStatus,
     ChargeStatus,
 )
@@ -291,7 +291,7 @@ def _make_huawei(service_raises: bool = False) -> HuaweiBatteryAdapter:
         "battery_max_discharge_power": 5000,
     }
     with patch(
-        "custom_components.solar_energy_management.coordinator"
+        "custom_components.xxx_cristiano.coordinator"
         ".battery_adapters.huawei.HuaweiBatteryAdapter._autodetect_battery_device",
         return_value=None,
     ):
@@ -479,7 +479,7 @@ class TestUnloadTeardown:
         mock_coord._surplus_controller = None
 
         hass = MagicMock()
-        hass.data = {"solar_energy_management": {"entry-1": mock_coord}}
+        hass.data = {"xxx_cristiano": {"entry-1": mock_coord}}
         hass.config_entries = MagicMock()
         hass.config_entries.async_unload_platforms = AM(return_value=True)
         hass.services = MagicMock()
@@ -488,7 +488,7 @@ class TestUnloadTeardown:
         entry = MagicMock()
         entry.entry_id = "entry-1"
 
-        from custom_components.solar_energy_management import async_unload_entry
+        from custom_components.xxx_cristiano import async_unload_entry
         result = await async_unload_entry(hass, entry)
 
         assert result is True
@@ -509,7 +509,7 @@ class TestUnloadTeardown:
         mock_coord._surplus_controller = None
 
         hass = MagicMock()
-        hass.data = {"solar_energy_management": {"entry-1": mock_coord}}
+        hass.data = {"xxx_cristiano": {"entry-1": mock_coord}}
         hass.config_entries = MagicMock()
         hass.config_entries.async_unload_platforms = AM(return_value=True)
         hass.services = MagicMock()
@@ -518,7 +518,7 @@ class TestUnloadTeardown:
         entry = MagicMock()
         entry.entry_id = "entry-1"
 
-        from custom_components.solar_energy_management import async_unload_entry
+        from custom_components.xxx_cristiano import async_unload_entry
         result = await async_unload_entry(hass, entry)
 
         assert result is True  # unload not blocked by adapter failure
@@ -556,12 +556,12 @@ def _make_huawei_boot(forcible_status: str = "absent") -> HuaweiBatteryAdapter:
     }
     with (
         patch(
-            "custom_components.solar_energy_management.coordinator"
+            "custom_components.xxx_cristiano.coordinator"
             ".battery_adapters.huawei.HuaweiBatteryAdapter._autodetect_battery_device",
             return_value=None,
         ),
         patch(
-            "custom_components.solar_energy_management.coordinator"
+            "custom_components.xxx_cristiano.coordinator"
             ".battery_adapters._integration_loaded",
             return_value=True,
         ),
@@ -582,7 +582,7 @@ class TestBootOrphanClear:
 
         # command_normal triggers _maybe_clear_startup_orphan
         with patch(
-            "custom_components.solar_energy_management.coordinator"
+            "custom_components.xxx_cristiano.coordinator"
             ".battery_adapters._integration_loaded",
             return_value=True,
         ):
@@ -600,7 +600,7 @@ class TestBootOrphanClear:
         no stop issued."""
         adapter = _make_huawei_boot(forcible_status="absent")
         with patch(
-            "custom_components.solar_energy_management.coordinator"
+            "custom_components.xxx_cristiano.coordinator"
             ".battery_adapters._integration_loaded",
             return_value=True,
         ):
@@ -618,7 +618,7 @@ class TestBootOrphanClear:
         adapter._forcible_charging = True  # SEM started this charge
 
         with patch(
-            "custom_components.solar_energy_management.coordinator"
+            "custom_components.xxx_cristiano.coordinator"
             ".battery_adapters._integration_loaded",
             return_value=True,
         ):
@@ -633,7 +633,7 @@ class TestBootOrphanClear:
         adapter = _make_huawei_boot(forcible_status="pending")
 
         with patch(
-            "custom_components.solar_energy_management.coordinator"
+            "custom_components.xxx_cristiano.coordinator"
             ".battery_adapters._integration_loaded",
             return_value=True,
         ):

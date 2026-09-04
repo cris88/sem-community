@@ -33,10 +33,10 @@ from unittest.mock import AsyncMock, MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     BatteryPower,
 )
-from custom_components.solar_energy_management.coordinator.types import (
+from custom_components.xxx_cristiano.coordinator.types import (
     PowerReadings,
 )
 
@@ -130,7 +130,7 @@ class TestTwoBatteryLoop:
         """Each battery_id maps to its own adapter instance — so
         ``last_discharge_limit_w`` hysteresis on battery A can't leak
         into battery B's commands."""
-        from custom_components.solar_energy_management.coordinator.battery_adapters import (
+        from custom_components.xxx_cristiano.coordinator.battery_adapters import (
             adapter_for,
         )
 
@@ -154,13 +154,13 @@ class TestTwoBatteryLoop:
         """Mirror the real per-battery loop: build a view per battery,
         decide, actuate. Verify each adapter receives its own intent
         independently."""
-        from custom_components.solar_energy_management.coordinator.actuate_battery import (
+        from custom_components.xxx_cristiano.coordinator.actuate_battery import (
             actuate_battery,
         )
-        from custom_components.solar_energy_management.coordinator.battery_adapters import (
+        from custom_components.xxx_cristiano.coordinator.battery_adapters import (
             adapter_for,
         )
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             BatteryDecision,
             BatteryIntent,
         )
@@ -290,7 +290,7 @@ class TestDischargeLimitSensorRollup:
     consumer side)."""
 
     def test_no_active_limits_returns_none(self):
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             BatteryIntent as _BI,
         )
 
@@ -310,7 +310,7 @@ class TestDischargeLimitSensorRollup:
         residual limits (transient state during 1:1 protection
         re-evaluation), the sensor reports the tightest (min) — the
         binding constraint on the fleet."""
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             BatteryIntent as _BI,
         )
 
@@ -335,7 +335,7 @@ class TestDischargeLimitSensorRollup:
         """A battery in NORMAL state doesn't contribute to the
         discharge_limit even if it has a stale ``_last_discharge_limit_w``
         from a previous cycle."""
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             BatteryIntent as _BI,
         )
 

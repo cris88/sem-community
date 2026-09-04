@@ -35,10 +35,10 @@ import pathlib
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.health_check import (
+from custom_components.xxx_cristiano.coordinator.health_check import (
     HealthCheck,
 )
-from custom_components.solar_energy_management.coordinator.types import (
+from custom_components.xxx_cristiano.coordinator.types import (
     CostData,
     PowerFlows,
     PowerReadings,
@@ -217,7 +217,7 @@ class TestTheClampsAreActuallyRecorded660:
     """The instrument only works if the producers feed it."""
 
     def test_the_autarky_clamp_is_recorded(self):
-        from custom_components.solar_energy_management.coordinator.energy_calculator import (  # noqa: E501
+        from custom_components.xxx_cristiano.coordinator.energy_calculator import (  # noqa: E501
             EnergyCalculator,
         )
 
@@ -226,7 +226,7 @@ class TestTheClampsAreActuallyRecorded660:
         assert calc.clamp_engagement["autarky_rate"] == pytest.approx(30.0)
 
     def test_a_quiet_clamp_clears_its_own_key_only(self):
-        from custom_components.solar_energy_management.coordinator.energy_calculator import (  # noqa: E501
+        from custom_components.xxx_cristiano.coordinator.energy_calculator import (  # noqa: E501
             EnergyCalculator,
         )
 
@@ -243,10 +243,10 @@ class TestTheClampsAreActuallyRecorded660:
         solar yet, the branch is skipped — a record left over from an
         earlier cycle would keep incrementing its streak into a violation
         nothing is currently producing."""
-        from custom_components.solar_energy_management.coordinator.energy_calculator import (  # noqa: E501
+        from custom_components.xxx_cristiano.coordinator.energy_calculator import (  # noqa: E501
             EnergyCalculator,
         )
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             EnergyTotals,
         )
 
@@ -282,7 +282,7 @@ class TestTheClampsAreActuallyRecorded660:
         """Guard for the shape of the #660 edit itself: ``_record_clamp``
         was first written INSIDE ``__init__``, whose remaining body then
         became unreachable after its ``return``."""
-        from custom_components.solar_energy_management.coordinator.energy_calculator import (  # noqa: E501
+        from custom_components.xxx_cristiano.coordinator.energy_calculator import (  # noqa: E501
             EnergyCalculator,
         )
 

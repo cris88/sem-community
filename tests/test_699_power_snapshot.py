@@ -23,7 +23,7 @@ from pathlib import Path
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.coordinator import (
+from custom_components.xxx_cristiano.coordinator.coordinator import (
     SEMCoordinator,
 )
 
@@ -208,7 +208,7 @@ class TestEvLagAttributionGuard:
 
 class TestSensorPublishesTheSnapshot:
     def _home_sensor(self):
-        from custom_components.solar_energy_management.sensor import SEMSolarSensor
+        from custom_components.xxx_cristiano.sensor import SEMSolarSensor
         s = SEMSolarSensor.__new__(SEMSolarSensor)
         s.entity_description = MagicMock()
         s.entity_description.key = "home_consumption_power"
@@ -228,7 +228,7 @@ class TestSensorPublishesTheSnapshot:
         assert "power_snapshot" not in s.extra_state_attributes
 
     def test_snapshot_is_unrecorded(self):
-        from custom_components.solar_energy_management.sensor import SEMSolarSensor
+        from custom_components.xxx_cristiano.sensor import SEMSolarSensor
         assert "power_snapshot" in SEMSolarSensor._unrecorded_attributes
 
 

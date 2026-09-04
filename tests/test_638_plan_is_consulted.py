@@ -29,18 +29,18 @@ from types import SimpleNamespace
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     ChargerEnergy,
     ChargerIntent,
     ChargerPower,
     ChargerView,
     FleetContext,
 )
-from custom_components.solar_energy_management.coordinator.decide import (
+from custom_components.xxx_cristiano.coordinator.decide import (
     MODE_STRATEGIES,
     decide,
 )
-from custom_components.solar_energy_management.coordinator.plan_verdict import (
+from custom_components.xxx_cristiano.coordinator.plan_verdict import (
     NO_OPINION,
     PlanVerdict,
     verdict_from_night_plan,
@@ -120,7 +120,7 @@ class TestTheVerdictIsPartOfThePicture:
         import io
         import tokenize
 
-        from custom_components.solar_energy_management.coordinator import (
+        from custom_components.xxx_cristiano.coordinator import (
             build_view,
             decide as decide_mod,
         )
@@ -287,7 +287,7 @@ class TestOnePlaceTranslatesTheNightPlan:
         import io
         import tokenize
 
-        from custom_components.solar_energy_management.coordinator import (
+        from custom_components.xxx_cristiano.coordinator import (
             coordinator as coord_mod,
         )
 
@@ -345,7 +345,7 @@ class TestTheVerdictIsDayNightAgnostic:
         """No HA imports: the load intent layer must be able to share it."""
         import inspect
 
-        from custom_components.solar_energy_management.coordinator import (
+        from custom_components.xxx_cristiano.coordinator import (
             plan_verdict,
         )
 

@@ -23,10 +23,10 @@ from unittest.mock import AsyncMock, MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.decide_battery import (
+from custom_components.xxx_cristiano.coordinator.decide_battery import (
     effective_battery_count,
 )
-from custom_components.solar_energy_management.coordinator.actuate_battery import (
+from custom_components.xxx_cristiano.coordinator.actuate_battery import (
     restore_discharge_limit_on_startup,
 )
 

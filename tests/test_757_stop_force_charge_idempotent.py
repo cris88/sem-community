@@ -24,19 +24,19 @@ from __future__ import annotations
 import pytest
 from unittest.mock import AsyncMock, MagicMock, Mock, patch
 
-from custom_components.solar_energy_management.coordinator.battery_adapters.huawei import (
+from custom_components.xxx_cristiano.coordinator.battery_adapters.huawei import (
     HuaweiBatteryAdapter,
 )
-from custom_components.solar_energy_management.coordinator.battery_adapters.generic import (
+from custom_components.xxx_cristiano.coordinator.battery_adapters.generic import (
     GenericBatteryAdapter,
 )
-from custom_components.solar_energy_management.coordinator.battery_adapters.goodwe import (
+from custom_components.xxx_cristiano.coordinator.battery_adapters.goodwe import (
     GoodWeBatteryAdapter,
 )
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     BatteryIntent,
 )
-from custom_components.solar_energy_management.coordinator.battery_adapters.force_charge import (
+from custom_components.xxx_cristiano.coordinator.battery_adapters.force_charge import (
     ChargeCommandStatus,
     ChargeStatus,
 )
@@ -66,7 +66,7 @@ def _write_calls(hass: MagicMock) -> int:
 def _make_huawei():
     hass = _make_hass()
     with patch(
-        "custom_components.solar_energy_management.coordinator"
+        "custom_components.xxx_cristiano.coordinator"
         ".battery_adapters.huawei.HuaweiBatteryAdapter._autodetect_battery_device",
         return_value=None,
     ):

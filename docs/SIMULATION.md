@@ -83,7 +83,7 @@ standard surfaces (one source of truth — the execution seam itself):
    ```
 
 2. **Events — subscribe for the edges:** every decision *transition*
-   fires a `solar_energy_management_observer_decision` bus event with the
+   fires a `xxx_cristiano_observer_decision` bus event with the
    same payload. Unchanged decisions do not repeat (a wobbling watt
    number is not a transition), so the stream is edges, not a heartbeat.
 
@@ -99,7 +99,7 @@ automation:
   - alias: "Sim actuator: heizband follows SEM's would-decisions"
     trigger:
       - platform: event
-        event_type: solar_energy_management_observer_decision
+        event_type: xxx_cristiano_observer_decision
         event_data: {device_id: sim_heizband}
     action:
       - service: >
@@ -141,7 +141,7 @@ night's worth of edge cases runs in an evening:
 3. Warm the sim room past target+offset → assert the load leaves the plan
    (`stop_condition_met` is a collector gate); cool it → it returns.
 4. Flip the plug boolean → assert the EV demand appears/vanishes.
-5. `solar_energy_management.replan` is the manual lever when you change
+5. `xxx_cristiano.replan` is the manual lever when you change
    something the demand signature does not watch (the honest test/ops
    restamp; the cause is recorded as `manual`).
 

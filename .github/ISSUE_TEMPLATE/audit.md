@@ -75,7 +75,7 @@ Schema-version bump? **<yes/no>** (only if config-entry shape changes)
 
 - [ ] Local syntax (`python3.12 -c "import ast; ..."`)
 - [ ] Focused test (`pytest tests/test_<N>_<module>_telemetry.py -q`)
-- [ ] Full suite (`pytest custom_components/solar_energy_management/tests/ -q`)
+- [ ] Full suite (`pytest custom_components/xxx_cristiano/tests/ -q`)
 - [ ] Reviewer (`ruflo-core:reviewer` over diff)
 - [ ] HA-TEST deploy (`~/bin/deploy-test.sh --code-only`)
 - [ ] Live attribute check (`curl /api/states/sensor.sem_<name>`)

@@ -45,7 +45,7 @@
         },
         "data_description": {
           "battery_capacity_kwh": "Capacitatea utilizabilă totală a bateriei casnice (NU a celei din EV), în kWh. Folosită de strategia de încărcare bazată pe prognoză pentru a estima cât poate acoperi bateria dintr-un deficit solar. Consultați specificațiile invertorului.",
-          "generate_dashboard_on_install": "Când este activat, SEM creează tabloul de bord Lovelace imediat după încheierea acestui pas și apoi repornește Home Assistant după circa 5 s, pentru ca noul tablou de bord să devină vizibil. Îl puteți regenera oricând manual mai târziu prin serviciul solar_energy_management.generate_dashboard.",
+          "generate_dashboard_on_install": "Când este activat, SEM creează tabloul de bord Lovelace imediat după încheierea acestui pas și apoi repornește Home Assistant după circa 5 s, pentru ca noul tablou de bord să devină vizibil. Îl puteți regenera oricând manual mai târziu prin serviciul xxx_cristiano.generate_dashboard.",
           "diagram_style": "Alegeți diagrama de sistem de pe fila Acasă. 'SEM' folosește diagrama animată integrată. 'K-Flow' folosește cardul K-Flow HACS (trebuie instalat separat)."
         }
       },

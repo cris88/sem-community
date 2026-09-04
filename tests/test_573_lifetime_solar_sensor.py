@@ -16,13 +16,13 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.energy_calculator import (
+from custom_components.xxx_cristiano.coordinator.energy_calculator import (
     EnergyCalculator,
 )
-from custom_components.solar_energy_management.coordinator.types import PowerReadings
+from custom_components.xxx_cristiano.coordinator.types import PowerReadings
 
 _NOW = datetime(2026, 7, 9, 12, 0, 0)
-_DT = "custom_components.solar_energy_management.coordinator.energy_calculator.dt_util"
+_DT = "custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util"
 
 
 @pytest.fixture
@@ -65,7 +65,7 @@ class TestLifetimeSolarSensor:
     def test_to_dict_carries_lifetime_solar_key(self, calc):
         """The coordinator payload exposes lifetime_solar_yield_energy for
         the sensor (state_class TOTAL_INCREASING)."""
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             SEMData,
             EnergyTotals,
         )

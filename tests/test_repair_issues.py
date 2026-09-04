@@ -16,13 +16,13 @@ from __future__ import annotations
 from unittest.mock import MagicMock, patch
 
 
-from custom_components.solar_energy_management.coordinator import (
+from custom_components.xxx_cristiano.coordinator import (
     repair_issues as ri,
 )
-from custom_components.solar_energy_management.coordinator.sensor_reader import (
+from custom_components.xxx_cristiano.coordinator.sensor_reader import (
     SensorReader,
 )
-from custom_components.solar_energy_management.coordinator.forecast_reader import (
+from custom_components.xxx_cristiano.coordinator.forecast_reader import (
     ForecastReader,
 )
 
@@ -55,7 +55,7 @@ def _state(value, unit=None, friendly=None):
 # ──────────────────────────────────────────────
 
 
-@patch("custom_components.solar_energy_management.coordinator.repair_issues.ir")
+@patch("custom_components.xxx_cristiano.coordinator.repair_issues.ir")
 def test_raise_sensor_unavailable_calls_ir(mock_ir):
     """``raise_sensor_unavailable`` delegates to ``ir.async_create_issue``
     with the expected fields."""
@@ -73,7 +73,7 @@ def test_raise_sensor_unavailable_calls_ir(mock_ir):
     assert placeholders["minutes"] == "7"
 
 
-@patch("custom_components.solar_energy_management.coordinator.repair_issues.ir")
+@patch("custom_components.xxx_cristiano.coordinator.repair_issues.ir")
 def test_clear_sensor_unavailable_calls_delete(mock_ir):
     hass = MagicMock()
     ri.clear_sensor_unavailable(hass, "sensor.foo")
@@ -82,7 +82,7 @@ def test_clear_sensor_unavailable_calls_delete(mock_ir):
     assert args[2] == "sensor_unavailable_sensor.foo"
 
 
-@patch("custom_components.solar_energy_management.coordinator.repair_issues.ir")
+@patch("custom_components.xxx_cristiano.coordinator.repair_issues.ir")
 def test_clear_is_idempotent_when_ir_throws(mock_ir):
     """The wrappers never propagate exceptions — a failed
     ``async_delete_issue`` doesn't crash the coordinator cycle."""
@@ -96,7 +96,7 @@ def test_clear_is_idempotent_when_ir_throws(mock_ir):
 # ──────────────────────────────────────────────
 
 
-@patch("custom_components.solar_energy_management.coordinator.repair_issues")
+@patch("custom_components.xxx_cristiano.coordinator.repair_issues")
 def test_sensor_reader_transient_flap_does_not_raise(mock_ri_module):
     """Single-cycle unavailability stays silent — the threshold is the
     whole point: a Huawei modbus blink shouldn't surface a Repair."""
@@ -114,7 +114,7 @@ def test_sensor_reader_transient_flap_does_not_raise(mock_ri_module):
     assert "sensor.foo" not in reader._sensor_repair_raised
 
 
-@patch("custom_components.solar_energy_management.coordinator.repair_issues")
+@patch("custom_components.xxx_cristiano.coordinator.repair_issues")
 def test_sensor_reader_raises_after_threshold(mock_ri_module):
     """Once the outage clock exceeds the threshold, ``raise_sensor_unavailable``
     is called exactly once for that outage."""
@@ -147,7 +147,7 @@ def test_sensor_reader_raises_after_threshold(mock_ri_module):
     assert len(raise_calls) == 1
 
 
-@patch("custom_components.solar_energy_management.coordinator.repair_issues")
+@patch("custom_components.xxx_cristiano.coordinator.repair_issues")
 def test_sensor_reader_clears_repair_on_recovery(mock_ri_module):
     """Sensor coming back resets the outage clock AND clears the Repair."""
     mock_ri_module.UNAVAILABLE_REPAIR_THRESHOLD_S = 300
@@ -181,7 +181,7 @@ def test_sensor_reader_clears_repair_on_recovery(mock_ri_module):
 # ──────────────────────────────────────────────
 
 
-@patch("custom_components.solar_energy_management.coordinator.repair_issues")
+@patch("custom_components.xxx_cristiano.coordinator.repair_issues")
 def test_forecast_reader_logs_once_per_outage(mock_ri_module, caplog):
     """Pre-fix: ``detect_source`` logged INFO every cycle when no
     integration was found. Post-fix: log once, Repair after 1h."""
@@ -193,7 +193,7 @@ def test_forecast_reader_logs_once_per_outage(mock_ri_module, caplog):
 
     # Five consecutive misses — only one INFO log.
     with caplog.at_level(logging.INFO, logger=(
-        "custom_components.solar_energy_management.coordinator.forecast_reader"
+        "custom_components.xxx_cristiano.coordinator.forecast_reader"
     )):
         for _ in range(5):
             reader.detect_source()
@@ -211,7 +211,7 @@ def test_forecast_reader_logs_once_per_outage(mock_ri_module, caplog):
     mock_ri_module.raise_no_forecast_integration.assert_not_called()
 
 
-@patch("custom_components.solar_energy_management.coordinator.repair_issues")
+@patch("custom_components.xxx_cristiano.coordinator.repair_issues")
 def test_forecast_reader_raises_repair_after_threshold(mock_ri_module):
     """After 1 hour of detection failure, file a Repair (once)."""
     states = {}

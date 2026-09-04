@@ -9,12 +9,12 @@ from datetime import datetime, timedelta
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.energy_planner import (
+from custom_components.xxx_cristiano.coordinator.energy_planner import (
     Demand,
 )
 # (#758) The flat-slot night is a fixture, not a shipping entry point — see
 # synthetic_night.py for exactly which four things it pretends about a night.
-from custom_components.solar_energy_management.tests.synthetic_night import (
+from custom_components.xxx_cristiano.tests.synthetic_night import (
     PriceSlot, pack_flat_night,
 )
 
@@ -269,7 +269,7 @@ class TestEnsembleScenario:
 # The Night Ledger (spec: 2026-07-28-overnight-flow-plan-design.md)
 # ---------------------------------------------------------------------------
 
-from custom_components.solar_energy_management.coordinator.energy_planner import (  # noqa: E402
+from custom_components.xxx_cristiano.coordinator.energy_planner import (  # noqa: E402
     LedgerSlot, build_night_ledger, pack_night,
 )
 

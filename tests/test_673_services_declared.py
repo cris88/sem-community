@@ -11,7 +11,7 @@ already know the parameter names and hand-write YAML.
 
 That landed hardest on ``diagnose``, the one service the troubleshooting docs
 tell users to call: ``docs/SEM_TRACE.md`` says "call the
-``solar_energy_management.diagnose`` service with ``section: trace``", and a
+``xxx_cristiano.diagnose`` service with ``section: trace``", and a
 user following that instruction met an action with no ``section`` dropdown and
 no hint that ``trace`` was one of twelve valid values. ``remove_charger`` is
 user-facing too; ``get_config`` / ``set_option`` are called by the dashboard

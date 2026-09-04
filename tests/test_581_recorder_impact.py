@@ -24,7 +24,7 @@ import pytest
 
 from homeassistant.components.sensor import SensorEntityDescription
 
-from custom_components.solar_energy_management.sensor import SEMSolarSensor
+from custom_components.xxx_cristiano.sensor import SEMSolarSensor
 
 
 def _make_sensor(coordinator, key):

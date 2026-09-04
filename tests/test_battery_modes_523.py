@@ -12,16 +12,16 @@ from types import SimpleNamespace
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     BatteryIntent,
     BatteryRuntime,
     BatteryView,
     FleetContext,
 )
-from custom_components.solar_energy_management.coordinator.decide_battery import (
+from custom_components.xxx_cristiano.coordinator.decide_battery import (
     decide_battery,
 )
-from custom_components.solar_energy_management.consts.battery_modes import (
+from custom_components.xxx_cristiano.consts.battery_modes import (
     arbitrage_allowed_for_mode,
 )
 
@@ -202,7 +202,7 @@ def test_allow_arbitrage_removed_from_selector_v173():
     # #533: automatic battery→grid arbitrage is deactivated for stable 1.7.3,
     # so the allow_arbitrage mode is no longer OFFERED — but its value is still
     # recognised so a stale config doesn't error (returns in 1.7.4).
-    from custom_components.solar_energy_management.consts.battery_modes import (
+    from custom_components.xxx_cristiano.consts.battery_modes import (
         BATTERY_MODES,
     )
     assert "allow_arbitrage" not in BATTERY_MODES, "must not be selectable in 1.7.3"
@@ -236,7 +236,7 @@ async def test_command_off_missing_control_state_fails_closed_then_silent():
     # A missing control entity cannot be validated, so the first OFF handoff
     # must not issue a blind set_value. Subsequent cycles remain silent.
     from unittest.mock import AsyncMock, MagicMock
-    from custom_components.solar_energy_management.coordinator.battery_adapters.generic import (
+    from custom_components.xxx_cristiano.coordinator.battery_adapters.generic import (
         GenericBatteryAdapter,
     )
     hass = MagicMock(); hass.services.async_call = AsyncMock()

@@ -16,7 +16,7 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator import repair_issues as ri
+from custom_components.xxx_cristiano.coordinator import repair_issues as ri
 
 
 @pytest.fixture

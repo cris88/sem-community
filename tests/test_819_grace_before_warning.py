@@ -34,8 +34,8 @@ from __future__ import annotations
 import logging
 from unittest.mock import MagicMock
 
-from custom_components.solar_energy_management.coordinator import forecast_reader as fr
-from custom_components.solar_energy_management.coordinator.forecast_reader import (
+from custom_components.xxx_cristiano.coordinator import forecast_reader as fr
+from custom_components.xxx_cristiano.coordinator.forecast_reader import (
     ForecastReader,
 )
 

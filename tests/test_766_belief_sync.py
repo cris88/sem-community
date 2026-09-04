@@ -19,7 +19,7 @@ from __future__ import annotations
 from unittest.mock import MagicMock, Mock
 
 
-from custom_components.solar_energy_management.devices.base import (
+from custom_components.xxx_cristiano.devices.base import (
     DeviceControlMode, DeviceState, SwitchDevice,
 )
 
@@ -39,7 +39,7 @@ def _dev(entity_id="input_boolean.pool", state="on", believes_active=False):
     # no mode at all.
     d.control_mode = DeviceControlMode.SURPLUS
     # minimal status scaffolding
-    from custom_components.solar_energy_management.devices.base import DeviceStatus
+    from custom_components.xxx_cristiano.devices.base import DeviceStatus
     d._status = DeviceStatus(state=(DeviceState.ACTIVE if believes_active
                                     else DeviceState.IDLE))
     d._sem_owned = believes_active

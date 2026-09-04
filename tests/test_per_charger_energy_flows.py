@@ -21,10 +21,10 @@ from unittest.mock import patch
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.flow_calculator import (
+from custom_components.xxx_cristiano.coordinator.flow_calculator import (
     FlowCalculator,
 )
-from custom_components.solar_energy_management.coordinator.types import (
+from custom_components.xxx_cristiano.coordinator.types import (
     ChargerFlows,
     EnergyFlows,
     PowerFlows,
@@ -120,7 +120,7 @@ class TestDayRollover:
 
         # Simulate next day.
         with patch(
-            "custom_components.solar_energy_management.coordinator.flow_calculator.dt_util.now"
+            "custom_components.xxx_cristiano.coordinator.flow_calculator.dt_util.now"
         ) as mocked:
             tomorrow = date.today() + timedelta(days=1)
             mocked.return_value.date.return_value = tomorrow
@@ -191,7 +191,7 @@ class TestDataDict:
     ``len(ev_chargers) > 1``) look up these keys."""
 
     def test_dict_includes_per_charger_keys(self):
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             ChargerEnergyFlows, SEMData,
         )
         d = SEMData()
@@ -209,7 +209,7 @@ class TestDataDict:
         assert "flow_solar_to_ev_power" in out
 
     def test_dict_omits_per_charger_keys_when_empty(self):
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             SEMData,
         )
         d = SEMData()
@@ -222,7 +222,7 @@ class TestDataDict:
         """For each charger present in either power_flows.per_charger
         or energy_flows.per_charger, ``to_dict`` emits 6 keys: 3 power
         + 3 energy. These are the keys ``sensor.py`` looks up."""
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             ChargerEnergyFlows, SEMData,
         )
         d = SEMData()

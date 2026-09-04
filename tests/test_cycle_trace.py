@@ -6,7 +6,7 @@ from __future__ import annotations
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.cycle_trace import (
+from custom_components.xxx_cristiano.coordinator.cycle_trace import (
     LayerStatus, LayerRecord, SubsystemTrace, CycleTrace, TraceCollector,
 )
 
@@ -204,7 +204,7 @@ class TestHealthDebounce:
 
 # ── #576: Today's Plan device rows ────────────────────────────────────────
 from datetime import datetime, timedelta, timezone  # noqa: E402
-from custom_components.solar_energy_management.coordinator.today_plan import (  # noqa: E402
+from custom_components.xxx_cristiano.coordinator.today_plan import (  # noqa: E402
     compose_today_plan,
 )
 
@@ -249,7 +249,7 @@ class TestTodayPlanDeviceRows:
 
 
 # ── #576: battery role in the 3-layer trace reflects device priority + mode ─
-from custom_components.solar_energy_management.coordinator.cycle_trace import (  # noqa: E402
+from custom_components.xxx_cristiano.coordinator.cycle_trace import (  # noqa: E402
     battery_list_role,
 )
 
@@ -309,7 +309,7 @@ class TestBatteryListRole:
 
 
 # ── #576: integration-layer match functions (the sealed watchdog) ──────────
-from custom_components.solar_energy_management.coordinator.cycle_trace import (  # noqa: E402
+from custom_components.xxx_cristiano.coordinator.cycle_trace import (  # noqa: E402
     ev_layer_match, battery_layer_match, device_layer_match, heat_pump_layer_match,
 )
 

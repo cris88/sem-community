@@ -24,8 +24,8 @@ from pathlib import Path
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator import surplus_controller as sc
-from custom_components.solar_energy_management.devices.base import (
+from custom_components.xxx_cristiano.coordinator import surplus_controller as sc
+from custom_components.xxx_cristiano.devices.base import (
     ControllableDevice,
     DeviceControlMode,
 )
@@ -257,7 +257,7 @@ def test_no_activate_implementation_is_expected_to_own():
     If someone adds ``record_activated()`` inside a device implementation this
     fails, so the two places can't silently both claim it.
     """
-    from custom_components.solar_energy_management.devices import base as devbase
+    from custom_components.xxx_cristiano.devices import base as devbase
 
     for name, obj in vars(devbase).items():
         if not inspect.isclass(obj) or not issubclass(obj, ControllableDevice):

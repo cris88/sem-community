@@ -15,7 +15,7 @@ loads only, and the executor half of #638 had never been simulated at all.
 One cut for every family: the actuator branches once, mutates nothing, and
 publishes the WOULD decision on the standard #764 surface — the
 ``would_decisions`` map on the observer switch and the
-``solar_energy_management_observer_decision`` bus event.
+``xxx_cristiano_observer_decision`` bus event.
 """
 from __future__ import annotations
 
@@ -28,11 +28,11 @@ from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.actuate import actuate
-from custom_components.solar_energy_management.coordinator.actuate_battery import (
+from custom_components.xxx_cristiano.coordinator.actuate import actuate
+from custom_components.xxx_cristiano.coordinator.actuate_battery import (
     actuate_battery,
 )
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     BatteryDecision,
     BatteryIntent,
     ChargerDecision,
@@ -40,13 +40,13 @@ from custom_components.solar_energy_management.coordinator.charger_types import 
     ChargerPower,
     commanded_power_w,
 )
-from custom_components.solar_energy_management.coordinator.coordinator import (
+from custom_components.xxx_cristiano.coordinator.coordinator import (
     SEMCoordinator,
 )
-from custom_components.solar_energy_management.coordinator.surplus_controller import (
+from custom_components.xxx_cristiano.coordinator.surplus_controller import (
     SurplusController,
 )
-from custom_components.solar_energy_management.utils.log_gate import reset_log_gate
+from custom_components.xxx_cristiano.utils.log_gate import reset_log_gate
 
 
 @pytest.fixture(autouse=True)
@@ -289,7 +289,7 @@ class TestTheBatteryPipelineRunsUnderObserver:
 
     async def _run(self, coord, adapter):
         with patch(
-            "custom_components.solar_energy_management.coordinator."
+            "custom_components.xxx_cristiano.coordinator."
             "battery_adapters.adapter_for", return_value=adapter,
         ):
             await coord._run_battery_pipeline(

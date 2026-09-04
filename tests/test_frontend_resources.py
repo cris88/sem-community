@@ -22,8 +22,8 @@ from unittest.mock import AsyncMock, MagicMock
 
 import pytest
 
-import custom_components.solar_energy_management as sem_module
-from custom_components.solar_energy_management import (
+import custom_components.xxx_cristiano as sem_module
+from custom_components.xxx_cristiano import (
     _async_register_frontend_resources,
 )
 
@@ -171,7 +171,7 @@ class TestStaticPathServedViaAsyncApi:
     async def test_registers_the_dashboard_dir_via_async_static_paths(self):
         """The dashboard dir is served through the non-removed async API,
         with a StaticPathConfig whose url_path is the /local bundle prefix."""
-        from custom_components.solar_energy_management.const import DOMAIN
+        from custom_components.xxx_cristiano.const import DOMAIN
 
         r = _storage_mode_resources(initial_items=[])
         hass = _hass_with_resources(r)

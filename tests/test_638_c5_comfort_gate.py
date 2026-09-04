@@ -23,18 +23,18 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.energy_plan_actuation import (
+from custom_components.xxx_cristiano.coordinator.energy_plan_actuation import (
     PlanGate,
     load_verdict,
 )
-from custom_components.solar_energy_management.coordinator.plan_verdict import (
+from custom_components.xxx_cristiano.coordinator.plan_verdict import (
     NO_OPINION,
     PlanVerdict,
 )
-from custom_components.solar_energy_management.coordinator.surplus_controller import (
+from custom_components.xxx_cristiano.coordinator.surplus_controller import (
     compute_load_intent,
 )
-from custom_components.solar_energy_management.devices.base import (
+from custom_components.xxx_cristiano.devices.base import (
     DeviceControlMode,
 )
 
@@ -62,7 +62,7 @@ def _win_dev(did="heizband"):
 
 def _win_self(gates):
     """A fake whose _energy_plan_gate answers from a dict."""
-    from custom_components.solar_energy_management.coordinator.energy_plan_actuation import (
+    from custom_components.xxx_cristiano.coordinator.energy_plan_actuation import (
         UNCOVERED,
     )
     fake = SimpleNamespace(
@@ -75,7 +75,7 @@ def _win_self(gates):
 
 
 def _windows(fake, devices):
-    from custom_components.solar_energy_management.coordinator.coordinator import (
+    from custom_components.xxx_cristiano.coordinator.coordinator import (
         SEMCoordinator,
     )
     return SEMCoordinator._energy_plan_load_windows(fake, devices)
@@ -189,7 +189,7 @@ class TestComfortBankingRunsInItsBlock:
 @pytest.mark.unit
 class TestTheLegacySurfacesAreGone:
     def test_load_window_is_deleted(self):
-        import custom_components.solar_energy_management.coordinator.energy_plan_actuation as oa
+        import custom_components.xxx_cristiano.coordinator.energy_plan_actuation as oa
         assert not hasattr(oa, "load_window")
 
     def test_plan_window_param_is_deleted(self):
@@ -201,7 +201,7 @@ class TestTheLegacySurfacesAreGone:
         """PROD runs the imperative passes — a run that lives only in the
         desired-state path is a run that never happens."""
         import inspect
-        from custom_components.solar_energy_management.coordinator.surplus_controller import (
+        from custom_components.xxx_cristiano.coordinator.surplus_controller import (
             SurplusController,
         )
         src = inspect.getsource(SurplusController)

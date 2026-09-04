@@ -240,7 +240,7 @@ def test_coverage_tags_only_use_known_modes() -> None:
     Catches the case where someone writes ``mode: solor_only`` and the
     matrix test silently passes (no MUST_COVER cell to match it).
     """
-    from custom_components.solar_energy_management.consts.ev_charge_modes import (
+    from custom_components.xxx_cristiano.consts.ev_charge_modes import (
         EV_CHARGE_MODES,
     )
 

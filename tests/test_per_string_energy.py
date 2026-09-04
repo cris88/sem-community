@@ -27,10 +27,10 @@ from unittest.mock import patch
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.flow_calculator import (
+from custom_components.xxx_cristiano.coordinator.flow_calculator import (
     FlowCalculator,
 )
-from custom_components.solar_energy_management.coordinator.types import (
+from custom_components.xxx_cristiano.coordinator.types import (
     EnergyFlows,
     PowerFlows,
     PowerReadings,
@@ -131,7 +131,7 @@ class TestDayRollover:
         assert fc._per_string_accumulators["pv2"]["energy_kwh"] > 0
         # Simulate next day.
         with patch(
-            "custom_components.solar_energy_management.coordinator.flow_calculator.dt_util.now"
+            "custom_components.xxx_cristiano.coordinator.flow_calculator.dt_util.now"
         ) as mocked:
             tomorrow = date.today() + timedelta(days=1)
             mocked.return_value.date.return_value = tomorrow
@@ -270,7 +270,7 @@ class TestSensorReaderGate:
     only or 0) populate nothing — preserves the v1.6.x behaviour."""
 
     def test_gate_skips_when_one_string(self):
-        from custom_components.solar_energy_management.coordinator.sensor_reader import (
+        from custom_components.xxx_cristiano.coordinator.sensor_reader import (
             SensorReader,
         )
         from unittest.mock import MagicMock
@@ -288,7 +288,7 @@ class TestSensorReaderGate:
         assert readings.solar_power_per_string == {}
 
     def test_gate_populates_when_two_strings(self):
-        from custom_components.solar_energy_management.coordinator.sensor_reader import (
+        from custom_components.xxx_cristiano.coordinator.sensor_reader import (
             SensorReader,
         )
         sr = SensorReader.__new__(SensorReader)

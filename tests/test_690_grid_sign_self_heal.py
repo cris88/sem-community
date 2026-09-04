@@ -24,10 +24,10 @@ balance is reverted and latched off instead of oscillating.
 """
 import pytest
 
-from custom_components.solar_energy_management.coordinator.coordinator import (
+from custom_components.xxx_cristiano.coordinator.coordinator import (
     SEMCoordinator,
 )
-from custom_components.solar_energy_management.coordinator.sensor_reader import (
+from custom_components.xxx_cristiano.coordinator.sensor_reader import (
     PowerReadings,
 )
 

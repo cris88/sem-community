@@ -27,7 +27,7 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.sensor_reader import (
+from custom_components.xxx_cristiano.coordinator.sensor_reader import (
     SensorReader,
 )
 
@@ -129,7 +129,7 @@ class TestTheListIsGone:
 
     def test_no_hardcoded_status_tuple_in_the_reader(self):
         import inspect
-        from custom_components.solar_energy_management.coordinator import (
+        from custom_components.xxx_cristiano.coordinator import (
             sensor_reader as sr,
         )
         src = inspect.getsource(sr._read_binary_sensor

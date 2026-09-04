@@ -25,7 +25,7 @@ NOR park the device.
 import pytest
 from unittest.mock import MagicMock
 
-from custom_components.solar_energy_management.devices.base import (
+from custom_components.xxx_cristiano.devices.base import (
     ClimateDevice,
     surplus_device_from_spec,
 )
@@ -195,7 +195,7 @@ class TestSpecAndGoals:
         assert dev.comfort_limit == 25.5
 
     def test_goal_properties_accept_the_comfort_fields(self):
-        from custom_components.solar_energy_management.features.device_registry import (
+        from custom_components.xxx_cristiano.features.device_registry import (
             UnifiedDeviceRegistry,
         )
         for prop in ("comfort_entity", "comfort_target",
@@ -203,7 +203,7 @@ class TestSpecAndGoals:
             assert prop in UnifiedDeviceRegistry.GOAL_PROPERTIES, prop
 
     def test_apply_goals_writes_the_band_onto_a_live_device(self):
-        from custom_components.solar_energy_management.features.device_registry import (
+        from custom_components.xxx_cristiano.features.device_registry import (
             UnifiedDeviceRegistry,
         )
         reg = UnifiedDeviceRegistry.__new__(UnifiedDeviceRegistry)
@@ -225,10 +225,10 @@ class TestSpecAndGoals:
         """Phase 2 opens the same fields to switch loads; until then a
         comfort goal stored against a non-climate device must not crash the
         rebuild (attributes just land unused)."""
-        from custom_components.solar_energy_management.features.device_registry import (
+        from custom_components.xxx_cristiano.features.device_registry import (
             UnifiedDeviceRegistry,
         )
-        from custom_components.solar_energy_management.devices.base import (
+        from custom_components.xxx_cristiano.devices.base import (
             SwitchDevice,
         )
         reg = UnifiedDeviceRegistry.__new__(UnifiedDeviceRegistry)
@@ -312,7 +312,7 @@ class TestReviewFindings:
         """L2 — 'forced reads as a deficit' is necessary but NOT sufficient:
         the source axis still gates. A solar_only device past its limit with
         no sun and no paid opt-in stays off — honestly."""
-        from custom_components.solar_energy_management.coordinator.surplus_controller import (
+        from custom_components.xxx_cristiano.coordinator.surplus_controller import (
             compute_load_intent,
         )
         dev = _ac(_hass_with({"sensor.room_temp": "27.0"}))
@@ -373,7 +373,7 @@ class TestThePayloadIsTheSingleSource:
     payload publishes the goals (pre-fill) AND the live verdict (chip)."""
 
     def _registry_with(self, dev, goals):
-        from custom_components.solar_energy_management.features.device_registry import (
+        from custom_components.xxx_cristiano.features.device_registry import (
             UnifiedDeviceRegistry,
         )
         reg = UnifiedDeviceRegistry.__new__(UnifiedDeviceRegistry)
@@ -403,7 +403,7 @@ class TestThePayloadIsTheSingleSource:
         """Phase 2 gave switches the band, so THEY now report disengaged
         honestly — this pin moved to a class that genuinely has no band
         (SetpointDevice: it nudges a setpoint, it cannot hold a room)."""
-        from custom_components.solar_energy_management.devices.base import (
+        from custom_components.xxx_cristiano.devices.base import (
             SetpointDevice,
         )
         dev = SetpointDevice(_hass_with({}), "sp1", "HP Setpoint", 2000)
@@ -412,7 +412,7 @@ class TestThePayloadIsTheSingleSource:
 
     def test_a_plain_switch_reports_a_disengaged_band(self):
         """Phase 2: the switch HAS a band now, dark until configured."""
-        from custom_components.solar_energy_management.devices.base import (
+        from custom_components.xxx_cristiano.devices.base import (
             SwitchDevice,
         )
         dev = SwitchDevice(_hass_with({}), "sw1", "Switch", 500,
@@ -510,7 +510,7 @@ class TestSetpointAnchoring:
     def test_switch_devices_have_no_anchor(self):
         """Phase-2 heaters have no setpoint to ride — the mixin default
         answers None and the typed absolutes stay authoritative."""
-        from custom_components.solar_energy_management.devices.base import (
+        from custom_components.xxx_cristiano.devices.base import (
             SwitchDevice,
         )
         dev = SwitchDevice(
@@ -533,7 +533,7 @@ class TestPhase2SwitchLoads:
     compressor min-off floor does NOT apply (resistive loads cycle safely)."""
 
     def _heater(self, hass, *, target=21.0, offset=2.0, limit=18.0):
-        from custom_components.solar_energy_management.devices.base import (
+        from custom_components.xxx_cristiano.devices.base import (
             SwitchDevice,
         )
         dev = SwitchDevice(hass, "floor1", "Floor Heating", 500,
@@ -571,7 +571,7 @@ class TestPhase2SwitchLoads:
 
     def test_the_payload_says_heat(self):
         """The chip must read pre-heating, not pre-cooling."""
-        from custom_components.solar_energy_management.features.device_registry import (
+        from custom_components.xxx_cristiano.features.device_registry import (
             UnifiedDeviceRegistry,
         )
         dev = self._heater(_hass_with({"sensor.room_temp": "20.0"}))
@@ -584,7 +584,7 @@ class TestPhase2SwitchLoads:
                                 "hvac": "heat"}
 
     def test_a_switch_without_comfort_goals_is_untouched(self):
-        from custom_components.solar_energy_management.devices.base import (
+        from custom_components.xxx_cristiano.devices.base import (
             SwitchDevice,
         )
         dev = SwitchDevice(_hass_with({}), "sw", "Plain", 500,
@@ -604,7 +604,7 @@ class TestComfortSampling:
                 + timedelta(minutes=minutes))
 
     def _run(self, dev, running):
-        from custom_components.solar_energy_management.devices.base import (
+        from custom_components.xxx_cristiano.devices.base import (
             DeviceState,
         )
         dev._status.state = (DeviceState.ACTIVE if running

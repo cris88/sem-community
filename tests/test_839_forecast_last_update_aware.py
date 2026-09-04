@@ -50,7 +50,7 @@ def _reader():
     """
     from types import SimpleNamespace
 
-    from custom_components.solar_energy_management.coordinator.forecast_reader import (
+    from custom_components.xxx_cristiano.coordinator.forecast_reader import (
         ForecastReader,
     )
     state = SimpleNamespace(state="12.5",

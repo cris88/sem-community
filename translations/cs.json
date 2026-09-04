@@ -45,7 +45,7 @@
         },
         "data_description": {
           "battery_capacity_kwh": "Celková využitelná kapacita vaší domácí baterie (NIKOLI baterie EV) v kWh. Používá ji strategie nabíjení řízená předpovědí k odhadu, jak velký solární deficit dokáže baterie překlenout. Ověřte ve specifikaci svého měniče.",
-          "generate_dashboard_on_install": "Je-li zapnuto, SEM vytvoří panel Lovelace ihned po dokončení tohoto kroku a přibližně o 5 s později restartuje Home Assistant, aby se nový panel zobrazil. Kdykoli později jej můžete znovu vytvořit ručně pomocí služby solar_energy_management.generate_dashboard.",
+          "generate_dashboard_on_install": "Je-li zapnuto, SEM vytvoří panel Lovelace ihned po dokončení tohoto kroku a přibližně o 5 s později restartuje Home Assistant, aby se nový panel zobrazil. Kdykoli později jej můžete znovu vytvořit ručně pomocí služby xxx_cristiano.generate_dashboard.",
           "diagram_style": "Vyberte systémový diagram na kartě Domů. 'SEM' používá vestavěný animovaný diagram. 'K-Flow' používá kartu K-Flow HACS (nutno nainstalovat zvlášť)."
         }
       },

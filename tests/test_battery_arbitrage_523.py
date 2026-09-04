@@ -12,29 +12,29 @@ from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     BatteryDecision,
     BatteryIntent,
     BatteryRuntime,
     BatteryView,
     FleetContext,
 )
-from custom_components.solar_energy_management.coordinator.decide_battery import (
+from custom_components.xxx_cristiano.coordinator.decide_battery import (
     decide_battery,
 )
-from custom_components.solar_energy_management.coordinator.actuate_battery import (
+from custom_components.xxx_cristiano.coordinator.actuate_battery import (
     actuate_battery,
 )
-from custom_components.solar_energy_management.coordinator.battery_charge_scheduler import (
+from custom_components.xxx_cristiano.coordinator.battery_charge_scheduler import (
     BatteryChargeScheduler,
     SchedulerConfig,
     SchedulerDecision,
     SchedulerState,
 )
-from custom_components.solar_energy_management.coordinator.battery_adapters.huawei import (
+from custom_components.xxx_cristiano.coordinator.battery_adapters.huawei import (
     HuaweiBatteryAdapter,
 )
-from custom_components.solar_energy_management.coordinator.battery_adapters.generic import (
+from custom_components.xxx_cristiano.coordinator.battery_adapters.generic import (
     GenericBatteryAdapter,
 )
 
@@ -176,7 +176,7 @@ def test_integration_loaded_only_when_state_loaded():
     # The self-heal trigger: a brand integration counts as present only when
     # an entry is actually LOADED (not while it's still setting up after a
     # restart — that race left PROD on the Generic adapter).
-    from custom_components.solar_energy_management.coordinator.battery_adapters import (
+    from custom_components.xxx_cristiano.coordinator.battery_adapters import (
         _integration_loaded,
     )
     hass = MagicMock()
@@ -199,7 +199,7 @@ def test_integration_loaded_only_when_state_loaded():
 def test_adapter_for_detects_huawei_via_config_entries():
     # Modern huawei_solar uses runtime_data, not hass.data — adapter_for
     # must still detect it through loaded config entries (#523 real-hardware).
-    from custom_components.solar_energy_management.coordinator.battery_adapters import (
+    from custom_components.xxx_cristiano.coordinator.battery_adapters import (
         adapter_for, HuaweiBatteryAdapter,
     )
     hass = MagicMock()
@@ -500,7 +500,7 @@ async def test_all_brand_adapters_can_sell_to_grid(name, mod, cls):
     forcible-discharge entity is wired, and stops cleanly on NORMAL."""
     import importlib
     Adapter = getattr(importlib.import_module(
-        f"custom_components.solar_energy_management.{mod}"), cls)
+        f"custom_components.xxx_cristiano.{mod}"), cls)
     hass = _hass()
     a = Adapter(hass, {
         "battery_force_discharge_control_entity": "number.sell_power",
@@ -823,7 +823,7 @@ def test_gate_no_clamp_when_ev_not_charging():
 # ── #2: effective import floor (raw-spot → all-in) ──────────────────────
 
 def test_effective_import_floor_scales_raw_up_to_all_in():
-    from custom_components.solar_energy_management.tariff.tariff_provider import (
+    from custom_components.xxx_cristiano.tariff.tariff_provider import (
         DynamicTariffProvider,
     )
     p = DynamicTariffProvider.__new__(DynamicTariffProvider)
@@ -834,7 +834,7 @@ def test_effective_import_floor_scales_raw_up_to_all_in():
 
 
 def test_effective_import_floor_noop_when_curve_matches_state():
-    from custom_components.solar_energy_management.tariff.tariff_provider import (
+    from custom_components.xxx_cristiano.tariff.tariff_provider import (
         DynamicTariffProvider,
     )
     p = DynamicTariffProvider.__new__(DynamicTariffProvider)
@@ -844,7 +844,7 @@ def test_effective_import_floor_noop_when_curve_matches_state():
 
 
 def test_effective_import_floor_never_scales_down():
-    from custom_components.solar_energy_management.tariff.tariff_provider import (
+    from custom_components.xxx_cristiano.tariff.tariff_provider import (
         DynamicTariffProvider,
     )
     p = DynamicTariffProvider.__new__(DynamicTariffProvider)
@@ -915,7 +915,7 @@ async def test_off_mode_without_strategy_entity_defers_to_base():
 def test_adapter_for_keeps_sessy_generic_in_huawei_fleet():
     # A Sessy b2 (strategy select) in a Huawei fleet must NOT be promoted to
     # the Huawei adapter just because huawei_solar is loaded for b1.
-    from custom_components.solar_energy_management.coordinator.battery_adapters import (
+    from custom_components.xxx_cristiano.coordinator.battery_adapters import (
         adapter_for, GenericBatteryAdapter,
     )
     hass = _hass()

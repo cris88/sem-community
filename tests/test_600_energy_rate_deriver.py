@@ -3,7 +3,7 @@ the fixed-window spike."""
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.energy_rate_deriver import (
+from custom_components.xxx_cristiano.coordinator.energy_rate_deriver import (
     EnergyRateDeriver,
 )
 

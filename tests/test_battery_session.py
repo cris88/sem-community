@@ -6,14 +6,14 @@ cost/savings calculation, and hysteresis-based session end detection.
 from unittest.mock import patch
 from datetime import timedelta
 
-from custom_components.solar_energy_management.coordinator.types import (
+from custom_components.xxx_cristiano.coordinator.types import (
     PowerReadings, PowerFlows, BatterySessionData,
 )
 
 
 def _make_coordinator():
     """Create a minimal coordinator mock for battery session tracking."""
-    from custom_components.solar_energy_management.coordinator.coordinator import SEMCoordinator
+    from custom_components.xxx_cristiano.coordinator.coordinator import SEMCoordinator
 
     with patch.object(SEMCoordinator, '__init__', return_value=None):
         coord = SEMCoordinator.__new__(SEMCoordinator)
@@ -297,7 +297,7 @@ class TestBatterySessionToDict:
 
     def test_battery_session_in_to_dict(self):
         """Battery session fields appear in to_dict output."""
-        from custom_components.solar_energy_management.coordinator.types import SEMData
+        from custom_components.xxx_cristiano.coordinator.types import SEMData
 
         data = SEMData()
         data.battery_session = BatterySessionData(
@@ -323,7 +323,7 @@ class TestBatterySessionToDict:
 
     def test_idle_session_defaults(self):
         """Idle session has sensible defaults."""
-        from custom_components.solar_energy_management.coordinator.types import SEMData
+        from custom_components.xxx_cristiano.coordinator.types import SEMData
 
         data = SEMData()
         result = data.to_dict()

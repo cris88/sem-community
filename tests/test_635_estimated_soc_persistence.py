@@ -1,6 +1,6 @@
 """#635 — estimated SOC survives restarts: the save/restore asymmetry fix."""
 
-from custom_components.solar_energy_management.coordinator.storage import SEMStorage
+from custom_components.xxx_cristiano.coordinator.storage import SEMStorage
 
 
 def _storage():
@@ -36,7 +36,7 @@ class TestIntelPersistence635:
         st.set_per_charger_intelligence_state("ev_charger", {"estimated_soc": 82.0,
                                                              "soc_anchored": True,
                                                              "energy_since_full": 7.2})
-        from custom_components.solar_energy_management.coordinator.ev_taper_detector import (
+        from custom_components.xxx_cristiano.coordinator.ev_taper_detector import (
             EVTaperDetector)
         det = EVTaperDetector({"ev_battery_capacity_kwh": 40})
         per = st.get_ev_intelligence_state().get("chargers", {}).get("ev_charger")

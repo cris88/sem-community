@@ -33,7 +33,7 @@ from unittest.mock import AsyncMock, MagicMock
 
 
 def _host(cfg):
-    from custom_components.solar_energy_management.coordinator import ev_control
+    from custom_components.xxx_cristiano.coordinator import ev_control
     h = SimpleNamespace()
     h._phase_switch_tick = ev_control.EVControlMixin._phase_switch_tick.__get__(h)
     h._observer_mode = False
@@ -47,7 +47,7 @@ def _host(cfg):
 
 
 def _decision(amps=10):
-    from custom_components.solar_energy_management.coordinator.charger_types import (
+    from custom_components.xxx_cristiano.coordinator.charger_types import (
         ChargerDecision, ChargerIntent,
     )
     return ChargerDecision(
@@ -57,7 +57,7 @@ def _decision(amps=10):
 
 
 def _cp(power_w=4000.0, charging=True):
-    from custom_components.solar_energy_management.coordinator.charger_types import (
+    from custom_components.xxx_cristiano.coordinator.charger_types import (
         ChargerPower,
     )
     return ChargerPower(charger_id="c1", power_w=power_w,
@@ -108,7 +108,7 @@ class TestTheSelectorFollowsTheSameGate:
     applied and does nothing (#462)."""
 
     def test_selector_creation_checks_the_gate(self):
-        import custom_components.solar_energy_management.select as sel
+        import custom_components.xxx_cristiano.select as sel
         src = inspect.getsource(sel)
         assert "ev_phase_switching_enabled" in src, (
             "select.py still creates the phase-mode selector on entity "

@@ -16,11 +16,11 @@ from datetime import datetime, timezone
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.day_ledger import (
+from custom_components.xxx_cristiano.coordinator.day_ledger import (
     build_day_slots,
     expected_solar_kwh_between,
 )
-from custom_components.solar_energy_management.coordinator.energy_planner import (
+from custom_components.xxx_cristiano.coordinator.energy_planner import (
     Demand,
     build_night_ledger,
     pack_night,
@@ -186,7 +186,7 @@ class TestTomorrowPreview:
     disease #722's today-anchored tomorrow view showed)."""
 
     def _preview(self, **kw):
-        from custom_components.solar_energy_management.coordinator.day_ledger import (
+        from custom_components.xxx_cristiano.coordinator.day_ledger import (
             tomorrow_preview,
         )
         args = dict(
@@ -240,7 +240,7 @@ class TestProvisionalSocCurve:
     capacity — provisional by nature, labeled so."""
 
     def _curve(self, **kw):
-        from custom_components.solar_energy_management.coordinator.day_ledger import (
+        from custom_components.xxx_cristiano.coordinator.day_ledger import (
             provisional_soc_curve,
         )
         slots = _slots(day_kwh=30.0)   # deep surplus midday over 500 W home
@@ -278,7 +278,7 @@ class TestProvisionalSocCurve:
         free = [s for s in ledger if s.cap_override_w is not None]
         for s in free:
             s.grid_committed_w = s.cap_override_w   # devices took it all
-        from custom_components.solar_energy_management.coordinator.day_ledger import (
+        from custom_components.xxx_cristiano.coordinator.day_ledger import (
             provisional_soc_curve,
         )
         pts = provisional_soc_curve(ledger, capacity_kwh=10.0,

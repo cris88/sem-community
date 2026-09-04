@@ -11,7 +11,7 @@ What these tests pin
   after setup completes.
 * Setup forwards to every platform listed in ``PLATFORMS``.
 * The 8 SEM services (``generate_dashboard``, etc.) are registered
-  on the ``solar_energy_management`` domain.
+  on the ``xxx_cristiano`` domain.
 * The frontend Lovelace resource for ``sem-cards.js`` shows up in
   storage with a content-hashed cache-bust suffix.
 
@@ -41,8 +41,8 @@ pytestmark = pytest.mark.skipif(
     reason="pytest-homeassistant-custom-component not installed; CI runs these",
 )
 
-from custom_components.solar_energy_management import PLATFORMS
-from custom_components.solar_energy_management.const import DOMAIN
+from custom_components.xxx_cristiano import PLATFORMS
+from custom_components.xxx_cristiano.const import DOMAIN
 
 
 # ---------------------------------------------------------------------------

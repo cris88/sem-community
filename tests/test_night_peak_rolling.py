@@ -27,8 +27,8 @@ Tests pin four corners (the issue's test plan):
 from unittest.mock import MagicMock, patch
 
 
-from custom_components.solar_energy_management.coordinator import SEMCoordinator
-from custom_components.solar_energy_management.coordinator.types import PowerReadings
+from custom_components.xxx_cristiano.coordinator import SEMCoordinator
+from custom_components.xxx_cristiano.coordinator.types import PowerReadings
 
 
 def _build_coord(peak_15min_kw=None, target_peak_limit_kw=6.0):

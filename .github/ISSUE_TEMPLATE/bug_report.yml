@@ -80,5 +80,5 @@ body:
     attributes:
       label: Relevant log entries
       description: |
-        Add debug logs from Settings → System → Logs (filter: `custom_components.solar_energy_management`).
+        Add debug logs from Settings → System → Logs (filter: `custom_components.xxx_cristiano`).
       render: text

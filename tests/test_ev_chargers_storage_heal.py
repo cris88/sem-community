@@ -38,12 +38,12 @@ from unittest.mock import MagicMock
 from homeassistant.components.number import NumberEntityDescription
 from homeassistant.components.select import SelectEntityDescription
 
-from custom_components.solar_energy_management import (
+from custom_components.xxx_cristiano import (
     _heal_ev_chargers_options,
     _merge_ev_chargers_by_id,
 )
-from custom_components.solar_energy_management.number import SEMPerChargerNumber
-from custom_components.solar_energy_management.select import SEMPerChargerSelect
+from custom_components.xxx_cristiano.number import SEMPerChargerNumber
+from custom_components.xxx_cristiano.select import SEMPerChargerSelect
 
 
 TWO_CHARGERS_DATA = [
@@ -135,7 +135,7 @@ def _mock_coordinator(config: dict) -> MagicMock:
     coord = MagicMock()
     coord.last_update_success = True
     coord.config = config
-    coord.device_info = {"identifiers": {("solar_energy_management", "test")}}
+    coord.device_info = {"identifiers": {("xxx_cristiano", "test")}}
     return coord
 
 
@@ -220,7 +220,7 @@ class TestPerChargerWriterRecovery:
         no-op'd on a partial list. Same contract as select/number now."""
         from datetime import time as dt_time
         from homeassistant.components.time import TimeEntityDescription
-        from custom_components.solar_energy_management.time import SEMPerChargerTime
+        from custom_components.xxx_cristiano.time import SEMPerChargerTime
 
         coord, entry = _poisoned_fixtures()
         desc = TimeEntityDescription(key="charger_ev_charger_1_target_time")
@@ -243,7 +243,7 @@ class TestPerChargerWriterRecovery:
         """Options without the ev_chargers key must not be clobbered to []."""
         from datetime import time as dt_time
         from homeassistant.components.time import TimeEntityDescription
-        from custom_components.solar_energy_management.time import SEMPerChargerTime
+        from custom_components.xxx_cristiano.time import SEMPerChargerTime
 
         data = {"ev_chargers": [dict(c) for c in TWO_CHARGERS_DATA]}
         coord = _mock_coordinator(dict(data))

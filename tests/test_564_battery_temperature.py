@@ -12,8 +12,8 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.types import PowerReadings
-from custom_components.solar_energy_management.coordinator.sensor_reader import (
+from custom_components.xxx_cristiano.coordinator.types import PowerReadings
+from custom_components.xxx_cristiano.coordinator.sensor_reader import (
     SensorReader,
 )
 
@@ -62,7 +62,7 @@ def test_autodetect_via_hardware_detection():
     })
     r._energy_dashboard_config = SimpleNamespace(battery_power="sensor.batt_p")
     with patch(
-        "custom_components.solar_energy_management.hardware_detection."
+        "custom_components.xxx_cristiano.hardware_detection."
         "discover_battery_details_from_registry",
         return_value={"battery_temp1": "sensor.fronius_cell_temp"},
     ):
@@ -78,7 +78,7 @@ def test_autodetect_miss_is_throttled():
     r._energy_dashboard_config = SimpleNamespace(battery_power="sensor.batt_p")
     calls = []
     with patch(
-        "custom_components.solar_energy_management.hardware_detection."
+        "custom_components.xxx_cristiano.hardware_detection."
         "discover_battery_details_from_registry",
         side_effect=lambda *a: calls.append(1) or {},
     ):
@@ -128,7 +128,7 @@ def test_inverter_autodetect_via_hardware_detection():
     })
     r._energy_dashboard_config = SimpleNamespace(solar_power="sensor.pv_p")
     with patch(
-        "custom_components.solar_energy_management.hardware_detection."
+        "custom_components.xxx_cristiano.hardware_detection."
         "discover_battery_details_from_registry",
         return_value={"inv_temp": "sensor.fronius_verto_15_0_plus_temperature"},
     ):
@@ -141,7 +141,7 @@ def test_inverter_autodetect_via_hardware_detection():
 def test_inverter_temperature_in_coordinator_dict():
     """#564 — inverter_temperature must be published in the coordinator data
     so the system diagram (and sem sensor) can read it instead of the battery."""
-    from custom_components.solar_energy_management.coordinator.types import SEMData
+    from custom_components.xxx_cristiano.coordinator.types import SEMData
     power = PowerReadings()
     power.inverter_temperature = 40.0
     data = SEMData(power=power).to_dict()

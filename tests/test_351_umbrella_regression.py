@@ -42,7 +42,7 @@ from unittest.mock import AsyncMock, MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.flow_calculator import (
+from custom_components.xxx_cristiano.coordinator.flow_calculator import (
     FlowCalculator,
 )
 
@@ -54,7 +54,7 @@ from custom_components.solar_energy_management.coordinator.flow_calculator impor
 
 def _power(**kw):
     """Build a ``PowerReadings`` with the fields each test uses."""
-    from custom_components.solar_energy_management.coordinator.types import (
+    from custom_components.xxx_cristiano.coordinator.types import (
         PowerReadings,
     )
     pr = PowerReadings()
@@ -64,7 +64,7 @@ def _power(**kw):
 
 
 def _energy(**kw):
-    from custom_components.solar_energy_management.coordinator.types import (
+    from custom_components.xxx_cristiano.coordinator.types import (
         EnergyTotals,
     )
     e = EnergyTotals()
@@ -128,7 +128,7 @@ class TestM6_NearlyFullGatesOnPerChargerDraw:
         # Drive only the EV-intelligence portion of _send_notifications.
         # (We pin the contract — the assertion is independent of the
         # exact extraction site.)
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
         await SEMCoordinator._send_notifications(
@@ -176,10 +176,10 @@ class TestL1_BatterySessionUsesWallClockInterval:
     """
 
     def test_session_kwh_tracks_actual_interval(self) -> None:
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             BatterySessionData,
         )
 
@@ -238,7 +238,7 @@ class TestL2_LegacyFlowsDeprecated:
             # Acceptable fix shape #2 — method removed entirely.
             return
 
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             EnergyTotals,
         )
         fc = FlowCalculator()
@@ -289,14 +289,14 @@ class TestL2_LegacyFlowsDeprecated:
 class TestM5_OffModeChargerConsumesNoSurplus:
 
     def test_off_mode_decides_disable_and_commits_nothing(self) -> None:
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             ChargerEnergy,
             ChargerIntent,
             ChargerPower,
             ChargerView,
             FleetContext,
         )
-        from custom_components.solar_energy_management.coordinator.decide import (
+        from custom_components.xxx_cristiano.coordinator.decide import (
             decide,
             self_consumption_surplus_w,
         )
@@ -364,7 +364,7 @@ class TestM3_PerChargerFlowsPriorityCorrect:
         session sees the priority-correct number, not the proportional
         slice. Smoke-test: chargers with equal power but different
         per_charger values produce different session flows."""
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             PowerFlows, ChargerFlows,
         )
         # 4 kW EV total. Equal proportional split (2 kW each).
@@ -403,7 +403,7 @@ class TestM2_TotalSavingsCombinesSolarAndBattery:
     """
 
     def test_total_savings_field_present_and_sums_correctly(self) -> None:
-        from custom_components.solar_energy_management.coordinator.types import CostData
+        from custom_components.xxx_cristiano.coordinator.types import CostData
         c = CostData()
         c.daily_savings = 1.20  # solar self-consumption savings (€)
         c.daily_battery_savings = 0.80  # battery discharge savings (€)
@@ -438,7 +438,7 @@ class TestM1_CostAccumulatorsRoundTrip:
     """
 
     def test_cost_accumulators_persist_through_storage_round_trip(self) -> None:
-        from custom_components.solar_energy_management.coordinator.storage import (
+        from custom_components.xxx_cristiano.coordinator.storage import (
             SEMStorage,
         )
         s = SEMStorage.__new__(SEMStorage)
@@ -618,7 +618,7 @@ class TestH1_PerChargerDailyEvUsedForKwhTarget:
     """
 
     def test_per_charger_consumption_used_when_cid_present(self) -> None:
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
         coord = SEMCoordinator.__new__(SEMCoordinator)
@@ -642,7 +642,7 @@ class TestH1_PerChargerDailyEvUsedForKwhTarget:
         """When ``_daily_ev_per_charger`` doesn't yet have an entry for
         this cid (fresh install, restart before first cycle), fall back
         to the fleet total — back-compat with single-charger installs."""
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
         coord = SEMCoordinator.__new__(SEMCoordinator)

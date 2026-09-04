@@ -27,10 +27,10 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.surplus_controller import (
+from custom_components.xxx_cristiano.coordinator.surplus_controller import (
     SurplusController, compute_load_intent,
 )
-from custom_components.solar_energy_management.devices.base import (
+from custom_components.xxx_cristiano.devices.base import (
     DeviceControlMode, SwitchDevice,
 )
 
@@ -220,7 +220,7 @@ class TestTodaysPlanHonesty:
     """
 
     def _coord(self, *devices):
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
         c = SEMCoordinator.__new__(SEMCoordinator)

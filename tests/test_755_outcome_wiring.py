@@ -22,16 +22,16 @@ from types import MethodType, SimpleNamespace
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.coordinator import (
+from custom_components.xxx_cristiano.coordinator.coordinator import (
     SEMCoordinator,
 )
-from custom_components.solar_energy_management.coordinator.demand_outcome import (
+from custom_components.xxx_cristiano.coordinator.demand_outcome import (
     DemandOutcomeRecorder,
     battery_draw,
     device_draw,
     ev_draw,
 )
-from custom_components.solar_energy_management.coordinator.energy_plan_actuation import (
+from custom_components.xxx_cristiano.coordinator.energy_plan_actuation import (
     PlanGate,
 )
 

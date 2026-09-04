@@ -10,15 +10,15 @@ from unittest.mock import Mock
 
 from freezegun import freeze_time
 
-from custom_components.solar_energy_management.coordinator.sensor_reader import (
+from custom_components.xxx_cristiano.coordinator.sensor_reader import (
     SensorReader,
 )
-from custom_components.solar_energy_management.coordinator.energy_calculator import (
+from custom_components.xxx_cristiano.coordinator.energy_calculator import (
     EnergyCalculator,
 )
-from custom_components.solar_energy_management.coordinator.types import PowerReadings
-from custom_components.solar_energy_management.ha_energy_reader import EnergyDashboardConfig
-from custom_components.solar_energy_management.utils.time_manager import TimeManager
+from custom_components.xxx_cristiano.coordinator.types import PowerReadings
+from custom_components.xxx_cristiano.ha_energy_reader import EnergyDashboardConfig
+from custom_components.xxx_cristiano.utils.time_manager import TimeManager
 
 
 # ---------------------------------------------------------------------------

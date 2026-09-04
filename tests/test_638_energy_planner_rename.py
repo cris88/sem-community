@@ -39,7 +39,7 @@ class TestActuationChoiceSurvivesTheRename:
 
     async def _migrate(self, entry):
         """Run the real migration and return the (data, options) it wrote."""
-        from custom_components.solar_energy_management import (
+        from custom_components.xxx_cristiano import (
             async_migrate_entry,
         )
 
@@ -120,7 +120,7 @@ class TestActuationChoiceSurvivesTheRename:
         Two halves of one contract — a test that pins only the migration
         would pass while the switch still asked for the old name.
         """
-        from custom_components.solar_energy_management.switch import (
+        from custom_components.xxx_cristiano.switch import (
             SEMSolarSwitch,
         )
 
@@ -138,7 +138,7 @@ class TestTonightsPlanSurvivesTheRename:
     """A stamped plan is live state — an upgrade must not drop it."""
 
     def _store(self, energy_data: dict):
-        from custom_components.solar_energy_management.coordinator.storage import (
+        from custom_components.xxx_cristiano.coordinator.storage import (
             SEMStorage,
         )
 
@@ -189,7 +189,7 @@ class TestTheSwitchEntityIsCarriedNotAbandoned:
                 self.unique_id = uid
                 self.entity_id = eid
                 self.domain = eid.split(".")[0]
-                self.platform = "solar_energy_management"
+                self.platform = "xxx_cristiano"
 
         class _Registry:
             def __init__(self):
@@ -215,7 +215,7 @@ class TestTheSwitchEntityIsCarriedNotAbandoned:
         return _Registry(), entries
 
     def _rename(self, registry):
-        from custom_components.solar_energy_management import (
+        from custom_components.xxx_cristiano import (
             _async_rename_actuation_switch,
         )
 

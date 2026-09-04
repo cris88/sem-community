@@ -34,10 +34,10 @@ import pytest
 from homeassistant.const import STATE_UNAVAILABLE
 from homeassistant.util import dt as dt_util
 
-from custom_components.solar_energy_management.coordinator.coordinator import (
+from custom_components.xxx_cristiano.coordinator.coordinator import (
     SEMCoordinator,
 )
-from custom_components.solar_energy_management.coordinator.ev_taper_detector import (
+from custom_components.xxx_cristiano.coordinator.ev_taper_detector import (
     EVTaperDetector,
 )
 
@@ -198,7 +198,7 @@ class TestItReachesTheCard:
     }
 
     def test_the_provenance_is_flattened_into_coordinator_data(self):
-        from custom_components.solar_energy_management.coordinator.types import SEMData
+        from custom_components.xxx_cristiano.coordinator.types import SEMData
 
         data = SEMData(per_charger_intelligence=self.INTEL).to_dict()
         assert data[f"charger_{CID}_vehicle_soc_last"] == 63.0
@@ -207,8 +207,8 @@ class TestItReachesTheCard:
         )
 
     def test_the_estimated_soc_sensor_carries_it_as_attributes(self):
-        from custom_components.solar_energy_management.coordinator.types import SEMData
-        from custom_components.solar_energy_management.sensor import SEMSolarSensor
+        from custom_components.xxx_cristiano.coordinator.types import SEMData
+        from custom_components.xxx_cristiano.sensor import SEMSolarSensor
 
         coord = MagicMock()
         coord.data = SEMData(per_charger_intelligence=self.INTEL).to_dict()

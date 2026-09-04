@@ -18,7 +18,7 @@ dead-man's-off failsafe, the box held cold until SEM next starts a charge.
 """
 from __future__ import annotations
 
-from custom_components.solar_energy_management.coordinator.charger_reconciler import (
+from custom_components.xxx_cristiano.coordinator.charger_reconciler import (
     PARK_ON_DISCONNECT_CYCLES,
     ActionKind,
     ChargerReconciler,
@@ -136,7 +136,7 @@ class TestTheTonightScenario:
 class TestTheApplyPathCallsTheCleanDisable:
     def test_park_off_action_calls_command_park_off_not_command_disable(self):
         import inspect
-        from custom_components.solar_energy_management.coordinator import (
+        from custom_components.xxx_cristiano.coordinator import (
             charger_reconciler as cr,
         )
         src = inspect.getsource(cr.ChargerReconciler._apply_actions)
@@ -147,7 +147,7 @@ class TestTheApplyPathCallsTheCleanDisable:
         """The whole point: PARK_OFF must NOT write an energy quota (the next
         plug-in would inherit it as a fresh allowance). It disables outright."""
         import inspect
-        from custom_components.solar_energy_management.coordinator.charger_adapters import (
+        from custom_components.xxx_cristiano.coordinator.charger_adapters import (
             keba,
         )
         import re
@@ -161,7 +161,7 @@ class TestTheApplyPathCallsTheCleanDisable:
 
     def test_the_generic_default_is_a_plain_disable(self):
         import inspect
-        from custom_components.solar_energy_management.coordinator.charger_adapters import (
+        from custom_components.xxx_cristiano.coordinator.charger_adapters import (
             base,
         )
         src = inspect.getsource(base.ChargerAdapter.command_park_off)

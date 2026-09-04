@@ -29,10 +29,10 @@ from unittest.mock import AsyncMock, MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.charger_adapters.keba import (
+from custom_components.xxx_cristiano.coordinator.charger_adapters.keba import (
     KebaAdapter,
 )
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     ChargerIntent,
 )
 
@@ -162,7 +162,7 @@ class Test353IsSelfCharging:
     surfaces it via ``is_self_charging``."""
 
     def test_returns_true_when_idle_intent_but_drawing(self) -> None:
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             ChargerPower,
         )
         device = _device()
@@ -176,7 +176,7 @@ class Test353IsSelfCharging:
         assert adapter.is_self_charging(power) is True
 
     def test_returns_false_when_charge_intent(self) -> None:
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             ChargerPower,
         )
         device = _device()
@@ -192,7 +192,7 @@ class Test353IsSelfCharging:
         """The #315 cold-start case: SEM just woke up, no command
         issued yet, but KEBA is already drawing → it self-resumed
         from a previous session."""
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             ChargerPower,
         )
         device = _device()
@@ -206,7 +206,7 @@ class Test353IsSelfCharging:
         assert adapter.is_self_charging(power) is True
 
     def test_returns_false_when_no_power_drawn(self) -> None:
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             ChargerPower,
         )
         device = _device()

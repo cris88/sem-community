@@ -19,10 +19,10 @@ from pathlib import Path
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.charge_stability import (
+from custom_components.xxx_cristiano.coordinator.charge_stability import (
     ChargeStability,
 )
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     ChargerDecision,
     ChargerEnergy,
     ChargerIntent,
@@ -628,7 +628,7 @@ class TestEvccAlignedDefaults:
     ``test_debounce_one_change_per_interval``; this locks the chosen DEFAULTS."""
 
     def test_cadence_and_delay_defaults(self):
-        from custom_components.solar_energy_management.coordinator import (
+        from custom_components.xxx_cristiano.coordinator import (
             charge_stability as cs,
         )
         assert cs.DEFAULT_MIN_CHANGE_INTERVAL_S == 30   # evcc cadence (was 90)
@@ -637,6 +637,6 @@ class TestEvccAlignedDefaults:
         assert cs.DEFAULT_DISABLE_DELAY_S == 180        # evcc disable.delay 3 min (was 300)
 
     def test_consts_delay_defaults(self):
-        from custom_components.solar_energy_management.consts import core as C
+        from custom_components.xxx_cristiano.consts import core as C
         assert C.DEFAULT_EV_ENABLE_DELAY_SEC == 60
         assert C.DEFAULT_EV_DISABLE_DELAY_SEC == 180    # was 300

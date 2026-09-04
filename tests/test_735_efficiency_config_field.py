@@ -37,11 +37,11 @@ from unittest.mock import patch
 
 import pytest
 
-from custom_components.solar_energy_management.config_flow import (
+from custom_components.xxx_cristiano.config_flow import (
     OPTIONS_FLOW_OWNED_KEYS,
     OptionsFlowHandler,
 )
-from custom_components.solar_energy_management.coordinator.ev_taper_detector import (
+from custom_components.xxx_cristiano.coordinator.ev_taper_detector import (
     CHARGE_EFFICIENCY,
     CHARGE_EFFICIENCY_MAX,
     CHARGE_EFFICIENCY_MIN,
@@ -275,8 +275,8 @@ class TestTheResolverIsShared:
     """
 
     def test_the_flow_imports_the_detectors_resolver(self):
-        from custom_components.solar_energy_management import config_flow
-        from custom_components.solar_energy_management.coordinator import (
+        from custom_components.xxx_cristiano import config_flow
+        from custom_components.xxx_cristiano.coordinator import (
             ev_taper_detector,
         )
 
@@ -297,7 +297,7 @@ class TestTheResolverIsShared:
         )
 
     def test_the_resolver_agrees_with_the_accessor(self):
-        from custom_components.solar_energy_management.coordinator.ev_taper_detector import (
+        from custom_components.xxx_cristiano.coordinator.ev_taper_detector import (
             resolve_charge_efficiency,
         )
 

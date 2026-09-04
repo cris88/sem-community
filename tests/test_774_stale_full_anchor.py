@@ -24,10 +24,10 @@ from __future__ import annotations
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.ev_availability import (
+from custom_components.xxx_cristiano.coordinator.ev_availability import (
     plan_car_fullness,
 )
-from custom_components.solar_energy_management.coordinator.ev_taper_detector import (
+from custom_components.xxx_cristiano.coordinator.ev_taper_detector import (
     EVTaperDetector,
 )
 

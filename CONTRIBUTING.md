@@ -8,7 +8,7 @@ Thanks for your interest in contributing to Solar Energy Management!
 
 1. Check [existing issues](https://github.com/traktore-org/sem-community/issues) first
 2. Include your HA version, SEM version, inverter/charger model
-3. Include relevant log entries (`Logger: custom_components.solar_energy_management`, level: debug)
+3. Include relevant log entries (`Logger: custom_components.xxx_cristiano`, level: debug)
 4. Describe what you expected vs what happened
 
 ### Hardware Testing
@@ -118,9 +118,9 @@ pip install -r tests/requirements_test.txt
 # direct `pytest` from the repo root. CI copies the repo into a package path
 # and runs from there; replicate that layout locally:
 rsync -a --delete --exclude=.git --exclude=node_modules \
-  ./ /tmp/ha-config/custom_components/solar_energy_management/
+  ./ /tmp/ha-config/custom_components/xxx_cristiano/
 cd /tmp/ha-config && PYTHONPATH=/tmp/ha-config \
-  python3.12 -m pytest custom_components/solar_energy_management/tests/ -q
+  python3.12 -m pytest custom_components/xxx_cristiano/tests/ -q
 
 # Lint — runs from the repo root, config in ruff.toml
 pip install ruff==0.16.3
@@ -128,7 +128,7 @@ ruff check .
 
 # Deploy to test HA instance
 rsync -av --delete --exclude='__pycache__' --exclude='.git' \
-  ./ your-ha:/config/custom_components/solar_energy_management/
+  ./ your-ha:/config/custom_components/xxx_cristiano/
 ```
 
 ## Which Home Assistant the suite runs against

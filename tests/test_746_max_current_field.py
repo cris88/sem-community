@@ -32,7 +32,7 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.consts.core import (
+from custom_components.xxx_cristiano.consts.core import (
     DEFAULT_MAX_CHARGING_CURRENT,
 )
 
@@ -43,7 +43,7 @@ _ROOT = Path(__file__).resolve().parents[1]
 
 async def _per_charger_numbers(chargers, **top_level):
     """Run the real ``number.async_setup_entry`` and return its entities."""
-    from custom_components.solar_energy_management.number import async_setup_entry
+    from custom_components.xxx_cristiano.number import async_setup_entry
 
     entry = MagicMock()
     entry.entry_id = "entry_746"
@@ -140,20 +140,20 @@ class TestTheCeilingIsSettable746:
 class TestOneResolverForTheCeiling746:
 
     def test_the_new_key_is_preferred(self):
-        from custom_components.solar_energy_management.devices.base import (
+        from custom_components.xxx_cristiano.devices.base import (
             resolve_max_current,
         )
         cfg = {"ev_max_current": 48, "max_charging_current": 32}
         assert resolve_max_current(cfg.get) == 48.0
 
     def test_the_legacy_key_still_answers(self):
-        from custom_components.solar_energy_management.devices.base import (
+        from custom_components.xxx_cristiano.devices.base import (
             resolve_max_current,
         )
         assert resolve_max_current({"max_charging_current": 20}.get) == 20.0
 
     def test_an_unconfigured_charger_gets_the_constant(self):
-        from custom_components.solar_energy_management.devices.base import (
+        from custom_components.xxx_cristiano.devices.base import (
             resolve_max_current,
         )
         assert resolve_max_current({}.get) == float(DEFAULT_MAX_CHARGING_CURRENT)
@@ -161,7 +161,7 @@ class TestOneResolverForTheCeiling746:
     def test_junk_does_not_ceiling_a_charger_at_zero(self):
         """A stored empty string must not become 0 A — that is a charger that
         can never start, from a config value nobody typed."""
-        from custom_components.solar_energy_management.devices.base import (
+        from custom_components.xxx_cristiano.devices.base import (
             resolve_max_current,
         )
         for junk in ("", None, "abc", []):
@@ -211,10 +211,10 @@ class TestTheRaisedCeilingReachesTheHardware746:
         )
 
     def _view(self, charger_cfg, hardware_max_a):
-        from custom_components.solar_energy_management.coordinator.build_view import (
+        from custom_components.xxx_cristiano.coordinator.build_view import (
             build_charger_view,
         )
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             FleetCycleState,
         )
         power = MagicMock()

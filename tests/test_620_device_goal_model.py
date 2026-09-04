@@ -10,13 +10,13 @@ from unittest.mock import AsyncMock, MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.devices.base import (
+from custom_components.xxx_cristiano.devices.base import (
     SwitchDevice, DeviceControlMode, DeviceState,
 )
-from custom_components.solar_energy_management.coordinator.surplus_controller import (
+from custom_components.xxx_cristiano.coordinator.surplus_controller import (
     SurplusController,
 )
-from custom_components.solar_energy_management.const import LoadManagementState
+from custom_components.xxx_cristiano.const import LoadManagementState
 
 
 def _switch(**kw):
@@ -86,7 +86,7 @@ class TestGoalBoolPersistence:
     is True in Python, so a disabled flag must NOT round-trip back to True."""
 
     def test_goal_bool_parses_strings(self):
-        from custom_components.solar_energy_management.features.device_registry import (
+        from custom_components.xxx_cristiano.features.device_registry import (
             _goal_bool,
         )
         assert _goal_bool("True") is True
@@ -102,7 +102,7 @@ class TestGoalBoolPersistence:
     def test_apply_goals_restores_false_flag(self):
         """The full path: a stored '"False"' string must land as False on the
         device, not silently flip to True after a restart."""
-        from custom_components.solar_energy_management.features.device_registry import (
+        from custom_components.xxx_cristiano.features.device_registry import (
             UnifiedDeviceRegistry,
         )
         reg = UnifiedDeviceRegistry.__new__(UnifiedDeviceRegistry)
@@ -175,7 +175,7 @@ def test_solar_bounded_surplus():
     live solar production. This is the whole night-surplus guard — the phantom
     ~1.6 kW @onkelfu saw when a load ran overnight off the battery (solar 0) is
     pinned to 0. Replaces the earlier per-load exclusion with a single rule."""
-    from custom_components.solar_energy_management.coordinator.surplus_controller import (
+    from custom_components.xxx_cristiano.coordinator.surplus_controller import (
         solar_bounded_surplus,
     )
     # NIGHT: solar 0 → any add-back (battery/grid-driven load) pinned to 0
@@ -426,7 +426,7 @@ class TestTier2Overnight:
         """The peak limit is a HARD ceiling that overrides Tier-2 (reviewer
         HIGH): an active overnight-battery device IS shed on EMERGENCY, and its
         force marker is cleared so it carries no stale state."""
-        from custom_components.solar_energy_management.const import (
+        from custom_components.xxx_cristiano.const import (
             LoadManagementState,
         )
         sc = SurplusController(mock_hass)
@@ -560,7 +560,7 @@ class TestBatteryTierContext625:
     AND past the solar gate; reserve = battery_priority_soc."""
 
     def _ctx(self, cfg=None, soc=80.0, surplus=2000.0):
-        from custom_components.solar_energy_management.coordinator.surplus_controller import (
+        from custom_components.xxx_cristiano.coordinator.surplus_controller import (
             build_battery_tier_context)
         return build_battery_tier_context(cfg or {}, soc, surplus)
 
@@ -587,7 +587,7 @@ class TestBatteryTierContext625:
         assert c.reserve_soc == 25.0
 
     def test_defaults_from_consts(self):
-        from custom_components.solar_energy_management.consts.core import (
+        from custom_components.xxx_cristiano.consts.core import (
             DEFAULT_BATTERY_BUFFER_SOC)
         c = self._ctx(cfg={}, soc=None, surplus=0)
         assert c.buffer_soc == float(DEFAULT_BATTERY_BUFFER_SOC)
@@ -596,20 +596,20 @@ class TestBatteryTierContext625:
 
 class TestPhase2Extractions625:
     def test_effective_peak_state_passthrough(self):
-        from custom_components.solar_energy_management.coordinator.surplus_controller import (
+        from custom_components.xxx_cristiano.coordinator.surplus_controller import (
             effective_peak_state)
         assert effective_peak_state("whatever", False) == "whatever"
         assert effective_peak_state(None, False) is None
 
     def test_effective_peak_state_vpp_escalates(self):
-        from custom_components.solar_energy_management.coordinator.surplus_controller import (
+        from custom_components.xxx_cristiano.coordinator.surplus_controller import (
             effective_peak_state)
-        from custom_components.solar_energy_management.const import LoadManagementState
+        from custom_components.xxx_cristiano.const import LoadManagementState
         assert effective_peak_state(None, True) is LoadManagementState.EMERGENCY
         assert effective_peak_state(LoadManagementState.NORMAL, True) is LoadManagementState.EMERGENCY
 
     def test_registry_sync_never_raises(self):
-        from custom_components.solar_energy_management.features.device_registry import (
+        from custom_components.xxx_cristiano.features.device_registry import (
             UnifiedDeviceRegistry)
         reg = MagicMock(spec=UnifiedDeviceRegistry)
         reg.battery_surplus_priority = MagicMock(side_effect=RuntimeError("boom"))
@@ -618,7 +618,7 @@ class TestPhase2Extractions625:
         assert out is None                     # swallowed, cycle survives
 
     def test_registry_sync_latches_battery_and_returns_priority(self):
-        from custom_components.solar_energy_management.features.device_registry import (
+        from custom_components.xxx_cristiano.features.device_registry import (
             UnifiedDeviceRegistry)
         reg = MagicMock(spec=UnifiedDeviceRegistry)
         reg.battery_surplus_priority = MagicMock(return_value=3)
@@ -656,7 +656,7 @@ class TestPublishDiag625:
         return c
 
     def _diag(self, **over):
-        from custom_components.solar_energy_management.coordinator.publish_diag import (
+        from custom_components.xxx_cristiano.coordinator.publish_diag import (
             build_diagnostics)
         return build_diagnostics(self._coord(**over))
 
@@ -713,7 +713,7 @@ class TestPublishDiag625:
     def test_formatter_importable_from_its_own_module(self):
         # (#786) was `..coordinator.coordinator`, which only re-exported it
         # for this test — the alias had no production reader.
-        from custom_components.solar_energy_management.coordinator.publish_diag import (
+        from custom_components.xxx_cristiano.coordinator.publish_diag import (
             format_battery_sign_diag as _format_battery_sign_diag)
         assert _format_battery_sign_diag({}, {}) == "learning"
         assert _format_battery_sign_diag({"b1": True}, {"b1": True}) == "negated"
@@ -723,7 +723,7 @@ class TestActiveDischargeLimit625:
     """(#625 phase 4) The extracted fleet discharge-limit surfacing (#375)."""
 
     def _adapter(self, intent, limit):
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             BatteryIntent)
         a = MagicMock()
         a.last_intent = BatteryIntent.LIMIT_DISCHARGE if intent else BatteryIntent.NORMAL
@@ -731,19 +731,19 @@ class TestActiveDischargeLimit625:
         return a
 
     def test_none_when_no_adapters(self):
-        from custom_components.solar_energy_management.coordinator.actuate_battery import (
+        from custom_components.xxx_cristiano.coordinator.actuate_battery import (
             active_discharge_limit)
         assert active_discharge_limit(None) is None
         assert active_discharge_limit({}) is None
 
     def test_none_when_no_active_limit(self):
-        from custom_components.solar_energy_management.coordinator.actuate_battery import (
+        from custom_components.xxx_cristiano.coordinator.actuate_battery import (
             active_discharge_limit)
         assert active_discharge_limit({"b1": self._adapter(False, 900)}) is None
         assert active_discharge_limit({"b1": self._adapter(True, None)}) is None
 
     def test_tightest_limit_across_fleet(self):
-        from custom_components.solar_energy_management.coordinator.actuate_battery import (
+        from custom_components.xxx_cristiano.coordinator.actuate_battery import (
             active_discharge_limit)
         fleet = {"b1": self._adapter(True, 900), "b2": self._adapter(True, 700),
                  "b3": self._adapter(False, 100)}
@@ -789,7 +789,7 @@ class TestTier2NightGate633:
         d = _mock(battery_eligible_overnight=True)
         d.has_runtime_deficit = True
         d.can_activate = MagicMock(return_value=True)
-        from custom_components.solar_energy_management.coordinator.surplus_controller import (
+        from custom_components.xxx_cristiano.coordinator.surplus_controller import (
             compute_load_intent)
         night = compute_load_intent(d, remaining_surplus_w=0,
                                     soc_above_reserve=True, is_night=True)

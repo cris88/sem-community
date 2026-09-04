@@ -31,7 +31,7 @@ import pytest
 
 from homeassistant.util import dt as dt_util
 
-from custom_components.solar_energy_management.tariff.tariff_provider import (
+from custom_components.xxx_cristiano.tariff.tariff_provider import (
     DAY_KEYED_PRICE_ATTRS,
     DynamicTariffProvider,
     _flat_list_base,

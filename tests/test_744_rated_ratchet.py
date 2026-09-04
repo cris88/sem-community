@@ -18,7 +18,7 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.devices.base import (
+from custom_components.xxx_cristiano.devices.base import (
     SwitchDevice,
 )
 
@@ -37,7 +37,7 @@ def _dev(*, power_entity=None, energy_entity="sensor.bulbs_energy",
 class TestCalibrationNeedsARealSensor:
     def test_an_energy_tick_spike_does_not_ratchet(self):
         dev = _dev(power_entity=None, rated=24.0)
-        from custom_components.solar_energy_management.devices.base import DeviceState
+        from custom_components.xxx_cristiano.devices.base import DeviceState
         dev._status.state = DeviceState.ACTIVE
         # The deriver hands back a tick spike — 1 kW "instant".
         dev.observed_power_w = lambda: 1000.0
@@ -46,7 +46,7 @@ class TestCalibrationNeedsARealSensor:
 
     def test_a_power_sensor_still_calibrates(self):
         dev = _dev(power_entity="sensor.bulbs_power", rated=24.0)
-        from custom_components.solar_energy_management.devices.base import DeviceState
+        from custom_components.xxx_cristiano.devices.base import DeviceState
         dev._status.state = DeviceState.ACTIVE
         dev.observed_power_w = lambda: 60.0
         dev.calibrate_rated_power()

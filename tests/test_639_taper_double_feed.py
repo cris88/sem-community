@@ -3,7 +3,7 @@ import pathlib
 import re
 from unittest.mock import MagicMock
 
-from custom_components.solar_energy_management.coordinator.coordinator import (
+from custom_components.xxx_cristiano.coordinator.coordinator import (
     SEMCoordinator,
 )
 

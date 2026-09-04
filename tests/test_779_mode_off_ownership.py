@@ -40,14 +40,14 @@ from pathlib import Path
 from unittest.mock import MagicMock, Mock
 
 
-from custom_components.solar_energy_management.coordinator.surplus_controller import (
+from custom_components.xxx_cristiano.coordinator.surplus_controller import (
     compute_load_intent,
 )
-from custom_components.solar_energy_management.coordinator.plan_verdict import (
+from custom_components.xxx_cristiano.coordinator.plan_verdict import (
     PlanVerdict,
 )
-from custom_components.solar_energy_management.devices import base as _devbase
-from custom_components.solar_energy_management.devices.base import (
+from custom_components.xxx_cristiano.devices import base as _devbase
+from custom_components.xxx_cristiano.devices.base import (
     DeviceControlMode, DeviceState, SwitchDevice,
 )
 
@@ -246,7 +246,7 @@ class TestOneWriterForTheClaim:
     def test_the_registry_no_longer_carries_a_duplicate_gate(self):
         """The two call-site gates were the ones that had to be remembered.
         With the gate inside, they are dead policy — and dead policy drifts."""
-        from custom_components.solar_energy_management.features import (
+        from custom_components.xxx_cristiano.features import (
             device_registry as dr,
         )
         src = Path(dr.__file__).read_text()

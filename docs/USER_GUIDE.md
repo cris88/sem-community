@@ -813,10 +813,10 @@ Internally the two Solar modes share the `surplus` control mode (`control_mode`:
 
 ### Changing the mode
 
-Use the `solar_energy_management.update_device_config` service:
+Use the `xxx_cristiano.update_device_config` service:
 
 ```yaml
-service: solar_energy_management.update_device_config
+service: xxx_cristiano.update_device_config
 data:
   device_id: energy_dashboard_heizband
   property: control_mode

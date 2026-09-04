@@ -16,7 +16,7 @@ in the user's language exactly like the dashboard does.
 """
 from __future__ import annotations
 
-from custom_components.solar_energy_management import (
+from custom_components.xxx_cristiano import (
     CHARGER_NAME_MARKERS, charger_shaped_devices,
 )
 
@@ -53,7 +53,7 @@ class TestTheGuess:
 class TestWhenItFires:
 
     def test_a_found_but_unconfigured_charger_is_reported(self):
-        from custom_components.solar_energy_management import (
+        from custom_components.xxx_cristiano import (
             unmanaged_charger_repair,
         )
         r = unmanaged_charger_repair(
@@ -63,7 +63,7 @@ class TestWhenItFires:
         assert r["placeholders"]["name"] == "switch.wallbox_pro"
 
     def test_a_configured_install_is_silent(self):
-        from custom_components.solar_energy_management import (
+        from custom_components.xxx_cristiano import (
             unmanaged_charger_repair,
         )
         assert unmanaged_charger_repair(
@@ -72,13 +72,13 @@ class TestWhenItFires:
 
     def test_a_solar_only_install_is_not_nagged(self):
         # THE noise fix: no car, no charger-shaped device, no repair.
-        from custom_components.solar_energy_management import (
+        from custom_components.xxx_cristiano import (
             unmanaged_charger_repair,
         )
         assert unmanaged_charger_repair(config={}, candidates=[]) is None
 
     def test_several_candidates_name_one_and_count_the_rest(self):
-        from custom_components.solar_energy_management import (
+        from custom_components.xxx_cristiano import (
             unmanaged_charger_repair,
         )
         r = unmanaged_charger_repair(config={}, candidates=[

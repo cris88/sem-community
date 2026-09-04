@@ -14,7 +14,7 @@ solar.
 """
 from types import SimpleNamespace
 
-from custom_components.solar_energy_management.coordinator.coordinator import SEMCoordinator
+from custom_components.xxx_cristiano.coordinator.coordinator import SEMCoordinator
 
 
 def _coord():

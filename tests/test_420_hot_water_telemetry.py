@@ -21,7 +21,7 @@ from unittest.mock import AsyncMock, MagicMock
 import pytest
 from homeassistant.util import dt as dt_util
 
-from custom_components.solar_energy_management.devices.hot_water_controller import (
+from custom_components.xxx_cristiano.devices.hot_water_controller import (
     HotWaterController,
 )
 

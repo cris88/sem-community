@@ -38,15 +38,15 @@ never touch, over-reporting exactly the way #193/#649 said they must not.
 import pytest
 from unittest.mock import AsyncMock, MagicMock, patch
 
-from custom_components.solar_energy_management.features.device_axes import (
+from custom_components.xxx_cristiano.features.device_axes import (
     has_control_handle,
     may_actuate,
     user_hands_off,
 )
-from custom_components.solar_energy_management.features.device_registry import (
+from custom_components.xxx_cristiano.features.device_registry import (
     UnifiedDevice,
 )
-from custom_components.solar_energy_management.features.load_management import (
+from custom_components.xxx_cristiano.features.load_management import (
     LoadManagementCoordinator,
 )
 
@@ -164,9 +164,9 @@ def lm780(mock_hass):
         "peak_hysteresis": 0.3,
     }
     with patch(
-        "custom_components.solar_energy_management.features.load_management.LoadDeviceDiscovery"
+        "custom_components.xxx_cristiano.features.load_management.LoadDeviceDiscovery"
     ) as MockDiscovery, patch(
-        "custom_components.solar_energy_management.features.load_management.Store"
+        "custom_components.xxx_cristiano.features.load_management.Store"
     ) as MockStore:
         discovery = MagicMock()
         discovery.discover_from_energy_dashboard = AsyncMock(return_value={})
@@ -276,7 +276,7 @@ class TestShedLoopReadsTheRightAxis780:
 class TestRegistrySyncCarriesBothAxes780:
 
     def test_sync_writes_both_axes_into_the_load_manager_row(self):
-        from custom_components.solar_energy_management.features.device_registry import (
+        from custom_components.xxx_cristiano.features.device_registry import (
             UnifiedDeviceRegistry,
         )
         reg = UnifiedDeviceRegistry.__new__(UnifiedDeviceRegistry)
@@ -313,7 +313,7 @@ class TestDiagnosticsAnswerBothAxes780:
 
     @pytest.mark.asyncio
     async def test_diagnostics_row_names_both_axes_and_the_verdict(self):
-        from custom_components.solar_energy_management import diagnostics
+        from custom_components.xxx_cristiano import diagnostics
 
         coordinator = MagicMock()
         coordinator._load_manager.is_enabled.return_value = True

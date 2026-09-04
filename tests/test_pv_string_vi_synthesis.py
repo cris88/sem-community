@@ -30,7 +30,7 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.hardware_detection import (
+from custom_components.xxx_cristiano.hardware_detection import (
     _PV_CURRENT_PATTERNS,
     _PV_VOLTAGE_PATTERNS,
 )
@@ -84,7 +84,7 @@ class TestSensorReaderVISynthesis:
     tuple-shaped sources; direct power entities take the legacy path."""
 
     def _make_reader(self):
-        from custom_components.solar_energy_management.coordinator.sensor_reader import (
+        from custom_components.xxx_cristiano.coordinator.sensor_reader import (
             SensorReader,
         )
         sr = SensorReader.__new__(SensorReader)
@@ -137,7 +137,7 @@ class TestSensorReaderSetPVStrings:
     power form winning on slot collisions."""
 
     def _make_reader(self):
-        from custom_components.solar_energy_management.coordinator.sensor_reader import (
+        from custom_components.xxx_cristiano.coordinator.sensor_reader import (
             SensorReader,
         )
         return SensorReader.__new__(SensorReader)
@@ -240,7 +240,7 @@ class TestDiscoveryFunction:
         registry.entities.values = lambda: entries_objs
 
         # Patch the global registry getter.
-        from custom_components.solar_energy_management import hardware_detection
+        from custom_components.xxx_cristiano import hardware_detection
         from unittest.mock import patch
         return hass, patch.object(
             hardware_detection.entity_registry,
@@ -251,7 +251,7 @@ class TestDiscoveryFunction:
     def test_huawei_layout_finds_vi_pairs(self):
         """The PROD-observed Huawei layout — German names, no power
         sensors — should yield 2 V+I pairs."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_pv_string_vi_pairs,
         )
         hass, patcher = self._make_hass([
@@ -273,7 +273,7 @@ class TestDiscoveryFunction:
         }
 
     def test_returns_empty_when_seed_missing(self):
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_pv_string_vi_pairs,
         )
         hass, patcher = self._make_hass([])
@@ -288,7 +288,7 @@ class TestDiscoveryFunction:
         """Single-string installs aren't worth a per-string surface —
         the v1.7.0 gate is ``len >= 2``. Return empty before SEM
         creates a misleading single-entity row."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_pv_string_vi_pairs,
         )
         hass, patcher = self._make_hass([
@@ -305,7 +305,7 @@ class TestDiscoveryFunction:
 
     def test_returns_empty_when_only_voltage_present(self):
         """Voltage without matching current → no pair. Return empty."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_pv_string_vi_pairs,
         )
         hass, patcher = self._make_hass([

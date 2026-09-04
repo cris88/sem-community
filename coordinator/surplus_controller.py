@@ -569,7 +569,7 @@ class SurplusController:
         self._observer_decision_keys[key] = edge_key
         try:
             self.hass.bus.async_fire(
-                "solar_energy_management_observer_decision", dict(payload))
+                "xxx_cristiano_observer_decision", dict(payload))
         except Exception:  # noqa: BLE001 — the event must never break the seam
             pass
 

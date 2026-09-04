@@ -111,7 +111,7 @@ def _runtime_translation_keys():
     them from the source instead — one derivation, shared with the #677 guard.
     """
     # Relative, not ``from tests.…``: CI copies the tree to
-    # custom_components/solar_energy_management/, so the absolute form
+    # custom_components/xxx_cristiano/, so the absolute form
     # resolves locally and ModuleNotFoundErrors in CI (the #671 lesson).
     from .test_677_per_charger_names import per_charger_translation_keys
 

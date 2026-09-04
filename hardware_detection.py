@@ -791,7 +791,7 @@ def probe_charger_candidates(hass: Optional[HomeAssistant] = None,
     # candidate (live on the rig the prober "found" sem_charger_* sensors).
     entries = [e for e in registry.entities.values()
                if not e.disabled_by
-               and str(e.platform or "") != "solar_energy_management"]
+               and str(e.platform or "") != "xxx_cristiano"]
     # Group by device; entities without a device (KEBA's UDP integration
     # registers none) group per platform instead of being skipped.
     # Device-less entities cluster by platform + object-id prefix (first two

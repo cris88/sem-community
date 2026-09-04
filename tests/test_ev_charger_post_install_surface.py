@@ -39,13 +39,13 @@ from unittest.mock import MagicMock, patch
 import pytest
 import voluptuous as vol
 
-from custom_components.solar_energy_management import config_flow as cf
-from custom_components.solar_energy_management.config_flow import (
+from custom_components.xxx_cristiano import config_flow as cf
+from custom_components.xxx_cristiano.config_flow import (
     OptionsFlowHandler,
 )
 
 _DISCOVERY_PATH = (
-    "custom_components.solar_energy_management.hardware_detection"
+    "custom_components.xxx_cristiano.hardware_detection"
     ".discover_all_ev_chargers_from_registry"
 )
 
@@ -80,7 +80,7 @@ def _flow(chargers):
     flow = OptionsFlowHandler.__new__(OptionsFlowHandler)
     flow.hass = MagicMock()
     flow.flow_id = "test-flow"
-    flow.handler = "solar_energy_management"
+    flow.handler = "xxx_cristiano"
     flow.context = {}
     flow.cur_step = None
     flow._data = {"ev_chargers": [dict(c) for c in chargers]}
@@ -174,7 +174,7 @@ class TestAddDoesNotCloneAnInstalledCharger:
         two KEBAs share ``keba.set_current``, so a service names a protocol,
         not a box.
         """
-        from custom_components.solar_energy_management import hardware_detection
+        from custom_components.xxx_cristiano import hardware_detection
 
         src = Path(inspect.getfile(hardware_detection)).read_text()
         reported = set()

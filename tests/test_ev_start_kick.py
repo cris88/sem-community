@@ -9,14 +9,14 @@ No ``initial_current`` / ``vehicle_min_current`` knobs needed.
 """
 import pytest
 
-from custom_components.solar_energy_management.coordinator.charge_stability import (
+from custom_components.xxx_cristiano.coordinator.charge_stability import (
     ChargeStability,
     START_KICK_GRACE_S,
     START_KICK_STEP_A,
     START_KICK_MAX_A,
     START_KICK_GIVEUP_S,
 )
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     ChargerDecision,
     ChargerEnergy,
     ChargerIntent,

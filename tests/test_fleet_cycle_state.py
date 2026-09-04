@@ -22,7 +22,7 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     FleetCycleState,
 )
 
@@ -147,7 +147,7 @@ def test_two_views_built_from_same_fleet_state_share_fleet_context() -> None:
     tariff_level=<actual>. After the refactor it's structurally
     impossible.
     """
-    from custom_components.solar_energy_management.coordinator.build_view import (
+    from custom_components.xxx_cristiano.coordinator.build_view import (
         build_charger_view,
     )
 
@@ -205,7 +205,7 @@ def test_min_solar_w_wired_from_config():
     default before, so the slider did nothing. Fallback matches the seeded
     default (1000 W) when the key is absent — fixes the old 200-vs-1000
     inconsistency where a keyless config silently used 200 W."""
-    from custom_components.solar_energy_management.coordinator.build_view import (
+    from custom_components.xxx_cristiano.coordinator.build_view import (
         build_charger_view,
     )
 

@@ -14,7 +14,7 @@ two stems-alike sensors live on DIFFERENT devices, the fold is vetoed.
 """
 from unittest.mock import MagicMock
 
-from custom_components.solar_energy_management.ha_energy_reader import (
+from custom_components.xxx_cristiano.ha_energy_reader import (
     get_all_individual_devices,
 )
 
@@ -93,7 +93,7 @@ class TestVariantFolding:
     def test_registry_veto_keeps_devices_apart(self, monkeypatch):
         """Same stem but the entity registry proves two DIFFERENT devices →
         the fold is vetoed and both loads survive. No registry info → fold."""
-        import custom_components.solar_energy_management.ha_energy_reader as har
+        import custom_components.xxx_cristiano.ha_energy_reader as har
 
         # two same-stem sensors that the registry places on different devices
         monkeypatch.setattr(

@@ -1,6 +1,6 @@
 """Contract tests for the set_option service helpers (#462/#464).
 
-The actual ``solar_energy_management.set_option`` service handler is a
+The actual ``xxx_cristiano.set_option`` service handler is a
 closure inside ``_async_register_phase_services`` in ``__init__.py`` —
 hard to test directly without a full HA harness. So the structural
 pieces it depends on are pulled out to module-level pure helpers:
@@ -19,7 +19,7 @@ from __future__ import annotations
 
 import pytest
 
-from custom_components.solar_energy_management import (
+from custom_components.xxx_cristiano import (
     _SET_OPTION_STRUCTURAL_KEYS,
     _coerce_switch_on,
     _merge_ev_chargers_by_id,

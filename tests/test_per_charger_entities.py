@@ -10,10 +10,10 @@ from homeassistant.components.number import NumberEntityDescription
 from homeassistant.components.switch import SwitchEntityDescription
 from homeassistant.helpers.entity import EntityCategory
 
-from custom_components.solar_energy_management.number import (
+from custom_components.xxx_cristiano.number import (
     SEMPerChargerNumber,
 )
-from custom_components.solar_energy_management.switch import (
+from custom_components.xxx_cristiano.switch import (
     SEMPerChargerSwitch,
 )
 
@@ -23,7 +23,7 @@ def _mock_coordinator(ev_chargers=None):
     coord = MagicMock()
     coord.last_update_success = True
     coord.data = MagicMock()
-    coord.device_info = {"identifiers": {("solar_energy_management", "test")}}
+    coord.device_info = {"identifiers": {("xxx_cristiano", "test")}}
     coord.hass = MagicMock()
     coord.hass.config.currency = "EUR"
     coord.config_entry = MagicMock()
@@ -230,7 +230,7 @@ class TestPerChargerTargetTime:
     @pytest.mark.asyncio
     async def test_time_set_persists_hhmm_to_charger(self):
         from datetime import time as dt_time
-        from custom_components.solar_energy_management.time import (
+        from custom_components.xxx_cristiano.time import (
             SEMPerChargerTime,
         )
         from homeassistant.components.time import TimeEntityDescription
@@ -252,7 +252,7 @@ class TestPerChargerTargetTime:
 
     def test_parse_hhmm_fallback(self):
         from datetime import time as dt_time
-        from custom_components.solar_energy_management.time import _parse_hhmm
+        from custom_components.xxx_cristiano.time import _parse_hhmm
         assert _parse_hhmm("08:15") == dt_time(8, 15)
         assert _parse_hhmm("07:00:00") == dt_time(7, 0)
         assert _parse_hhmm(None) == dt_time(7, 0)   # default 07:00
@@ -292,7 +292,7 @@ class TestPerChargerSensors:
         registered alongside ``estimated_soc`` so multi-charger cards
         can read the right car's SOC instead of falling back to the
         clobbered global ``sem_vehicle_soc``."""
-        from custom_components.solar_energy_management import sensor as sensor_module
+        from custom_components.xxx_cristiano import sensor as sensor_module
         # Walk the descriptions module-level builder by introspecting
         # the source — keeps the test independent of HA fixtures.
         with open(sensor_module.__file__, encoding="utf-8") as f:
@@ -308,7 +308,7 @@ class TestPerChargerSensors:
         """The flat ``EnergyTotals.to_dict`` output must include one
         ``charger_<cid>_vehicle_soc`` key per charger present in
         ``per_charger_intelligence``."""
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             SEMData,
         )
         e = SEMData()
@@ -327,7 +327,7 @@ class TestPerChargerSensors:
         """When ``vehicle_soc_entity`` isn't configured for a charger
         the dict carries ``None``, NOT a fabricated zero — the
         downstream sensor reports as unavailable rather than 0 %."""
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             SEMData,
         )
         e = SEMData()
@@ -363,7 +363,7 @@ class TestPerChargerAggregation:
 
     def test_ev_power_sums_multi_charger(self):
         """Global ev_power should be sum of all charger power sensors."""
-        from custom_components.solar_energy_management.coordinator.sensor_reader import SensorReader
+        from custom_components.xxx_cristiano.coordinator.sensor_reader import SensorReader
 
         hass = MagicMock()
         config = {
@@ -400,7 +400,7 @@ class TestPerChargerAggregation:
 
     def test_ev_power_sums_three_chargers(self):
         """Global ev_power should sum 3 chargers correctly."""
-        from custom_components.solar_energy_management.coordinator.sensor_reader import SensorReader
+        from custom_components.xxx_cristiano.coordinator.sensor_reader import SensorReader
 
         three_chargers = [
             {"id": "c1", "name": "C1", "ev_charging_power_sensor": "sensor.c1_power"},
@@ -439,7 +439,7 @@ class TestPerChargerAggregation:
 
     def test_ev_power_sums_four_chargers(self):
         """Global ev_power should sum 4 chargers correctly."""
-        from custom_components.solar_energy_management.coordinator.sensor_reader import SensorReader
+        from custom_components.xxx_cristiano.coordinator.sensor_reader import SensorReader
 
         four_chargers = [
             {"id": f"c{i}", "name": f"C{i}", "ev_charging_power_sensor": f"sensor.c{i}_power"}
@@ -511,7 +511,7 @@ class TestPerChargerAggregation:
 
     def test_ev_connected_or_multi_charger(self):
         """Global ev_connected should be True if ANY charger is connected (#193)."""
-        from custom_components.solar_energy_management.coordinator.sensor_reader import SensorReader
+        from custom_components.xxx_cristiano.coordinator.sensor_reader import SensorReader
 
         chargers = [
             {"id": "c1", "name": "C1", "ev_charging_power_sensor": "sensor.c1_power",
@@ -554,7 +554,7 @@ class TestPerChargerAggregation:
 
     def test_ev_connected_none_multi_charger(self):
         """Global ev_connected should be False if NO charger is connected."""
-        from custom_components.solar_energy_management.coordinator.sensor_reader import SensorReader
+        from custom_components.xxx_cristiano.coordinator.sensor_reader import SensorReader
 
         chargers = [
             {"id": "c1", "name": "C1", "ev_charging_power_sensor": "sensor.c1_power",
@@ -597,7 +597,7 @@ class TestPerChargerAggregation:
     @pytest.mark.asyncio
     async def test_per_charger_connected_binary_sensor(self):
         """Per-charger connected binary sensor should be created for each charger."""
-        from custom_components.solar_energy_management.binary_sensor import (
+        from custom_components.xxx_cristiano.binary_sensor import (
             async_setup_entry,
         )
         coord = _mock_coordinator(TWO_CHARGERS)
@@ -617,7 +617,7 @@ class TestPerChargerAggregation:
 
     def test_ev_power_single_charger_unchanged(self):
         """Single charger should read from primary sensor only."""
-        from custom_components.solar_energy_management.coordinator.sensor_reader import SensorReader
+        from custom_components.xxx_cristiano.coordinator.sensor_reader import SensorReader
 
         hass = MagicMock()
         config = {
@@ -660,7 +660,7 @@ class TestPerChargerAggregation:
         ``charger_ev_charger_connected=True`` — the EV policy read "EV
         disconnected" and commanded 0 A forever.
         """
-        from custom_components.solar_energy_management.coordinator.sensor_reader import SensorReader
+        from custom_components.xxx_cristiano.coordinator.sensor_reader import SensorReader
 
         hass = MagicMock()
         # Sensors live INSIDE the charger entry, NOT at the top level —
@@ -711,7 +711,7 @@ class TestPerChargerAggregation:
         but NO ``ev_charging_sensor`` must fall back to the flat top-level
         ``ev_charging_sensor`` for the fleet ``ev_charging`` signal (the
         per-signal legacy fallback), not silently zero it."""
-        from custom_components.solar_energy_management.coordinator.sensor_reader import SensorReader
+        from custom_components.xxx_cristiano.coordinator.sensor_reader import SensorReader
 
         hass = MagicMock()
         config = {
@@ -759,7 +759,7 @@ class TestPerChargerAggregation:
         top-level ``ev_charging_sensor`` (that key is only charger[0]'s mirror);
         it stays byte-for-byte the old ``len > 1`` behaviour → ev_charging is
         the per-charger OR (False here), even though a flat key reads on."""
-        from custom_components.solar_energy_management.coordinator.sensor_reader import SensorReader
+        from custom_components.xxx_cristiano.coordinator.sensor_reader import SensorReader
 
         hass = MagicMock()
         config = {

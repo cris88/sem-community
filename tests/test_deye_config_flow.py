@@ -30,7 +30,7 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.config_flow import (
+from custom_components.xxx_cristiano.config_flow import (
     OptionsFlowHandler,
 )
 
@@ -214,7 +214,7 @@ class TestDeyeOptionsFlow:
     async def test_round_trip_payload_feeds_capability(self, mock_hass, config_entry):
         """The saved options must be directly consumable by the real
         DeyeBatteryAdapter config contract (list-of-6 groups resolve)."""
-        from custom_components.solar_energy_management.coordinator.battery_adapters.deye import (
+        from custom_components.xxx_cristiano.coordinator.battery_adapters.deye import (
             DeyeBatteryAdapter,
         )
 
@@ -310,7 +310,7 @@ class TestDeye807TimeSlotContract:
         domain ``_validate_slot`` accepts — so a user can always satisfy both.
         The bug shipped a ``select`` picker for the time field while the runtime
         demanded ``time.*`` (and writes via ``time.set_value``)."""
-        from custom_components.solar_energy_management.coordinator.battery_adapters.deye import (
+        from custom_components.xxx_cristiano.coordinator.battery_adapters.deye import (
             _NUMERIC_DOMAINS,
             _SELECT_DOMAINS,
         )
@@ -399,7 +399,7 @@ class TestDeye807TimeSlotContract:
         from types import SimpleNamespace
         from unittest.mock import MagicMock
 
-        from custom_components.solar_energy_management.coordinator.battery_adapters.deye import (
+        from custom_components.xxx_cristiano.coordinator.battery_adapters.deye import (
             DeyeBatteryAdapter,
         )
 

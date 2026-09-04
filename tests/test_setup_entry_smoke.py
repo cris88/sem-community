@@ -30,7 +30,7 @@ from __future__ import annotations
 
 import pytest
 
-from custom_components.solar_energy_management.const import DOMAIN
+from custom_components.xxx_cristiano.const import DOMAIN
 
 
 # ---------------------------------------------------------------------------

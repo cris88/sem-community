@@ -28,16 +28,16 @@ from unittest.mock import AsyncMock, MagicMock
 
 import pytest
 
-import custom_components.solar_energy_management.ha_energy_reader as her
-import custom_components.solar_energy_management.features.load_device_discovery as ldd
-from custom_components.solar_energy_management.ha_energy_reader import (
+import custom_components.xxx_cristiano.ha_energy_reader as her
+import custom_components.xxx_cristiano.features.load_device_discovery as ldd
+from custom_components.xxx_cristiano.ha_energy_reader import (
     _find_load_power_sensor,
     _load_object_stem,
 )
-from custom_components.solar_energy_management.features.load_device_discovery import (
+from custom_components.xxx_cristiano.features.load_device_discovery import (
     LoadDeviceDiscovery,
 )
-from custom_components.solar_energy_management.features.device_registry import (
+from custom_components.xxx_cristiano.features.device_registry import (
     UnifiedDeviceRegistry,
     UnifiedDevice,
 )

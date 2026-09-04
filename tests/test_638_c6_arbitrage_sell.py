@@ -20,16 +20,16 @@ from types import SimpleNamespace
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     BatteryIntent,
     BatteryRuntime,
     BatteryView,
     FleetContext,
 )
-from custom_components.solar_energy_management.coordinator.decide_battery import (
+from custom_components.xxx_cristiano.coordinator.decide_battery import (
     decide_battery,
 )
-from custom_components.solar_energy_management.coordinator.energy_plan_actuation import (
+from custom_components.xxx_cristiano.coordinator.energy_plan_actuation import (
     arbitrage_sell_gate,
 )
 
@@ -204,7 +204,7 @@ class TestTheScenarioMatrix:
 class TestThePipelineWiresTheSplit:
     def test_the_pipeline_computes_the_gate_and_splits_the_fleet(self):
         import inspect
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
         src = inspect.getsource(SEMCoordinator._run_battery_pipeline)
@@ -216,7 +216,7 @@ class TestThePipelineWiresTheSplit:
         branch the per-battery opt-in scan is real again (defaults still
         dormant — no battery ships in allow_arbitrage mode)."""
         import inspect
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
         src = inspect.getsource(SEMCoordinator._run_battery_pipeline)

@@ -9,7 +9,7 @@ always reloads.
 import pytest
 from unittest.mock import MagicMock, AsyncMock
 
-from custom_components.solar_energy_management import async_update_options
+from custom_components.xxx_cristiano import async_update_options
 
 
 def _make(hass_reload, options, snapshot):

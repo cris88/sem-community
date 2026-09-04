@@ -10,14 +10,14 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.energy_calculator import (
+from custom_components.xxx_cristiano.coordinator.energy_calculator import (
     EnergyCalculator,
     MIN_POWER_THRESHOLD,
 )
-from custom_components.solar_energy_management.coordinator.flow_calculator import (
+from custom_components.xxx_cristiano.coordinator.flow_calculator import (
     FlowCalculator,
 )
-from custom_components.solar_energy_management.coordinator.types import (
+from custom_components.xxx_cristiano.coordinator.types import (
     EnergyTotals,
     PowerReadings,
 )
@@ -347,7 +347,7 @@ class TestSOCBoundaries:
 class TestTimeBoundaries:
     """Day, month, and year rollover behaviour."""
 
-    @patch("custom_components.solar_energy_management.coordinator.energy_calculator.dt_util")
+    @patch("custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util")
     def test_midnight_rollover_resets_daily_accumulators(self, mock_dt, calculator, time_manager):
         """should remove yesterday's daily accumulator keys after midnight rollover."""
         day1 = date(2026, 5, 14)
@@ -372,7 +372,7 @@ class TestTimeBoundaries:
         # Day1 key should be gone
         assert f"solar_{day1}" not in calculator._daily_accumulators
 
-    @patch("custom_components.solar_energy_management.coordinator.energy_calculator.dt_util")
+    @patch("custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util")
     def test_month_rollover_resets_monthly_accumulators(self, mock_dt, calculator, time_manager):
         """should remove previous month's accumulator keys after month rollover."""
         april_day = date(2026, 4, 30)
@@ -393,7 +393,7 @@ class TestTimeBoundaries:
 
         assert "solar_2026_4" not in calculator._monthly_accumulators
 
-    @patch("custom_components.solar_energy_management.coordinator.energy_calculator.dt_util")
+    @patch("custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util")
     def test_year_rollover_resets_yearly_accumulators(self, mock_dt, calculator, time_manager):
         """should remove previous year's accumulator keys after year rollover."""
         dec31 = date(2025, 12, 31)
@@ -414,7 +414,7 @@ class TestTimeBoundaries:
 
         assert "solar_2025" not in calculator._yearly_accumulators
 
-    @patch("custom_components.solar_energy_management.coordinator.energy_calculator.dt_util")
+    @patch("custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util")
     def test_first_cycle_after_restart_returns_zero_totals(self, mock_dt, calculator, time_manager):
         """should return zero totals on the very first call when all accumulators are empty."""
         mock_dt.now.return_value = _freeze(2026, 5, 15, 8)
@@ -466,7 +466,7 @@ class TestSensorUnavailability:
         p.calculate_derived()
         assert p.battery_soc_unavailable is True
 
-    @patch("custom_components.solar_energy_management.coordinator.energy_calculator.dt_util")
+    @patch("custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util")
     def test_all_unavailable_energy_accumulators_stay_zero(self, mock_dt, calculator, time_manager):
         """should accumulate no energy when all sensors report 0 (unavailable)."""
         mock_dt.now.return_value = _freeze(2026, 5, 15, 10)
@@ -491,7 +491,7 @@ class TestSensorUnavailability:
 class TestPowerThresholdBoundaries:
     """Energy accumulation must respect MIN_POWER_THRESHOLD (10W)."""
 
-    @patch("custom_components.solar_energy_management.coordinator.energy_calculator.dt_util")
+    @patch("custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util")
     def test_power_at_exactly_threshold_does_accumulate(self, mock_dt, calculator, time_manager):
         """should accumulate energy when solar_power == MIN_POWER_THRESHOLD (10W).
 
@@ -509,7 +509,7 @@ class TestPowerThresholdBoundaries:
 
         assert calculator._get_daily("solar", today) > 0.0
 
-    @patch("custom_components.solar_energy_management.coordinator.energy_calculator.dt_util")
+    @patch("custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util")
     def test_power_below_threshold_9w_does_not_accumulate(self, mock_dt, calculator, time_manager):
         """should NOT accumulate energy when solar_power=9W (just below threshold).
 
@@ -526,7 +526,7 @@ class TestPowerThresholdBoundaries:
 
         assert calculator._get_daily("solar", today) == 0.0
 
-    @patch("custom_components.solar_energy_management.coordinator.energy_calculator.dt_util")
+    @patch("custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util")
     def test_power_above_threshold_11w_does_accumulate(self, mock_dt, calculator, time_manager):
         """should accumulate energy when solar_power=11W (just above threshold).
 
@@ -544,7 +544,7 @@ class TestPowerThresholdBoundaries:
 
         assert calculator._get_daily("solar", today) > 0.0
 
-    @patch("custom_components.solar_energy_management.coordinator.energy_calculator.dt_util")
+    @patch("custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util")
     def test_threshold_applies_to_grid_import(self, mock_dt, calculator, time_manager):
         """should NOT accumulate grid_import energy at 9W (below threshold)."""
         today = date(2026, 5, 15)
@@ -558,7 +558,7 @@ class TestPowerThresholdBoundaries:
 
         assert calculator._get_daily("grid_import", today) == 0.0
 
-    @patch("custom_components.solar_energy_management.coordinator.energy_calculator.dt_util")
+    @patch("custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util")
     def test_threshold_applies_to_battery_discharge(self, mock_dt, calculator, time_manager):
         """should NOT accumulate battery_discharge energy at 9W (below threshold)."""
         today = date(2026, 5, 15)
@@ -597,7 +597,7 @@ class TestDivisionByZero:
         calc = EnergyCalculator(config, tm)
 
         with patch(
-            "custom_components.solar_energy_management.coordinator.energy_calculator.dt_util"
+            "custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util"
         ) as mock_dt:
             mock_dt.now.return_value = _freeze()
             power = PowerReadings(solar_power=0)
@@ -623,7 +623,7 @@ class TestDivisionByZero:
         calc = EnergyCalculator(config, tm)
 
         with patch(
-            "custom_components.solar_energy_management.coordinator.energy_calculator.dt_util"
+            "custom_components.xxx_cristiano.coordinator.energy_calculator.dt_util"
         ) as mock_dt:
             mock_dt.now.return_value = _freeze()
             power = PowerReadings(solar_power=5000)

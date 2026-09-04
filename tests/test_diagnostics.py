@@ -3,7 +3,7 @@ import pytest
 from unittest.mock import MagicMock
 from datetime import timedelta
 
-from custom_components.solar_energy_management.diagnostics import (
+from custom_components.xxx_cristiano.diagnostics import (
     async_get_config_entry_diagnostics,
     REDACT_CONFIG_KEYS,
 )
@@ -31,7 +31,7 @@ def entry():
     entry.entry_id = "test_entry_123"
     entry.version = 1
     entry.title = "Solar Energy Management"
-    entry.domain = "solar_energy_management"
+    entry.domain = "xxx_cristiano"
     entry.data = {
         "battery_capacity_kwh": 10,
         "target_peak_limit": 5.0,
@@ -75,7 +75,7 @@ def coordinator():
 async def test_diagnostics_returns_data(mock_hass, entry, coordinator):
     """Diagnostics should return structured data."""
     entry.runtime_data = coordinator
-    mock_hass.data = {"solar_energy_management": {entry.entry_id: coordinator}}
+    mock_hass.data = {"xxx_cristiano": {entry.entry_id: coordinator}}
     result = await async_get_config_entry_diagnostics(mock_hass, entry)
 
     assert "config_entry" in result
@@ -121,7 +121,7 @@ async def test_diagnostics_battery_control_section(mock_hass, entry, coordinator
 async def test_diagnostics_redacts_sensitive_fields(mock_hass, entry, coordinator):
     """Diagnostics should redact entity ID fields."""
     entry.runtime_data = coordinator
-    mock_hass.data = {"solar_energy_management": {entry.entry_id: coordinator}}
+    mock_hass.data = {"xxx_cristiano": {entry.entry_id: coordinator}}
     result = await async_get_config_entry_diagnostics(mock_hass, entry)
 
     config_data = result["config_entry"]["data"]
@@ -136,7 +136,7 @@ async def test_diagnostics_redacts_sensitive_fields(mock_hass, entry, coordinato
 async def test_diagnostics_power_values(mock_hass, entry, coordinator):
     """Diagnostics should include current power values."""
     entry.runtime_data = coordinator
-    mock_hass.data = {"solar_energy_management": {entry.entry_id: coordinator}}
+    mock_hass.data = {"xxx_cristiano": {entry.entry_id: coordinator}}
     result = await async_get_config_entry_diagnostics(mock_hass, entry)
 
     assert result["power"]["solar_w"] == 5000.0
@@ -147,7 +147,7 @@ async def test_diagnostics_power_values(mock_hass, entry, coordinator):
 async def test_diagnostics_yearly_environmental(mock_hass, entry, coordinator):
     """Diagnostics should include yearly environmental data."""
     entry.runtime_data = coordinator
-    mock_hass.data = {"solar_energy_management": {entry.entry_id: coordinator}}
+    mock_hass.data = {"xxx_cristiano": {entry.entry_id: coordinator}}
     result = await async_get_config_entry_diagnostics(mock_hass, entry)
 
     assert result["energy_yearly"]["co2_avoided_kg"] == 1.7
@@ -159,7 +159,7 @@ async def test_diagnostics_empty_coordinator_data(mock_hass, entry, coordinator)
     """Diagnostics should handle empty coordinator data gracefully."""
     coordinator.data = None
     entry.runtime_data = coordinator
-    mock_hass.data = {"solar_energy_management": {entry.entry_id: coordinator}}
+    mock_hass.data = {"xxx_cristiano": {entry.entry_id: coordinator}}
     result = await async_get_config_entry_diagnostics(mock_hass, entry)
 
     assert result["power"]["solar_w"] is None
@@ -182,7 +182,7 @@ def test_redact_keys_defined():
 
 from pathlib import Path
 
-from custom_components.solar_energy_management.diagnostics import (
+from custom_components.xxx_cristiano.diagnostics import (
     _get_recent_sem_logs,
     _LOG_MAX_LINES,
     _LOG_TAIL_KB,
@@ -199,17 +199,17 @@ def _write_log(mock_hass, lines: list[str]) -> Path:
 @pytest.mark.asyncio
 async def test_recent_logs_returns_only_sem_lines(mock_hass):
     """Filter must select only lines that mention
-    ``solar_energy_management`` — other integrations' chatter is
+    ``xxx_cristiano`` — other integrations' chatter is
     excluded."""
     _write_log(mock_hass, [
         "2026-05-31 17:42:01.000 INFO (MainThread) [homeassistant.core] starting",
-        "2026-05-31 17:42:02.000 DEBUG (MainThread) [custom_components.solar_energy_management.coordinator] cycle ok",
+        "2026-05-31 17:42:02.000 DEBUG (MainThread) [custom_components.xxx_cristiano.coordinator] cycle ok",
         "2026-05-31 17:42:03.000 WARNING (MainThread) [homeassistant.components.wled] WLED unreachable",
-        "2026-05-31 17:42:04.000 INFO (MainThread) [custom_components.solar_energy_management.devices.base] Charging session stopped via keba.disable",
+        "2026-05-31 17:42:04.000 INFO (MainThread) [custom_components.xxx_cristiano.devices.base] Charging session stopped via keba.disable",
     ])
     out = await _get_recent_sem_logs(mock_hass)
     assert len(out) == 2
-    assert all("solar_energy_management" in line for line in out)
+    assert all("xxx_cristiano" in line for line in out)
 
 
 @pytest.mark.asyncio
@@ -217,7 +217,7 @@ async def test_recent_logs_caps_lines(mock_hass):
     """Even if the log has thousands of SEM lines, only the last
     ``_LOG_MAX_LINES`` (80) are returned."""
     many = [
-        f"2026-05-31 17:42:00.{i:03d} INFO (MainThread) [custom_components.solar_energy_management] msg {i}"
+        f"2026-05-31 17:42:00.{i:03d} INFO (MainThread) [custom_components.xxx_cristiano] msg {i}"
         for i in range(_LOG_MAX_LINES * 3)
     ]
     _write_log(mock_hass, many)
@@ -246,7 +246,7 @@ async def test_recent_logs_truncates_huge_file(mock_hass):
     so we never emit a half-line."""
     # Write a > 2 MB log: padding non-SEM lines + SEM lines at the end.
     padding = "x" * (_LOG_TAIL_KB * 1024 + 50_000)  # bigger than the tail
-    sem_marker = "2026-05-31 17:42:00.999 INFO [custom_components.solar_energy_management] late"
+    sem_marker = "2026-05-31 17:42:00.999 INFO [custom_components.xxx_cristiano] late"
     _write_log(mock_hass, [padding, sem_marker])
     out = await _get_recent_sem_logs(mock_hass)
     # The SEM line near the end MUST be returned.
@@ -258,10 +258,10 @@ async def test_diagnostics_includes_recent_logs(mock_hass, entry, coordinator):
     """End-to-end: the diagnostics dump now carries a ``recent_logs``
     key. Bug reports come pre-loaded with surrounding context."""
     _write_log(mock_hass, [
-        "2026-05-31 17:42:00.000 INFO [custom_components.solar_energy_management.coordinator] success: True",
+        "2026-05-31 17:42:00.000 INFO [custom_components.xxx_cristiano.coordinator] success: True",
     ])
     entry.runtime_data = coordinator
-    mock_hass.data = {"solar_energy_management": {entry.entry_id: coordinator}}
+    mock_hass.data = {"xxx_cristiano": {entry.entry_id: coordinator}}
     result = await async_get_config_entry_diagnostics(mock_hass, entry)
     assert "recent_logs" in result
     assert isinstance(result["recent_logs"], list)

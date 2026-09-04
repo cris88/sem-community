@@ -7,7 +7,7 @@ import pytest
 from unittest.mock import Mock
 from freezegun import freeze_time
 
-from custom_components.solar_energy_management.coordinator import (
+from custom_components.xxx_cristiano.coordinator import (
     EnergyCalculator,
     PowerReadings,
     EnergyTotals,
@@ -38,7 +38,7 @@ def mock_hass():
 @pytest.fixture
 def energy_calculator(config, mock_hass):
     """Create an EnergyCalculator instance."""
-    from custom_components.solar_energy_management.utils.time_manager import TimeManager
+    from custom_components.xxx_cristiano.utils.time_manager import TimeManager
     return EnergyCalculator(config, TimeManager(mock_hass))
 
 
@@ -381,7 +381,7 @@ class TestStatePersistence:
 
     def test_restore_state_recovers_accumulators(self, config, mock_hass, power_readings_factory):
         """Test that restore_state recovers accumulators."""
-        from custom_components.solar_energy_management.utils.time_manager import TimeManager
+        from custom_components.xxx_cristiano.utils.time_manager import TimeManager
         # Create and populate first calculator
         calc1 = EnergyCalculator(config, TimeManager(mock_hass))
         readings = power_readings_factory(

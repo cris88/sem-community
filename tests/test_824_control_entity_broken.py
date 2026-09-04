@@ -27,7 +27,7 @@ from __future__ import annotations
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.control_entity import (
+from custom_components.xxx_cristiano.coordinator.control_entity import (
     CONTROL_ENTITY_DOMAINS,
     validate_control_entity,
 )
@@ -90,7 +90,7 @@ class TestTheVerdict:
         tested exactly like this, and cannot actuate anything."""
         import inspect
 
-        from custom_components.solar_energy_management.coordinator import (
+        from custom_components.xxx_cristiano.coordinator import (
             control_entity,
         )
         src = inspect.getsource(control_entity)
@@ -149,7 +149,7 @@ class TestItBecomesVisible:
     def test_a_transient_flap_stays_quiet(self):
         """A restart's warm-up window must not file a Repair — the sensor
         Repair already learned this (#611 cries wolf)."""
-        from custom_components.solar_energy_management.coordinator import (
+        from custom_components.xxx_cristiano.coordinator import (
             repair_issues,
         )
         assert repair_issues.UNAVAILABLE_REPAIR_THRESHOLD_S >= 300

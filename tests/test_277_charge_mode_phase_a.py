@@ -23,8 +23,8 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from custom_components.solar_energy_management import _derive_charge_mode
-from custom_components.solar_energy_management.config_flow import (
+from custom_components.xxx_cristiano import _derive_charge_mode
+from custom_components.xxx_cristiano.config_flow import (
     SolarEnergyManagementConfigFlow,
 )
 
@@ -33,8 +33,8 @@ from custom_components.solar_energy_management.config_flow import (
 # rewrote assertions that were never about the bump — the trail of
 # eight stale "# bumped in vN->vN+1" comments this replaces.
 CURRENT = SolarEnergyManagementConfigFlow.VERSION
-from custom_components.solar_energy_management.coordinator import SEMCoordinator
-from custom_components.solar_energy_management.select import (
+from custom_components.xxx_cristiano.coordinator import SEMCoordinator
+from custom_components.xxx_cristiano.select import (
     EV_CHARGE_MODES,
     SEMPerChargerSelect,
 )
@@ -234,7 +234,7 @@ class TestMigrateEntryV5:
     async def _run_migration_at_v4(self, *, options, hass=None):
         """Run async_migrate_entry on a v4 entry and return the new
         options dict it persisted."""
-        from custom_components.solar_energy_management import async_migrate_entry
+        from custom_components.xxx_cristiano import async_migrate_entry
 
         entry = MagicMock()
         entry.version = 4

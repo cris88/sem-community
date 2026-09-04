@@ -12,17 +12,17 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator import coordinator as coord_mod
-from custom_components.solar_energy_management.coordinator.coordinator import (
+from custom_components.xxx_cristiano.coordinator import coordinator as coord_mod
+from custom_components.xxx_cristiano.coordinator.coordinator import (
     SEMCoordinator,
 )
-from custom_components.solar_energy_management.coordinator import (
+from custom_components.xxx_cristiano.coordinator import (
     sensor_reader as sensor_reader_mod,
 )
-from custom_components.solar_energy_management.coordinator.sensor_reader import (
+from custom_components.xxx_cristiano.coordinator.sensor_reader import (
     SensorReader,
 )
-from custom_components.solar_energy_management.coordinator import ev_night_targets
+from custom_components.xxx_cristiano.coordinator import ev_night_targets
 
 
 @pytest.fixture(autouse=True)
@@ -110,7 +110,7 @@ def _fake_self(devices=()):
     # The ONE planning-peak accessor (one-gate C1): the fake keeps stubbing
     # the execution authority (_get_peak_limit_w) and the REAL hysteresis
     # math runs on top — the same numbers the old inline ledger block made.
-    from custom_components.solar_energy_management.coordinator.ev_control import (
+    from custom_components.xxx_cristiano.coordinator.ev_control import (
         EVControlMixin,
     )
     fake._planning_peak_w = lambda: EVControlMixin._planning_peak_w(fake)
@@ -390,7 +390,7 @@ class TestPriceLevelAt:
 
     def test_static_provider_nt_is_cheap_at_time(self):
         from datetime import datetime as _dt
-        from custom_components.solar_energy_management.tariff.tariff_provider import (
+        from custom_components.xxx_cristiano.tariff.tariff_provider import (
             PriceLevel, StaticTariffProvider,
         )
         p = StaticTariffProvider(peak_rate=0.30, off_peak_rate=0.20,
@@ -401,7 +401,7 @@ class TestPriceLevelAt:
         assert p.get_price_level_at(day) == PriceLevel.NORMAL
 
     def test_base_default_is_unknown(self):
-        from custom_components.solar_energy_management.tariff.tariff_provider import (
+        from custom_components.xxx_cristiano.tariff.tariff_provider import (
             TariffProvider,
         )
         assert TariffProvider.get_price_level_at(
@@ -1265,7 +1265,7 @@ def test_off_mode_load_is_not_a_demand(freeze_targets):
     """Finding #1 (PROD night 1): the off-mode heizband 'yielded' 3.1 kWh —
     but compute_load_intent never night-runs an off/peak_only device. The
     demand builder mirrors the intent gate."""
-    from custom_components.solar_energy_management.devices.base import (
+    from custom_components.xxx_cristiano.devices.base import (
         DeviceControlMode,
     )
     off = _fake_load(did="heizband")
@@ -1377,7 +1377,7 @@ class TestTomorrowPreviewComposer:
         must mirror the demand builder's intent gate (finding #1, PROD
         night 1): a device SEM never proactively runs — off / peak_only —
         asks nothing tomorrow, whatever its min-runtime × rated product."""
-        from custom_components.solar_energy_management.devices.base import (
+        from custom_components.xxx_cristiano.devices.base import (
             DeviceControlMode,
         )
         meter = _fake_load(did="pro4pm_ch3")

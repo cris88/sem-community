@@ -12,7 +12,7 @@ assumed hourly, because 15-minute price curves exist.
 """
 from datetime import datetime, timedelta
 
-from custom_components.solar_energy_management.coordinator.today_plan import (
+from custom_components.xxx_cristiano.coordinator.today_plan import (
     compose_today_plan,
     _consecutive_blocks,
     KIND_CHEAP_START,

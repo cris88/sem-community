@@ -23,7 +23,7 @@
 # (logs/, graphify-out/, __pycache__/) cannot leak into a published artifact.
 set -euo pipefail
 
-OUT="${1:-solar_energy_management.zip}"
+OUT="${1:-xxx_cristiano.zip}"
 cd "$(git rev-parse --show-toplevel)"
 
 # Mirrors rsync_exclude_args (~/bin/lib/ha-api.sh). Directory prefixes and

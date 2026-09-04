@@ -29,11 +29,11 @@ from unittest.mock import AsyncMock, MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.surplus_controller import (
+from custom_components.xxx_cristiano.coordinator.surplus_controller import (
     SurplusController,
     _load_meter_day,
 )
-from custom_components.solar_energy_management.devices.base import DeviceControlMode
+from custom_components.xxx_cristiano.devices.base import DeviceControlMode
 
 DAY1 = date(2026, 8, 1)
 DAY2 = date(2026, 8, 2)
@@ -368,7 +368,7 @@ class TestOneMeterDayClass:
         each time (the restart case the latch got wrong)."""
         from datetime import timedelta
         from unittest.mock import patch
-        from custom_components.solar_energy_management.utils.time_manager import (
+        from custom_components.xxx_cristiano.utils.time_manager import (
             TimeManager,
         )
         from homeassistant.util import dt as dt_util

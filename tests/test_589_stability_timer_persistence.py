@@ -19,7 +19,7 @@ from __future__ import annotations
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.charge_stability import (
+from custom_components.xxx_cristiano.coordinator.charge_stability import (
     ChargeStability,
 )
 

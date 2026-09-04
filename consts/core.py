@@ -1,7 +1,7 @@
 """Core configuration defaults for SEM Solar Energy Management integration."""
 from typing import Final
 
-DOMAIN: Final = "solar_energy_management"
+DOMAIN: Final = "xxx_cristiano"
 
 # ============================================
 # UPDATE & DELTA THRESHOLDS

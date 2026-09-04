@@ -11,7 +11,7 @@ siblings so the class can't regress.
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.types import SEMData
+from custom_components.xxx_cristiano.coordinator.types import SEMData
 
 
 def _status(charging_state, which):
@@ -70,8 +70,8 @@ def test_night_disabled_still_resolves_non_active():
 # effective state (the global state machine runs before the per-charger loop
 # refines terminal states). This is the piece that actually made PROD show
 # "active" while the charger was night_target_reached. ──
-from custom_components.solar_energy_management.const import ChargingState
-from custom_components.solar_energy_management.coordinator.coordinator import (
+from custom_components.xxx_cristiano.const import ChargingState
+from custom_components.xxx_cristiano.coordinator.coordinator import (
     SEMCoordinator,
 )
 

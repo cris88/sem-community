@@ -32,14 +32,14 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from custom_components.solar_energy_management.tariff.tariff_provider import (
+from custom_components.xxx_cristiano.tariff.tariff_provider import (
     DynamicTariffProvider,
     PriceLevel,
     SpotMarketProvider,
 )
 
 DT_UTIL_PATH = (
-    "custom_components.solar_energy_management.tariff.tariff_provider.dt_util"
+    "custom_components.xxx_cristiano.tariff.tariff_provider.dt_util"
 )
 
 ZURICH = zoneinfo.ZoneInfo("Europe/Zurich")  # +02:00 in June (CEST)
@@ -446,7 +446,7 @@ class TestParserRobustness:
 
 from unittest.mock import AsyncMock  # noqa: E402
 
-from custom_components.solar_energy_management.tariff.tariff_provider import (  # noqa: E402
+from custom_components.xxx_cristiano.tariff.tariff_provider import (  # noqa: E402
     PricePoint,
 )
 from homeassistant.util import dt as dt_util  # noqa: E402

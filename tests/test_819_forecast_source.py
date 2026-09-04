@@ -23,7 +23,7 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.forecast_reader import (
+from custom_components.xxx_cristiano.coordinator.forecast_reader import (
     FORECAST_SOLAR_PLATFORM,
     OPEN_METEO_SOLAR_PLATFORM,
     SOLCAST_PLATFORM,
@@ -163,7 +163,7 @@ class TestTheSettingIsActuallyWired:
         phantom must not come back."""
         from pathlib import Path
 
-        from custom_components.solar_energy_management.coordinator.forecast_reader import (
+        from custom_components.xxx_cristiano.coordinator.forecast_reader import (
             FORECAST_SOURCES,
         )
         doc = (Path(__file__).resolve().parent.parent / "docs"

@@ -13,10 +13,10 @@ v1.7.0 fixes both by piping flow-attributed values from
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.energy_calculator import (
+from custom_components.xxx_cristiano.coordinator.energy_calculator import (
     EnergyCalculator,
 )
-from custom_components.solar_energy_management.coordinator.types import (
+from custom_components.xxx_cristiano.coordinator.types import (
     EnergyFlows,
     EnergyTotals,
     PowerFlows,

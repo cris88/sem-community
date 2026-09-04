@@ -244,7 +244,7 @@ class E2ETestBase:
         This is the most critical test. If this fails, the user can't even
         complete the install flow.
         """
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             EVChargerDetector,
         )
 
@@ -298,10 +298,10 @@ class E2ETestBase:
             f"{chg.name}: config flow would REJECT these entities! Errors: {errors}. " \
             f"This is the #68 problem — user can't complete install."
 
-    @patch("custom_components.solar_energy_management.hardware_detection.entity_registry")
+    @patch("custom_components.xxx_cristiano.hardware_detection.entity_registry")
     def test_charger_discovery(self, mock_er):
         """Step 1: Charger auto-detected from entity registry."""
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             discover_ev_charger_from_registry,
         )
         hass = MagicMock()
@@ -317,7 +317,7 @@ class E2ETestBase:
 
     def test_sensor_reading(self):
         """Step 2: All sensors read correctly with sign convention."""
-        from custom_components.solar_energy_management.coordinator.sensor_reader import SensorReader
+        from custom_components.xxx_cristiano.coordinator.sensor_reader import SensorReader
 
         hass = MagicMock()
         states = self._build_states(solar_w=8000, grid_w=2000, battery_w=500,
@@ -347,7 +347,7 @@ class E2ETestBase:
 
     def test_power_unit_conversion(self):
         """Step 3: kW→W conversion works for this charger."""
-        from custom_components.solar_energy_management.coordinator.sensor_reader import SensorReader
+        from custom_components.xxx_cristiano.coordinator.sensor_reader import SensorReader
 
         hass = MagicMock()
         if self.charger.power_unit == "kW":
@@ -363,7 +363,7 @@ class E2ETestBase:
     @pytest.mark.asyncio
     async def test_set_current(self):
         """Step 4: _set_current sends correct service params."""
-        from custom_components.solar_energy_management.devices.base import CurrentControlDevice
+        from custom_components.xxx_cristiano.devices.base import CurrentControlDevice
 
         hass = MagicMock()
         hass.services.async_call = AsyncMock()
@@ -395,7 +395,7 @@ class E2ETestBase:
     @pytest.mark.asyncio
     async def test_energy_dashboard_parsing(self, tmp_path):
         """Step 5: Energy Dashboard file parsed correctly for this inverter."""
-        from custom_components.solar_energy_management.ha_energy_reader import (
+        from custom_components.xxx_cristiano.ha_energy_reader import (
             read_energy_dashboard_config,
         )
 
@@ -418,7 +418,7 @@ class E2ETestBase:
 
     def test_first_coordinator_cycle(self):
         """Step 6: First coordinator cycle completes without exception."""
-        from custom_components.solar_energy_management.coordinator.sensor_reader import SensorReader
+        from custom_components.xxx_cristiano.coordinator.sensor_reader import SensorReader
 
         hass = MagicMock()
         inv = self.inverter
@@ -476,7 +476,7 @@ class E2ETestBase:
 
     def test_energy_balance_positive_home(self):
         """Step 7: Home consumption is >= 0 (sign convention correct)."""
-        from custom_components.solar_energy_management.coordinator.sensor_reader import SensorReader
+        from custom_components.xxx_cristiano.coordinator.sensor_reader import SensorReader
 
         hass = MagicMock()
         inv = self.inverter
@@ -553,7 +553,7 @@ class E2ETestBase:
 
     def test_ev_status_values(self):
         """Step 9: All charger status values correctly interpreted."""
-        from custom_components.solar_energy_management.coordinator.sensor_reader import SensorReader
+        from custom_components.xxx_cristiano.coordinator.sensor_reader import SensorReader
 
         hass = MagicMock()
         reader = SensorReader(hass, {})
@@ -1244,7 +1244,7 @@ class TestSolaXEnergyOnlyDerivation:
     @pytest.mark.asyncio
     async def test_derives_power_sensors_without_stat_rate(self, tmp_path):
         """read_energy_dashboard_config derives solar/grid/battery power."""
-        import custom_components.solar_energy_management.ha_energy_reader as har
+        import custom_components.xxx_cristiano.ha_energy_reader as har
 
         config_dir = self._energy_only_file(tmp_path)
         registry, entries = self._mock_registry()
@@ -1279,7 +1279,7 @@ class TestSolaXEnergyOnlyDerivation:
         Guards the no-regression path for Huawei/SolarEdge/Fronius etc. that
         already provide power links.
         """
-        import custom_components.solar_energy_management.ha_energy_reader as har
+        import custom_components.xxx_cristiano.ha_energy_reader as har
 
         energy_config = {
             "version": 1,
@@ -1336,7 +1336,7 @@ class TestSolaXEnergyOnlyDerivation:
 
     def test_battery_tiebreak_prefers_combined_sensor(self):
         """Device with both battery_power and battery_power_charge → pick combined."""
-        import custom_components.solar_energy_management.ha_energy_reader as har
+        import custom_components.xxx_cristiano.ha_energy_reader as har
 
         device = "dev1"
         ents = []
@@ -1395,7 +1395,7 @@ class TestSolaXEnergyOnlyDerivation:
         ``charge_discharge_power`` / ``lade_entladeleistung`` naming or the
         battery power reads null forever (no manual override exists).
         """
-        import custom_components.solar_energy_management.ha_energy_reader as har
+        import custom_components.xxx_cristiano.ha_energy_reader as har
 
         device = "batteries"
         energy_eid = "sensor.batteries_total_charge"
@@ -1446,7 +1446,7 @@ class TestSolaXEnergyOnlyDerivation:
         ``batteries``/``batterien`` prefer tokens must pick the combined sensor
         deterministically regardless of registry iteration order.
         """
-        import custom_components.solar_energy_management.ha_energy_reader as har
+        import custom_components.xxx_cristiano.ha_energy_reader as har
 
         device = "batteries"
         energy_eid = "sensor.batteries_total_charge"
@@ -1484,10 +1484,10 @@ class TestSolaXEnergyOnlyDerivation:
     @pytest.mark.asyncio
     async def test_pipeline_nonzero_including_soc(self, tmp_path):
         """Full pipeline: derived sensors → non-zero power; SOC via signature."""
-        from custom_components.solar_energy_management.coordinator import (
+        from custom_components.xxx_cristiano.coordinator import (
             sensor_reader as sr,
         )
-        import custom_components.solar_energy_management.ha_energy_reader as har
+        import custom_components.xxx_cristiano.ha_energy_reader as har
 
         config_dir = self._energy_only_file(tmp_path)
         registry, entries = self._mock_registry()

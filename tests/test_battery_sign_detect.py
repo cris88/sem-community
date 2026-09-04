@@ -8,7 +8,7 @@ conventions for inverters that use the opposite convention:
 import pytest
 from unittest.mock import Mock, MagicMock
 
-from custom_components.solar_energy_management.coordinator.sensor_reader import (
+from custom_components.xxx_cristiano.coordinator.sensor_reader import (
     SensorReader,
 )
 
@@ -70,13 +70,13 @@ class TestBatterySignAutoDetect:
 
     def test_no_energy_dashboard_returns_false(self, sensor_reader):
         """Without Energy Dashboard, trust the sensor as-is."""
-        from custom_components.solar_energy_management.coordinator.types import PowerReadings
+        from custom_components.xxx_cristiano.coordinator.types import PowerReadings
         readings = PowerReadings(battery_power=500.0)
         assert sensor_reader._detect_battery_sign(readings) is False
 
     def test_missing_charge_energy_returns_false(self, sensor_reader):
         """If charge energy counter is missing, can't detect."""
-        from custom_components.solar_energy_management.coordinator.types import PowerReadings
+        from custom_components.xxx_cristiano.coordinator.types import PowerReadings
         ed = _make_energy_dashboard_config(battery_charge_energy=None)
         sensor_reader.set_energy_dashboard_config(ed)
         readings = PowerReadings(battery_power=500.0)
@@ -84,7 +84,7 @@ class TestBatterySignAutoDetect:
 
     def test_missing_discharge_energy_returns_false(self, sensor_reader):
         """If discharge energy counter is missing, can't detect."""
-        from custom_components.solar_energy_management.coordinator.types import PowerReadings
+        from custom_components.xxx_cristiano.coordinator.types import PowerReadings
         ed = _make_energy_dashboard_config(battery_discharge_energy=None)
         sensor_reader.set_energy_dashboard_config(ed)
         readings = PowerReadings(battery_power=500.0)
@@ -92,7 +92,7 @@ class TestBatterySignAutoDetect:
 
     def test_low_power_keeps_last_state(self, sensor_reader, mock_hass):
         """Power below 100W threshold should keep last known state."""
-        from custom_components.solar_energy_management.coordinator.types import PowerReadings
+        from custom_components.xxx_cristiano.coordinator.types import PowerReadings
         ed = _make_energy_dashboard_config()
         sensor_reader.set_energy_dashboard_config(ed)
         readings = PowerReadings(battery_power=50.0)  # Below 100W threshold
@@ -101,7 +101,7 @@ class TestBatterySignAutoDetect:
 
     def test_first_call_stores_baselines(self, sensor_reader, mock_hass):
         """First call stores baselines and returns False."""
-        from custom_components.solar_energy_management.coordinator.types import PowerReadings
+        from custom_components.xxx_cristiano.coordinator.types import PowerReadings
         ed = _make_energy_dashboard_config()
         sensor_reader.set_energy_dashboard_config(ed)
 
@@ -128,7 +128,7 @@ class TestBatterySignAutoDetect:
 
         Scenario: battery_power=+500W (charging) and charge counter increasing.
         """
-        from custom_components.solar_energy_management.coordinator.types import PowerReadings
+        from custom_components.xxx_cristiano.coordinator.types import PowerReadings
         ed = _make_energy_dashboard_config()
         sensor_reader.set_energy_dashboard_config(ed)
 
@@ -156,7 +156,7 @@ class TestBatterySignAutoDetect:
         (meaning the battery is actually discharging, so +500 means discharge).
         Requires 3 consistent votes after baseline to lock in.
         """
-        from custom_components.solar_energy_management.coordinator.types import PowerReadings
+        from custom_components.xxx_cristiano.coordinator.types import PowerReadings
         ed = _make_energy_dashboard_config()
         sensor_reader.set_energy_dashboard_config(ed)
 
@@ -183,7 +183,7 @@ class TestBatterySignAutoDetect:
         (meaning negative = charging, opposite of SEM where positive = charge).
         Requires 3 consistent votes after baseline to lock in.
         """
-        from custom_components.solar_energy_management.coordinator.types import PowerReadings
+        from custom_components.xxx_cristiano.coordinator.types import PowerReadings
         ed = _make_energy_dashboard_config()
         sensor_reader.set_energy_dashboard_config(ed)
 
@@ -208,7 +208,7 @@ class TestBatterySignAutoDetect:
 
         Scenario: battery_power=-500W and discharge counter increasing.
         """
-        from custom_components.solar_energy_management.coordinator.types import PowerReadings
+        from custom_components.xxx_cristiano.coordinator.types import PowerReadings
         ed = _make_energy_dashboard_config()
         sensor_reader.set_energy_dashboard_config(ed)
 
@@ -231,7 +231,7 @@ class TestBatterySignAutoDetect:
 
     def test_ambiguous_both_counters_moving_keeps_state(self, sensor_reader, mock_hass):
         """When both counters move, keep last known state (ambiguous)."""
-        from custom_components.solar_energy_management.coordinator.types import PowerReadings
+        from custom_components.xxx_cristiano.coordinator.types import PowerReadings
         ed = _make_energy_dashboard_config()
         sensor_reader.set_energy_dashboard_config(ed)
 
@@ -254,7 +254,7 @@ class TestBatterySignAutoDetect:
 
     def test_unavailable_counter_keeps_state(self, sensor_reader, mock_hass):
         """Unavailable counter should keep last known state."""
-        from custom_components.solar_energy_management.coordinator.types import PowerReadings
+        from custom_components.xxx_cristiano.coordinator.types import PowerReadings
         ed = _make_energy_dashboard_config()
         sensor_reader.set_energy_dashboard_config(ed)
 
@@ -272,7 +272,7 @@ class TestBatterySignAutoDetect:
 
     def test_detection_persists_across_calls(self, sensor_reader, mock_hass):
         """Once detected, the sign state persists even through low-power periods."""
-        from custom_components.solar_energy_management.coordinator.types import PowerReadings
+        from custom_components.xxx_cristiano.coordinator.types import PowerReadings
         ed = _make_energy_dashboard_config()
         sensor_reader.set_energy_dashboard_config(ed)
 
@@ -750,7 +750,7 @@ class TestCounterResetGuard:
     re-baselines and sits the cycle out."""
 
     def test_battery_counter_reset_does_not_vote(self, sensor_reader, mock_hass):
-        from custom_components.solar_energy_management.coordinator.types import PowerReadings
+        from custom_components.xxx_cristiano.coordinator.types import PowerReadings
         ed = _make_energy_dashboard_config()
         sensor_reader.set_energy_dashboard_config(ed)
 
@@ -778,7 +778,7 @@ class TestCounterResetGuard:
         assert sensor_reader._battery_sign_votes.get(bid, 0) == 0
 
     def test_grid_counter_reset_does_not_vote(self, sensor_reader, mock_hass):
-        from custom_components.solar_energy_management.coordinator.types import PowerReadings
+        from custom_components.xxx_cristiano.coordinator.types import PowerReadings
         ed = _make_energy_dashboard_config()
         sensor_reader.set_energy_dashboard_config(ed)
 

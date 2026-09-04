@@ -27,7 +27,7 @@ from pathlib import Path
 
 import pytest
 
-from custom_components.solar_energy_management.consts.ev_charge_modes import (
+from custom_components.xxx_cristiano.consts.ev_charge_modes import (
     mode_allows_night_charging,
 )
 

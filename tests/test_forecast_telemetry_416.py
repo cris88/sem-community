@@ -15,12 +15,12 @@ from __future__ import annotations
 from datetime import datetime
 from unittest.mock import patch
 
-from custom_components.solar_energy_management.coordinator.forecast_tracker import (
+from custom_components.xxx_cristiano.coordinator.forecast_tracker import (
     ForecastTracker,
     DailyForecastRecord,
 )
 
-DT_PATH = "custom_components.solar_energy_management.coordinator.forecast_tracker.dt_util"
+DT_PATH = "custom_components.xxx_cristiano.coordinator.forecast_tracker.dt_util"
 
 
 def _dt(hour: int = 12, minute: int = 0) -> datetime:

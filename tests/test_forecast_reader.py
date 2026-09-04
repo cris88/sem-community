@@ -3,14 +3,14 @@ import pytest
 from unittest.mock import MagicMock, patch
 from datetime import datetime
 
-from custom_components.solar_energy_management.coordinator.forecast_reader import (
+from custom_components.xxx_cristiano.coordinator.forecast_reader import (
     ForecastReader,
     ForecastData,
     SOLCAST_ENTITIES,
     FORECAST_SOLAR_ENTITIES,
 )
 
-DT_UTIL_PATH = "custom_components.solar_energy_management.coordinator.forecast_reader.dt_util"
+DT_UTIL_PATH = "custom_components.xxx_cristiano.coordinator.forecast_reader.dt_util"
 
 
 def _make_state(value, unit=None):
@@ -419,7 +419,7 @@ class TestSourceUpgradeToSolcast:
 # ---------------------------------------------------------------------------
 
 from types import SimpleNamespace
-from custom_components.solar_energy_management.coordinator.forecast_reader import (
+from custom_components.xxx_cristiano.coordinator.forecast_reader import (
     SOLCAST_PLATFORM,
     FORECAST_SOLAR_PLATFORM,
 )

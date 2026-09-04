@@ -22,16 +22,16 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from custom_components.solar_energy_management.features.load_management import (
+from custom_components.xxx_cristiano.features.load_management import (
     LoadManagementCoordinator,
 )
-from custom_components.solar_energy_management.coordinator.battery_charge_scheduler import (
+from custom_components.xxx_cristiano.coordinator.battery_charge_scheduler import (
     SchedulerConfig,
 )
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     BatteryPower,
 )
-from custom_components.solar_energy_management.coordinator.types import (
+from custom_components.xxx_cristiano.coordinator.types import (
     PowerReadings,
 )
 
@@ -47,9 +47,9 @@ def _lm(data=None, options=None):
     entry.data = data if data is not None else {}
     entry.options = options if options is not None else {}
     with patch(
-        "custom_components.solar_energy_management.features.load_management.LoadDeviceDiscovery"
+        "custom_components.xxx_cristiano.features.load_management.LoadDeviceDiscovery"
     ), patch(
-        "custom_components.solar_energy_management.features.load_management.Store"
+        "custom_components.xxx_cristiano.features.load_management.Store"
     ):
         return LoadManagementCoordinator(MagicMock(), entry)
 
@@ -92,9 +92,9 @@ def test_692_a_stub_entry_without_mappings_falls_back_to_defaults():
     entry = MagicMock()          # .data/.options are auto-MagicMocks
     entry.entry_id = "test_entry"
     with patch(
-        "custom_components.solar_energy_management.features.load_management.LoadDeviceDiscovery"
+        "custom_components.xxx_cristiano.features.load_management.LoadDeviceDiscovery"
     ), patch(
-        "custom_components.solar_energy_management.features.load_management.Store"
+        "custom_components.xxx_cristiano.features.load_management.Store"
     ):
         lm = LoadManagementCoordinator(MagicMock(), entry)
     assert lm._target_peak_limit == 5.0     # DEFAULT_TARGET_PEAK_LIMIT
@@ -171,7 +171,7 @@ def test_694_nothing_resolved_falls_back_to_the_scalar():
 def test_694_to_dict_publishes_none_not_zero(monkeypatch):
     """The entity must show unknown while the unit warms — 0.0 is a claim
     ("this battery is empty") the reader cannot back."""
-    from custom_components.solar_energy_management.coordinator import types as t
+    from custom_components.xxx_cristiano.coordinator import types as t
     data = t.SEMData()
     data.power.batteries = {
         "b1": BatteryPower(battery_id="b1", soc_pct=None, power_w=0.0),
@@ -189,7 +189,7 @@ def test_694_to_dict_publishes_none_not_zero(monkeypatch):
 def _scan_reader(states):
     """A SensorReader shell driving ONLY the strategy-3 global scan:
     no cache, prefix and device-registry strategies come up empty."""
-    from custom_components.solar_energy_management.coordinator.sensor_reader import (
+    from custom_components.xxx_cristiano.coordinator.sensor_reader import (
         SensorReader,
     )
     reader = SensorReader.__new__(SensorReader)
@@ -220,7 +220,7 @@ def test_695_a_chargers_car_soc_is_not_the_house_battery(monkeypatch):
     })
     reader._try_soc_candidates = lambda p, k: None    # strategy 1 comes up dry
     with patch(
-        "custom_components.solar_energy_management.coordinator.sensor_reader.er"
+        "custom_components.xxx_cristiano.coordinator.sensor_reader.er"
     ) as er_mod:
         er_mod.async_get.side_effect = RuntimeError("no registry")
         got = reader._auto_detect_battery_soc("sensor.some_battery_power")
@@ -235,7 +235,7 @@ def test_695_a_wallbox_soc_is_excluded_too():
     })
     reader._try_soc_candidates = lambda p, k: None    # strategy 1 comes up dry
     with patch(
-        "custom_components.solar_energy_management.coordinator.sensor_reader.er"
+        "custom_components.xxx_cristiano.coordinator.sensor_reader.er"
     ) as er_mod:
         er_mod.async_get.side_effect = RuntimeError("no registry")
         got = reader._auto_detect_battery_soc("sensor.some_battery_power")

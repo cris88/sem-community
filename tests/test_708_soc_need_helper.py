@@ -19,7 +19,7 @@ from __future__ import annotations
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.ev_soc_need import (
+from custom_components.xxx_cristiano.coordinator.ev_soc_need import (
     soc_remaining_need,
 )
 

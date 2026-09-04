@@ -6,7 +6,7 @@ from unittest.mock import AsyncMock, Mock
 
 import pytest
 
-from custom_components.solar_energy_management.config_flow import OptionsFlowHandler
+from custom_components.xxx_cristiano.config_flow import OptionsFlowHandler
 
 
 def test_options_flow_exposes_dedicated_phase_guard_wizard_steps():

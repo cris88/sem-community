@@ -49,9 +49,9 @@ from __future__ import annotations
 import pytest
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 
-from custom_components.solar_energy_management import async_migrate_entry
-from custom_components.solar_energy_management.config_flow import SolarEnergyManagementConfigFlow
-from custom_components.solar_energy_management.const import DOMAIN
+from custom_components.xxx_cristiano import async_migrate_entry
+from custom_components.xxx_cristiano.config_flow import SolarEnergyManagementConfigFlow
+from custom_components.xxx_cristiano.const import DOMAIN
 
 # (#758) The chain composes to whatever the config flow currently declares.
 # Hard-coding the number meant every schema bump broke 19 assertions that

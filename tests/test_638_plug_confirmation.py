@@ -28,16 +28,16 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.build_view import (
+from custom_components.xxx_cristiano.coordinator.build_view import (
     build_charger_view,
 )
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     FleetCycleState,
 )
-from custom_components.solar_energy_management.coordinator.coordinator import (
+from custom_components.xxx_cristiano.coordinator.coordinator import (
     SEMCoordinator,
 )
-from custom_components.solar_energy_management.coordinator.ev_availability import (
+from custom_components.xxx_cristiano.coordinator.ev_availability import (
     confirm_connection,
     operational_ev_connected,
 )
@@ -224,7 +224,7 @@ class TestTheCycleConfirmsBeforeItDecides:
         """Two debounces in series would make a real unplug take six
         cycles and split the confirmed answer in two again."""
         import inspect
-        from custom_components.solar_energy_management.coordinator.ev_control import (
+        from custom_components.xxx_cristiano.coordinator.ev_control import (
             EVControlMixin,
         )
         src = inspect.getsource(EVControlMixin._update_session_tracking)

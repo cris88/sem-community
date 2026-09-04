@@ -4,7 +4,7 @@ autodetect of a companion power sensor."""
 
 from unittest.mock import MagicMock
 
-from custom_components.solar_energy_management.devices.base import (
+from custom_components.xxx_cristiano.devices.base import (
     SwitchDevice,
     surplus_device_from_spec,
 )
@@ -67,7 +67,7 @@ def test_factory_autodetects_companion_power_sensor(monkeypatch):
     def fake_find(hass, energy_entity, rule):
         return "sensor.hp_power" if energy_entity == "sensor.hp_energy" else None
 
-    import custom_components.solar_energy_management.ha_energy_reader as her
+    import custom_components.xxx_cristiano.ha_energy_reader as her
     monkeypatch.setattr(her, "_find_power_sensor_on_device", fake_find)
 
     dev = surplus_device_from_spec(
@@ -79,7 +79,7 @@ def test_factory_autodetects_companion_power_sensor(monkeypatch):
 
 
 def test_factory_keeps_energy_when_no_companion(monkeypatch):
-    import custom_components.solar_energy_management.ha_energy_reader as her
+    import custom_components.xxx_cristiano.ha_energy_reader as her
     monkeypatch.setattr(her, "_find_power_sensor_on_device", lambda *a, **k: None)
 
     dev = surplus_device_from_spec(

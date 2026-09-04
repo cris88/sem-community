@@ -27,17 +27,17 @@ from __future__ import annotations
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.charge_stability import (
+from custom_components.xxx_cristiano.coordinator.charge_stability import (
     ChargeStability,
 )
-from custom_components.solar_energy_management.coordinator.charger_reconciler import (
+from custom_components.xxx_cristiano.coordinator.charger_reconciler import (
     Action,
     ActionKind,
     ChargerReconciler,
     DesiredState,
     ObservedState,
 )
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     ChargerDecision,
     ChargerEnergy,
     ChargerIntent,

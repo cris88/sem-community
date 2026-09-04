@@ -23,11 +23,11 @@ full coordinator pipeline; this file is the unit-level guarantee.
 """
 import pytest
 
-from custom_components.solar_energy_management.coordinator.flow_calculator import (
+from custom_components.xxx_cristiano.coordinator.flow_calculator import (
     FlowCalculator,
     EVBudgetStrategy,
 )
-from custom_components.solar_energy_management.coordinator.types import PowerReadings
+from custom_components.xxx_cristiano.coordinator.types import PowerReadings
 
 
 def _power(*, solar=0.0, home=0.0, batt_charge=0.0, batt_discharge=0.0,

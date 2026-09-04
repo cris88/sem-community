@@ -14,8 +14,8 @@ import pytest
 
 from homeassistant.components.sensor import SensorDeviceClass, SensorStateClass
 
-from custom_components.solar_energy_management.sensor import SENSOR_TYPES
-from custom_components.solar_energy_management.coordinator.types import CostData
+from custom_components.xxx_cristiano.sensor import SENSOR_TYPES
+from custom_components.xxx_cristiano.coordinator.types import CostData
 
 _BY_KEY = {d.key: d for d in SENSOR_TYPES}
 
@@ -58,7 +58,7 @@ class TestRoiPaybackUnknown646:
         assert CostData().roi_payback_years is None
 
     def test_to_dict_carries_none_through(self):
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             SEMData,
         )
         data = SEMData()

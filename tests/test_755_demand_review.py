@@ -24,10 +24,10 @@ from pathlib import Path
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.demand_outcome import (
+from custom_components.xxx_cristiano.coordinator.demand_outcome import (
     DemandRecord, NightSummary,
 )
-from custom_components.solar_energy_management.coordinator.demand_review import (
+from custom_components.xxx_cristiano.coordinator.demand_review import (
     DemandVerdict,
     review_demand,
     review_night,
@@ -197,9 +197,9 @@ class TestTheCoordinatorKeepsItAvailable:
         read far more often than nights end."""
         from datetime import datetime, timedelta, timezone
         from types import MethodType, SimpleNamespace
-        from custom_components.solar_energy_management.coordinator \
+        from custom_components.xxx_cristiano.coordinator \
             .demand_outcome import DemandOutcomeRecorder
-        from custom_components.solar_energy_management.coordinator \
+        from custom_components.xxx_cristiano.coordinator \
             .coordinator import SEMCoordinator
 
         rec = DemandOutcomeRecorder()
@@ -228,7 +228,7 @@ class TestTheCoordinatorKeepsItAvailable:
         is nothing to plan — which is precisely the daytime hours in which a
         user reads last night's verdict."""
         import inspect
-        from custom_components.solar_energy_management.coordinator \
+        from custom_components.xxx_cristiano.coordinator \
             .coordinator import SEMCoordinator
         src = inspect.getsource(SEMCoordinator._async_update_data)
         assert '"energy_plan_review"' in src
@@ -237,7 +237,7 @@ class TestTheCoordinatorKeepsItAvailable:
 class TestItOnlySuggests:
     def test_the_plan_build_never_reads_the_review(self):
         import inspect
-        from custom_components.solar_energy_management.coordinator \
+        from custom_components.xxx_cristiano.coordinator \
             .coordinator import SEMCoordinator
         src = inspect.getsource(SEMCoordinator._shadow_energy_plan)
         assert "review_night" not in src and "review_demand" not in src

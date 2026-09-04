@@ -21,11 +21,11 @@ input) · `error` (a failure).
 
 ## How to pull it
 
-Call the `solar_energy_management.diagnose` service with `section: trace`
+Call the `xxx_cristiano.diagnose` service with `section: trace`
 (Developer Tools → Actions):
 
 ```yaml
-action: solar_energy_management.diagnose
+action: xxx_cristiano.diagnose
 data:
   section: trace
 ```

@@ -17,10 +17,10 @@ from unittest.mock import AsyncMock, MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.battery_adapters.huawei import (
+from custom_components.xxx_cristiano.coordinator.battery_adapters.huawei import (
     HuaweiBatteryAdapter,
 )
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     BatteryIntent,
 )
 

@@ -45,7 +45,7 @@
         },
         "data_description": {
           "battery_capacity_kwh": "Husbatteriets samlede anvendelige kapacitet (IKKE EV'ens) i kWh. Bruges af den prognosestyrede opladningsstrategi til at estimere, hvor meget batteriet kan dække et solunderskud. Se specifikationen for din inverter.",
-          "generate_dashboard_on_install": "Når dette er aktiveret, opretter SEM Lovelace-dashboardet umiddelbart efter dette trin og genstarter derefter Home Assistant ca. 5 s senere, så det nye dashboard bliver synligt. Du kan altid køre det manuelt senere via tjenesten solar_energy_management.generate_dashboard.",
+          "generate_dashboard_on_install": "Når dette er aktiveret, opretter SEM Lovelace-dashboardet umiddelbart efter dette trin og genstarter derefter Home Assistant ca. 5 s senere, så det nye dashboard bliver synligt. Du kan altid køre det manuelt senere via tjenesten xxx_cristiano.generate_dashboard.",
           "diagram_style": "Vælg systemdiagram på fanen Hjem. 'SEM' bruger det indbyggede animerede diagram. 'K-Flow' bruger K-Flow HACS-kortet (skal installeres separat)."
         }
       },

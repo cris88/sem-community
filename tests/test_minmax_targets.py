@@ -14,7 +14,7 @@ This keeps night charging identical to pre-#245 with no migration:
 import pytest
 from unittest.mock import MagicMock
 
-from custom_components.solar_energy_management.coordinator.coordinator import (
+from custom_components.xxx_cristiano.coordinator.coordinator import (
     SEMCoordinator,
 )
 
@@ -289,7 +289,7 @@ class TestLimitSurplusMigration:
         return e
 
     def _migrate(self):
-        from custom_components.solar_energy_management import _migrate_limit_surplus_to_max
+        from custom_components.xxx_cristiano import _migrate_limit_surplus_to_max
         return _migrate_limit_surplus_to_max
 
     def test_global_switch_on_sets_max_to_target(self):

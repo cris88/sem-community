@@ -19,7 +19,7 @@ sustained change does flip after 2 cycles" property.
 from unittest.mock import MagicMock
 
 
-from custom_components.solar_energy_management.coordinator.charging_control import (
+from custom_components.xxx_cristiano.coordinator.charging_control import (
     ChargingStateMachine,
 )
 

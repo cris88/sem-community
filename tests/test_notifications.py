@@ -3,11 +3,11 @@ import time
 import pytest
 from unittest.mock import AsyncMock, MagicMock
 
-from custom_components.solar_energy_management.coordinator.notifications import (
+from custom_components.xxx_cristiano.coordinator.notifications import (
     NotificationManager,
     _FLAP_STABILITY_SECONDS,
 )
-from custom_components.solar_energy_management.const import ChargingState
+from custom_components.xxx_cristiano.const import ChargingState
 
 
 # ──────────────────────────────────────────────

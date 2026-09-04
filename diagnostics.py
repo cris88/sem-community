@@ -64,14 +64,14 @@ def _load_manager_diagnostics(coordinator: Any) -> dict[str, Any]:
 # don't want to crash on log files that have grown unbounded.
 _LOG_TAIL_KB = 2048           # only read the last 2 MB of the log
 _LOG_MAX_LINES = 80           # return up to 80 matching lines
-_LOG_NEEDLE = "solar_energy_management"
+_LOG_NEEDLE = "xxx_cristiano"
 
 
 async def _get_recent_sem_logs(hass: HomeAssistant) -> list[str]:
     """Return the most recent SEM-related lines from ``home-assistant.log``.
 
     Tails the file (up to ``_LOG_TAIL_KB``), filters for
-    ``solar_energy_management`` mentions, and returns the last
+    ``xxx_cristiano`` mentions, and returns the last
     ``_LOG_MAX_LINES`` matches in order.
 
     Returns a one-line placeholder explaining why if the file isn't
@@ -104,7 +104,7 @@ async def _get_recent_sem_logs(hass: HomeAssistant) -> list[str]:
             return [
                 "<no flat log file at .storage parent — Supervisor "
                 "installs use journald; please paste output of "
-                "`ha core logs | grep solar_energy_management | tail -80`>"
+                "`ha core logs | grep xxx_cristiano | tail -80`>"
             ]
 
         def _read_tail() -> list[str]:

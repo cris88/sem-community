@@ -34,17 +34,17 @@ from unittest.mock import MagicMock
 import pytest
 from freezegun import freeze_time
 
-from custom_components.solar_energy_management.coordinator.energy_calculator import (
+from custom_components.xxx_cristiano.coordinator.energy_calculator import (
     EV_CATEGORY,
     EnergyCalculator,
 )
-from custom_components.solar_energy_management.coordinator.types import (
+from custom_components.xxx_cristiano.coordinator.types import (
     EnergyTotals,
     PowerFlows,
     PowerReadings,
     SEMData,
 )
-from custom_components.solar_energy_management.utils.time_manager import TimeManager
+from custom_components.xxx_cristiano.utils.time_manager import TimeManager
 
 _PERIODS = ("daily", "monthly", "yearly")
 

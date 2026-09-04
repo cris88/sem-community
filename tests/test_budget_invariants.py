@@ -42,12 +42,12 @@ import math
 
 from hypothesis import given, settings, strategies as st
 
-from custom_components.solar_energy_management.coordinator.flow_calculator import (
+from custom_components.xxx_cristiano.coordinator.flow_calculator import (
     EVBudgetStrategy,
     FlowCalculator,
     battery_redirect_w,
 )
-from custom_components.solar_energy_management.coordinator.types import (
+from custom_components.xxx_cristiano.coordinator.types import (
     PowerReadings,
 )
 

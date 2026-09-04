@@ -1,5 +1,5 @@
 {
-  "domain": "solar_energy_management",
+  "domain": "xxx_cristiano",
   "name": "Solar Energy Management",
   "after_dependencies": [
     "recorder"
@@ -18,7 +18,7 @@
   "iot_class": "local_polling",
   "issue_tracker": "https://github.com/traktore-org/sem-community/issues",
   "loggers": [
-    "custom_components.solar_energy_management"
+    "custom_components.xxx_cristiano"
   ],
   "quality_scale": "platinum",
   "requirements": [],

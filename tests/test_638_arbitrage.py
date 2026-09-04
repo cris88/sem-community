@@ -16,10 +16,10 @@ instrument on the .175 rig.
 from datetime import datetime, timedelta, timezone
 
 
-from custom_components.solar_energy_management.coordinator.arbitrage import (
+from custom_components.xxx_cristiano.coordinator.arbitrage import (
     arbitrage_advice,
 )
-from custom_components.solar_energy_management.coordinator.energy_planner import (
+from custom_components.xxx_cristiano.coordinator.energy_planner import (
     LedgerSlot,
 )
 

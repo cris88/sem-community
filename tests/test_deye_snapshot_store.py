@@ -30,10 +30,10 @@ from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.battery_adapters import (
+from custom_components.xxx_cristiano.coordinator.battery_adapters import (
     DeyeBatteryAdapter,
 )
-from custom_components.solar_energy_management.coordinator.battery_adapters.deye_snapshot_store import (
+from custom_components.xxx_cristiano.coordinator.battery_adapters.deye_snapshot_store import (
     DeyeSnapshotStore,
     _snapshot_store_key,
     _unsafe_store_key,
@@ -77,7 +77,7 @@ class _FakeHAStore:
 @pytest.fixture
 def fake_store_class():
     with patch(
-        "custom_components.solar_energy_management.coordinator."
+        "custom_components.xxx_cristiano.coordinator."
         "battery_adapters.deye_snapshot_store.Store",
         _FakeHAStore,
     ) as _cls:
@@ -217,7 +217,7 @@ class TestDeyeSnapshotStore:
 
 class TestCoordinatorWiring:
     def _coordinator(self, hass, config, entry_id="entry-deye-1"):
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
 
@@ -247,7 +247,7 @@ class TestCoordinatorWiring:
         assert pbc["deye_snapshot_store"].battery_id == "battery-1"
 
     def test_real_wiring_gives_deye_adapter_full_snapshot_capability(self, fake_store_class):
-        from custom_components.solar_energy_management.coordinator.battery_adapters import (
+        from custom_components.xxx_cristiano.coordinator.battery_adapters import (
             adapter_for,
         )
 
@@ -280,7 +280,7 @@ class TestCoordinatorWiring:
         assert adapter.supports_forced_charge is False
 
     def test_injection_is_deye_only_no_drift_for_other_brands(self, fake_store_class):
-        from custom_components.solar_energy_management.coordinator.battery_adapters import (
+        from custom_components.xxx_cristiano.coordinator.battery_adapters import (
             adapter_for,
         )
 
@@ -302,7 +302,7 @@ class TestCoordinatorWiring:
 
     async def test_run_battery_pipeline_builds_capable_deye(self, fake_store_class):
         """Drive the real pipeline once and inspect the cached adapter."""
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             BatteryDecision,
             BatteryIntent,
         )
@@ -331,14 +331,14 @@ class TestCoordinatorWiring:
         energy = SimpleNamespace()
 
         with patch(
-            "custom_components.solar_energy_management.coordinator.decide_battery.decide_battery",
+            "custom_components.xxx_cristiano.coordinator.decide_battery.decide_battery",
             return_value=BatteryDecision(
                 battery_id="primary",
                 intent=BatteryIntent.NORMAL,
                 reason="test",
             ),
         ), patch(
-            "custom_components.solar_energy_management.coordinator.actuate_battery.actuate_battery",
+            "custom_components.xxx_cristiano.coordinator.actuate_battery.actuate_battery",
             new=AsyncMock(),
         ):
             await coord._run_battery_pipeline(power, energy, "idle")
@@ -368,7 +368,7 @@ class TestCoordinatorWiring:
             battery_soc_unavailable=False,
         )
         with patch(
-            "custom_components.solar_energy_management.coordinator.decide_battery.decide_battery",
+            "custom_components.xxx_cristiano.coordinator.decide_battery.decide_battery",
             return_value=decision,
         ):
             await coord._run_battery_pipeline(power, SimpleNamespace(), "idle")
@@ -384,10 +384,10 @@ class TestCoordinatorWiring:
         the adapter would happily force-charge. After recovery the adapter must
         come up latched-unsafe so actuation is fail-closed (no writes).
         """
-        from custom_components.solar_energy_management.coordinator.battery_adapters.deye_snapshot_store import (
+        from custom_components.xxx_cristiano.coordinator.battery_adapters.deye_snapshot_store import (
             DeyeSnapshotStore,
         )
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             BatteryDecision,
             BatteryIntent,
         )
@@ -429,10 +429,10 @@ class TestCoordinatorWiring:
         instead of silently ignoring it and leaving the inverter in a
         force-charge state across the restart.
         """
-        from custom_components.solar_energy_management.coordinator.battery_adapters.deye_snapshot_store import (
+        from custom_components.xxx_cristiano.coordinator.battery_adapters.deye_snapshot_store import (
             DeyeSnapshotStore,
         )
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             BatteryDecision,
             BatteryIntent,
         )
@@ -487,10 +487,10 @@ class TestCoordinatorWiring:
         self, fake_store_class
     ):
         """A corrupt persisted snapshot must latch unsafe and write nothing."""
-        from custom_components.solar_energy_management.coordinator.battery_adapters.deye_snapshot_store import (
+        from custom_components.xxx_cristiano.coordinator.battery_adapters.deye_snapshot_store import (
             DeyeSnapshotStore,
         )
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             BatteryDecision,
             BatteryIntent,
         )

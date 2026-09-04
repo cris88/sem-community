@@ -17,16 +17,16 @@ import os
 from unittest.mock import MagicMock
 
 
-from custom_components.solar_energy_management.coordinator.types import SEMData
-from custom_components.solar_energy_management.coordinator.forecast_reader import (
+from custom_components.xxx_cristiano.coordinator.types import SEMData
+from custom_components.xxx_cristiano.coordinator.forecast_reader import (
     ForecastData,
     ForecastReader,
     SOLCAST_ENTITIES,
 )
-from custom_components.solar_energy_management.consts.labels import (
+from custom_components.xxx_cristiano.consts.labels import (
     SENSOR_LABEL_MAPPING,
 )
-from custom_components.solar_energy_management.sensor import SENSOR_TYPES
+from custom_components.xxx_cristiano.sensor import SENSOR_TYPES
 
 _ROOT = os.path.dirname(os.path.dirname(__file__))
 _SENSOR = "forecast_power_now_w"

@@ -34,7 +34,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from datetime import datetime
 
-from custom_components.solar_energy_management.coordinator.energy_planner import (
+from custom_components.xxx_cristiano.coordinator.energy_planner import (
     LedgerSlot, build_night_ledger, pack_night,
 )
 

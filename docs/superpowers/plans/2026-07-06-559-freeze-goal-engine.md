@@ -12,8 +12,8 @@
 
 **Test runner (used in every task):**
 ```bash
-rsync -a --delete --exclude=.git --exclude=node_modules ./ /tmp/ha-config/custom_components/solar_energy_management/
-cd /tmp/ha-config && PYTHONPATH=/tmp/ha-config python3.12 -m pytest custom_components/solar_energy_management/tests/test_559_goal_engine.py -q
+rsync -a --delete --exclude=.git --exclude=node_modules ./ /tmp/ha-config/custom_components/xxx_cristiano/
+cd /tmp/ha-config && PYTHONPATH=/tmp/ha-config python3.12 -m pytest custom_components/xxx_cristiano/tests/test_559_goal_engine.py -q
 ```
 
 ---
@@ -35,7 +35,7 @@ Removes HIGH-1 (un-persisted `daily_max_runtime_sec` cap). These fields have no 
 ```python
 # tests/test_559_goal_engine.py — add
 def test_energy_and_max_cap_fields_removed():
-    from custom_components.solar_energy_management.devices.base import SwitchDevice
+    from custom_components.xxx_cristiano.devices.base import SwitchDevice
     d = SwitchDevice(hass=None, device_id="x", name="X", rated_power=2300)
     for attr in ("daily_max_runtime_sec", "daily_target_energy_kwh",
                  "daily_max_energy_kwh", "daily_max_runtime_reached",
@@ -44,7 +44,7 @@ def test_energy_and_max_cap_fields_removed():
         assert not hasattr(d, attr), f"{attr} should be deleted"
 
 def test_daily_targets_met_runtime_only():
-    from custom_components.solar_energy_management.devices.base import SwitchDevice
+    from custom_components.xxx_cristiano.devices.base import SwitchDevice
     d = SwitchDevice(hass=None, device_id="x", name="X", rated_power=2300)
     d.daily_min_runtime_sec = 3600
     assert d.daily_targets_met is False
@@ -117,7 +117,7 @@ Removes HIGH-2 (un-gated battery drain) and `top_up_policy=always`.
 async def test_no_deadline_force_pass(monkeypatch):
     # A surplus switch with a runtime deficit and NO solar must stay OFF —
     # there is no deadline/always grid-force path anymore.
-    from custom_components.solar_energy_management.coordinator.surplus_controller import SurplusController
+    from custom_components.xxx_cristiano.coordinator.surplus_controller import SurplusController
     # (use the existing controller test harness in this file; assert the
     # device is never activated when remaining_surplus <= 0 regardless of time)
     ...
@@ -159,7 +159,7 @@ Unknown `rated_power` → default threshold → device switches on at low surplu
 
 ```python
 def test_rated_power_autocalibrates_from_observed_draw():
-    from custom_components.solar_energy_management.devices.base import SwitchDevice
+    from custom_components.xxx_cristiano.devices.base import SwitchDevice
     hass = _fake_hass_with_power_sensor("sensor.pool_w", 2300)  # helper in file
     d = SwitchDevice(hass=hass, device_id="pool", name="Pool", rated_power=1000,
                      entity_id="switch.pool", power_entity_id="sensor.pool_w")
@@ -297,8 +297,8 @@ policy select. Refs #559"
 - [ ] **Step 1: Run the FULL suite** via the `/tmp/ha-config` layout:
 
 ```bash
-rsync -a --delete --exclude=.git --exclude=node_modules ./ /tmp/ha-config/custom_components/solar_energy_management/
-cd /tmp/ha-config && PYTHONPATH=/tmp/ha-config python3.12 -m pytest custom_components/solar_energy_management/tests/ -q
+rsync -a --delete --exclude=.git --exclude=node_modules ./ /tmp/ha-config/custom_components/xxx_cristiano/
+cd /tmp/ha-config && PYTHONPATH=/tmp/ha-config python3.12 -m pytest custom_components/xxx_cristiano/tests/ -q
 ```
 Expected: all green. Fix any FLEET-READ lint / scenario fallout.
 

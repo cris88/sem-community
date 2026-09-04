@@ -5,7 +5,7 @@ from types import SimpleNamespace
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.dual_phase_guard import (
+from custom_components.xxx_cristiano.coordinator.dual_phase_guard import (
     evaluate_dual_phase_guard,
 )
 

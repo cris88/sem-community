@@ -22,10 +22,10 @@ from unittest.mock import MagicMock, Mock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.energy_calculator import (
+from custom_components.xxx_cristiano.coordinator.energy_calculator import (
     EnergyCalculator,
 )
-from custom_components.solar_energy_management.utils.log_gate import (
+from custom_components.xxx_cristiano.utils.log_gate import (
     reset_log_gate,
 )
 
@@ -86,7 +86,7 @@ class TestBackingTransitionsLog:
     def test_the_flip_to_unbacked_logs_once(self, caplog) -> None:
         calc = _calc_with_counter("5.0")
         d = date(2026, 8, 13)
-        lg = "custom_components.solar_energy_management.coordinator.energy_calculator"
+        lg = "custom_components.xxx_cristiano.coordinator.energy_calculator"
         with caplog.at_level(logging.INFO, logger=lg):
             calc._reconcile_metered_energy("grid_export", d, "2026-08", "2026")
             calc._hass.states.get = Mock(return_value=None)   # counter vanishes
@@ -97,7 +97,7 @@ class TestBackingTransitionsLog:
     def test_the_recovery_logs_once_and_rearms(self, caplog) -> None:
         calc = _calc_with_counter(None)
         d = date(2026, 8, 13)
-        lg = "custom_components.solar_energy_management.coordinator.energy_calculator"
+        lg = "custom_components.xxx_cristiano.coordinator.energy_calculator"
         with caplog.at_level(logging.INFO, logger=lg):
             calc._reconcile_metered_energy("grid_export", d, "2026-08", "2026")
             calc._hass.states.get = Mock(return_value=_state("5.0"))

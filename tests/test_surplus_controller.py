@@ -3,12 +3,12 @@ import pytest
 from unittest.mock import AsyncMock, MagicMock
 from datetime import datetime
 
-from custom_components.solar_energy_management.coordinator.surplus_controller import (
+from custom_components.xxx_cristiano.coordinator.surplus_controller import (
     SurplusController,
     SurplusAllocationData,
     DEFAULT_REGULATION_OFFSET,
 )
-from custom_components.solar_energy_management.devices.base import DeviceControlMode
+from custom_components.xxx_cristiano.devices.base import DeviceControlMode
 
 
 def _make_device(
@@ -290,7 +290,7 @@ class TestAllocationDataSerialization:
     """Test SurplusAllocationData.to_dict serialization."""
 
     def test_allocation_data_to_dict(self):
-        from custom_components.solar_energy_management.coordinator.surplus_controller import (
+        from custom_components.xxx_cristiano.coordinator.surplus_controller import (
             SurplusAllocation,
         )
 
@@ -457,7 +457,7 @@ class TestScheduleDeviceBudgetLeak:
     @pytest.mark.asyncio
     async def test_force_start_subtracts_consumption(self, mock_hass):
         """Force-started device should subtract from surplus and update allocation."""
-        from custom_components.solar_energy_management.devices.base import ScheduleDevice
+        from custom_components.xxx_cristiano.devices.base import ScheduleDevice
 
         sc = SurplusController(mock_hass)
 

@@ -15,7 +15,7 @@ names exist to fall back on).
 from types import SimpleNamespace
 from unittest.mock import MagicMock, patch
 
-from custom_components.solar_energy_management.coordinator.forecast_reader import (
+from custom_components.xxx_cristiano.coordinator.forecast_reader import (
     ForecastReader,
     OPEN_METEO_SOLAR_PLATFORM,
     FORECAST_SOLAR_PLATFORM,

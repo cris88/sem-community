@@ -323,7 +323,7 @@ the resolved plan to #576.
 ```python
 # tests/test_576_load_priority_battery.py
 import pytest
-from custom_components.solar_energy_management.coordinator.energy_reclaim import (
+from custom_components.xxx_cristiano.coordinator.energy_reclaim import (
     reclaimable_battery_w,
 )
 
@@ -368,7 +368,7 @@ class TestReclaimableBatteryW:
 
 - [ ] **Step 2: Run test to verify it fails**
 
-Run: `PYTHONPATH=/tmp/ha-config python3.12 -m pytest custom_components/solar_energy_management/tests/test_576_load_priority_battery.py -q`
+Run: `PYTHONPATH=/tmp/ha-config python3.12 -m pytest custom_components/xxx_cristiano/tests/test_576_load_priority_battery.py -q`
 Expected: FAIL — `ModuleNotFoundError: energy_reclaim`.
 
 - [ ] **Step 3: Write minimal implementation**
@@ -413,7 +413,7 @@ def reclaimable_battery_w(
 
 - [ ] **Step 4: Run test to verify it passes**
 
-Run: `PYTHONPATH=/tmp/ha-config python3.12 -m pytest custom_components/solar_energy_management/tests/test_576_load_priority_battery.py -q`
+Run: `PYTHONPATH=/tmp/ha-config python3.12 -m pytest custom_components/xxx_cristiano/tests/test_576_load_priority_battery.py -q`
 Expected: PASS (6 tests).
 
 - [ ] **Step 5: Commit**
@@ -436,7 +436,7 @@ git commit -m "feat(#576): reclaimable battery-charge power helper (Phase 1)"
 
 ```python
 def test_config_default_is_off(self):
-    from custom_components.solar_energy_management.const import (
+    from custom_components.xxx_cristiano.const import (
         DEFAULT_LOAD_PRIORITY_ABOVE_BATTERY,
     )
     assert DEFAULT_LOAD_PRIORITY_ABOVE_BATTERY is False
@@ -499,7 +499,7 @@ true_surplus_w = (
 ```python
 def test_surplus_input_includes_reclaim_above_zone(self):
     # A thin harness that calls the same expression the coordinator uses.
-    from custom_components.solar_energy_management.coordinator.energy_reclaim import (
+    from custom_components.xxx_cristiano.coordinator.energy_reclaim import (
         reclaimable_battery_w,
     )
     grid_export, own_draw, batt_charge, soc = 100.0, 0.0, 2400.0, 85.0
@@ -510,7 +510,7 @@ def test_surplus_input_includes_reclaim_above_zone(self):
     assert available == pytest.approx(2500.0)  # 100 export + 2400 reclaimed
 
 def test_surplus_input_unchanged_when_disabled(self):
-    from custom_components.solar_energy_management.coordinator.energy_reclaim import (
+    from custom_components.xxx_cristiano.coordinator.energy_reclaim import (
         reclaimable_battery_w,
     )
     reclaim = reclaimable_battery_w(
@@ -562,10 +562,10 @@ git commit -m "feat(#576): loads reclaim battery-charge power above the reserve 
 ```python
 import pytest
 from unittest.mock import MagicMock
-from custom_components.solar_energy_management.coordinator.surplus_controller import (
+from custom_components.xxx_cristiano.coordinator.surplus_controller import (
     SurplusController,
 )
-from custom_components.solar_energy_management.coordinator.energy_reclaim import (
+from custom_components.xxx_cristiano.coordinator.energy_reclaim import (
     reclaimable_battery_w,
 )
 
@@ -642,7 +642,7 @@ The EV is the higher-priority consumer, so it gets **first claim** on the reclai
 
 ```python
 def test_loads_get_reclaim_net_of_ev(self):
-    from custom_components.solar_energy_management.coordinator.energy_reclaim import (
+    from custom_components.xxx_cristiano.coordinator.energy_reclaim import (
         reclaimable_battery_w,
     )
     total_reclaim = reclaimable_battery_w(
@@ -675,7 +675,7 @@ git commit -m "feat(#576): EV-first ordering guard against within-cycle double-c
 
 ```python
 def test_ev_excess_solar_reclaims_above_zone(self):
-    from custom_components.solar_energy_management.coordinator.energy_reclaim import (
+    from custom_components.xxx_cristiano.coordinator.energy_reclaim import (
         reclaimable_battery_w,
     )
     solar, home, batt, soc = 7000.0, 1500.0, 2000.0, 85.0
@@ -687,7 +687,7 @@ def test_ev_excess_solar_reclaims_above_zone(self):
     assert excess == pytest.approx(5500.0)     # ≥ EV min → car can start (U2)
 
 def test_ev_excess_unchanged_below_zone(self):
-    from custom_components.solar_energy_management.coordinator.energy_reclaim import (
+    from custom_components.xxx_cristiano.coordinator.energy_reclaim import (
         reclaimable_battery_w,
     )
     solar, home, batt, soc = 4000.0, 1755.0, 2400.0, 25.0
@@ -747,7 +747,7 @@ class TestEvScenarios:
         (7000, 1500, 2000, 85, True),    # U2: pool 5.5kW >= EV min
     ])
     def test_u1_u2(self, solar, home, batt, soc, expect_start):
-        from custom_components.solar_energy_management.coordinator.energy_reclaim import (
+        from custom_components.xxx_cristiano.coordinator.energy_reclaim import (
             reclaimable_battery_w)
         EV_MIN = 5500
         excess = (solar - home - batt) + reclaimable_battery_w(
@@ -756,7 +756,7 @@ class TestEvScenarios:
         assert (excess >= EV_MIN) is expect_start
 
     def test_mode_parity_when_disabled(self):
-        from custom_components.solar_energy_management.coordinator.energy_reclaim import (
+        from custom_components.xxx_cristiano.coordinator.energy_reclaim import (
             reclaimable_battery_w)
         for solar, home, batt, soc in [(4000,1755,2400,85),(7000,1500,2000,20)]:
             base = solar - home - batt
@@ -781,7 +781,7 @@ git commit -m "test(#576): U1/U2 EV scenarios + solar_only/min_plus_solar parity
 ### Task 8: Full suite + reviewer
 
 - [ ] **Step 1:** `rsync` to `/tmp/ha-config` and run the FULL suite parallel:
-`PYTHONPATH=/tmp/ha-config python3.12 -m pytest custom_components/solar_energy_management/tests/ -q -n 4` → expect all green.
+`PYTHONPATH=/tmp/ha-config python3.12 -m pytest custom_components/xxx_cristiano/tests/ -q -n 4` → expect all green.
 - [ ] **Step 2:** Dispatch `ruflo-core:reviewer` on the staged diff (per the reviewer-before-deploy rule). Fix any BLOCKER/HIGH.
 - [ ] **Step 3: Commit** any review fixes.
 

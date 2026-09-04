@@ -20,16 +20,16 @@ from unittest.mock import AsyncMock, MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.features.load_device_discovery import (
+from custom_components.xxx_cristiano.features.load_device_discovery import (
     LoadDeviceDiscovery,
 )
-from custom_components.solar_energy_management.features import (
+from custom_components.xxx_cristiano.features import (
     load_device_discovery as ldd,
 )
-from custom_components.solar_energy_management.features import (
+from custom_components.xxx_cristiano.features import (
     device_registry as dr,
 )
-from custom_components.solar_energy_management.features.device_registry import (
+from custom_components.xxx_cristiano.features.device_registry import (
     UnifiedDeviceRegistry,
 )
 

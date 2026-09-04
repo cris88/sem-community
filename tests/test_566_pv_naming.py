@@ -5,12 +5,12 @@ from unittest.mock import MagicMock, patch
 
 from homeassistant.components.sensor import SensorEntityDescription
 
-from custom_components.solar_energy_management.coordinator.sensor_reader import (
+from custom_components.xxx_cristiano.coordinator.sensor_reader import (
     SensorReader,
 )
-from custom_components.solar_energy_management.sensor import SEMSolarSensor
-from custom_components.solar_energy_management.config_flow import OptionsFlowHandler
-from custom_components.solar_energy_management.const import DOMAIN
+from custom_components.xxx_cristiano.sensor import SEMSolarSensor
+from custom_components.xxx_cristiano.config_flow import OptionsFlowHandler
+from custom_components.xxx_cristiano.const import DOMAIN
 
 
 # ---------------------------------------------------------------------------

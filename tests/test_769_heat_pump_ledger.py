@@ -32,15 +32,15 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.energy_calculator import (
+from custom_components.xxx_cristiano.coordinator.energy_calculator import (
     EnergyCalculator,
 )
-from custom_components.solar_energy_management.devices.base import (
+from custom_components.xxx_cristiano.devices.base import (
     DeviceControlMode,
     DeviceState,
     SwitchDevice,
 )
-from custom_components.solar_energy_management.devices.heat_pump_controller import (
+from custom_components.xxx_cristiano.devices.heat_pump_controller import (
     HeatPumpController,
     SGReadyState,
 )
@@ -66,7 +66,7 @@ class _Clock:
 
 @pytest.fixture(autouse=True)
 def _clock(monkeypatch):
-    import custom_components.solar_energy_management.devices.base as base_mod
+    import custom_components.xxx_cristiano.devices.base as base_mod
 
     _CURSOR["t"] = _START
     fake = MagicMock()
@@ -193,7 +193,7 @@ class TestTheSplitLabel:
     def test_shifted_means_boost_or_forced(self) -> None:
         """The whole point of the split: separate what SEM caused from what
         the pump would have done on its own thermostat."""
-        from custom_components.solar_energy_management.coordinator.energy_calculator import (
+        from custom_components.xxx_cristiano.coordinator.energy_calculator import (
             SHIFTED_SPLITS,
         )
         assert SHIFTED_SPLITS == ("sg3", "sg4")
@@ -345,7 +345,7 @@ class TestTheCalendarPruneDoesNotEatTheDeviceDay:
 
 class TestTheCoordinatorFilesTheIncrement:
     def _coord(self, devices):
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
 
@@ -362,7 +362,7 @@ class TestTheCoordinatorFilesTheIncrement:
         return coord
 
     def test_each_device_increment_is_filed_under_its_split(self) -> None:
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
 
@@ -385,7 +385,7 @@ class TestTheCoordinatorFilesTheIncrement:
         assert calls[1].kwargs == {"split": None}
 
     def test_a_device_that_booked_nothing_is_not_filed(self) -> None:
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
 
@@ -399,7 +399,7 @@ class TestTheCoordinatorFilesTheIncrement:
     def test_a_legacy_device_without_the_fields_is_skipped_quietly(self) -> None:
         """Duck-typed stand-ins and any device built before #768 must not
         break the cycle."""
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
 
@@ -414,7 +414,7 @@ class TestTheCoordinatorFilesTheIncrement:
 
 class TestTheRowSurfaces:
     def test_the_sensor_dataclass_carries_the_ledger(self) -> None:
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             HeatPumpSensorData,
         )
 
@@ -432,7 +432,7 @@ class TestTheRowSurfaces:
         assert d.heat_pump_energy_measured is True
 
     def test_the_sensor_keys_are_published(self) -> None:
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             HeatPumpSensorData, SEMData,
         )
 
@@ -454,7 +454,7 @@ class TestTheRowSurfaces:
     def test_every_new_sensor_key_has_an_entity(self) -> None:
         """A published key with no SensorEntityDescription is a number
         nobody can see — the #666 failure mode."""
-        from custom_components.solar_energy_management import sensor as sensor_mod
+        from custom_components.xxx_cristiano import sensor as sensor_mod
 
         keys = {d.key for d in sensor_mod.SENSOR_TYPES}
         for k in (
@@ -465,7 +465,7 @@ class TestTheRowSurfaces:
             assert k in keys, f"{k} is published but has no entity"
 
     def test_every_new_sensor_key_is_labelled(self) -> None:
-        from custom_components.solar_energy_management.consts.labels import (
+        from custom_components.xxx_cristiano.consts.labels import (
             SENSOR_LABEL_MAPPING,
         )
 

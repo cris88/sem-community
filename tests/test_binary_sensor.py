@@ -4,7 +4,7 @@ from unittest.mock import MagicMock
 
 from homeassistant.components.binary_sensor import BinarySensorDeviceClass, BinarySensorEntityDescription
 
-from custom_components.solar_energy_management.binary_sensor import (
+from custom_components.xxx_cristiano.binary_sensor import (
     SEMSolarBinarySensor,
     async_setup_entry,
 )

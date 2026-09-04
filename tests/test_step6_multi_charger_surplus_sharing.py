@@ -12,14 +12,14 @@ real loop's threading is exercised by the invariant suite.
 """
 import pytest
 
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     ChargerEnergy,
     ChargerIntent,
     ChargerPower,
     ChargerView,
     FleetContext,
 )
-from custom_components.solar_energy_management.coordinator.decide import (
+from custom_components.xxx_cristiano.coordinator.decide import (
     decide,
     self_consumption_surplus_w,
 )

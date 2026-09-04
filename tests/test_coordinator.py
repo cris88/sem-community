@@ -6,7 +6,7 @@ This tests integration between components, not internal implementation.
 import pytest
 from unittest.mock import Mock, patch
 
-from custom_components.solar_energy_management.coordinator import (
+from custom_components.xxx_cristiano.coordinator import (
     SEMCoordinator,
     PowerReadings,
     EnergyTotals,
@@ -148,7 +148,7 @@ class TestSEMDataStructure:
     def test_every_binary_sensor_key_in_to_dict(self):
         # Guards against the sem_-prefix class of bug where to_dict() writes
         # a renamed key and the entity reads False forever.
-        from custom_components.solar_energy_management.binary_sensor import (
+        from custom_components.xxx_cristiano.binary_sensor import (
             BINARY_SENSOR_TYPES,
         )
 
@@ -167,8 +167,8 @@ class TestSEMDataStructure:
         # or features/. Catches typos and dropped producers.
         import re
         from pathlib import Path
-        import custom_components.solar_energy_management as pkg_module
-        from custom_components.solar_energy_management.sensor import SENSOR_TYPES
+        import custom_components.xxx_cristiano as pkg_module
+        from custom_components.xxx_cristiano.sensor import SENSOR_TYPES
 
         pkg = Path(pkg_module.__file__).resolve().parent
         producer_text = ""

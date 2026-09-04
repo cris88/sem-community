@@ -20,7 +20,7 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.coordinator import (
+from custom_components.xxx_cristiano.coordinator.coordinator import (
     SEMCoordinator,
 )
 
@@ -65,7 +65,7 @@ class TestNotScheduledIsStructured:
 @pytest.mark.unit
 class TestCoverageReachesTheCard:
     def test_the_sensor_attrs_carry_the_coverage_map(self):
-        from custom_components.solar_energy_management.sensor import (
+        from custom_components.xxx_cristiano.sensor import (
             _energy_plan_attrs,
         )
         plan = {"computed_at": "2026-08-11T21:00:00+00:00",
@@ -178,7 +178,7 @@ class TestActuationDefaultsOn:
         # (#777) The seed moved from a literal ``options.get`` into the
         # explicit-config-beats-ghost precedence; the C8 default itself
         # is unchanged and now pinned structurally.
-        from custom_components.solar_energy_management.switch import (
+        from custom_components.xxx_cristiano.switch import (
             SEMSolarSwitch,
         )
         assert SEMSolarSwitch._PERSISTED_DEFAULTS["energy_plan_actuation"] is True
@@ -192,7 +192,7 @@ class TestTheQuietFaceSpeaksInSentences:
     translates; the prose stays for logs/diagnose only."""
 
     def test_the_idle_payload_carries_why_codes(self, monkeypatch):
-        from custom_components.solar_energy_management.coordinator import (
+        from custom_components.xxx_cristiano.coordinator import (
             ev_night_targets,
         )
         monkeypatch.setattr(ev_night_targets, "build_night_target_map",
@@ -216,7 +216,7 @@ class TestTheQuietFaceSpeaksInSentences:
             {"id": "load:pump", "why": "no_runtime_need", "label": "Pump"}]
 
     def test_an_idle_night_with_an_unplugged_car_names_it(self, monkeypatch):
-        from custom_components.solar_energy_management.coordinator import (
+        from custom_components.xxx_cristiano.coordinator import (
             ev_night_targets,
         )
         monkeypatch.setattr(ev_night_targets, "build_night_target_map",
@@ -264,7 +264,7 @@ class TestEveryLeftOutLoadIsNamed:
         return fake._energy_plan_shadow.get("not_scheduled") or []
 
     def test_a_device_whose_mode_excludes_surplus_says_so(self, freeze_targets):
-        from custom_components.solar_energy_management.devices.base import (
+        from custom_components.xxx_cristiano.devices.base import (
             DeviceControlMode,
         )
         rows = self._rows(_load(control_mode=DeviceControlMode.OFF),
@@ -300,7 +300,7 @@ class TestEveryLeftOutLoadIsNamed:
     def test_the_quiet_night_names_its_left_out_loads_too(self, monkeypatch):
         """The 'nothing needs the night' payload is the one a user reads
         WHEN they wonder where their device went."""
-        from custom_components.solar_energy_management.coordinator import (
+        from custom_components.xxx_cristiano.coordinator import (
             ev_night_targets,
         )
         monkeypatch.setattr(ev_night_targets, "build_night_target_map",
@@ -368,7 +368,7 @@ class TestOnlyNightCandidatesOweAWhyNot:
 
     def test_a_device_never_asked_for_runtime_is_not_on_the_list(
             self, freeze_targets):
-        from custom_components.solar_energy_management.devices.base import (
+        from custom_components.xxx_cristiano.devices.base import (
             DeviceControlMode,
         )
         rows = self._rows(
@@ -382,7 +382,7 @@ class TestOnlyNightCandidatesOweAWhyNot:
     def test_a_device_asked_for_runtime_still_names_its_mode(
             self, freeze_targets):
         """The pin against over-correcting: the useful answer survives."""
-        from custom_components.solar_energy_management.devices.base import (
+        from custom_components.xxx_cristiano.devices.base import (
             DeviceControlMode,
         )
         rows = self._rows(_load(control_mode=DeviceControlMode.PEAK_ONLY),
@@ -393,7 +393,7 @@ class TestOnlyNightCandidatesOweAWhyNot:
     def test_a_non_candidate_still_counts_as_a_load_seen(self, monkeypatch):
         """``no_load_needs_night`` is keyed on ``loads_seen`` — dropping the
         ROW must not drop the sentence that explains the quiet night."""
-        from custom_components.solar_energy_management.coordinator import (
+        from custom_components.xxx_cristiano.coordinator import (
             ev_night_targets,
         )
         monkeypatch.setattr(ev_night_targets, "build_night_target_map",
@@ -476,7 +476,7 @@ class TestTheQuietPlanIsNotUnreadable:
                 "why_codes": ["battery_no_deficit"]}
 
     def test_the_quiet_plan_names_itself(self):
-        from custom_components.solar_energy_management.coordinator \
+        from custom_components.xxx_cristiano.coordinator \
             .energy_plan_actuation import plan_gate
         gate = plan_gate(self._quiet(), "battery", self.NOW)
         # Still uncovered — an empty plan has no say over anything.
@@ -487,7 +487,7 @@ class TestTheQuietPlanIsNotUnreadable:
         """The discriminator is the EMPTY shape, not the missing span: a
         plan that packed demands but has no readable slots is genuinely
         broken and must keep saying so."""
-        from custom_components.solar_energy_management.coordinator \
+        from custom_components.xxx_cristiano.coordinator \
             .energy_plan_actuation import plan_gate
         broken = self._quiet()
         broken["demands"] = [{"id": "battery", "status": "fits"}]

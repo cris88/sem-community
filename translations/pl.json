@@ -45,7 +45,7 @@
         },
         "data_description": {
           "battery_capacity_kwh": "Całkowita użyteczna pojemność baterii domowej (NIE pojazdu EV) w kWh. Używana przez strategię ładowania opartą na prognozie do oszacowania, jak duży deficyt słoneczny bateria może zmostkować. Sprawdź specyfikację falownika.",
-          "generate_dashboard_on_install": "Gdy opcja jest włączona, SEM tworzy pulpit Lovelace natychmiast po zakończeniu tego kroku, a następnie ok. 5 s później restartuje Home Assistant, aby nowy pulpit stał się widoczny. Zawsze możesz uruchomić to ponownie ręcznie usługą solar_energy_management.generate_dashboard.",
+          "generate_dashboard_on_install": "Gdy opcja jest włączona, SEM tworzy pulpit Lovelace natychmiast po zakończeniu tego kroku, a następnie ok. 5 s później restartuje Home Assistant, aby nowy pulpit stał się widoczny. Zawsze możesz uruchomić to ponownie ręcznie usługą xxx_cristiano.generate_dashboard.",
           "diagram_style": "Wybierz styl diagramu systemowego na karcie Strona główna. 'SEM' używa wbudowanego animowanego diagramu. 'K-Flow' używa karty K-Flow HACS (wymaga osobnej instalacji)."
         }
       },

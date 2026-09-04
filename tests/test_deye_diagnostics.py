@@ -14,7 +14,7 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.diagnostics import (
+from custom_components.xxx_cristiano.diagnostics import (
     async_get_config_entry_diagnostics,
 )
 
@@ -38,7 +38,7 @@ def _diag_entry():
     e.entry_id = "test_deye_diag"
     e.version = 16
     e.title = "Solar Energy Management"
-    e.domain = "solar_energy_management"
+    e.domain = "xxx_cristiano"
     e.data = {"battery_charge_platform": "deye"}
     e.options = {
         "deye_observer_mode": False,
@@ -88,7 +88,7 @@ class TestDeyeDiagnostics:
         _diag_coordinator._battery_adapters = {"primary": _make_adapter(unsafe=False, avail=True)}
         _diag_entry.runtime_data = _diag_coordinator
         _diag_hass.data = {
-            "solar_energy_management": {_diag_entry.entry_id: _diag_coordinator},
+            "xxx_cristiano": {_diag_entry.entry_id: _diag_coordinator},
         }
 
         result = await async_get_config_entry_diagnostics(_diag_hass, _diag_entry)
@@ -113,7 +113,7 @@ class TestDeyeDiagnostics:
         }
         _diag_entry.runtime_data = _diag_coordinator
         _diag_hass.data = {
-            "solar_energy_management": {_diag_entry.entry_id: _diag_coordinator},
+            "xxx_cristiano": {_diag_entry.entry_id: _diag_coordinator},
         }
 
         result = await async_get_config_entry_diagnostics(_diag_hass, _diag_entry)
@@ -130,7 +130,7 @@ class TestDeyeDiagnostics:
         }
         _diag_entry.runtime_data = _diag_coordinator
         _diag_hass.data = {
-            "solar_energy_management": {_diag_entry.entry_id: _diag_coordinator},
+            "xxx_cristiano": {_diag_entry.entry_id: _diag_coordinator},
         }
 
         result = await async_get_config_entry_diagnostics(_diag_hass, _diag_entry)
@@ -145,7 +145,7 @@ class TestDeyeDiagnostics:
         }
         _diag_entry.runtime_data = _diag_coordinator
         _diag_hass.data = {
-            "solar_energy_management": {_diag_entry.entry_id: _diag_coordinator},
+            "xxx_cristiano": {_diag_entry.entry_id: _diag_coordinator},
         }
 
         result = await async_get_config_entry_diagnostics(_diag_hass, _diag_entry)
@@ -162,7 +162,7 @@ class TestDeyeDiagnostics:
         _diag_coordinator._battery_adapters = {}
         _diag_entry.runtime_data = _diag_coordinator
         _diag_hass.data = {
-            "solar_energy_management": {_diag_entry.entry_id: _diag_coordinator},
+            "xxx_cristiano": {_diag_entry.entry_id: _diag_coordinator},
         }
 
         result = await async_get_config_entry_diagnostics(_diag_hass, _diag_entry)

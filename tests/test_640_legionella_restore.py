@@ -1,7 +1,7 @@
 """#640 — legionella timestamp seeds at REGISTRATION (the restore was a no-op)."""
 from unittest.mock import MagicMock
 
-from custom_components.solar_energy_management import _seed_legionella_time
+from custom_components.xxx_cristiano import _seed_legionella_time
 
 
 def _hw():

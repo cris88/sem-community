@@ -21,13 +21,13 @@ from unittest.mock import AsyncMock, MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.devices.base import (
+from custom_components.xxx_cristiano.devices.base import (
     DeviceControlMode, DeviceState,
 )
-from custom_components.solar_energy_management.devices.heat_pump_controller import (
+from custom_components.xxx_cristiano.devices.heat_pump_controller import (
     HeatPumpController, SGReadyState,
 )
-from custom_components.solar_energy_management.devices.hot_water_controller import (
+from custom_components.xxx_cristiano.devices.hot_water_controller import (
     HotWaterController,
 )
 
@@ -126,7 +126,7 @@ async def test_relay2_failure_restores_relay1():
 # ── I2: legionella timestamp storage round-trip ──────────────────────
 
 def test_storage_legionella_time_roundtrip():
-    from custom_components.solar_energy_management.coordinator.storage import (
+    from custom_components.xxx_cristiano.coordinator.storage import (
         SEMStorage,
     )
     s = SEMStorage.__new__(SEMStorage)

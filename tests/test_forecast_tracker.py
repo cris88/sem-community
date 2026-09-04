@@ -3,7 +3,7 @@ import pytest
 from unittest.mock import patch, MagicMock
 from datetime import datetime
 
-from custom_components.solar_energy_management.coordinator.forecast_tracker import (
+from custom_components.xxx_cristiano.coordinator.forecast_tracker import (
     ForecastTracker,
     DailyForecastRecord,
 )
@@ -39,7 +39,7 @@ def _freeze_dt(year=2026, month=4, day=18, hour=12, minute=0):
 # Tests
 # ──────────────────────────────────────────────
 
-@patch("custom_components.solar_energy_management.coordinator.forecast_tracker.dt_util")
+@patch("custom_components.xxx_cristiano.coordinator.forecast_tracker.dt_util")
 def test_update_records_deviation(mock_dt, tracker):
     """Test that update records forecast vs actual deviation."""
     mock_dt.now.return_value = _freeze_dt()
@@ -51,7 +51,7 @@ def test_update_records_deviation(mock_dt, tracker):
     assert tracker._today_actual == 18.0
 
 
-@patch("custom_components.solar_energy_management.coordinator.forecast_tracker.dt_util")
+@patch("custom_components.xxx_cristiano.coordinator.forecast_tracker.dt_util")
 def test_correction_factor_adjusts(mock_dt, tracker):
     """Test that correction factor adjusts after accumulating history."""
     # Seed history with records where actual is consistently 80% of forecast
@@ -75,7 +75,7 @@ def test_correction_factor_adjusts(mock_dt, tracker):
     assert tracker.correction_factor >= 0.3  # clamped min
 
 
-@patch("custom_components.solar_energy_management.coordinator.forecast_tracker.dt_util")
+@patch("custom_components.xxx_cristiano.coordinator.forecast_tracker.dt_util")
 def test_get_data_returns_accuracy(mock_dt, tracker):
     """Test get_data returns a dict with the kept keys.
 
@@ -96,7 +96,7 @@ def test_get_data_returns_accuracy(mock_dt, tracker):
     assert tracker.accuracy_today == pytest.approx(90.0)
 
 
-@patch("custom_components.solar_energy_management.coordinator.forecast_tracker.dt_util")
+@patch("custom_components.xxx_cristiano.coordinator.forecast_tracker.dt_util")
 def test_apply_correction(mock_dt, tracker):
     """Test applying correction factor to a forecast value."""
     mock_dt.now.return_value = _freeze_dt()
@@ -174,7 +174,7 @@ def test_get_state_roundtrip(tracker):
     assert new_tracker._correction_factor == pytest.approx(0.92)
 
 
-@patch("custom_components.solar_energy_management.coordinator.forecast_tracker.dt_util")
+@patch("custom_components.xxx_cristiano.coordinator.forecast_tracker.dt_util")
 def test_weather_condition_tracking(mock_dt, tracker):
     """Test weather condition normalization and tracking."""
     mock_dt.now.return_value = _freeze_dt()
@@ -197,7 +197,7 @@ def test_weather_condition_tracking(mock_dt, tracker):
 # ──────────────────────────────────────────────
 
 
-@patch("custom_components.solar_energy_management.coordinator.forecast_tracker.dt_util")
+@patch("custom_components.xxx_cristiano.coordinator.forecast_tracker.dt_util")
 def test_416_weather_snapshot_taken_at_confident_midday(mock_dt, tracker):
     """Inside ``_calculate_dampening_factor``'s ``blended_live`` branch
     the tracker must snapshot ``_weather_today`` so a later rollover
@@ -219,7 +219,7 @@ def test_416_weather_snapshot_taken_at_confident_midday(mock_dt, tracker):
     )
 
 
-@patch("custom_components.solar_energy_management.coordinator.forecast_tracker.dt_util")
+@patch("custom_components.xxx_cristiano.coordinator.forecast_tracker.dt_util")
 def test_416_save_record_prefers_snapshot_over_live_weather(mock_dt, tracker):
     """Rollover write must use the mid-day weather snapshot, not the
     post-sunset live ``_weather_today``. This is the bug that caused
@@ -258,7 +258,7 @@ def test_416_save_record_prefers_snapshot_over_live_weather(mock_dt, tracker):
     )
 
 
-@patch("custom_components.solar_energy_management.coordinator.forecast_tracker.dt_util")
+@patch("custom_components.xxx_cristiano.coordinator.forecast_tracker.dt_util")
 def test_416_snapshot_resets_on_day_rollover(mock_dt, tracker):
     """``_weather_snapshot`` is per-day, like ``_dampening_snapshot``.
     Must reset on rollover so today's record never picks up yesterday's
@@ -281,7 +281,7 @@ def test_416_snapshot_resets_on_day_rollover(mock_dt, tracker):
     )
 
 
-@patch("custom_components.solar_energy_management.coordinator.forecast_tracker.dt_util")
+@patch("custom_components.xxx_cristiano.coordinator.forecast_tracker.dt_util")
 def test_416_eager_snapshot_on_low_forecast_day(mock_dt, tracker):
     """v1.7.2 (2026-06-07): the eager-snapshot path captures weather
     during daylight even when the day never reaches ``blended_live``
@@ -310,7 +310,7 @@ def test_416_eager_snapshot_on_low_forecast_day(mock_dt, tracker):
     assert tracker._history[0].weather == "sunny"
 
 
-@patch("custom_components.solar_energy_management.coordinator.forecast_tracker.dt_util")
+@patch("custom_components.xxx_cristiano.coordinator.forecast_tracker.dt_util")
 def test_416_eager_snapshot_ignores_unknown_weather(mock_dt, tracker):
     """v1.7.2 (2026-06-07): the eager-snapshot path must skip when the
     weather entity itself reports ``unknown``/``unavailable``. Otherwise
@@ -329,7 +329,7 @@ def test_416_eager_snapshot_ignores_unknown_weather(mock_dt, tracker):
     assert tracker._weather_snapshot == "partlycloudy"
 
 
-@patch("custom_components.solar_energy_management.coordinator.forecast_tracker.dt_util")
+@patch("custom_components.xxx_cristiano.coordinator.forecast_tracker.dt_util")
 def test_416_eager_snapshot_skips_pre_sunrise_and_post_sunset(mock_dt, tracker):
     """v1.7.2 (2026-06-07): the eager-snapshot path is daylight-gated.
     A pre-sunrise or post-sunset cycle must NOT overwrite a confident
@@ -353,7 +353,7 @@ def test_416_eager_snapshot_skips_pre_sunrise_and_post_sunset(mock_dt, tracker):
     )
 
 
-@patch("custom_components.solar_energy_management.coordinator.forecast_tracker.dt_util")
+@patch("custom_components.xxx_cristiano.coordinator.forecast_tracker.dt_util")
 def test_416_save_record_falls_back_to_live_when_no_snapshot(mock_dt, tracker):
     """The fallback path still exists for the truly-degenerate case:
     HA was restarted post-sunset AND the weather entity has been
@@ -379,7 +379,7 @@ def test_416_save_record_falls_back_to_live_when_no_snapshot(mock_dt, tracker):
     assert tracker._history[0].weather == "clear-night"
 
 
-@patch("custom_components.solar_energy_management.coordinator.forecast_tracker.dt_util")
+@patch("custom_components.xxx_cristiano.coordinator.forecast_tracker.dt_util")
 def test_day_rollover_saves_record(mock_dt, tracker):
     """Test that day rollover saves yesterday's record to history."""
     # Day 1
@@ -396,7 +396,7 @@ def test_day_rollover_saves_record(mock_dt, tracker):
     assert tracker._history[0].actual_kwh == 22.0
 
 
-@patch("custom_components.solar_energy_management.coordinator.forecast_tracker.dt_util")
+@patch("custom_components.xxx_cristiano.coordinator.forecast_tracker.dt_util")
 def test_accuracy_today_low_forecast(mock_dt, tracker):
     """Test accuracy is 0 when forecast is below minimum."""
     mock_dt.now.return_value = _freeze_dt()
@@ -404,7 +404,7 @@ def test_accuracy_today_low_forecast(mock_dt, tracker):
     assert tracker.accuracy_today == 0.0
 
 
-@patch("custom_components.solar_energy_management.coordinator.forecast_tracker.dt_util")
+@patch("custom_components.xxx_cristiano.coordinator.forecast_tracker.dt_util")
 def test_accuracy_7d(mock_dt, tracker):
     """Test 7-day accuracy average."""
     for i in range(7):
@@ -419,7 +419,7 @@ def test_accuracy_7d(mock_dt, tracker):
     assert tracker.accuracy_7d == pytest.approx(90.0)
 
 
-@patch("custom_components.solar_energy_management.coordinator.forecast_tracker.dt_util")
+@patch("custom_components.xxx_cristiano.coordinator.forecast_tracker.dt_util")
 def test_correction_factor_clamped(mock_dt, tracker):
     """Test correction factor is clamped between 0.3 and 2.0."""
     # Extreme overperformance records

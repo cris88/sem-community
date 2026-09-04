@@ -60,7 +60,7 @@ def _patch_restore_store(monkeypatch):
     Patching the module's own accessor keeps the test honest about the
     contract (entity_id -> last state) without standing up HA's storage.
     """
-    from custom_components.solar_energy_management import persisted_flags as pf
+    from custom_components.xxx_cristiano import persisted_flags as pf
 
     def fake(hass, entity_id):
         stored = getattr(hass, "_sem_last_states", {}).get(entity_id)
@@ -74,7 +74,7 @@ class TestResolvePrecedence:
     """One resolution order, shared with the switch: options, data, ghost."""
 
     def test_options_win(self):
-        from custom_components.solar_energy_management.persisted_flags import (
+        from custom_components.xxx_cristiano.persisted_flags import (
             resolve_persisted_flag,
         )
         hass = _hass({"switch.sem_observer_mode": "on"})
@@ -83,7 +83,7 @@ class TestResolvePrecedence:
         assert resolve_persisted_flag(hass, entry, "observer_mode") is False
 
     def test_data_beats_the_ghost(self):
-        from custom_components.solar_energy_management.persisted_flags import (
+        from custom_components.xxx_cristiano.persisted_flags import (
             resolve_persisted_flag,
         )
         hass = _hass({"switch.sem_observer_mode": "on"})
@@ -93,7 +93,7 @@ class TestResolvePrecedence:
     def test_the_ghost_speaks_when_nothing_else_does(self):
         """The legacy install — #777 keeps honoring restore here, so the
         coordinator must honor exactly the same thing."""
-        from custom_components.solar_energy_management.persisted_flags import (
+        from custom_components.xxx_cristiano.persisted_flags import (
             resolve_persisted_flag,
         )
         hass = _hass({"switch.sem_observer_mode": "on"})
@@ -102,7 +102,7 @@ class TestResolvePrecedence:
     def test_silence_everywhere_is_none_not_false(self):
         """None means "never recorded" — distinct from a recorded False.
         Collapsing the two is how the ARMED default won in the first place."""
-        from custom_components.solar_energy_management.persisted_flags import (
+        from custom_components.xxx_cristiano.persisted_flags import (
             resolve_persisted_flag,
         )
         assert resolve_persisted_flag(_hass(), _entry(), "observer_mode") is None
@@ -112,7 +112,7 @@ class TestResolvePrecedence:
         """The switch is a CoordinatorEntity; its state flaps to
         unavailable. Only a definite on/off is a record — the same
         contract ``_sync_observer_mode_from_switch`` holds per cycle."""
-        from custom_components.solar_energy_management.persisted_flags import (
+        from custom_components.xxx_cristiano.persisted_flags import (
             resolve_persisted_flag,
         )
         hass = _hass({"switch.sem_observer_mode": junk})
@@ -127,7 +127,7 @@ class TestPromotion:
     def test_a_legacy_observer_install_boots_observing(self):
         """The live HA-TEST case: no key anywhere, restore store says on.
         The config handed to the coordinator must say True."""
-        from custom_components.solar_energy_management.persisted_flags import (
+        from custom_components.xxx_cristiano.persisted_flags import (
             promote_persisted_flags,
         )
         hass = _hass({"switch.sem_observer_mode": "on"})
@@ -141,7 +141,7 @@ class TestPromotion:
         """A read-only fix decays: STATE_EXPIRATION prunes the store after
         7 days and the install silently reverts to the ARMED default.
         Promotion makes the record explicit, permanently."""
-        from custom_components.solar_energy_management.persisted_flags import (
+        from custom_components.xxx_cristiano.persisted_flags import (
             promote_persisted_flags,
         )
         hass = _hass({"switch.sem_observer_mode": "on"})
@@ -154,7 +154,7 @@ class TestPromotion:
     def test_an_explicit_config_is_left_alone(self):
         """Nothing to resolve — and no entry write, so no reload churn on
         every single start."""
-        from custom_components.solar_energy_management.persisted_flags import (
+        from custom_components.xxx_cristiano.persisted_flags import (
             promote_persisted_flags,
         )
         hass = _hass({"switch.sem_observer_mode": "on"})
@@ -167,7 +167,7 @@ class TestPromotion:
     def test_silence_promotes_nothing(self):
         """No record anywhere: leave the config untouched so the per-key
         default still decides. Never invent a record."""
-        from custom_components.solar_energy_management.persisted_flags import (
+        from custom_components.xxx_cristiano.persisted_flags import (
             promote_persisted_flags,
         )
         hass = _hass()
@@ -180,7 +180,7 @@ class TestPromotion:
         """Systematic: the kill-switch and vacation carry the same hole —
         an install that turned actuation OFF on a legacy entry would boot
         ACTUATING until the switch attached."""
-        from custom_components.solar_energy_management.persisted_flags import (
+        from custom_components.xxx_cristiano.persisted_flags import (
             promote_persisted_flags,
         )
         hass = _hass({
@@ -199,7 +199,7 @@ class TestPromotion:
 
     def test_one_entry_write_for_all_promotions(self):
         """Three promotions, one options write — not three."""
-        from custom_components.solar_energy_management.persisted_flags import (
+        from custom_components.xxx_cristiano.persisted_flags import (
             promote_persisted_flags,
         )
         hass = _hass({
@@ -222,7 +222,7 @@ class TestWiring:
     def test_setup_promotes_before_building_the_coordinator(self):
         """Order is the whole point: after the coordinator exists the
         window is already open."""
-        import custom_components.solar_energy_management as sem_init
+        import custom_components.xxx_cristiano as sem_init
         src = inspect.getsource(sem_init.async_setup_entry)
         assert "promote_persisted_flags(" in src
         assert src.index("promote_persisted_flags(") < src.index("SEMCoordinator(")
@@ -233,7 +233,7 @@ class TestWiring:
         — so it spammed every install whose observer flag lived anywhere
         else. One source read where three exist is the bug, wherever it
         appears."""
-        import custom_components.solar_energy_management as sem_init
+        import custom_components.xxx_cristiano as sem_init
         src = inspect.getsource(sem_init.async_setup_entry)
         assert 'entry.data.get("observer_mode")' not in src
         assert 'full_config.get("observer_mode")' in src
@@ -253,7 +253,7 @@ class TestWiring:
         the discriminator instead: whether ``switch.py`` imports the name
         at all.
         """
-        from custom_components.solar_energy_management import (
+        from custom_components.xxx_cristiano import (
             persisted_flags as pf, switch as sw,
         )
         klass = sw.SEMSolarSwitch
@@ -270,10 +270,10 @@ class TestWiring:
         """The store is keyed by entity_id; the switch forces
         ``switch.sem_<key>``. If that ever changes, the read goes silent —
         and silence here means ARMED."""
-        from custom_components.solar_energy_management.persisted_flags import (
+        from custom_components.xxx_cristiano.persisted_flags import (
             PERSISTED_FLAG_DEFAULTS, switch_entity_id,
         )
-        from custom_components.solar_energy_management.switch import SEMSolarSwitch
+        from custom_components.xxx_cristiano.switch import SEMSolarSwitch
         src = inspect.getsource(SEMSolarSwitch.__init__)
         assert 'self.entity_id = f"switch.sem_{description.key}"' in src
         for key in PERSISTED_FLAG_DEFAULTS:

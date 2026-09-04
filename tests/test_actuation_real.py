@@ -23,8 +23,8 @@ import voluptuous as vol
 
 from homeassistant.helpers import issue_registry as ir
 
-from custom_components.solar_energy_management.const import DOMAIN
-from custom_components.solar_energy_management.devices.base import (
+from custom_components.xxx_cristiano.const import DOMAIN
+from custom_components.xxx_cristiano.devices.base import (
     CurrentControlDevice,
 )
 

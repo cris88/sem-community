@@ -38,14 +38,14 @@ from unittest.mock import AsyncMock, MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.const import (
+from custom_components.xxx_cristiano.const import (
     DOMAIN,
     DEFAULT_DEVICE_RATED_POWER as _DEFAULT_RATED_POWER,
 )
-from custom_components.solar_energy_management.devices.base import (
+from custom_components.xxx_cristiano.devices.base import (
     DeviceState, SwitchDevice, surplus_device_from_spec,
 )
-from custom_components.solar_energy_management.features.device_registry import (
+from custom_components.xxx_cristiano.features.device_registry import (
     UnifiedDeviceRegistry,
 )
 

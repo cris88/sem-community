@@ -19,7 +19,7 @@ from __future__ import annotations
 import pytest
 from unittest.mock import AsyncMock, MagicMock, patch
 
-from custom_components.solar_energy_management.devices.base import (
+from custom_components.xxx_cristiano.devices.base import (
     CurrentControlDevice,
 )
 
@@ -93,7 +93,7 @@ class TestActuationFailureRepair:
             side_effect=Exception("extra keys not allowed @ data['current']"),
         )
         with patch(
-            "custom_components.solar_energy_management.coordinator."
+            "custom_components.xxx_cristiano.coordinator."
             "repair_issues.raise_charger_actuation_failed"
         ) as raise_repair:
             await dev._set_current(10)
@@ -113,10 +113,10 @@ class TestActuationFailureRepair:
         dev = _device(current_entity_id="number.flaky")
         dev.hass.services.async_call = AsyncMock(side_effect=Exception("boom"))
         with patch(
-            "custom_components.solar_energy_management.coordinator."
+            "custom_components.xxx_cristiano.coordinator."
             "repair_issues.raise_charger_actuation_failed"
         ), patch(
-            "custom_components.solar_energy_management.coordinator."
+            "custom_components.xxx_cristiano.coordinator."
             "repair_issues.clear_charger_actuation_failed"
         ) as clear_repair:
             for _ in range(3):
@@ -134,7 +134,7 @@ class TestActuationFailureRepair:
         """Fail-fail-succeed cycles (flaky Wi-Fi) stay below the threshold."""
         dev = _device(current_entity_id="number.flaky")
         with patch(
-            "custom_components.solar_energy_management.coordinator."
+            "custom_components.xxx_cristiano.coordinator."
             "repair_issues.raise_charger_actuation_failed"
         ) as raise_repair:
             for round_no in range(3):
@@ -198,7 +198,7 @@ class TestStaleRepairClearedAfterReload:
     async def test_first_good_write_clears_stale_repair(self):
         dev = _device(current_entity_id="number.fixed_now")
         with patch(
-            "custom_components.solar_energy_management.coordinator."
+            "custom_components.xxx_cristiano.coordinator."
             "repair_issues.clear_charger_actuation_failed"
         ) as clear_repair:
             # Fresh instance (post-reload flags), no failures recorded:

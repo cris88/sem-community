@@ -20,10 +20,10 @@ from unittest.mock import AsyncMock, MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.charger_adapters import (
+from custom_components.xxx_cristiano.coordinator.charger_adapters import (
     KebaAdapter,
 )
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     ChargerIntent,
     ChargerPower,
 )

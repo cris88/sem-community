@@ -19,7 +19,7 @@ from unittest.mock import MagicMock, AsyncMock
 
 import pytest
 
-from custom_components.solar_energy_management.sensor import SEMSolarSensor
+from custom_components.xxx_cristiano.sensor import SEMSolarSensor
 
 
 def _make_state(value, available=True):
@@ -76,7 +76,7 @@ class TestSubscriptionResolution:
             captured["entity_ids"] = entity_ids
             return MagicMock()  # the unsub callable
         monkeypatch.setattr(
-            "custom_components.solar_energy_management.sensor."
+            "custom_components.xxx_cristiano.sensor."
             "async_track_state_change_event",
             fake_track,
         )
@@ -98,7 +98,7 @@ class TestSubscriptionResolution:
             captured["entity_ids"] = entity_ids
             return MagicMock()
         monkeypatch.setattr(
-            "custom_components.solar_energy_management.sensor."
+            "custom_components.xxx_cristiano.sensor."
             "async_track_state_change_event",
             fake_track,
         )
@@ -124,7 +124,7 @@ class TestSubscriptionResolution:
         no subscription created. Don't pay for what isn't wired."""
         called = MagicMock()
         monkeypatch.setattr(
-            "custom_components.solar_energy_management.sensor."
+            "custom_components.xxx_cristiano.sensor."
             "async_track_state_change_event",
             called,
         )
@@ -142,7 +142,7 @@ class TestSubscriptionResolution:
             captured["entity_ids"] = entity_ids
             return MagicMock()
         monkeypatch.setattr(
-            "custom_components.solar_energy_management.sensor."
+            "custom_components.xxx_cristiano.sensor."
             "async_track_state_change_event",
             fake_track,
         )
@@ -294,7 +294,7 @@ class TestCleanup:
         # (the production override is what we're testing).
         from unittest.mock import patch
         with patch(
-            "custom_components.solar_energy_management.sensor."
+            "custom_components.xxx_cristiano.sensor."
             "CoordinatorEntity.async_will_remove_from_hass",
             AsyncMock(),
         ):
@@ -315,7 +315,7 @@ class TestCleanup:
         sensor.async_get_last_sensor_data = AsyncMock(return_value=None)
         from unittest.mock import patch
         with patch(
-            "custom_components.solar_energy_management.sensor."
+            "custom_components.xxx_cristiano.sensor."
             "CoordinatorEntity.async_will_remove_from_hass",
             AsyncMock(),
         ):

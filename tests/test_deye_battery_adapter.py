@@ -4,7 +4,7 @@ from __future__ import annotations
 from dataclasses import asdict
 from datetime import datetime, timedelta, timezone
 
-from custom_components.solar_energy_management.coordinator.battery_adapters.deye_schedule import (
+from custom_components.xxx_cristiano.coordinator.battery_adapters.deye_schedule import (
     DeyeScheduleError,
     compile_deye_charge_window,
 )
@@ -13,7 +13,7 @@ from unittest.mock import AsyncMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.battery_adapters import (
+from custom_components.xxx_cristiano.coordinator.battery_adapters import (
     DeyeBatteryAdapter,
     GenericBatteryAdapter,
     adapter_for,

@@ -11,22 +11,22 @@ Covers:
 import pytest
 from unittest.mock import MagicMock, AsyncMock
 
-from custom_components.solar_energy_management.devices.base import (
+from custom_components.xxx_cristiano.devices.base import (
     DeviceControlMode,
     SwitchDevice,
     CurrentControlDevice,
 )
-from custom_components.solar_energy_management.coordinator.surplus_controller import (
+from custom_components.xxx_cristiano.coordinator.surplus_controller import (
     SurplusController,
 )
-from custom_components.solar_energy_management.coordinator.coordinator import (
+from custom_components.xxx_cristiano.coordinator.coordinator import (
     SEMCoordinator,
 )
-from custom_components.solar_energy_management.select import (
+from custom_components.xxx_cristiano.select import (
     _target_type_options,
     SEMPerChargerSelect,
 )
-from custom_components.solar_energy_management.features.device_registry import (
+from custom_components.xxx_cristiano.features.device_registry import (
     _migrate_control_modes,
 )
 
@@ -406,7 +406,7 @@ class TestChargingModeSelect:
     """
 
     def _make_select(self, *, initial_value="auto"):
-        from custom_components.solar_energy_management.select import (
+        from custom_components.xxx_cristiano.select import (
             EV_CHARGING_MODES, SEMPerChargerSelect,
         )
         sel = SEMPerChargerSelect.__new__(SEMPerChargerSelect)

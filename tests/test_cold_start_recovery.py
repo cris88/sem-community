@@ -9,8 +9,8 @@ from unittest.mock import AsyncMock, patch
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator import SEMCoordinator
-from custom_components.solar_energy_management.const import ED_RESOLVE_MAX_ATTEMPTS
+from custom_components.xxx_cristiano.coordinator import SEMCoordinator
+from custom_components.xxx_cristiano.const import ED_RESOLVE_MAX_ATTEMPTS
 
 
 def _coord():

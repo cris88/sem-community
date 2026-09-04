@@ -28,7 +28,7 @@ from unittest.mock import AsyncMock, MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.devices.appliance_scheduler import (
+from custom_components.xxx_cristiano.devices.appliance_scheduler import (
     ApplianceScheduler,
 )
 
@@ -87,7 +87,7 @@ class TestTheCycleTicksTheScheduler653:
     def test_the_tick_is_a_noop_without_a_scheduler(self):
         """The scheduler is lazily created by the service, so on almost
         every install this must cost one getattr and do nothing."""
-        from custom_components.solar_energy_management.coordinator.coordinator import (  # noqa: E501
+        from custom_components.xxx_cristiano.coordinator.coordinator import (  # noqa: E501
             SEMCoordinator,
         )
 
@@ -98,7 +98,7 @@ class TestTheCycleTicksTheScheduler653:
 
     def test_a_scheduler_fault_does_not_kill_the_cycle(self):
         """This cycle also publishes every sensor in the integration."""
-        from custom_components.solar_energy_management.coordinator.coordinator import (  # noqa: E501
+        from custom_components.xxx_cristiano.coordinator.coordinator import (  # noqa: E501
             SEMCoordinator,
         )
 
@@ -261,7 +261,7 @@ class TestTheNowLiveTickCannotThrow653:
         """``get_schedule_summary`` scans the whole history twice and now
         runs every cycle. Only today's entries are readable, so unbounded
         growth buys nothing and costs a growing per-cycle scan."""
-        from custom_components.solar_energy_management.devices import (
+        from custom_components.xxx_cristiano.devices import (
             appliance_scheduler as mod,
         )
 

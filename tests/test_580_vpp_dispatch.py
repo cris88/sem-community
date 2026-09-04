@@ -12,7 +12,7 @@ from types import SimpleNamespace
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.vpp_dispatch import (
+from custom_components.xxx_cristiano.coordinator.vpp_dispatch import (
     MAX_EVENTS,
     PHASE_EVENT,
     PHASE_IDLE,
@@ -20,7 +20,7 @@ from custom_components.solar_energy_management.coordinator.vpp_dispatch import (
     VppDispatcher,
     evaluate_vpp,
 )
-from custom_components.solar_energy_management.coordinator.coordinator import (
+from custom_components.xxx_cristiano.coordinator.coordinator import (
     SEMCoordinator,
 )
 
@@ -464,7 +464,7 @@ def test_global_observer_outranks_vpp_observer_off():
     """The GLOBAL observer mode forces VPP decisions to observer even when
     vpp_observer_mode is explicitly false (2026-07-18 incident class)."""
     from dataclasses import replace
-    from custom_components.solar_energy_management.coordinator.vpp_dispatch import (
+    from custom_components.xxx_cristiano.coordinator.vpp_dispatch import (
         evaluate_vpp,
     )
     from datetime import datetime, timezone

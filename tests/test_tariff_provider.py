@@ -3,7 +3,7 @@ import pytest
 from unittest.mock import MagicMock, patch
 from datetime import datetime, timedelta
 
-from custom_components.solar_energy_management.tariff.tariff_provider import (
+from custom_components.xxx_cristiano.tariff.tariff_provider import (
     StaticTariffProvider,
     DynamicTariffProvider,
     SpotMarketProvider,
@@ -16,7 +16,7 @@ from custom_components.solar_energy_management.tariff.tariff_provider import (
 # Helpers
 # ---------------------------------------------------------------------------
 
-DT_UTIL_PATH = "custom_components.solar_energy_management.tariff.tariff_provider.dt_util"
+DT_UTIL_PATH = "custom_components.xxx_cristiano.tariff.tariff_provider.dt_util"
 
 
 def _weekday_noon():

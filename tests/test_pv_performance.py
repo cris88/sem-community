@@ -1,7 +1,7 @@
 """Tests for PVPerformanceAnalyzer PV performance monitoring."""
 import pytest
 
-from custom_components.solar_energy_management.analytics.pv_performance import (
+from custom_components.xxx_cristiano.analytics.pv_performance import (
     PVPerformanceAnalyzer,
     PVPerformanceData,
 )

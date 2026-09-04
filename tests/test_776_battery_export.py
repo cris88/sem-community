@@ -18,10 +18,10 @@ their export revenue — once.
 """
 import pytest
 
-from custom_components.solar_energy_management.coordinator.flow_calculator import (
+from custom_components.xxx_cristiano.coordinator.flow_calculator import (
     FlowCalculator,
 )
-from custom_components.solar_energy_management.coordinator.types import (
+from custom_components.xxx_cristiano.coordinator.types import (
     EnergyFlows,
     PowerFlows,
     PowerReadings,
@@ -103,7 +103,7 @@ class TestTheExportedDischargeHasABucket:
 
 def _calc():
     from unittest.mock import MagicMock
-    from custom_components.solar_energy_management.coordinator.energy_calculator import (
+    from custom_components.xxx_cristiano.coordinator.energy_calculator import (
         EnergyCalculator,
     )
     c = EnergyCalculator.__new__(EnergyCalculator)
@@ -158,7 +158,7 @@ class TestTheMoneyIsBookedOnce:
         savings math — a bound function nobody passes flows to is the
         fix that never runs."""
         import inspect
-        from custom_components.solar_energy_management.coordinator.energy_calculator import (
+        from custom_components.xxx_cristiano.coordinator.energy_calculator import (
             EnergyCalculator,
         )
         src = inspect.getsource(EnergyCalculator.calculate_energy)
@@ -181,7 +181,7 @@ class TestTheRowSurfaces776:
         assert "battery_to_grid" in FlowCalculator._ACCUMULATED_ATTRS
 
     def test_the_keys_are_published(self):
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             SEMData,
         )
         data = SEMData()
@@ -192,7 +192,7 @@ class TestTheRowSurfaces776:
         assert d["flow_battery_to_grid_energy"] == 1.25
 
     def test_every_key_has_an_entity(self):
-        from custom_components.solar_energy_management import sensor as sensor_mod
+        from custom_components.xxx_cristiano import sensor as sensor_mod
         keys = {desc.key for desc in sensor_mod.SENSOR_TYPES}
         assert "flow_battery_to_grid_power" in keys
         assert "flow_battery_to_grid_energy" in keys
@@ -201,7 +201,7 @@ class TestTheRowSurfaces776:
         """The comment that declared battery-to-grid out of scope must
         not outlive the code that made it wrong."""
         import inspect
-        from custom_components.solar_energy_management.coordinator import (
+        from custom_components.xxx_cristiano.coordinator import (
             flow_calculator,
         )
         src = inspect.getsource(flow_calculator)

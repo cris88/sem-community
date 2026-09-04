@@ -10,13 +10,13 @@ import logging
 import pytest
 from unittest.mock import AsyncMock, MagicMock
 
-from custom_components.solar_energy_management.devices.base import (
+from custom_components.xxx_cristiano.devices.base import (
     CurrentControlDevice,
 )
-from custom_components.solar_energy_management.coordinator.charger_adapters.wallbox import (
+from custom_components.xxx_cristiano.coordinator.charger_adapters.wallbox import (
     WallboxAdapter,
 )
-from custom_components.solar_energy_management.coordinator.health_check import (
+from custom_components.xxx_cristiano.coordinator.health_check import (
     HealthCheck,
 )
 
@@ -154,10 +154,10 @@ class TestSignVoteWarmup:
     """#487 follow-up: live PROD grid-sign flip from restart-window votes."""
 
     def _reader(self):
-        from custom_components.solar_energy_management.coordinator.sensor_reader import (
+        from custom_components.xxx_cristiano.coordinator.sensor_reader import (
             SensorReader,
         )
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             PowerReadings,
         )
         hass = MagicMock()
@@ -207,7 +207,7 @@ class TestSignVoteWarmup:
         assert reader._grid_sign_detected is True
 
     def test_read_power_decrements_warmup(self):
-        from custom_components.solar_energy_management.coordinator.sensor_reader import (
+        from custom_components.xxx_cristiano.coordinator.sensor_reader import (
             SensorReader,
         )
         hass = MagicMock()

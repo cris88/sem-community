@@ -24,7 +24,7 @@ from datetime import datetime, timezone
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.demand_outcome import (
+from custom_components.xxx_cristiano.coordinator.demand_outcome import (
     DemandOutcomeRecorder,
 )
 

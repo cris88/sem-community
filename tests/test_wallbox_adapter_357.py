@@ -14,13 +14,13 @@ from unittest.mock import AsyncMock, MagicMock, Mock, patch
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.charger_adapters import (
+from custom_components.xxx_cristiano.coordinator.charger_adapters import (
     GenericAdapter,
     KebaAdapter,
     WallboxAdapter,
     adapter_for,
 )
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     ChargerIntent,
 )
 
@@ -263,7 +263,7 @@ class TestWallboxPauseSwitch:
 
         # If the cache works, no registry call is made.
         with patch(
-            "custom_components.solar_energy_management.coordinator.charger_adapters.wallbox.er.async_get"
+            "custom_components.xxx_cristiano.coordinator.charger_adapters.wallbox.er.async_get"
         ) as mock_er:
             result = adapter._discover_pause_switch()
 

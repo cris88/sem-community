@@ -9,7 +9,7 @@ Two surfaces, one source of truth:
 - ``SurplusController.observer_decisions`` — the per-device map of the
   CURRENT would-state, published so a fresh session reads it instantly
   (rides the observer-mode switch's attributes).
-- A ``solar_energy_management_observer_decision`` bus event fired on every
+- A ``xxx_cristiano_observer_decision`` bus event fired on every
   TRANSITION (the same edges the #762-gated log announces) — a user's sim
   bridge becomes a five-line HA automation instead of an SSH scraper.
 """
@@ -19,10 +19,10 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.surplus_controller import (
+from custom_components.xxx_cristiano.coordinator.surplus_controller import (
     SurplusController, _reconcile_load_observe, LoadIntent,
 )
-from custom_components.solar_energy_management.utils.log_gate import (
+from custom_components.xxx_cristiano.utils.log_gate import (
     reset_log_gate,
 )
 
@@ -88,7 +88,7 @@ class TestTheEventFiresOnEdges:
         sc.record_observer_decision(d, intent, active=False)
         sc.hass.bus.async_fire.assert_called_once()
         event, payload = sc.hass.bus.async_fire.call_args.args[:2]
-        assert event == "solar_energy_management_observer_decision"
+        assert event == "xxx_cristiano_observer_decision"
         assert payload["device_id"] == "sim_heizband"
         assert payload["action"] == "activate"
 
@@ -143,7 +143,7 @@ class TestTheSeamRecords:
 class TestTheSwitchCarriesTheMap:
 
     def _switch(self, observer_on=True, decisions=None):
-        from custom_components.solar_energy_management.switch import SEMSolarSwitch
+        from custom_components.xxx_cristiano.switch import SEMSolarSwitch
         coord = MagicMock()
         coord.config_entry.options = {}
         coord._surplus_controller.observer_decisions = decisions or {}

@@ -13,7 +13,7 @@ invitation to add what is missing — never a pointer into a void.
 """
 from __future__ import annotations
 
-from custom_components.solar_energy_management import build_welcome_message
+from custom_components.xxx_cristiano import build_welcome_message
 
 
 class TestTheChecklistMatchesReality:

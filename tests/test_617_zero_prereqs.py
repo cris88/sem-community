@@ -18,7 +18,7 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.features.dashboard_generator import (
+from custom_components.xxx_cristiano.features.dashboard_generator import (
     DashboardGenerator,
 )
 
@@ -103,7 +103,7 @@ class TestChartJsVendored:
 
     def test_chart_card_prefers_local_source(self):
         src = (_ROOT / "dashboard" / "card" / "src" / "cards" / "sem-chart-card.js").read_text()
-        local = "/local/custom_components/solar_energy_management/dashboard/card/vendor/chart.umd.min.js"
+        local = "/local/custom_components/xxx_cristiano/dashboard/card/vendor/chart.umd.min.js"
         cdn = "https://cdn.jsdelivr.net/npm/chart.js"
         assert local in src and cdn in src
         assert src.index(local) < src.index(cdn), (

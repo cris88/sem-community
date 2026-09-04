@@ -23,13 +23,13 @@ from types import SimpleNamespace
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator import (
+from custom_components.xxx_cristiano.coordinator import (
     coordinator as coord_mod,
 )
-from custom_components.solar_energy_management.coordinator.coordinator import (
+from custom_components.xxx_cristiano.coordinator.coordinator import (
     SEMCoordinator,
 )
-from custom_components.solar_energy_management.coordinator.ev_availability import (
+from custom_components.xxx_cristiano.coordinator.ev_availability import (
     plan_connectivity,
 )
 

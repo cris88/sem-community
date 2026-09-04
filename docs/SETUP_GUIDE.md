@@ -286,10 +286,10 @@ sensors were not detected — check the Energy Dashboard. Cards showing
 
 ### Check available services
 
-Go to **Developer Tools > Actions** and search for `solar_energy_management`
+Go to **Developer Tools > Actions** and search for `xxx_cristiano`
 to see all available SEM services. If none appear, the integration did not
 load — check **Settings > System > Logs** (filter for
-`solar_energy_management`).
+`xxx_cristiano`).
 
 ### Sensor source overrides
 
@@ -621,7 +621,7 @@ needed. The current factor is exposed on the forecast sensor's attributes.
 
 ### Regenerating the dashboard
 
-Run `solar_energy_management.generate_dashboard` via **Developer Tools >
+Run `xxx_cristiano.generate_dashboard` via **Developer Tools >
 Actions** any time you change hardware, switch diagram style, or want to
 rebuild the dashboard after a language change. It is safe to run at any time.
 
@@ -1155,7 +1155,7 @@ on/off commands until the entity recovers (the commands would silently
 no-op anyway, but the Repair makes the broken state visible).
 
 **Diagnose surface:** the Hot Water section's 🩺 Diagnose button (or the
-`solar_energy_management.diagnose` service with `section: "hot_water"`) returns
+`xxx_cristiano.diagnose` service with `section: "hot_water"`) returns
 a JSON dump including the current temperature reading, the
 `temperature_reading_path` (which source the controller is reading from —
 `separate_sensor`, `entity_attribute`, `no_source_configured`, etc.),
@@ -1200,7 +1200,7 @@ To change your language:
 To change the server language (affects static labels for all users):
 
 1. Go to **Settings > General** and update the language
-2. Run `solar_energy_management.generate_dashboard` to rebuild the dashboard
+2. Run `xxx_cristiano.generate_dashboard` to rebuild the dashboard
    with the new language
 
 The source of truth for all translations is `dashboard/translations.json`
@@ -1225,7 +1225,7 @@ charging and night scheduling. Both are optional and can be added later via
 SEM reads source sensors from the Energy Dashboard. Check that your inverter
 is online, verify that **Settings > Dashboards > Energy** has sensors
 assigned and that those sensors currently report values, then review logs at
-**Settings > System > Logs** (filter for `solar_energy_management`). Also
+**Settings > System > Logs** (filter for `xxx_cristiano`). Also
 check the SEM System tab, which shows a diagnostic summary of sensor health.
 
 **Can I change settings after the initial setup?**
@@ -1237,7 +1237,7 @@ one coordinator cycle (default 10 seconds).
 **SEM sent a command to a device I did not want it to touch.**
 
 Set that device's control mode to Off via the Control tab on the SEM
-dashboard, or call `solar_energy_management.update_device_config` with
+dashboard, or call `xxx_cristiano.update_device_config` with
 `mode: off`. In Off mode SEM monitors but never controls the device.
 
 **I have two HA instances. How do I prevent them from conflicting?**
@@ -1320,7 +1320,7 @@ overnight EV and battery charging.
 that's you, install the HACS *Tibber Grid Reward* integration and set
 **Dynamic tariff entity** to its `sensor.current_price` — SEM parses its
 `today_raw`/`tomorrow_raw` arrays directly (v1.7.3-beta.10+). Verify with
-the `solar_energy_management.diagnose` action (section `tariff`):
+the `xxx_cristiano.diagnose` action (section `tariff`):
 `tariff_parsed_attribute` should report `today_raw`.
 
 **My dashboard shows white tabs or "Custom element doesn't exist".**
@@ -1370,10 +1370,10 @@ Enable debug logging by adding the following to `configuration.yaml`:
 ```yaml
 logger:
   logs:
-    custom_components.solar_energy_management: debug
+    custom_components.xxx_cristiano: debug
 ```
 
-View logs at **Settings > System > Logs** (filter for `solar_energy_management`).
+View logs at **Settings > System > Logs** (filter for `xxx_cristiano`).
 
 - Common issues: [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
 - Dashboard problems: [DASHBOARD_GUIDE.md](DASHBOARD_GUIDE.md)

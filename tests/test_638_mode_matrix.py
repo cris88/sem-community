@@ -21,24 +21,24 @@ from types import SimpleNamespace
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.decide import (
+from custom_components.xxx_cristiano.coordinator.decide import (
     AlwaysMaxMode,
     SolarPlusCheapMode,
 )
-from custom_components.solar_energy_management.coordinator.decide_battery import (
+from custom_components.xxx_cristiano.coordinator.decide_battery import (
     decide_battery,
 )
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     BatteryIntent,
     BatteryRuntime,
     BatteryView,
     ChargerIntent,
     FleetContext,
 )
-from custom_components.solar_energy_management.coordinator.energy_plan_actuation import (
+from custom_components.xxx_cristiano.coordinator.energy_plan_actuation import (
     plan_gate,
 )
-from custom_components.solar_energy_management.coordinator.plan_verdict import (
+from custom_components.xxx_cristiano.coordinator.plan_verdict import (
     PlanVerdict,
 )
 
@@ -69,13 +69,13 @@ class TestSolarOnlyNeverNightCharges:
 
     def test_night_no_surplus_is_idle_without_a_plan(self):
         v = _view("solar_only", is_night=True, solar_w=0.0)
-        from custom_components.solar_energy_management.coordinator.decide import (
+        from custom_components.xxx_cristiano.coordinator.decide import (
             SolarOnlyMode,
         )
         assert SolarOnlyMode().decide(v).intent == ChargerIntent.IDLE
 
     def test_a_plan_verdict_changes_nothing(self):
-        from custom_components.solar_energy_management.coordinator.decide import (
+        from custom_components.xxx_cristiano.coordinator.decide import (
             SolarOnlyMode,
         )
         v = _view("solar_only", is_night=True, solar_w=0.0, plan=_HOLD)
@@ -180,7 +180,7 @@ class TestTheGateAlreadySpansTheDay:
         is on — day or night. A night-only guard here would orphan every
         daytime comfort/cheap window C5 adds."""
         import inspect
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
         src = inspect.getsource(SEMCoordinator._energy_plan_load_windows)

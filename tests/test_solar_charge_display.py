@@ -3,11 +3,11 @@ car isn't actually drawing (power-based, debounced) — the 'offers 9A to a
 satisfied car' observation. Pure helper test."""
 from __future__ import annotations
 
-from custom_components.solar_energy_management.coordinator.decide import (
+from custom_components.xxx_cristiano.coordinator.decide import (
     solar_charge_display_override,
 )
-from custom_components.solar_energy_management.coordinator.charger_types import ChargerIntent
-from custom_components.solar_energy_management.consts.states import ChargingState
+from custom_components.xxx_cristiano.coordinator.charger_types import ChargerIntent
+from custom_components.xxx_cristiano.consts.states import ChargingState
 
 
 def test_drawing_keeps_normal_charging_display():

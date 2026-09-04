@@ -23,11 +23,11 @@ mechanisms, both fixed here:
 from __future__ import annotations
 
 
-from custom_components.solar_energy_management.coordinator.sensor_reader import (
+from custom_components.xxx_cristiano.coordinator.sensor_reader import (
     SensorConfig,
     SensorReader,
 )
-from custom_components.solar_energy_management.coordinator.types import (
+from custom_components.xxx_cristiano.coordinator.types import (
     PowerReadings,
 )
 

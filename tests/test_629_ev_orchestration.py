@@ -1,7 +1,7 @@
 """#629 — EV orchestration decomposition slices (behaviour pins)."""
 from unittest.mock import MagicMock
 
-from custom_components.solar_energy_management.coordinator.ev_night_targets import (
+from custom_components.xxx_cristiano.coordinator.ev_night_targets import (
     build_night_target_map,
 )
 
@@ -63,7 +63,7 @@ class TestNightNotificationTruth631:
     decision consumed (the per-charger map), not the stale config snapshot."""
 
     def _messages(self, data, config=None):
-        from custom_components.solar_energy_management.coordinator.notifications import (
+        from custom_components.xxx_cristiano.coordinator.notifications import (
             NotificationManager)
         nm = NotificationManager.__new__(NotificationManager)
         nm.config = config or {"daily_ev_target": 8}
@@ -93,7 +93,7 @@ class TestNightTopUpRate630:
 
     def _plan(self, **kw):
         from datetime import datetime
-        from custom_components.solar_energy_management.coordinator.ev_tariff_planner import (
+        from custom_components.xxx_cristiano.coordinator.ev_tariff_planner import (
             plan_night_charge)
         args = dict(now=datetime(2026, 7, 24, 1, 0),
                     remaining_to_min_kwh=8.0, min_amps=10, max_amps=32,
@@ -114,8 +114,8 @@ class TestNightTopUpRate630:
         assert p.top_up_amps == 0                 # decide falls back to Min
 
     def test_decide_plain_topup_uses_rate(self):
-        from custom_components.solar_energy_management.coordinator.decide import decide
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.decide import decide
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             ChargerView, ChargerPower, ChargerEnergy, FleetContext)
         view = ChargerView(
             power=ChargerPower(charger_id="c1", power_w=0.0, connected=True),
@@ -132,8 +132,8 @@ class TestNightTopUpRate630:
         assert "peak-managed" in d.reason
 
     def test_decide_no_topup_info_keeps_min(self):
-        from custom_components.solar_energy_management.coordinator.decide import decide
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.decide import decide
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             ChargerView, ChargerPower, ChargerEnergy, FleetContext)
         view = ChargerView(
             power=ChargerPower(charger_id="c1", power_w=0.0, connected=True),
@@ -167,7 +167,7 @@ class TestNightEffectiveState629:
     """(#629 slice 3) The pure per-charger night tri-state resolution."""
 
     def _resolve(self, charging_state, pc_target, plan, base="BASE"):
-        from custom_components.solar_energy_management.coordinator.ev_night_targets import (
+        from custom_components.xxx_cristiano.coordinator.ev_night_targets import (
             resolve_night_effective_state)
         return resolve_night_effective_state(
             base, charging_state, pc_target, plan,
@@ -196,7 +196,7 @@ class TestPerChargerMode629:
 
     def test_resolves_and_no_warning_on_default(self, caplog):
         import logging
-        from custom_components.solar_energy_management.coordinator.ev_night_targets import (
+        from custom_components.xxx_cristiano.coordinator.ev_night_targets import (
             resolve_per_charger_mode)
         c = MagicMock()
         c._effective_charge_mode_for = MagicMock(return_value="solar_only")
@@ -207,7 +207,7 @@ class TestPerChargerMode629:
 
     def test_warns_on_explicit_disagreement(self, caplog):
         import logging
-        from custom_components.solar_energy_management.coordinator.ev_night_targets import (
+        from custom_components.xxx_cristiano.coordinator.ev_night_targets import (
             resolve_per_charger_mode)
         c = MagicMock()
         c._effective_charge_mode_for = MagicMock(return_value="off")
@@ -221,7 +221,7 @@ class TestFloorDrivenNightTopUp634:
     """(#634) Mode = daytime axis; the "At least" floor is the guarantee."""
 
     def _night_view(self, mode, target_kwh, top_up_amps=0):
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             ChargerView, ChargerPower, ChargerEnergy, FleetContext)
         return ChargerView(
             power=ChargerPower(charger_id="c1", power_w=0.0, connected=True),
@@ -235,8 +235,8 @@ class TestFloorDrivenNightTopUp634:
         )
 
     def test_solar_only_with_floor_tops_up_at_night(self):
-        from custom_components.solar_energy_management.coordinator.decide import decide
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.decide import decide
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             ChargerIntent)
         d = decide(self._night_view("solar_only", target_kwh=0.9))
         assert d.intent is ChargerIntent.CHARGE_AT_AMPS
@@ -244,27 +244,27 @@ class TestFloorDrivenNightTopUp634:
         assert "solar_only night" in d.reason        # honest mode in the reason
 
     def test_solar_only_floor_zero_never_grids_at_night(self):
-        from custom_components.solar_energy_management.coordinator.decide import decide
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.decide import decide
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             ChargerIntent)
         d = decide(self._night_view("solar_only", target_kwh=0.0))
         assert d.intent is ChargerIntent.IDLE         # classic #346 behaviour
 
     def test_solar_only_night_inherits_peak_managed_rate_630(self):
-        from custom_components.solar_energy_management.coordinator.decide import decide
+        from custom_components.xxx_cristiano.coordinator.decide import decide
         d = decide(self._night_view("solar_only", target_kwh=5.0, top_up_amps=16))
         assert d.commanded_amps == 16                 # #630 rate flows through
 
     def test_min_plus_solar_night_unchanged(self):
-        from custom_components.solar_energy_management.coordinator.decide import decide
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.decide import decide
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             ChargerIntent)
         d = decide(self._night_view("min_plus_solar", target_kwh=2.0))
         assert d.intent is ChargerIntent.CHARGE_AT_AMPS
         assert "min_plus_solar night" in d.reason
 
     def test_night_lane_gate_floor_aware(self):
-        from custom_components.solar_energy_management.coordinator.charging_control import (
+        from custom_components.xxx_cristiano.coordinator.charging_control import (
             ChargingStateMachine)
         sm = ChargingStateMachine.__new__(ChargingStateMachine)
         sm.hass = MagicMock()
@@ -286,7 +286,7 @@ class TestPerChargerNightGate634:
     caught live 2026-07-24 21:3x: decision charged, loop skipped the charger."""
 
     def _c(self, config=None):
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator)
         c = SEMCoordinator.__new__(SEMCoordinator)
         c.config = config or {}
@@ -327,8 +327,8 @@ class TestNightRatePrecedence630:
     always-present window deadline: amps = max(deadline_required, top_up)."""
 
     def _decide(self, deadline_amps, top_up_amps):
-        from custom_components.solar_energy_management.coordinator.decide import decide
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.decide import decide
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             ChargerView, ChargerPower, ChargerEnergy, FleetContext)
         view = ChargerView(
             power=ChargerPower(charger_id="c1", power_w=0.0, connected=True),
@@ -362,7 +362,7 @@ class TestLoadDrawReducesNightRate630:
     draw reduces the peak-managed rate the planner computes."""
 
     def test_grid_funded_draw_shrinks_top_up_amps(self):
-        from custom_components.solar_energy_management.coordinator.ev_control import (
+        from custom_components.xxx_cristiano.coordinator.ev_control import (
             EVControlMixin)
         host = MagicMock()
         host.config = {"ev_max_current": 32, "ev_phases": 3}

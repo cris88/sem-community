@@ -266,7 +266,7 @@ those people.
 - 📦 **Releases now carry a downloadable archive** (#834): SEM's HACS entry
   showed no download count, because that column counts a release's attached
   files and SEM published none. Every release now ships
-  `solar_energy_management.zip`. Your installs also get tidier — HACS
+  `xxx_cristiano.zip`. Your installs also get tidier — HACS
   previously copied the whole repository into your config directory, test
   suite and documentation included; now it installs only what SEM needs to
   run.
@@ -330,7 +330,7 @@ those people.
   from "has no `state_class`", so every charted sensor — energy, power,
   anything with long-term statistics — is excluded automatically, including
   sensors added in future versions. Also available as the
-  `solar_energy_management.purge_status_history` action.
+  `xxx_cristiano.purge_status_history` action.
 
 - 🔧 **The EV charge-stop and the message about it can no longer disagree**
   (#708): the "remaining kWh to your SOC target" maths existed twice — once in
@@ -924,7 +924,7 @@ those people.
 - 🐛 **Generating the dashboard no longer stalls Home Assistant** — the
   `generate_dashboard` service read `manifest.json` and listed the card
   directory directly on the event loop. HA guards both calls and logs
-  "Detected blocking call … by custom integration solar_energy_management";
+  "Detected blocking call … by custom integration xxx_cristiano";
   on a Pi with an SD card or a network-mounted `/config`, every other
   integration on the box waits out the syscall. A third one hid behind two
   call hops: the per-file cache-bust hash, opened once per registered card,
@@ -1459,7 +1459,7 @@ shapes the demand set must ride the re-plan signature.
 - 👁️ **Observer mode publishes its WOULD decisions** — the per-device map
   rides `switch.sem_observer_mode`'s `would_decisions` attribute (fresh
   reads, no history needed), and every decision *transition* fires a
-  `solar_energy_management_observer_decision` bus event (edges, never a
+  `xxx_cristiano_observer_decision` bus event (edges, never a
   heartbeat — a wobbling watt is not a transition). A closed-loop
   simulation of any device is now a five-line HA automation instead of an
   SSH log scraper.
@@ -4539,7 +4539,7 @@ keeps it maintained.
   priority / peak-shed / daily-goal handling as every other surplus load, and the
   registration survives restarts (it re-owns a running unit after a reboot).
   Register it with `device_type: climate` on
-  `solar_energy_management.register_surplus_device` — pick `hvac_mode: heat` to
+  `xxx_cristiano.register_surplus_device` — pick `hvac_mode: heat` to
   drive a heat pump the same way in winter. (requested by @Edsol)
 
 ### 🏠 Home tab: removed the leftover "Quick Controls" section (#572)
@@ -4694,7 +4694,7 @@ keeps it maintained.
 - ✨ **Surplus event for your own automations** —
   `binary_sensor.sem_surplus_available` (debounced: 60 s above the
   threshold → on, 120 s below 80 % of it → off; threshold knob) plus a
-  `solar_energy_management_surplus` bus event on transitions. Built for
+  `xxx_cristiano_surplus` bus event on transitions. Built for
   peak-only devices that keep their own schedules.
 - 🛡️ **Never orphaned ON**: a restart re-owns running surplus devices;
   forces end with their reason (deadline passed target met, tariff left
@@ -6074,7 +6074,7 @@ The grid/battery sign autodetect locks were RAM-only — every reload re-learned
 
 - **Locked signs now persist** in SEM's storage and restore at setup — the warmup/vote machinery runs once per install, not once per restart; only LOCKED state persists (votes and half-learned guesses never do), and a restored lock survives the Energy Dashboard being reconfigured away (#476)
 - **Manual `grid_sign_invert` still wins** — it short-circuits before the autodetect, so a restored lock can never fight a manual override
-- **New `solar_energy_management.reset_sign_detection` service** — the escape hatch: forgets all sign locks (RAM + storage) and re-learns from scratch, since a wrong lock no longer clears itself on restart
+- **New `xxx_cristiano.reset_sign_detection` service** — the escape hatch: forgets all sign locks (RAM + storage) and re-learns from scratch, since a wrong lock no longer clears itself on restart
 - Closes the last open item of the #476 robustness batch — items 1–4 and 6–9 already landed across the #485/#486/#487 review batches
 
 
@@ -6347,7 +6347,7 @@ While writing the real-HA integration tests for the `set_option` service path, t
 
 ### 🧪 Test infrastructure
 
-- `tests/test_services_real.py` — four real-HA integration tests that drive `solar_energy_management.set_option` through the service registry and assert on `hass.states.get(...).state`. The test layer that would have caught the v1.7.3-beta.1 number-entity staleness regression (by @traktore-org in [#471](https://github.com/traktore-org/sem-community/pull/471))
+- `tests/test_services_real.py` — four real-HA integration tests that drive `xxx_cristiano.set_option` through the service registry and assert on `hass.states.get(...).state`. The test layer that would have caught the v1.7.3-beta.1 number-entity staleness regression (by @traktore-org in [#471](https://github.com/traktore-org/sem-community/pull/471))
 - `sem_multi_wallbox_config_entry` fixture — seeded from RienduPre's diagnose dump, reusable for any multi-charger contract test (by @traktore-org in [#471](https://github.com/traktore-org/sem-community/pull/471))
 - `sem_config_entry` fixture bumped from schema v7 → v12.1 (stale since the #135 v11→v12 migration) (by @traktore-org in [#471](https://github.com/traktore-org/sem-community/pull/471))
 - `tests/scenarios/2026-06-09_rienduPre_dual_wallbox.yaml` — YAML scenario replay of RienduPre's dual-Wallbox setup running through the existing scenario harness; locks the `solar_plus_cheap`-outside-cheap-window mode-isolation contract (by @traktore-org in [#472](https://github.com/traktore-org/sem-community/pull/472))
@@ -6695,7 +6695,7 @@ _Second beta on top of [1.7.1](https://github.com/traktore-org/sem-community/rel
 
 ### 🐛 `set_option` service must always reload (live-test finding)
 
-Configuring `heat_pump_relay2_entity` via `solar_energy_management.set_option` updated the saved options but did NOT re-register the heat-pump controller. The `async_update_options` listener has a skip-reload optimization for runtime number/switch tweaks (intentional, ~1 s downtime saved per slider click) which was accidentally swallowing the `set_option` write too. Result: status sensor showed `not_configured` despite both relay entities being saved, until the next full HA restart. (by @traktore-org)
+Configuring `heat_pump_relay2_entity` via `xxx_cristiano.set_option` updated the saved options but did NOT re-register the heat-pump controller. The `async_update_options` listener has a skip-reload optimization for runtime number/switch tweaks (intentional, ~1 s downtime saved per slider click) which was accidentally swallowing the `set_option` write too. Result: status sensor showed `not_configured` despite both relay entities being saved, until the next full HA restart. (by @traktore-org)
 
 - `set_option` now explicitly calls `async_reload` after `async_update_entry` so the new config is always picked up. The merge skip stays (no reload when nothing actually changed).
 - Caller's next read sees the new state immediately — service awaits the reload.
@@ -6776,7 +6776,7 @@ _Consolidates the 1.7.1-beta.1 through 1.7.1-beta.17 chain into a single stable 
 ### 🚀 Headline features
 
 * **Slim install flow** (#442) — 3 steps → 2. EV charger is moved off the install path entirely; users without an EV configured can now finish setup without lying or quitting.
-* **In-dashboard Configuration tab** (#442) — every OptionsFlow setting is now editable inline. 10 accordion sections (Setup overview, EV chargers, Battery zones, Tariff, Heat pump, Battery scheduler, Load management, Forecast, Notifications, Advanced), `(?)` help-toggle pattern on every field, auto-save via `solar_energy_management.set_option` + read-back via `solar_energy_management.get_config`.
+* **In-dashboard Configuration tab** (#442) — every OptionsFlow setting is now editable inline. 10 accordion sections (Setup overview, EV chargers, Battery zones, Tariff, Heat pump, Battery scheduler, Load management, Forecast, Notifications, Advanced), `(?)` help-toggle pattern on every field, auto-save via `xxx_cristiano.set_option` + read-back via `xxx_cristiano.get_config`.
 * **Per-section Diagnose buttons** (#432) — every Configuration tab section gets a 🩺 button that opens a focused JSON modal with **Copy to clipboard**. The user pastes on the discussion → maintainer gets a signal-rich payload instead of the 5 MB full diagnostics dump.
 * **One-time onboarding banner** (`sem-onboarding-banner`) — points existing users at the new Configuration tab; localStorage-gated, never shown to new installs.
 
@@ -6842,7 +6842,7 @@ Discussion #432 surfaced a class of bug we couldn't reproduce on our hardware: h
 
 Built on top of the heat-pump observability above. Every section of the Configuration tab gets a **Diagnose** button next to the section title. Click it → a modal opens with a focused JSON payload (the section's config + live state + last ~20 SEM log lines matching the section's keywords) + a **Copy to clipboard** button. The user pastes the result on the discussion or issue tracker; the maintainer gets a signal-rich payload instead of having to ask for a full 5 MB diagnostics dump.
 
-- **`solar_energy_management.diagnose` service** (`__init__.py`, `supports_response=ONLY`). Takes an optional `section` parameter (defaults to `all`). Returns `{section, payload: {version, entry_id, entry_version, config, state, recent_logs}}`. Phase 1 has dedicated slicers for `all` (Overview) and `heat_pump`; the other 8 sections use a generic prefix-match slice (per-section slicers land in a follow-up beta — the button shell + modal + copy flow are wired everywhere so the user surface is consistent). (by @traktore-org in #432)
+- **`xxx_cristiano.diagnose` service** (`__init__.py`, `supports_response=ONLY`). Takes an optional `section` parameter (defaults to `all`). Returns `{section, payload: {version, entry_id, entry_version, config, state, recent_logs}}`. Phase 1 has dedicated slicers for `all` (Overview) and `heat_pump`; the other 8 sections use a generic prefix-match slice (per-section slicers land in a follow-up beta — the button shell + modal + copy flow are wired everywhere so the user surface is consistent). (by @traktore-org in #432)
 - **`<sem-diagnose-button>` Lit element** (`dashboard/card/src/cards/sem-diagnose-button.js`). Self-contained: button + modal + clipboard-write + busy/error states. Pluggable via `section` + `label` props. The Configuration tab's `_renderSectionHeader` mounts one per section with `@click.stop` so opening the modal doesn't toggle the accordion. (by @traktore-org in #432)
 - **Architectural design note for follow-up betas:** generic prefix-match slicers stay; we'll add dedicated slicers for the high-value sections (EV chargers, tariff, battery zones) in 1.7.2-beta.1. Each new section just needs a one-liner key set added to `__init__.py`'s slicer map — no extra UI work.
 
@@ -6980,7 +6980,7 @@ Layer 4 (threshold-time-windows on enable/disable transitions) is the pre-existi
 
 ### ✅ HA-PROD verification — Configuration tab save pipeline (beta.13 fix)
 
-8/8 fields persisted on PROD via SSH-tunneled service calls (`solar_energy_management.set_option` writes, `solar_energy_management.get_config` reads back). Confirms beta.13's fix for the silent-reject bug in beta.12 holds on real hardware:
+8/8 fields persisted on PROD via SSH-tunneled service calls (`xxx_cristiano.set_option` writes, `xxx_cristiano.get_config` reads back). Confirms beta.13's fix for the silent-reject bug in beta.12 holds on real hardware:
 
 | Section | Field | Type | Before | After | Result |
 |---|---|---|---|---|---|
@@ -7022,8 +7022,8 @@ Beta.12 wired up inline editors for every OptionsFlow field, but the underlying 
 
 Two new services close the loop:
 
-- **`solar_energy_management.set_option`** (`__init__.py`) — accepts an `options` dict, merges it into the SEM ConfigEntry's `entry.options`, and lets HA's `update_listener` decide whether to reload (the same path the OptionsFlow takes). The Configuration tab now calls this service instead of `config_entries/update`. (by @traktore-org in #442)
-- **`solar_energy_management.get_config`** (`supports_response=ONLY`) — returns the merged `data + options` dict the OptionsFlow uses internally. HA's public `config_entries/get` strips `data` and `options` for security, leaving the dashboard with no way to display current values for option-only fields. The card now reads via this service and displays the actual saved values, not just defaults. (by @traktore-org in #442)
+- **`xxx_cristiano.set_option`** (`__init__.py`) — accepts an `options` dict, merges it into the SEM ConfigEntry's `entry.options`, and lets HA's `update_listener` decide whether to reload (the same path the OptionsFlow takes). The Configuration tab now calls this service instead of `config_entries/update`. (by @traktore-org in #442)
+- **`xxx_cristiano.get_config`** (`supports_response=ONLY`) — returns the merged `data + options` dict the OptionsFlow uses internally. HA's public `config_entries/get` strips `data` and `options` for security, leaving the dashboard with no way to display current values for option-only fields. The card now reads via this service and displays the actual saved values, not just defaults. (by @traktore-org in #442)
 
 ### 🧪 Save round-trip harness — 8/8 green
 
@@ -8739,7 +8739,7 @@ behaviour change.
 - **Recent SEM log lines in the Copy diagnostics dump** —
   ``diagnostics.py::_get_recent_sem_logs`` reads the last 2 MB of
   ``home-assistant.log``, filters for
-  ``solar_energy_management`` mentions, and includes up to 80 matching
+  ``xxx_cristiano`` mentions, and includes up to 80 matching
   lines as ``recent_logs`` in the diagnostics output. Bug reports now
   come pre-loaded with the surrounding log context so we don't have
   to ask reporters for a separate ``ha core logs`` dump. Supervisor

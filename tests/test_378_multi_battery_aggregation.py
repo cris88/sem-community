@@ -30,7 +30,7 @@ attribution the user sees on the dashboard.
 from __future__ import annotations
 
 
-from custom_components.solar_energy_management.coordinator.types import (
+from custom_components.xxx_cristiano.coordinator.types import (
     PowerReadings,
 )
 
@@ -106,7 +106,7 @@ class Test378FleetBatteryWAggregation:
 
     def test_fleet_battery_w_sums_two_batteries(self) -> None:
         """Two batteries each at 2 kW charging → fleet_battery_w = 4 kW."""
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             BatteryPower,
         )
         pr = PowerReadings(
@@ -126,7 +126,7 @@ class Test378FleetBatteryWAggregation:
 
     def test_fleet_battery_w_handles_discharge_mix(self) -> None:
         """One battery charging, one discharging — fleet sum nets out."""
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             BatteryPower,
         )
         pr = PowerReadings(battery_power=500)
@@ -150,7 +150,7 @@ def test_378_per_battery_dict_should_match_cached_field() -> None:
     bug — one of the two paths skipped a battery. This invariant is
     the structural guard against #378's class.
     """
-    from custom_components.solar_energy_management.coordinator.charger_types import (
+    from custom_components.xxx_cristiano.coordinator.charger_types import (
         BatteryPower,
     )
     # Per-battery total = 4 kW; cached field also = 4 kW. Agreement = OK.

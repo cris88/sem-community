@@ -102,7 +102,7 @@ def test_hot_water_gate_keyed_on_hot_water_entity():
 def test_hot_water_sensor_data_dataclass_exists():
     """``HotWaterSensorData`` must be defined in types.py with the
     field set the diagnose surface + UI cards expect."""
-    from custom_components.solar_energy_management.coordinator.types import (
+    from custom_components.xxx_cristiano.coordinator.types import (
         HotWaterSensorData,
     )
     d = HotWaterSensorData()
@@ -133,7 +133,7 @@ def test_hot_water_sensor_data_default_state_is_unregistered():
     state. The dashboard subtitle uses ``hot_water_registered``
     as the gate for showing "configured" vs "not_configured" —
     must default to False."""
-    from custom_components.solar_energy_management.coordinator.types import (
+    from custom_components.xxx_cristiano.coordinator.types import (
         HotWaterSensorData,
     )
     d = HotWaterSensorData()
@@ -147,7 +147,7 @@ def test_coordinator_sensor_data_includes_hot_water_in_to_dict():
     hot_water_* keys so the diagnose slicer + sensor entities can
     read them from ``coordinator.data``. Without this mapping, the
     fields exist on the dataclass but never reach the UI."""
-    from custom_components.solar_energy_management.coordinator.types import (
+    from custom_components.xxx_cristiano.coordinator.types import (
         SEMData,
     )
     d = SEMData()

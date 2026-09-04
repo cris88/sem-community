@@ -36,7 +36,7 @@ from pathlib import Path
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     ChargerDecision,
     ChargerIntent,
     solar_commitment_w,
@@ -200,10 +200,10 @@ class TestHardwareMaxReachesDecide:
     ceiling, not decide's 32 A literal."""
 
     def _view(self, charger_cfg, fleet_cfg=None, hardware_max_a=None):
-        from custom_components.solar_energy_management.coordinator.build_view import (
+        from custom_components.xxx_cristiano.coordinator.build_view import (
             build_charger_view,
         )
-        from custom_components.solar_energy_management.coordinator.charger_types import (
+        from custom_components.xxx_cristiano.coordinator.charger_types import (
             FleetCycleState,
         )
         from unittest.mock import MagicMock

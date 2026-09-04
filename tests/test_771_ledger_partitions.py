@@ -50,10 +50,10 @@ from __future__ import annotations
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.health_check import (
+from custom_components.xxx_cristiano.coordinator.health_check import (
     HealthCheck,
 )
-from custom_components.solar_energy_management.coordinator.types import (
+from custom_components.xxx_cristiano.coordinator.types import (
     ChargerEnergyFlows,
     EnergyFlows,
     EnergyTotals,
@@ -248,7 +248,7 @@ class TestWiredIntoTheCycle771:
         new checker runs on ``None`` every cycle and reports a clean bill."""
         import ast
         import inspect
-        from custom_components.solar_energy_management.coordinator import (
+        from custom_components.xxx_cristiano.coordinator import (
             coordinator as coord_mod,
         )
 
@@ -300,7 +300,7 @@ class TestTheDeadPerDeviceEnergySurfaceIsGone771:
             )
 
     def test_the_runtime_dataclasses_carry_no_phantom_daily_kwh(self):
-        from custom_components.solar_energy_management.coordinator import (
+        from custom_components.xxx_cristiano.coordinator import (
             charger_types,
         )
 
@@ -339,10 +339,10 @@ class TestTheDeadPerDeviceEnergySurfaceIsGone771:
         ``EnergyFlows.per_charger``, which is why the origin-split check
         above has something to reconcile.
         """
-        from custom_components.solar_energy_management.coordinator import (
+        from custom_components.xxx_cristiano.coordinator import (
             charger_types,
         )
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             PowerFlows,
         )
 

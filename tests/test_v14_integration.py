@@ -17,13 +17,13 @@ import pytest
 from unittest.mock import MagicMock, AsyncMock
 from datetime import datetime, timedelta
 
-from custom_components.solar_energy_management.coordinator.ev_taper_detector import (
+from custom_components.xxx_cristiano.coordinator.ev_taper_detector import (
     EVTaperDetector,
 )
-from custom_components.solar_energy_management.coordinator.ev_control import (
+from custom_components.xxx_cristiano.coordinator.ev_control import (
     EVControlMixin,
 )
-from custom_components.solar_energy_management.coordinator.types import (
+from custom_components.xxx_cristiano.coordinator.types import (
     SessionData,
     SEMData,
     PowerReadings,
@@ -308,7 +308,7 @@ class TestMultiInverterSumming:
 
     def test_two_inverters_summed(self):
         """Two Growatt inverters: 3kW + 2kW = 5kW total."""
-        from custom_components.solar_energy_management.coordinator.sensor_reader import SensorReader
+        from custom_components.xxx_cristiano.coordinator.sensor_reader import SensorReader
         hass = self._make_hass({
             "sensor.growatt_1_power": 3000,
             "sensor.growatt_2_power": 2000,
@@ -322,7 +322,7 @@ class TestMultiInverterSumming:
 
     def test_three_batteries_summed(self):
         """Three battery units: power summed."""
-        from custom_components.solar_energy_management.coordinator.sensor_reader import SensorReader
+        from custom_components.xxx_cristiano.coordinator.sensor_reader import SensorReader
         hass = self._make_hass({
             "sensor.bat_1_power": 500,
             "sensor.bat_2_power": 300,
@@ -337,7 +337,7 @@ class TestMultiInverterSumming:
 
     def test_unavailable_sensor_skipped(self):
         """Unavailable sensor should be skipped, not crash."""
-        from custom_components.solar_energy_management.coordinator.sensor_reader import SensorReader
+        from custom_components.xxx_cristiano.coordinator.sensor_reader import SensorReader
         hass = self._make_hass({
             "sensor.inv_1_power": 3000,
             # sensor.inv_2_power not in states (unavailable)
@@ -351,7 +351,7 @@ class TestMultiInverterSumming:
 
     def test_single_inverter_unchanged(self):
         """Single inverter: backward compat, returns same value."""
-        from custom_components.solar_energy_management.coordinator.sensor_reader import SensorReader
+        from custom_components.xxx_cristiano.coordinator.sensor_reader import SensorReader
         hass = self._make_hass({"sensor.inverter_power": 4500})
         reader = SensorReader(hass, {})
         reader._sign_vote_warmup = 0
@@ -409,7 +409,7 @@ class TestHeatPumpSGReadyIntegration:
         (Was a non-standard 2-bit count; SEM's BOOST used to drive the
         EVU-block pattern and turned standard pumps off on surplus.)
         """
-        from custom_components.solar_energy_management.devices.heat_pump_controller import (
+        from custom_components.xxx_cristiano.devices.heat_pump_controller import (
             SGReadyState, SG_READY_RELAY_MAP,
         )
         assert SG_READY_RELAY_MAP[SGReadyState.BLOCKED] == (True, False)
@@ -419,7 +419,7 @@ class TestHeatPumpSGReadyIntegration:
 
     def test_boost_vs_force_on_threshold(self):
         """Below force_on_threshold → BOOST, above → FORCE_ON."""
-        from custom_components.solar_energy_management.devices.heat_pump_controller import (
+        from custom_components.xxx_cristiano.devices.heat_pump_controller import (
             HeatPumpController,
         )
         hass = MagicMock()
@@ -436,7 +436,7 @@ class TestHeatPumpSGReadyIntegration:
 
     def test_priority_default_is_4(self):
         """Heat pump default priority = 4 (between battery=2 and EV=5)."""
-        from custom_components.solar_energy_management.devices.heat_pump_controller import HeatPumpController
+        from custom_components.xxx_cristiano.devices.heat_pump_controller import HeatPumpController
         hass = MagicMock()
         hp = HeatPumpController(hass=hass)
         assert hp.priority == 4
@@ -642,7 +642,7 @@ class TestEVNotificationTriggers:
     @pytest.mark.asyncio
     async def test_nearly_full_fires_when_taper_below_5_min(self):
         """notify_ev_nearly_full should fire when minutes_to_full < 5."""
-        from custom_components.solar_energy_management.coordinator.notifications import NotificationManager
+        from custom_components.xxx_cristiano.coordinator.notifications import NotificationManager
         hass = MagicMock()
         hass.bus = MagicMock()
         hass.bus.async_fire = MagicMock()
@@ -660,7 +660,7 @@ class TestEVNotificationTriggers:
     @pytest.mark.asyncio
     async def test_nearly_full_deduplicates(self):
         """Second call should not fire again."""
-        from custom_components.solar_energy_management.coordinator.notifications import NotificationManager
+        from custom_components.xxx_cristiano.coordinator.notifications import NotificationManager
         hass = MagicMock()
         hass.bus = MagicMock()
         hass.bus.async_fire = MagicMock()

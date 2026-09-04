@@ -14,7 +14,7 @@ from __future__ import annotations
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.energy_reclaim import (
+from custom_components.xxx_cristiano.coordinator.energy_reclaim import (
     reclaimable_battery_w,
 )
 
@@ -112,10 +112,10 @@ class TestSurplusInputWiring:
 
 # ── The battery as a positioned device in the priority walk ──────────────
 from unittest.mock import AsyncMock, MagicMock  # noqa: E402
-from custom_components.solar_energy_management.coordinator.surplus_controller import (  # noqa: E402
+from custom_components.xxx_cristiano.coordinator.surplus_controller import (  # noqa: E402
     SurplusController,
 )
-from custom_components.solar_energy_management.devices.base import (  # noqa: E402
+from custom_components.xxx_cristiano.devices.base import (  # noqa: E402
     DeviceControlMode,
 )
 
@@ -200,10 +200,10 @@ class TestBatteryPositionInWalk:
 
 
 # ── P2.1: unified priority store ──────────────────────────────────────────
-from custom_components.solar_energy_management.features.device_registry import (  # noqa: E402
+from custom_components.xxx_cristiano.features.device_registry import (  # noqa: E402
     UnifiedDeviceRegistry,
 )
-from custom_components.solar_energy_management.const import (  # noqa: E402
+from custom_components.xxx_cristiano.const import (  # noqa: E402
     BATTERY_SURPLUS_DEVICE_ID,
     DEFAULT_BATTERY_SURPLUS_PRIORITY,
 )
@@ -533,7 +533,7 @@ class TestDependencyMigration:
 
 
 # ── P2.1: EV chargers are first-class rows keyed by CONTROL id ─────────────
-from custom_components.solar_energy_management.features.device_registry import (  # noqa: E402
+from custom_components.xxx_cristiano.features.device_registry import (  # noqa: E402
     UnifiedDevice,
 )
 
@@ -617,7 +617,7 @@ class TestEvChargerRows:
 
 
 # ── P2.2: EV position-based reclaim predicate ─────────────────────────────
-from custom_components.solar_energy_management.coordinator.energy_reclaim import (  # noqa: E402
+from custom_components.xxx_cristiano.coordinator.energy_reclaim import (  # noqa: E402
     ev_reclaims_battery_charge,
 )
 
@@ -658,10 +658,10 @@ class TestEvReclaimsBatteryCharge:
 
 
 # ── P2.2: reclaim wired into self_consumption_surplus_w ────────────────────
-from custom_components.solar_energy_management.coordinator.decide import (  # noqa: E402
+from custom_components.xxx_cristiano.coordinator.decide import (  # noqa: E402
     self_consumption_surplus_w,
 )
-from custom_components.solar_energy_management.coordinator.charger_types import (  # noqa: E402
+from custom_components.xxx_cristiano.coordinator.charger_types import (  # noqa: E402
     ChargerView, ChargerPower, ChargerEnergy, FleetContext,
 )
 
@@ -714,7 +714,7 @@ class TestEvSurplusReclaimWiring:
 
 
 # ── P2.1/#4: default seed order EV → battery → loads ───────────────────────
-from custom_components.solar_energy_management.const import (  # noqa: E402
+from custom_components.xxx_cristiano.const import (  # noqa: E402
     LOAD_PRIORITY_BASE,
 )
 
@@ -834,18 +834,18 @@ class TestDrawCalibrationAllTypes:
     Sensor-less devices default to 1 kW (not 0)."""
 
     def test_switch_defaults_to_1kw_without_rating(self):
-        from custom_components.solar_energy_management.devices.base import SwitchDevice
+        from custom_components.xxx_cristiano.devices.base import SwitchDevice
         d = SwitchDevice(hass=MagicMock(), device_id="s", name="s", rated_power=0)
         assert d.rated_power == 1000
         assert d.min_power_threshold == 1000
 
     def test_switch_keeps_explicit_rating(self):
-        from custom_components.solar_energy_management.devices.base import SwitchDevice
+        from custom_components.xxx_cristiano.devices.base import SwitchDevice
         d = SwitchDevice(hass=MagicMock(), device_id="s", name="s", rated_power=2500)
         assert d.rated_power == 2500
 
     def test_base_calibration_learns_real_draw(self):
-        from custom_components.solar_energy_management.devices.base import (
+        from custom_components.xxx_cristiano.devices.base import (
             SwitchDevice, DeviceState)
         hass = MagicMock()
         st = MagicMock(); st.state = "2400"
@@ -859,7 +859,7 @@ class TestDrawCalibrationAllTypes:
 
     def test_calibration_promoted_off_switch_onto_base(self):
         # No per-type override left — switch AND climate use the base method.
-        from custom_components.solar_energy_management.devices.base import (
+        from custom_components.xxx_cristiano.devices.base import (
             SwitchDevice, ClimateDevice, ControllableDevice)
         assert SwitchDevice.calibrate_rated_power is ControllableDevice.calibrate_rated_power
         assert ClimateDevice.calibrate_rated_power is ControllableDevice.calibrate_rated_power

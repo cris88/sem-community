@@ -18,10 +18,10 @@ from types import SimpleNamespace
 from unittest.mock import MagicMock
 
 
-from custom_components.solar_energy_management.coordinator.ev_taper_detector import (
+from custom_components.xxx_cristiano.coordinator.ev_taper_detector import (
     EVTaperDetector,
 )
-from custom_components.solar_energy_management.coordinator.ev_availability import (
+from custom_components.xxx_cristiano.coordinator.ev_availability import (
     plan_car_fullness,
 )
 
@@ -130,7 +130,7 @@ class TestTheOneFullnessAccessor:
     "is this car full?" differently."""
 
     def _coord(self, still_full: bool):
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
         c = SEMCoordinator.__new__(SEMCoordinator)
@@ -142,21 +142,21 @@ class TestTheOneFullnessAccessor:
         return SimpleNamespace(ev_power_per_charger={"keba": w})
 
     def test_an_anchored_car_at_rest_is_full(self) -> None:
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
         c = self._coord(True)
         assert SEMCoordinator._plan_car_full(c, "keba", self._power(0.0)) is True
 
     def test_an_anchored_car_that_is_drawing_is_not(self) -> None:
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
         c = self._coord(True)
         assert SEMCoordinator._plan_car_full(c, "keba", self._power(3900.0)) is None
 
     def test_the_charger_s_own_adapter_sets_the_threshold(self) -> None:
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
         c = self._coord(True)
@@ -164,7 +164,7 @@ class TestTheOneFullnessAccessor:
         assert SEMCoordinator._plan_car_full(c, "keba", self._power(200.0)) is None
 
     def test_no_power_reading_at_all_is_survivable(self) -> None:
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
         c = self._coord(True)
@@ -180,7 +180,7 @@ class TestEagerPerChargerRestore:
     per-charger fleet now restores beside it."""
 
     def test_stored_chargers_come_back_warm(self) -> None:
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
         c = SEMCoordinator.__new__(SEMCoordinator)
@@ -195,7 +195,7 @@ class TestEagerPerChargerRestore:
         assert c._ev_taper_detectors["keba"].still_full is True
 
     def test_a_warm_detector_is_never_clobbered(self) -> None:
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
         c = SEMCoordinator.__new__(SEMCoordinator)
@@ -210,7 +210,7 @@ class TestEagerPerChargerRestore:
         assert c._ev_taper_detectors["keba"] is live
 
     def test_garbage_state_restores_nothing_quietly(self) -> None:
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
         c = SEMCoordinator.__new__(SEMCoordinator)
@@ -227,7 +227,7 @@ class TestTheSignatureSeesTheCar:
     keeps packing phantom blocks until an unrelated trigger fires."""
 
     def _coord(self):
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
         c = SEMCoordinator.__new__(SEMCoordinator)
@@ -269,7 +269,7 @@ class TestTheCollectorAsksTheSameQuestion:
     with the car and a plan without it."""
 
     def test_a_drawing_car_still_gets_a_demand(self, freeze_targets) -> None:
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
         fake = _fake_self(devices=[])
@@ -284,7 +284,7 @@ class TestTheCollectorAsksTheSameQuestion:
     def test_a_car_at_rest_is_still_skipped(self, freeze_targets) -> None:
         """#756 itself: the anchored, idle car is a phantom and must stay
         out of the pack."""
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
         fake = _fake_self(devices=[])

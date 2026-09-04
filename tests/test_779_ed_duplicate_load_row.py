@@ -34,7 +34,7 @@ from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
 
-from custom_components.solar_energy_management.features.device_registry import (
+from custom_components.xxx_cristiano.features.device_registry import (
     UnifiedDeviceRegistry,
     UnifiedDevice,
 )
@@ -224,14 +224,14 @@ class TestShedBehaviour:
     restatement of the prune."""
 
     def _real_lm(self, mock_hass, config_entry_lm):
-        from custom_components.solar_energy_management.load_management import (
+        from custom_components.xxx_cristiano.load_management import (
             LoadManagementCoordinator,
         )
         with patch(
-            "custom_components.solar_energy_management.features."
+            "custom_components.xxx_cristiano.features."
             "load_management.LoadDeviceDiscovery"
         ) as MockDiscovery, patch(
-            "custom_components.solar_energy_management.features."
+            "custom_components.xxx_cristiano.features."
             "load_management.Store"
         ):
             disc = MagicMock()

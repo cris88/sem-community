@@ -11,7 +11,7 @@ to it. Phases B-D (manual select / reactive auto / planner boundaries)
 build on this observation layer.
 """
 
-from custom_components.solar_energy_management.coordinator.ev_phases import (
+from custom_components.xxx_cristiano.coordinator.ev_phases import (
     PHASE_MIN_AMPS, PHASE_MIN_WATTS, PHASE_SWITCH_DOMAINS,
     estimate_active_phases, validate_phase_switch_entity,
 )
@@ -121,7 +121,7 @@ class TestInertness:
 
     def test_module_is_pure(self):
         import ast, inspect
-        from custom_components.solar_energy_management.coordinator import (
+        from custom_components.xxx_cristiano.coordinator import (
             ev_phases,
         )
         tree = ast.parse(inspect.getsource(ev_phases))
@@ -145,21 +145,21 @@ class TestSwitchValuesAndCommand:
     switch defaults to off=1p / on=3p."""
 
     def test_number_defaults(self):
-        from custom_components.solar_energy_management.coordinator.ev_phases import (
+        from custom_components.xxx_cristiano.coordinator.ev_phases import (
             resolve_switch_values,
         )
         v1, v3, ready = resolve_switch_values("number.keba_phases", {})
         assert (v1, v3, ready) == ("1", "3", True)
 
     def test_switch_defaults(self):
-        from custom_components.solar_energy_management.coordinator.ev_phases import (
+        from custom_components.xxx_cristiano.coordinator.ev_phases import (
             resolve_switch_values,
         )
         v1, v3, ready = resolve_switch_values("switch.openwb_phases", {})
         assert (v1, v3, ready) == ("off", "on", True)
 
     def test_select_requires_named_options(self):
-        from custom_components.solar_energy_management.coordinator.ev_phases import (
+        from custom_components.xxx_cristiano.coordinator.ev_phases import (
             resolve_switch_values,
         )
         _, _, ready = resolve_switch_values("select.goe_psm", {})
@@ -171,7 +171,7 @@ class TestSwitchValuesAndCommand:
         assert (v1, v3, ready) == ("1 Phase", "3 Phasen", True)
 
     def test_explicit_values_override_defaults(self):
-        from custom_components.solar_energy_management.coordinator.ev_phases import (
+        from custom_components.xxx_cristiano.coordinator.ev_phases import (
             resolve_switch_values,
         )
         v1, v3, _ = resolve_switch_values("number.goe_psm", {
@@ -181,7 +181,7 @@ class TestSwitchValuesAndCommand:
         assert (v1, v3) == ("1", "2")
 
     def test_command_shapes(self):
-        from custom_components.solar_energy_management.coordinator.ev_phases import (
+        from custom_components.xxx_cristiano.coordinator.ev_phases import (
             phase_switch_command,
         )
         assert phase_switch_command("select.goe_psm", "3 Phasen") == (
@@ -196,7 +196,7 @@ class TestSwitchValuesAndCommand:
             "switch", "turn_off", {"entity_id": "switch.openwb_phases"})
 
     def test_unknown_domain_returns_none(self):
-        from custom_components.solar_energy_management.coordinator.ev_phases import (
+        from custom_components.xxx_cristiano.coordinator.ev_phases import (
             phase_switch_command,
         )
         assert phase_switch_command("sensor.goe_phases", "3") is None
@@ -208,7 +208,7 @@ class TestHelperDomainTwins:
     through a helper + automation (and the sim rig's mock vocabulary)."""
 
     def test_helper_domains_validate(self):
-        from custom_components.solar_energy_management.coordinator.ev_phases import (
+        from custom_components.xxx_cristiano.coordinator.ev_phases import (
             validate_phase_switch_entity,
         )
         for eid in ("input_select.psm", "input_number.phases",
@@ -217,7 +217,7 @@ class TestHelperDomainTwins:
             assert valid is True, eid
 
     def test_helper_values_and_commands(self):
-        from custom_components.solar_energy_management.coordinator.ev_phases import (
+        from custom_components.xxx_cristiano.coordinator.ev_phases import (
             phase_switch_command, resolve_switch_values,
         )
         assert resolve_switch_values("input_number.phases", {}) == ("1", "3", True)
@@ -239,7 +239,7 @@ def test_flow_selector_domains_match_the_module():
     the first sim-campaign config attempt was rejected by the selector for
     an input_select the module happily validates."""
     import pathlib
-    from custom_components.solar_energy_management.coordinator.ev_phases import (
+    from custom_components.xxx_cristiano.coordinator.ev_phases import (
         PHASE_SWITCH_DOMAINS,
     )
     src = (pathlib.Path(__file__).resolve().parents[1]

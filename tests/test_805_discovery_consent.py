@@ -18,7 +18,7 @@ install is bit-for-bit unchanged; only first installs are quieter.
 """
 from __future__ import annotations
 
-from custom_components.solar_energy_management.features.device_registry import (
+from custom_components.xxx_cristiano.features.device_registry import (
     DEFAULT_DISCOVERED_CONTROL_MODE, _freeze_known_control_modes,
 )
 
@@ -83,7 +83,7 @@ class TestTheFreezeCoversARealStore:
 
     def test_the_freeze_reads_every_roster_key_the_store_has(self):
         import inspect
-        from custom_components.solar_energy_management.features import (
+        from custom_components.xxx_cristiano.features import (
             device_registry as dr,
         )
         src = inspect.getsource(dr.UnifiedDeviceRegistry._load_mappings) \

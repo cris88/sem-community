@@ -27,14 +27,14 @@ from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
 
-from custom_components.solar_energy_management.features.device_registry import (
+from custom_components.xxx_cristiano.features.device_registry import (
     UnifiedDeviceRegistry,
     UnifiedDevice,
 )
-from custom_components.solar_energy_management.features.load_management import (
+from custom_components.xxx_cristiano.features.load_management import (
     LoadManagementCoordinator,
 )
-from custom_components.solar_energy_management.features.load_device_discovery import (
+from custom_components.xxx_cristiano.features.load_device_discovery import (
     LoadDeviceDiscovery,
 )
 
@@ -243,7 +243,7 @@ class TestReconcileRunsWithoutEnergyDashboard:
         lm = self._seeded_lm()
         reg = _reg(lm)
         with patch(
-            "custom_components.solar_energy_management.features."
+            "custom_components.xxx_cristiano.features."
             "device_registry.read_energy_dashboard_config",
             new=AsyncMock(return_value=None),
         ):

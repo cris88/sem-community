@@ -26,7 +26,7 @@ from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
 
-from custom_components.solar_energy_management import (
+from custom_components.xxx_cristiano import (
     _maybe_emit_upgrade_notification,
 )
 
@@ -67,7 +67,7 @@ async def test_first_install_silent_record():
 
     store, store_cls, integration_get = _patches(None, "1.6.14")
     with patch(
-        "custom_components.solar_energy_management.Store"
+        "custom_components.xxx_cristiano.Store"
         if False else "homeassistant.helpers.storage.Store",
         store_cls,
     ), patch(

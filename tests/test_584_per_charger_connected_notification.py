@@ -19,19 +19,19 @@ and legacy reader paths).
 from types import SimpleNamespace
 from unittest.mock import MagicMock
 
-from custom_components.solar_energy_management.coordinator.types import (
+from custom_components.xxx_cristiano.coordinator.types import (
     PowerReadings,
 )
-from custom_components.solar_energy_management.coordinator.sensor_reader import (
+from custom_components.xxx_cristiano.coordinator.sensor_reader import (
     SensorReader,
 )
-from custom_components.solar_energy_management.coordinator.build_view import (
+from custom_components.xxx_cristiano.coordinator.build_view import (
     build_charger_view,
 )
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     ChargerIntent,
 )
-from custom_components.solar_energy_management.coordinator.decide import decide
+from custom_components.xxx_cristiano.coordinator.decide import decide
 
 
 CHARGERS = [

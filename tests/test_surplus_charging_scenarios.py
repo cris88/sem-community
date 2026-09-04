@@ -23,11 +23,11 @@ from unittest.mock import AsyncMock, MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.actuate import actuate
-from custom_components.solar_energy_management.coordinator.charger_reconciler import (
+from custom_components.xxx_cristiano.coordinator.actuate import actuate
+from custom_components.xxx_cristiano.coordinator.charger_reconciler import (
     ChargerReconciler,
 )
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     BatteryIntent,
     BatteryRuntime,
     BatteryView,
@@ -37,8 +37,8 @@ from custom_components.solar_energy_management.coordinator.charger_types import 
     ChargerView,
     FleetContext,
 )
-from custom_components.solar_energy_management.coordinator.decide import decide
-from custom_components.solar_energy_management.coordinator.decide_battery import (
+from custom_components.xxx_cristiano.coordinator.decide import decide
+from custom_components.xxx_cristiano.coordinator.decide_battery import (
     decide_battery,
 )
 

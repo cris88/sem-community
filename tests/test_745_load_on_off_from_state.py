@@ -25,11 +25,11 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.features.device_registry import (
+from custom_components.xxx_cristiano.features.device_registry import (
     UnifiedDeviceRegistry,
     UnifiedDevice,
 )
-from custom_components.solar_energy_management.features.load_device_discovery import (
+from custom_components.xxx_cristiano.features.load_device_discovery import (
     LoadDeviceDiscovery,
     resolve_load_is_on,
 )

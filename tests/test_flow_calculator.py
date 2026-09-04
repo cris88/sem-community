@@ -3,10 +3,10 @@ import pytest
 from unittest.mock import patch, MagicMock
 from datetime import date
 
-from custom_components.solar_energy_management.coordinator.flow_calculator import (
+from custom_components.xxx_cristiano.coordinator.flow_calculator import (
     FlowCalculator,
 )
-from custom_components.solar_energy_management.coordinator.types import (
+from custom_components.xxx_cristiano.coordinator.types import (
     PowerReadings,
 )
 
@@ -19,7 +19,7 @@ from custom_components.solar_energy_management.coordinator.types import (
 def calc():
     """Return a FlowCalculator."""
     with patch(
-        "custom_components.solar_energy_management.coordinator.flow_calculator.dt_util"
+        "custom_components.xxx_cristiano.coordinator.flow_calculator.dt_util"
     ) as mock_dt:
         mock_dt.now.return_value = MagicMock(date=MagicMock(return_value=date(2026, 4, 18)))
         return FlowCalculator()

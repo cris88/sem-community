@@ -7,10 +7,10 @@ Tests the hybrid ROI approach:
 from datetime import date, timedelta
 from unittest.mock import MagicMock
 
-from custom_components.solar_energy_management.coordinator.energy_calculator import (
+from custom_components.xxx_cristiano.coordinator.energy_calculator import (
     EnergyCalculator,
 )
-from custom_components.solar_energy_management.coordinator.types import (
+from custom_components.xxx_cristiano.coordinator.types import (
     EnergyTotals,
 )
 

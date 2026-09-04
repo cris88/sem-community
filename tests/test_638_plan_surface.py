@@ -19,11 +19,11 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.coordinator import (
+from custom_components.xxx_cristiano.coordinator.coordinator import (
     SEMCoordinator,
 )
-from custom_components.solar_energy_management.coordinator import ev_night_targets
-from custom_components.solar_energy_management.sensor import (
+from custom_components.xxx_cristiano.coordinator import ev_night_targets
+from custom_components.xxx_cristiano.sensor import (
     _PLAN_ATTR_BUDGET_BYTES,
     _energy_plan_attrs,
     _energy_plan_state,
@@ -165,7 +165,7 @@ def test_state_never_exceeds_has_limit(freeze_targets):
 
 
 def test_sensor_description_is_registered():
-    from custom_components.solar_energy_management.sensor import SENSOR_TYPES
+    from custom_components.xxx_cristiano.sensor import SENSOR_TYPES
     keys = {d.key for d in SENSOR_TYPES}
     assert "energy_plan" in keys
 

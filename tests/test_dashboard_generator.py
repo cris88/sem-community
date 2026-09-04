@@ -4,10 +4,10 @@ import pytest
 import yaml
 from unittest.mock import MagicMock, AsyncMock, patch
 
-from custom_components.solar_energy_management.features.dashboard_generator import (
+from custom_components.xxx_cristiano.features.dashboard_generator import (
     DashboardGenerator,
 )
-from custom_components.solar_energy_management.const import DOMAIN
+from custom_components.xxx_cristiano.const import DOMAIN
 
 
 @pytest.fixture
@@ -123,7 +123,7 @@ class TestContentHashCacheBust:
     def _bust(self, *args, **kwargs):
         # Imported lazily so the test module remains importable when the
         # parent package's optional deps are missing in some test envs.
-        from custom_components.solar_energy_management import (
+        from custom_components.xxx_cristiano import (
             _content_hash_cache_bust,
         )
         return _content_hash_cache_bust(*args, **kwargs)
@@ -131,7 +131,7 @@ class TestContentHashCacheBust:
     def test_url_includes_version_and_short_hash(self, tmp_path):
         card_root = tmp_path
         (card_root / "sem-localize.js").write_bytes(b"const x = 1;")
-        base = "/local/custom_components/solar_energy_management/dashboard/card/sem-localize.js"
+        base = "/local/custom_components/xxx_cristiano/dashboard/card/sem-localize.js"
 
         bust = self._bust(str(card_root), base, "1.6.3")
 
@@ -148,7 +148,7 @@ class TestContentHashCacheBust:
         """A file edit must flip the URL — the property the bug violated."""
         card_root = tmp_path
         f = card_root / "sem-localize.js"
-        base = "/local/custom_components/solar_energy_management/dashboard/card/sem-localize.js"
+        base = "/local/custom_components/xxx_cristiano/dashboard/card/sem-localize.js"
 
         f.write_bytes(b'{"charge_mode": "Charge mode"}')
         before = self._bust(str(card_root), base, "1.6.3")
@@ -166,7 +166,7 @@ class TestContentHashCacheBust:
         """No URL churn on each restart — only file content drives changes."""
         card_root = tmp_path
         (card_root / "sem-localize.js").write_bytes(b"const x = 1;")
-        base = "/local/custom_components/solar_energy_management/dashboard/card/sem-localize.js"
+        base = "/local/custom_components/xxx_cristiano/dashboard/card/sem-localize.js"
 
         first = self._bust(str(card_root), base, "1.6.3")
         second = self._bust(str(card_root), base, "1.6.3")
@@ -178,7 +178,7 @@ class TestContentHashCacheBust:
         card_root = tmp_path
         (card_root / "dist").mkdir()
         (card_root / "dist" / "sem-cards.js").write_bytes(b"// bundle")
-        base = "/local/custom_components/solar_energy_management/dashboard/card/dist/sem-cards.js"
+        base = "/local/custom_components/xxx_cristiano/dashboard/card/dist/sem-cards.js"
 
         bust = self._bust(str(card_root), base, "1.6.3")
 
@@ -190,7 +190,7 @@ class TestContentHashCacheBust:
         """If the asset can't be read, return bare version — don't crash or
         return an empty bust that could collide with another resource."""
         card_root = tmp_path
-        base = "/local/custom_components/solar_energy_management/dashboard/card/sem-localize.js"
+        base = "/local/custom_components/xxx_cristiano/dashboard/card/sem-localize.js"
 
         bust = self._bust(str(card_root), base, "1.6.3")
 

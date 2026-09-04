@@ -55,14 +55,14 @@ def test_the_module_is_gone() -> None:
     )
     with pytest.raises(ImportError):
         importlib.import_module(
-            "custom_components.solar_energy_management.utility_signals"
+            "custom_components.xxx_cristiano.utility_signals"
         )
 
 
 def test_no_coordinator_data_carrier() -> None:
     """``UtilitySignalSensorData`` and its ``SEMData`` field are gone."""
-    from custom_components.solar_energy_management import coordinator as pkg
-    from custom_components.solar_energy_management.coordinator import types
+    from custom_components.xxx_cristiano import coordinator as pkg
+    from custom_components.xxx_cristiano.coordinator import types
 
     assert not hasattr(pkg, "UtilitySignalSensorData")
     assert not hasattr(types, "UtilitySignalSensorData")
@@ -78,7 +78,7 @@ def test_no_entity_descriptions() -> None:
     exactly why nobody noticed they could never report anything — a disabled
     entity that stays empty looks the same as one nobody enabled.
     """
-    from custom_components.solar_energy_management import binary_sensor, sensor
+    from custom_components.xxx_cristiano import binary_sensor, sensor
 
     keys = {d.key for d in sensor.SENSOR_TYPES}
     keys |= {d.key for d in binary_sensor.BINARY_SENSOR_TYPES}
@@ -109,7 +109,7 @@ def test_no_block_actuator_without_a_caller() -> None:
     If a future §14a EnWG / Sperrzeiten feature needs them, they come back
     together with the thing that calls them.
     """
-    from custom_components.solar_energy_management.devices.heat_pump_controller import (
+    from custom_components.xxx_cristiano.devices.heat_pump_controller import (
         HeatPumpController,
     )
 

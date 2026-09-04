@@ -4503,7 +4503,7 @@ async def _async_register_phase_services(
         """Return the merged ``data + options`` for the SEM entry.
 
         Uses ``supports_response=ONLY`` so the frontend can call this
-        via ``hass.callService('solar_energy_management', 'get_config',
+        via ``hass.callService('xxx_cristiano', 'get_config',
         {}, undefined, undefined, true)`` and receive the dict in the
         response.
         """

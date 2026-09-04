@@ -25,11 +25,11 @@ manager's delayed progressive shed reaches anyone's freezer.
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     ChargerIntent,
     FleetContext,
 )
-from custom_components.solar_energy_management.coordinator.decide import decide
+from custom_components.xxx_cristiano.coordinator.decide import decide
 
 from .test_decide import _view
 
@@ -109,10 +109,10 @@ class TestNormalAndWarningAreUntouched:
 class TestTheStateReachesTheView:
     def test_fleet_cycle_state_resolves_it_and_build_view_passes_it(self):
         import inspect
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
-        from custom_components.solar_energy_management.coordinator import build_view
+        from custom_components.xxx_cristiano.coordinator import build_view
         assert "peak_state" in inspect.getsource(
             SEMCoordinator._build_fleet_cycle_state)
         assert "peak_state" in inspect.getsource(build_view)

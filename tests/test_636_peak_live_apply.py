@@ -3,7 +3,7 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.features.load_management import (
+from custom_components.xxx_cristiano.features.load_management import (
     LoadManagementCoordinator,
 )
 

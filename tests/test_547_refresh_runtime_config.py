@@ -14,14 +14,14 @@ from types import SimpleNamespace
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.coordinator import (
+from custom_components.xxx_cristiano.coordinator.coordinator import (
     SEMCoordinator,
 )
-from custom_components.solar_energy_management.tariff.tariff_provider import (
+from custom_components.xxx_cristiano.tariff.tariff_provider import (
     DynamicTariffProvider,
     StaticTariffProvider,
 )
-from custom_components.solar_energy_management.tariff.calendar_provider import (
+from custom_components.xxx_cristiano.tariff.calendar_provider import (
     CalendarTariffProvider,
 )
 

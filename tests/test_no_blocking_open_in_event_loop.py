@@ -6,7 +6,7 @@ event loop stalls every other integration on the box for the duration of
 the syscall. When SEM calls it from a coroutine, HA logs
 
     Detected blocking call to open inside the event loop by custom
-    integration 'solar_energy_management'
+    integration 'xxx_cristiano'
 
 and on a slow SD card or a network-mounted ``/config`` the stall is not
 theoretical.
@@ -202,7 +202,7 @@ def test_no_blocking_filesystem_calls_on_the_event_loop():
     assert not offenders, (
         "These calls block Home Assistant's event loop. HA patches them with "
         "a loop guard and logs 'Detected blocking call ... by custom "
-        "integration solar_energy_management'. Move the work into a plain "
+        "integration xxx_cristiano'. Move the work into a plain "
         "function and await it via hass.async_add_executor_job, or annotate "
         f"the line with `# {OPT_OUT} <reason>` if it provably runs off the "
         "loop:\n  " + "\n  ".join(offenders)

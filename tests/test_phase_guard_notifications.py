@@ -4,7 +4,7 @@ from unittest.mock import AsyncMock, MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.notifications import (
+from custom_components.xxx_cristiano.coordinator.notifications import (
     NotificationManager,
 )
 
@@ -61,7 +61,7 @@ async def test_guard_alerts_without_any_ev_state_and_deduplicates_incident():
     assert "17.2 A" in message
     manager.hass.bus.async_fire.assert_called_once()
     event_name, payload = manager.hass.bus.async_fire.call_args.args
-    assert event_name == "solar_energy_management_notification"
+    assert event_name == "xxx_cristiano_notification"
     assert payload["category"] == "alerts"
     assert payload["state"] == "phase_guard_blocked"
 

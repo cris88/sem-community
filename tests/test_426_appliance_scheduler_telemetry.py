@@ -17,7 +17,7 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.devices.appliance_scheduler import (
+from custom_components.xxx_cristiano.devices.appliance_scheduler import (
     ApplianceScheduler,
 )
 

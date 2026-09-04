@@ -20,7 +20,7 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.sensor_reader import (
+from custom_components.xxx_cristiano.coordinator.sensor_reader import (
     SensorReader,
 )
 
@@ -121,7 +121,7 @@ def test_manual_invert_beats_restored_lock():
 # ── 6. SEMStorage accessor round-trip ────────────────────────────────
 
 def test_storage_accessors_roundtrip():
-    from custom_components.solar_energy_management.coordinator.storage import (
+    from custom_components.xxx_cristiano.coordinator.storage import (
         SEMStorage,
     )
     store = SEMStorage.__new__(SEMStorage)  # no hass needed for the dict API

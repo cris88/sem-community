@@ -16,7 +16,7 @@ tracker skips it. A failed probe (plain clouds) still teaches."""
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.curtailment import (
+from custom_components.xxx_cristiano.coordinator.curtailment import (
     marks_day_curtailed,
 )
 
@@ -35,7 +35,7 @@ class TestThePoisonedSamplePredicate:
 class TestTheTrackerSkipsCurtailedDays:
     def test_the_update_gate_is_wired(self):
         import inspect
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
         src = inspect.getsource(SEMCoordinator)

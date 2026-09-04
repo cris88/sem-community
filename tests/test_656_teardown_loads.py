@@ -29,17 +29,17 @@ import contextlib
 import pytest
 from unittest.mock import AsyncMock, MagicMock, Mock
 
-import custom_components.solar_energy_management as sem
-from custom_components.solar_energy_management import (
+import custom_components.xxx_cristiano as sem
+from custom_components.xxx_cristiano import (
     async_remove_entry,
     async_setup_entry,
     async_unload_entry,
 )
-from custom_components.solar_energy_management.coordinator.surplus_controller import (
+from custom_components.xxx_cristiano.coordinator.surplus_controller import (
     SurplusController,
 )
 
-DOMAIN = "solar_energy_management"
+DOMAIN = "xxx_cristiano"
 
 
 def _device(device_id="hot_water", priority=2, is_active=True, **kw):

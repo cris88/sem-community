@@ -385,7 +385,7 @@ log line for every install.
   on): the summary at INFO, one line per allocation at DEBUG. Never silent:
   even "no overnight demands tonight" is logged, with the counts that
   explain it.
-- **On demand** — the `solar_energy_management.diagnose` service response
+- **On demand** — the `xxx_cristiano.diagnose` service response
   carries `energy_plan_shadow`: the timestamp, fits/yields summary, the
   takeover hour, and every allocation line of the most recent plan.
 

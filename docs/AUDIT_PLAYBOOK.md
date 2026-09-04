@@ -33,8 +33,8 @@ we **think** it behaves. Patterns by data location:
 
 | Where state lives | How to pull |
 |---|---|
-| Coordinator daily storage | `ssh ha-prod cat /config/.storage/solar_energy_management_<entry>_daily` then `python3 -c 'import json; …'` |
-| Energy totals storage | `ssh ha-prod cat /config/.storage/solar_energy_management_<entry>_energy` |
+| Coordinator daily storage | `ssh ha-prod cat /config/.storage/xxx_cristiano_<entry>_daily` then `python3 -c 'import json; …'` |
+| Energy totals storage | `ssh ha-prod cat /config/.storage/xxx_cristiano_<entry>_energy` |
 | Live sensor attributes | `curl -sH "Authorization: Bearer $HA_PROD_TOKEN" http://10.10.20.150:8123/api/states/sensor.sem_<name>` (mind HA's `login_attempts_threshold` IP ban during restarts — prefer SSH polling) |
 | Config-entry options | `ssh ha-prod cat /config/.storage/core.config_entries | jq` |
 | HA validation report | `~/bin/validate-sem.sh` |
@@ -156,7 +156,7 @@ Run in order. Each gate must pass before the next.
 |---|------|------|----------------|
 | 1 | Local syntax | `python3.12 -c "import ast; ast.parse(open('<file>').read())"` | OK |
 | 2 | Focused tests | `pytest tests/test_<your_new_file>.py -q` | all green |
-| 3 | Full suite | `cd /tmp/ha-config && PYTHONPATH=/tmp/ha-config python3.12 -m pytest custom_components/solar_energy_management/tests/ -q` | 0 new failures vs `git stash` baseline |
+| 3 | Full suite | `cd /tmp/ha-config && PYTHONPATH=/tmp/ha-config python3.12 -m pytest custom_components/xxx_cristiano/tests/ -q` | 0 new failures vs `git stash` baseline |
 | 4 | Reviewer | `ruflo-core:reviewer` agent over `git diff` | no blockers |
 | 5 | HA-TEST deploy | `~/bin/deploy-test.sh --code-only` | exits 0, 6+ validation passes |
 | 6 | Live attribute check | `curl /api/states/sensor.sem_<name>` | new attributes visible, no `null`s where data should exist |

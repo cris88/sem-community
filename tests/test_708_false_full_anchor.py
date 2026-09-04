@@ -42,7 +42,7 @@ from __future__ import annotations
 from datetime import datetime, timedelta
 
 
-from custom_components.solar_energy_management.coordinator.ev_taper_detector import (
+from custom_components.xxx_cristiano.coordinator.ev_taper_detector import (
     EVTaperDetector,
 )
 

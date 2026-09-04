@@ -2,7 +2,7 @@
 import sys
 from pathlib import Path
 
-# Ensure custom_components.solar_energy_management is importable
+# Ensure custom_components.xxx_cristiano is importable
 _ha_config_dir = str(Path(__file__).resolve().parent.parent.parent.parent)
 if _ha_config_dir not in sys.path:
     sys.path.insert(0, _ha_config_dir)
@@ -119,7 +119,7 @@ def config_entry():
     entry.options = {}
     entry.entry_id = "test_entry_id"
     entry.title = "Solar Energy Management Test"
-    entry.domain = "solar_energy_management"
+    entry.domain = "xxx_cristiano"
     entry.runtime_data = None  # Set by test or via mock_coordinator
     return entry
 
@@ -127,7 +127,7 @@ def config_entry():
 @pytest.fixture
 def mock_coordinator():
     """Return a mocked coordinator."""
-    from custom_components.solar_energy_management.coordinator import SEMCoordinator
+    from custom_components.xxx_cristiano.coordinator import SEMCoordinator
 
     with patch.object(SEMCoordinator, '__init__', return_value=None):
         coordinator = SEMCoordinator.__new__(SEMCoordinator)
@@ -210,7 +210,7 @@ def mock_coordinator():
 
         # Mock device info property
         device_info_mock = {
-            "identifiers": {("solar_energy_management", "test_entry_id")},
+            "identifiers": {("xxx_cristiano", "test_entry_id")},
             "name": "Solar Energy Management Test",
             "manufacturer": "Custom",
             "model": "Test Model",
@@ -282,7 +282,7 @@ def mock_coordinator():
 
         async def _update_charging_state(self, values, calculations):
             """Mock charging state update."""
-            from custom_components.solar_energy_management.const import ChargingState
+            from custom_components.xxx_cristiano.const import ChargingState
             if not values.get("ev_connected", False):
                 return ChargingState.IDLE
             if calculations.get("battery_needs_priority", False):
@@ -397,7 +397,7 @@ def mock_coordinator():
         coordinator.async_copy_dashboard_images = async_copy_dashboard_images.__get__(coordinator, type(coordinator))
 
         # Initialize time_manager for Phase 1 refactoring
-        from custom_components.solar_energy_management.utils import TimeManager
+        from custom_components.xxx_cristiano.utils import TimeManager
         coordinator.time_manager = TimeManager(coordinator.hass)
 
         # Add _load_manager placeholder for load management tests
@@ -616,7 +616,7 @@ def sem_real_hass(hass, enable_custom_integrations):
 
     Composes pytest-homeassistant-custom-component's ``hass`` (real
     HomeAssistant instance) and ``enable_custom_integrations`` (lets
-    HA's setup machinery find ``custom_components/solar_energy_management/``).
+    HA's setup machinery find ``custom_components/xxx_cristiano/``).
     Without ``enable_custom_integrations`` an ``async_setup`` call
     fails with *Integration not found*.
 
@@ -685,7 +685,7 @@ def sem_config_entry():
             )
     """
     from pytest_homeassistant_custom_component.common import MockConfigEntry
-    from custom_components.solar_energy_management.const import DOMAIN
+    from custom_components.xxx_cristiano.const import DOMAIN
 
     return MockConfigEntry(
         domain=DOMAIN,
@@ -770,7 +770,7 @@ def sem_multi_wallbox_config_entry():
     Schema is v12.1 (matches ``sem_config_entry``).
     """
     from pytest_homeassistant_custom_component.common import MockConfigEntry
-    from custom_components.solar_energy_management.const import DOMAIN
+    from custom_components.xxx_cristiano.const import DOMAIN
 
     return MockConfigEntry(
         domain=DOMAIN,

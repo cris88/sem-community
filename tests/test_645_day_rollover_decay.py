@@ -27,8 +27,8 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator import SEMCoordinator
-from custom_components.solar_energy_management.coordinator.storage import (
+from custom_components.xxx_cristiano.coordinator import SEMCoordinator
+from custom_components.xxx_cristiano.coordinator.storage import (
     SEMStorage,
 )
 
@@ -248,7 +248,7 @@ class TestRestore645:
 class TestRestoreIsWiredBeforeTheRollover645:
     def test_restore_runs_before_the_rollover_check(self):
         import inspect
-        from custom_components.solar_energy_management.coordinator import (
+        from custom_components.xxx_cristiano.coordinator import (
             coordinator as mod,
         )
 
@@ -262,7 +262,7 @@ class TestRestoreIsWiredBeforeTheRollover645:
         """The whole point: the hour-bucket rollover and the decay are two
         separate decisions now."""
         import inspect
-        from custom_components.solar_energy_management.coordinator import (
+        from custom_components.xxx_cristiano.coordinator import (
             coordinator as mod,
         )
 

@@ -45,7 +45,7 @@
         },
         "data_description": {
           "battery_capacity_kwh": "您家用蓄电池（非电动汽车）的总可用容量 (kWh)。由预测驱动的充电策略用于估算电池可在多大程度上弥补太阳能缺口。请检查您的逆变器规格说明书。",
-          "generate_dashboard_on_install": "启用时，SEM 将在完成此步骤后立即创建 Lovelace 看板，并在此后约 5 秒重启 Home Assistant，以便让新看板可见。您稍后随时可以通过 solar_energy_management.generate_dashboard 服务手动重新运行此操作。",
+          "generate_dashboard_on_install": "启用时，SEM 将在完成此步骤后立即创建 Lovelace 看板，并在此后约 5 秒重启 Home Assistant，以便让新看板可见。您稍后随时可以通过 xxx_cristiano.generate_dashboard 服务手动重新运行此操作。",
           "diagram_style": "选择在“主页”标签页上使用哪种系统拓扑图卡片。“SEM” 使用内置的动效拓扑图。“K-Flow” 使用 K-Flow HACS 卡片（必须单独安装）。"
         }
       },

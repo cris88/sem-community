@@ -29,7 +29,7 @@ from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
 
-from custom_components.solar_energy_management.load_management import (
+from custom_components.xxx_cristiano.load_management import (
     LoadManagementCoordinator,
 )
 
@@ -51,9 +51,9 @@ def config_entry():
 @pytest.fixture
 def lm(mock_hass, config_entry):
     with patch(
-        "custom_components.solar_energy_management.features.load_management.LoadDeviceDiscovery"
+        "custom_components.xxx_cristiano.features.load_management.LoadDeviceDiscovery"
     ), patch(
-        "custom_components.solar_energy_management.features.load_management.Store"
+        "custom_components.xxx_cristiano.features.load_management.Store"
     ) as MockStore:
         mock_store = MagicMock()
         mock_store.async_load = AsyncMock(return_value=None)

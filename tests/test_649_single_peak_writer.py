@@ -19,10 +19,10 @@ from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
 
-from custom_components.solar_energy_management.load_management import (
+from custom_components.xxx_cristiano.load_management import (
     LoadManagementCoordinator,
 )
-from custom_components.solar_energy_management.features.device_registry import (
+from custom_components.xxx_cristiano.features.device_registry import (
     UnifiedDeviceRegistry,
 )
 
@@ -45,9 +45,9 @@ def lm649(mock_hass):
     entry.options = {"load_management_enabled": True, "target_peak_limit": 5.0}
     entry.entry_id = "e"
     with patch(
-        "custom_components.solar_energy_management.features.load_management.LoadDeviceDiscovery"
+        "custom_components.xxx_cristiano.features.load_management.LoadDeviceDiscovery"
     ) as MockDiscovery, patch(
-        "custom_components.solar_energy_management.features.load_management.Store"
+        "custom_components.xxx_cristiano.features.load_management.Store"
     ) as MockStore:
         disc = MagicMock()
         disc.get_device_current_state = MagicMock(
@@ -194,7 +194,7 @@ class TestRegistryMarksTheOwner649:
         return reg
 
     def test_sync_flags_only_devices_the_surplus_controller_drives(self):
-        from custom_components.solar_energy_management.features.device_registry import (
+        from custom_components.xxx_cristiano.features.device_registry import (
             UnifiedDevice,
         )
         reg = self._reg({"energy_dashboard_pond_pump"})

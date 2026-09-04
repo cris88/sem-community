@@ -18,7 +18,7 @@ from datetime import datetime, timedelta
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.today_plan import (
+from custom_components.xxx_cristiano.coordinator.today_plan import (
     KIND_EV_CHARGE_START,
     KIND_EV_MIN_REACHED,
     compose_today_plan,
@@ -88,7 +88,7 @@ class TestBlocksDriveTheRows:
 class TestTheCoordinatorPassesCoveredBlocks:
     def test_both_call_sites_thread_the_blocks(self):
         import inspect
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
         src = inspect.getsource(SEMCoordinator)

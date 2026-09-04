@@ -3,10 +3,10 @@ import pytest
 from unittest.mock import AsyncMock, MagicMock, patch
 from datetime import datetime, timedelta
 
-from custom_components.solar_energy_management.load_management import (
+from custom_components.xxx_cristiano.load_management import (
     LoadManagementCoordinator,
 )
-from custom_components.solar_energy_management.const import LoadManagementState
+from custom_components.xxx_cristiano.const import LoadManagementState
 
 
 # --- Fixtures ---
@@ -46,9 +46,9 @@ def config_entry_disabled():
 def lm(mock_hass, config_entry_lm):
     """Return a LoadManagementCoordinator with mocked dependencies."""
     with patch(
-        "custom_components.solar_energy_management.features.load_management.LoadDeviceDiscovery"
+        "custom_components.xxx_cristiano.features.load_management.LoadDeviceDiscovery"
     ) as MockDiscovery, patch(
-        "custom_components.solar_energy_management.features.load_management.Store"
+        "custom_components.xxx_cristiano.features.load_management.Store"
     ) as MockStore:
         mock_discovery = MagicMock()
         mock_discovery.discover_from_energy_dashboard = AsyncMock(return_value={})
@@ -76,9 +76,9 @@ def lm(mock_hass, config_entry_lm):
 def lm_disabled(mock_hass, config_entry_disabled):
     """Return a disabled LoadManagementCoordinator."""
     with patch(
-        "custom_components.solar_energy_management.features.load_management.LoadDeviceDiscovery"
+        "custom_components.xxx_cristiano.features.load_management.LoadDeviceDiscovery"
     ) as MockDiscovery, patch(
-        "custom_components.solar_energy_management.features.load_management.Store"
+        "custom_components.xxx_cristiano.features.load_management.Store"
     ) as MockStore:
         MockDiscovery.return_value = MagicMock()
         mock_store = MagicMock()
@@ -587,7 +587,7 @@ class TestRestoreLoads:
 
         # Set last restore to just now
         with patch(
-            "custom_components.solar_energy_management.features.load_management.dt_util"
+            "custom_components.xxx_cristiano.features.load_management.dt_util"
         ) as mock_dt:
             now = datetime(2026, 3, 19, 12, 0, 0)
             mock_dt.now.return_value = now

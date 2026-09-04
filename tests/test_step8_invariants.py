@@ -44,10 +44,10 @@ from unittest.mock import AsyncMock, MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.charger_adapters import (
+from custom_components.xxx_cristiano.coordinator.charger_adapters import (
     KebaAdapter,
 )
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     ChargerEnergy,
     ChargerIntent,
     ChargerPower,
@@ -55,11 +55,11 @@ from custom_components.solar_energy_management.coordinator.charger_types import 
     FleetContext,
     FleetView,
 )
-from custom_components.solar_energy_management.coordinator.decide import decide
-from custom_components.solar_energy_management.coordinator.flow_calculator import (
+from custom_components.xxx_cristiano.coordinator.decide import decide
+from custom_components.xxx_cristiano.coordinator.flow_calculator import (
     FlowCalculator,
 )
-from custom_components.solar_energy_management.coordinator.types import PowerReadings
+from custom_components.xxx_cristiano.coordinator.types import PowerReadings
 
 # ─────────────────────────────────────────────────────────────────
 # Fixture helpers

@@ -31,10 +31,10 @@ quietly rewrites it is not a feature anybody asked for.
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.demand_outcome import (
+from custom_components.xxx_cristiano.coordinator.demand_outcome import (
     DemandRecord,
 )
-from custom_components.solar_energy_management.coordinator.demand_learner import (
+from custom_components.xxx_cristiano.coordinator.demand_learner import (
     DEFAULT_MIN_NIGHTS,
     AskSuggestion,
     suggest_ask,
@@ -174,7 +174,7 @@ class TestItOnlySuggests:
         would change what the hardware does on the strength of a model nobody
         agreed to — and it would do it invisibly, which is worse."""
         import inspect
-        from custom_components.solar_energy_management.coordinator \
+        from custom_components.xxx_cristiano.coordinator \
             .coordinator import SEMCoordinator
 
         src = inspect.getsource(SEMCoordinator._shadow_energy_plan)

@@ -19,7 +19,7 @@ from __future__ import annotations
 
 
 
-from custom_components.solar_energy_management.coordinator.decide import (
+from custom_components.xxx_cristiano.coordinator.decide import (
     effective_min_amps,
 )
 
@@ -112,7 +112,7 @@ def _view(*, is_night=False, connected=True, soc=95, target_kwh=14.0,
     tests that want the floor to engage must pass a value below
     ``target_kwh``.
     """
-    from custom_components.solar_energy_management.coordinator.charger_types import (
+    from custom_components.xxx_cristiano.coordinator.charger_types import (
         FleetContext, ChargerView, ChargerPower, ChargerEnergy,
     )
     fleet = FleetContext(
@@ -142,7 +142,7 @@ def _view(*, is_night=False, connected=True, soc=95, target_kwh=14.0,
 def test_min_plus_solar_night_uses_vehicle_min_when_higher():
     """min_plus_solar night branch commits at effective floor — should
     be 9 A when vehicle_min_current=9 (not the global ev_min_current=6)."""
-    from custom_components.solar_energy_management.coordinator.decide import (
+    from custom_components.xxx_cristiano.coordinator.decide import (
         MinPlusSolarMode,
     )
     view = _view(is_night=True, ev_min=6, vehicle_min=9, target_kwh=12.0)
@@ -154,7 +154,7 @@ def test_min_plus_solar_night_uses_vehicle_min_when_higher():
 
 def test_min_plus_solar_night_uses_loadpoint_min_when_no_vehicle_override():
     """No vehicle override → effective floor equals loadpoint min."""
-    from custom_components.solar_energy_management.coordinator.decide import (
+    from custom_components.xxx_cristiano.coordinator.decide import (
         MinPlusSolarMode,
     )
     view = _view(is_night=True, ev_min=6, vehicle_min=None, target_kwh=12.0)
@@ -169,7 +169,7 @@ def test_min_plus_solar_day_zone4_uses_vehicle_min():
     The #440 invariant (vehicle_min wins) is preserved under #501's
     gating; the gate is exercised by ``night_deliverable_kwh < target``.
     """
-    from custom_components.solar_energy_management.coordinator.decide import (
+    from custom_components.xxx_cristiano.coordinator.decide import (
         MinPlusSolarMode,
     )
     view = _view(is_night=False, soc=95, ev_min=6, vehicle_min=10,
@@ -183,10 +183,10 @@ def test_min_plus_solar_day_zone4_idles_when_min_covered_by_night():
     (``night_deliverable_kwh >= target``), daytime Zone 4 does NOT
     force the floor: zero solar surplus → idle, not a grid-backfilled
     6/10 A floor. Pins the self-consumption-maximizing behavior."""
-    from custom_components.solar_energy_management.coordinator.decide import (
+    from custom_components.xxx_cristiano.coordinator.decide import (
         MinPlusSolarMode,
     )
-    from custom_components.solar_energy_management.coordinator.charger_types import (
+    from custom_components.xxx_cristiano.coordinator.charger_types import (
         ChargerIntent,
     )
     view = _view(is_night=False, soc=95, ev_min=6, vehicle_min=10,

@@ -15,7 +15,7 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.charger_adapters.wallbox import (
+from custom_components.xxx_cristiano.coordinator.charger_adapters.wallbox import (
     WallboxAdapter,
 )
 
@@ -36,7 +36,7 @@ def _adapter(**over):
 
 def test_an_unresolvable_device_is_named_not_silent(caplog, monkeypatch):
     """The path that used to return None without a word (#852)."""
-    import custom_components.solar_energy_management.coordinator.charger_adapters.wallbox as wb
+    import custom_components.xxx_cristiano.coordinator.charger_adapters.wallbox as wb
     reg = SimpleNamespace(async_get=lambda eid: None, entities={})
     monkeypatch.setattr(wb.er, "async_get", lambda hass: reg)
     a = _adapter()
@@ -89,7 +89,7 @@ async def test_off_does_not_stop_a_latching_pulsar_without_a_pause_switch(
     said no; 11 kW keeps flowing. The user sees a setting that looks
     obeyed and a car that never stops.
     """
-    import custom_components.solar_energy_management.coordinator.charger_adapters.wallbox as wb
+    import custom_components.xxx_cristiano.coordinator.charger_adapters.wallbox as wb
     monkeypatch.setattr(wb.er, "async_get",
                         lambda hass: SimpleNamespace(async_get=lambda e: None,
                                                      entities={}))

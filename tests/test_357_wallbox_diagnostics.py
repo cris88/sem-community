@@ -30,7 +30,7 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.diagnostics import (
+from custom_components.xxx_cristiano.diagnostics import (
     async_get_config_entry_diagnostics,
 )
 
@@ -54,7 +54,7 @@ def _diag_entry():
     e.entry_id = "test_entry_357"
     e.version = 7
     e.title = "Solar Energy Management"
-    e.domain = "solar_energy_management"
+    e.domain = "xxx_cristiano"
     e.data = {"battery_capacity_kwh": 10}
     e.options = {}
     return e
@@ -98,7 +98,7 @@ class Test357WallboxAdapterDiagnostics:
         _diag_coordinator._charger_adapters = {"ev_charger": adapter}
         _diag_entry.runtime_data = _diag_coordinator
         _diag_hass.data = {
-            "solar_energy_management": {_diag_entry.entry_id: _diag_coordinator},
+            "xxx_cristiano": {_diag_entry.entry_id: _diag_coordinator},
         }
 
         result = await async_get_config_entry_diagnostics(_diag_hass, _diag_entry)
@@ -142,7 +142,7 @@ class Test357WallboxAdapterDiagnostics:
         _diag_coordinator._charger_adapters = {"ev_charger": adapter}
         _diag_entry.runtime_data = _diag_coordinator
         _diag_hass.data = {
-            "solar_energy_management": {_diag_entry.entry_id: _diag_coordinator},
+            "xxx_cristiano": {_diag_entry.entry_id: _diag_coordinator},
         }
 
         result = await async_get_config_entry_diagnostics(_diag_hass, _diag_entry)
@@ -171,7 +171,7 @@ class Test357WallboxAdapterDiagnostics:
         _diag_coordinator._charger_adapters = {"ev_charger": adapter}
         _diag_entry.runtime_data = _diag_coordinator
         _diag_hass.data = {
-            "solar_energy_management": {_diag_entry.entry_id: _diag_coordinator},
+            "xxx_cristiano": {_diag_entry.entry_id: _diag_coordinator},
         }
 
         result = await async_get_config_entry_diagnostics(_diag_hass, _diag_entry)
@@ -188,7 +188,7 @@ class Test357WallboxAdapterDiagnostics:
         _diag_coordinator._ev_devices = {}
         _diag_entry.runtime_data = _diag_coordinator
         _diag_hass.data = {
-            "solar_energy_management": {_diag_entry.entry_id: _diag_coordinator},
+            "xxx_cristiano": {_diag_entry.entry_id: _diag_coordinator},
         }
 
         result = await async_get_config_entry_diagnostics(_diag_hass, _diag_entry)
@@ -230,7 +230,7 @@ class TestItReadsTheCacheTheCoordinatorActuallyWrites:
         del _diag_coordinator._ev_adapters
         _diag_entry.runtime_data = _diag_coordinator
         _diag_hass.data = {
-            "solar_energy_management": {_diag_entry.entry_id: _diag_coordinator},
+            "xxx_cristiano": {_diag_entry.entry_id: _diag_coordinator},
         }
 
         result = await async_get_config_entry_diagnostics(_diag_hass, _diag_entry)
@@ -242,8 +242,8 @@ class TestItReadsTheCacheTheCoordinatorActuallyWrites:
     def test_the_dump_names_the_same_attribute_the_coordinator_sets(self):
         """A rename on either side must break this, not go quiet for a year."""
         import inspect
-        from custom_components.solar_energy_management import diagnostics
-        from custom_components.solar_energy_management.coordinator import ev_control
+        from custom_components.xxx_cristiano import diagnostics
+        from custom_components.xxx_cristiano.coordinator import ev_control
 
         dump = inspect.getsource(diagnostics)
         writer = inspect.getsource(ev_control)

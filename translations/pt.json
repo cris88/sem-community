@@ -45,7 +45,7 @@
         },
         "data_description": {
           "battery_capacity_kwh": "Capacidade total utilizável da sua bateria doméstica (NÃO a do VE) em kWh. Usada pela estratégia de carregamento baseada na previsão para estimar quanto a bateria consegue compensar um défice solar. Consulte a ficha técnica do seu inversor.",
-          "generate_dashboard_on_install": "Quando ativado, o SEM cria o painel Lovelace imediatamente após a conclusão deste passo e reinicia o Home Assistant cerca de 5 s depois para que o novo painel fique visível. Pode sempre voltar a executá-lo manualmente mais tarde através do serviço solar_energy_management.generate_dashboard.",
+          "generate_dashboard_on_install": "Quando ativado, o SEM cria o painel Lovelace imediatamente após a conclusão deste passo e reinicia o Home Assistant cerca de 5 s depois para que o novo painel fique visível. Pode sempre voltar a executá-lo manualmente mais tarde através do serviço xxx_cristiano.generate_dashboard.",
           "diagram_style": "Escolha qual diagrama do sistema usar na aba Início. 'SEM' usa o diagrama animado integrado. 'K-Flow' usa o cartão K-Flow HACS (deve ser instalado separadamente)."
         }
       },

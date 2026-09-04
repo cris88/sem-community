@@ -15,14 +15,14 @@ re-arms after ONE further ladder, not three.
 """
 import pytest
 
-from custom_components.solar_energy_management.coordinator.charge_stability import (
+from custom_components.xxx_cristiano.coordinator.charge_stability import (
     ChargeStability,
     FULL_CAR_BACKOFF_S,
     FULL_CAR_GIVEUP_STREAK,
     START_KICK_GIVEUP_S,
     START_KICK_GRACE_S,
 )
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     ChargerDecision,
     ChargerEnergy,
     ChargerIntent,

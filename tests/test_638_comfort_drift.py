@@ -9,7 +9,7 @@ Pure module: samples in, rate and predictions out. No HA imports.
 """
 from datetime import datetime, timedelta
 
-from custom_components.solar_energy_management.coordinator.comfort_drift import (
+from custom_components.xxx_cristiano.coordinator.comfort_drift import (
     DriftEstimate,
     banking_energy_kwh,
     learn_drift,

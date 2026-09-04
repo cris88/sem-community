@@ -2,7 +2,7 @@
 from datetime import datetime, timedelta
 
 
-from custom_components.solar_energy_management.coordinator.today_plan import (
+from custom_components.xxx_cristiano.coordinator.today_plan import (
     compose_today_plan,
     KIND_NOW,
     KIND_CHEAP_START,
@@ -295,7 +295,7 @@ class TestEnrichedScheduleForDay:
     """#282/#3 — schedule_today must expose level + avg_price, not just NT/HT."""
 
     def test_level_field_present(self):
-        from custom_components.solar_energy_management.tariff.tariff_provider import (
+        from custom_components.xxx_cristiano.tariff.tariff_provider import (
             DynamicTariffProvider, PriceLevel, PricePoint,
         )
         from homeassistant.util import dt as dt_util

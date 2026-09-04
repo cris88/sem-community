@@ -1,5 +1,5 @@
 """Regression for durable auto-discovered EV charger storage."""
-from custom_components.solar_energy_management import (
+from custom_components.xxx_cristiano import (
     build_discovered_charger_storage,
     stable_discovered_charger_id,
 )

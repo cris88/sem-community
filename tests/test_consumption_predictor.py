@@ -2,7 +2,7 @@
 import pytest
 from datetime import datetime
 
-from custom_components.solar_energy_management.analytics.consumption_predictor import (
+from custom_components.xxx_cristiano.analytics.consumption_predictor import (
     HourlyProfile,
     ConsumptionPredictor,
     EWMA_ALPHA,

@@ -3,7 +3,7 @@ import json
 import pytest
 from unittest.mock import AsyncMock, MagicMock, mock_open, patch
 
-from custom_components.solar_energy_management.ha_energy_reader import (
+from custom_components.xxx_cristiano.ha_energy_reader import (
     EnergyDashboardConfig,
     read_energy_dashboard_config,
     _extract_solar_config,
@@ -818,7 +818,7 @@ class TestBatteryDeriveRespectsPairs:
     power representation AT ALL", pairs included."""
 
     def _config_with_pair(self):
-        from custom_components.solar_energy_management.ha_energy_reader import (
+        from custom_components.xxx_cristiano.ha_energy_reader import (
             EnergyDashboardConfig, _extract_battery_config,
         )
         config = EnergyDashboardConfig()
@@ -833,7 +833,7 @@ class TestBatteryDeriveRespectsPairs:
         return config
 
     def test_a_pair_is_a_power_representation(self):
-        from custom_components.solar_energy_management import ha_energy_reader as her
+        from custom_components.xxx_cristiano import ha_energy_reader as her
         config = self._config_with_pair()
         assert config.battery_power_pairs
         assert not config.battery_power
@@ -849,10 +849,10 @@ class TestBatteryDeriveRespectsPairs:
     def test_a_counters_only_battery_still_derives(self):
         """The derive exists for a reason: counters with NO power
         representation anywhere still want a live power source."""
-        from custom_components.solar_energy_management.ha_energy_reader import (
+        from custom_components.xxx_cristiano.ha_energy_reader import (
             EnergyDashboardConfig, _extract_battery_config,
         )
-        from custom_components.solar_energy_management import ha_energy_reader as her
+        from custom_components.xxx_cristiano import ha_energy_reader as her
         config = EnergyDashboardConfig()
         _extract_battery_config({
             "stat_energy_from": "sensor.batt_discharge_total",

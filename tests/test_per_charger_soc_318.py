@@ -23,7 +23,7 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator import SEMCoordinator
+from custom_components.xxx_cristiano.coordinator import SEMCoordinator
 
 
 def _make_coordinator(ev_chargers, hw_total_states=None):

@@ -8,7 +8,7 @@ functions, so no brand logic changes.
 """
 from types import SimpleNamespace
 
-from custom_components.solar_energy_management.hardware_detection import (
+from custom_components.xxx_cristiano.hardware_detection import (
     build_detection_report,
 )
 
@@ -111,7 +111,7 @@ class TestPublishedEveryCycle:
     def test_publish_diag_carries_the_report(self):
         from types import SimpleNamespace
         from unittest.mock import MagicMock
-        from custom_components.solar_energy_management.coordinator.publish_diag import (
+        from custom_components.xxx_cristiano.coordinator.publish_diag import (
             build_diagnostics,
         )
         coord = MagicMock()
@@ -136,7 +136,7 @@ class TestGenericProber:
                 for eid, dc in specs]
 
     def test_unknown_platform_with_charger_shape_is_a_candidate(self):
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             probe_charger_candidates,
         )
         reg = _registry(self._dev("abl_emh1", "d9", [
@@ -154,7 +154,7 @@ class TestGenericProber:
         assert c["evidence"]  # says why each role matched
 
     def test_an_inverter_device_is_not_a_charger_candidate(self):
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             probe_charger_candidates,
         )
         # power + energy but no plug/charging binary and no current control
@@ -192,7 +192,7 @@ class TestBrandsAsData:
     by one generic matcher — behavior identical to the hand-written loops."""
 
     def test_chargepoint_row_matches_like_before(self):
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             _discover_chargepoint,
         )
         ents = [
@@ -214,7 +214,7 @@ class TestBrandsAsData:
         }
 
     def test_heidelberg_row_accepts_active_as_charging(self):
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             _discover_heidelberg,
         )
         ents = [
@@ -228,7 +228,7 @@ class TestBrandsAsData:
         assert r["ev_current_control_entity"] == "number.hec_max_current"
 
     def test_rows_have_the_shape_the_matcher_expects(self):
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             _BRAND_HINTS,
         )
         for plat, rules in _BRAND_HINTS.items():
@@ -241,18 +241,18 @@ class TestBrandsAsData:
 class TestProberRefinementsFromTheRig:
 
     def test_sem_own_entities_are_never_candidates(self):
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             probe_charger_candidates,
         )
         reg = _registry([
-            _ent("sensor.sem_charger_keba_power", "solar_energy_management", device_id="s1", device_class="power"),
-            _ent("binary_sensor.sem_charger_keba_connected", "solar_energy_management", device_id="s1", device_class="plug"),
-            _ent("sensor.sem_charger_keba_energy", "solar_energy_management", device_id="s1", device_class="energy"),
+            _ent("sensor.sem_charger_keba_power", "xxx_cristiano", device_id="s1", device_class="power"),
+            _ent("binary_sensor.sem_charger_keba_connected", "xxx_cristiano", device_id="s1", device_class="plug"),
+            _ent("sensor.sem_charger_keba_energy", "xxx_cristiano", device_id="s1", device_class="energy"),
         ])
         assert probe_charger_candidates(registry=reg) == []
 
     def test_keba_without_device_id_is_a_candidate(self):
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             probe_charger_candidates,
         )
         reg = _registry([
@@ -271,7 +271,7 @@ class TestProberRefinementsFromTheRig:
         # device_class=power (an input state — KEBA's class for charging),
         # a power sensor, energy and a switch. No plug binary, no current
         # control → not a charger.
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             probe_charger_candidates,
         )
         reg = _registry([
@@ -284,7 +284,7 @@ class TestProberRefinementsFromTheRig:
 
     def test_device_less_entities_cluster_by_prefix(self):
         # A rig's template platform is many things; keba_p30_* is one box.
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             probe_charger_candidates,
         )
         reg = _registry([
@@ -315,7 +315,7 @@ class TestWattpilotRow:
         ]
 
     def test_wattpilot_maps_every_role(self):
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             _BRAND_HINTS, _discover_from_hints,
         )
         assert "wattpilot" in _BRAND_HINTS
@@ -328,7 +328,7 @@ class TestWattpilotRow:
         assert r["ev_session_energy_sensor"] == "sensor.wattpilot_energy_session"
 
     def test_wattpilot_is_in_the_scan_and_the_report(self):
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             build_detection_report,
         )
         rep = build_detection_report(registry=_registry(self._ents()))
@@ -340,7 +340,7 @@ class TestWattpilotRow:
         # #802's reporter runs ruaan-deysel/ha-wattpilot (a fork); HACS
         # forks commonly keep the domain, but a suffixed one must not
         # silently detect nothing — the report at least near-misses it.
-        from custom_components.solar_energy_management.hardware_detection import (
+        from custom_components.xxx_cristiano.hardware_detection import (
             build_detection_report,
         )
         rep = build_detection_report(registry=_registry(self._ents("wattpilot_flex")))

@@ -43,11 +43,11 @@ import pathlib
 
 from unittest.mock import MagicMock, patch
 
-from custom_components.solar_energy_management.consts.core import (
+from custom_components.xxx_cristiano.consts.core import (
     DEFAULT_MAX_CHARGING_CURRENT,
 )
-from custom_components.solar_energy_management.consts.states import ChargingState
-from custom_components.solar_energy_management.coordinator import SEMCoordinator
+from custom_components.xxx_cristiano.consts.states import ChargingState
+from custom_components.xxx_cristiano.coordinator import SEMCoordinator
 
 
 # The keys that name a charger's maximum current. Both spellings are live:

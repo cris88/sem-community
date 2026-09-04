@@ -1330,7 +1330,7 @@ class SEMLoadPriorityCard extends SEMLitBase {
     // ── Service calls ──
     _sendPriorityUpdate() {
         if (!this._hass) return;
-        this._hass.callService('solar_energy_management', 'update_device_priorities', {
+        this._hass.callService('xxx_cristiano', 'update_device_priorities', {
             priorities: this.devices.map(d => ({ device_id: d.id, priority: d.priority })),
         });
         // Hold the just-dragged order until the backend re-emits the sensor
@@ -1343,14 +1343,14 @@ class SEMLoadPriorityCard extends SEMLitBase {
 
     _sendDeviceUpdate(deviceId, property, value) {
         if (!this._hass) return;
-        this._hass.callService('solar_energy_management', 'update_device_config', {
+        this._hass.callService('xxx_cristiano', 'update_device_config', {
             device_id: deviceId, property, value,
         });
     }
 
     _sendTargetPeakUpdate(val, unlimited = false) {
         if (!this._hass) return;
-        this._hass.callService('solar_energy_management', 'update_target_peak', {
+        this._hass.callService('xxx_cristiano', 'update_target_peak', {
             target_peak_limit: val,
             peak_limit_unlimited: unlimited,
         });
@@ -1438,7 +1438,7 @@ class SEMLoadPriorityCard extends SEMLitBase {
         const removeBtn = overlay.querySelector('#cfg-remove');
         if (removeBtn) {
             removeBtn.addEventListener('click', () => {
-                this._hass.callService('solar_energy_management', 'remove_device_control_mapping', {
+                this._hass.callService('xxx_cristiano', 'remove_device_control_mapping', {
                     energy_sensor: energySensor,
                 }).then(() => {
                     // Optimistically clear locally so an immediate reopen reflects it;
@@ -1458,7 +1458,7 @@ class SEMLoadPriorityCard extends SEMLitBase {
                 showError(this._t(err.message));   // err.message is a translation key
                 return;
             }
-            this._hass.callService('solar_energy_management', 'set_device_control_mapping', data)
+            this._hass.callService('xxx_cristiano', 'set_device_control_mapping', data)
                 .then(() => {
                     // Optimistically update local state so reopening the dialog in the
                     // same session shows the saved mapping (the card's hass-update gate

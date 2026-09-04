@@ -8,20 +8,20 @@ from unittest.mock import AsyncMock, MagicMock
 from datetime import date
 
 
-from custom_components.solar_energy_management.const import DOMAIN
-from custom_components.solar_energy_management.switch import (
+from custom_components.xxx_cristiano.const import DOMAIN
+from custom_components.xxx_cristiano.switch import (
     SEMSolarSwitch,
     SWITCH_TYPES,
     async_setup_entry as switch_setup,
 )
-from custom_components.solar_energy_management.sensor import (
+from custom_components.xxx_cristiano.sensor import (
     async_setup_entry as sensor_setup,
 )
-from custom_components.solar_energy_management.number import (
+from custom_components.xxx_cristiano.number import (
     NUMBER_TYPES,
     async_setup_entry as number_setup,
 )
-from custom_components.solar_energy_management.binary_sensor import (
+from custom_components.xxx_cristiano.binary_sensor import (
     async_setup_entry as binary_sensor_setup,
 )
 
@@ -178,7 +178,7 @@ class TestChargerAbstraction:
     @pytest.mark.asyncio
     async def test_start_session_without_keba(self):
         """start_session should work without KEBA-specific services."""
-        from custom_components.solar_energy_management.devices.base import CurrentControlDevice
+        from custom_components.xxx_cristiano.devices.base import CurrentControlDevice
 
         hass = MagicMock()
         hass.services.async_call = AsyncMock()
@@ -200,7 +200,7 @@ class TestChargerAbstraction:
     @pytest.mark.asyncio
     async def test_start_session_with_enable(self):
         """start_session should call enable when available."""
-        from custom_components.solar_energy_management.devices.base import CurrentControlDevice
+        from custom_components.xxx_cristiano.devices.base import CurrentControlDevice
 
         hass = MagicMock()
         hass.services.async_call = AsyncMock()
@@ -219,7 +219,7 @@ class TestChargerAbstraction:
     @pytest.mark.asyncio
     async def test_pilot_cycle_only_when_enabled(self):
         """disable/enable cycle should only happen when needs_pilot_cycle=True."""
-        from custom_components.solar_energy_management.devices.base import CurrentControlDevice
+        from custom_components.xxx_cristiano.devices.base import CurrentControlDevice
 
         hass = MagicMock()
         hass.services.async_call = AsyncMock()
@@ -239,7 +239,7 @@ class TestChargerAbstraction:
     @pytest.mark.asyncio
     async def test_set_current_global_services(self):
         """KEBA-style global services should not pass entity_id."""
-        from custom_components.solar_energy_management.devices.base import CurrentControlDevice
+        from custom_components.xxx_cristiano.devices.base import CurrentControlDevice
 
         hass = MagicMock()
         hass.services.async_call = AsyncMock()
@@ -259,7 +259,7 @@ class TestChargerAbstraction:
     @pytest.mark.asyncio
     async def test_set_current_entity_targeted(self):
         """Non-global services should pass entity_id."""
-        from custom_components.solar_energy_management.devices.base import CurrentControlDevice
+        from custom_components.xxx_cristiano.devices.base import CurrentControlDevice
 
         hass = MagicMock()
         hass.services.async_call = AsyncMock()
@@ -287,8 +287,8 @@ class TestEnergyResetBehavior:
 
     def test_ev_accumulator_key_prefix(self):
         """EV accumulator should use the ``ev_`` prefix (renamed in #666)."""
-        from custom_components.solar_energy_management.coordinator.energy_calculator import EnergyCalculator
-        from custom_components.solar_energy_management.utils.time_manager import TimeManager
+        from custom_components.xxx_cristiano.coordinator.energy_calculator import EnergyCalculator
+        from custom_components.xxx_cristiano.utils.time_manager import TimeManager
 
         hass = MagicMock()
         hass.states.get = MagicMock(return_value=None)
@@ -314,8 +314,8 @@ class TestEnergyResetBehavior:
 
     def test_old_ev_keys_cleaned_after_two_days(self):
         """EV keys older than yesterday should be cleaned."""
-        from custom_components.solar_energy_management.coordinator.energy_calculator import EnergyCalculator
-        from custom_components.solar_energy_management.utils.time_manager import TimeManager
+        from custom_components.xxx_cristiano.coordinator.energy_calculator import EnergyCalculator
+        from custom_components.xxx_cristiano.utils.time_manager import TimeManager
 
         hass = MagicMock()
         hass.states.get = MagicMock(return_value=None)
@@ -350,8 +350,8 @@ class TestNotificationFiltering:
     """Verify mobile notifications only fire for important events."""
 
     def test_mobile_for_charging_start(self):
-        from custom_components.solar_energy_management.coordinator.notifications import NotificationManager
-        from custom_components.solar_energy_management.const import ChargingState
+        from custom_components.xxx_cristiano.coordinator.notifications import NotificationManager
+        from custom_components.xxx_cristiano.const import ChargingState
         hass = MagicMock()
         hass.bus = MagicMock()
         hass.bus.async_fire = MagicMock()
@@ -362,8 +362,8 @@ class TestNotificationFiltering:
         assert "mobile" in msgs
 
     def test_no_mobile_for_pause(self):
-        from custom_components.solar_energy_management.coordinator.notifications import NotificationManager
-        from custom_components.solar_energy_management.const import ChargingState
+        from custom_components.xxx_cristiano.coordinator.notifications import NotificationManager
+        from custom_components.xxx_cristiano.const import ChargingState
         hass = MagicMock()
         hass.bus = MagicMock()
         hass.bus.async_fire = MagicMock()
@@ -375,8 +375,8 @@ class TestNotificationFiltering:
         assert "mobile" not in msgs
 
     def test_no_mobile_for_night_idle(self):
-        from custom_components.solar_energy_management.coordinator.notifications import NotificationManager
-        from custom_components.solar_energy_management.const import ChargingState
+        from custom_components.xxx_cristiano.coordinator.notifications import NotificationManager
+        from custom_components.xxx_cristiano.const import ChargingState
         hass = MagicMock()
         hass.bus = MagicMock()
         hass.bus.async_fire = MagicMock()

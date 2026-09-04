@@ -5,7 +5,7 @@ import logging
 
 import pytest
 
-from custom_components.solar_energy_management.utils.log_buffer import (
+from custom_components.xxx_cristiano.utils.log_buffer import (
     SEM_LOGGER_NAME,
     SEMLogBuffer,
     ensure_attached,
@@ -99,8 +99,8 @@ class TestDiagnosticsPrefersBuffer:
     @pytest.mark.asyncio
     async def test_recent_logs_served_from_buffer(self, clean_logger):
         from unittest.mock import MagicMock
-        from custom_components.solar_energy_management.const import DOMAIN
-        from custom_components.solar_energy_management.diagnostics import (
+        from custom_components.xxx_cristiano.const import DOMAIN
+        from custom_components.xxx_cristiano.diagnostics import (
             _get_recent_sem_logs,
         )
 
@@ -116,8 +116,8 @@ class TestDiagnosticsPrefersBuffer:
     @pytest.mark.asyncio
     async def test_empty_buffer_reports_itself(self, clean_logger):
         from unittest.mock import MagicMock
-        from custom_components.solar_energy_management.const import DOMAIN
-        from custom_components.solar_energy_management.diagnostics import (
+        from custom_components.xxx_cristiano.const import DOMAIN
+        from custom_components.xxx_cristiano.diagnostics import (
             _get_recent_sem_logs,
         )
 

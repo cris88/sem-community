@@ -26,7 +26,7 @@ Complete guide for the SEM dashboard — an 8-tab glassmorphism interface with a
 The dashboard is generated automatically on first install. If you need to regenerate it:
 
 1. Go to **Developer Tools** > **Services**
-2. Search for `solar_energy_management.generate_dashboard`
+2. Search for `xxx_cristiano.generate_dashboard`
 3. Click **Call Service**
 4. The dashboard appears in the sidebar — hard-refresh your browser (Ctrl+Shift+R)
 
@@ -204,7 +204,7 @@ Assistant's own `purge_keep_days` in `configuration.yaml` — lowering it drops
 fine-grained detail while long-term statistics survive untouched. That one is
 yours to set; SEM will not touch your `configuration.yaml`.
 Each section header has a **Diagnose** button that dumps that section's
-live config + state via the `solar_energy_management.diagnose` action —
+live config + state via the `xxx_cristiano.diagnose` action —
 attach its output to bug reports. Settings written here apply
 immediately; structural changes (e.g. tariff mode) reload the
 integration automatically.
@@ -658,7 +658,7 @@ For all text to appear in the same language:
 
 1. Set the **system language** to your desired language (Settings → General)
 2. Set every **user's profile language** to the same language
-3. Call `solar_energy_management.generate_dashboard` to regenerate the dashboard with the new system language
+3. Call `xxx_cristiano.generate_dashboard` to regenerate the dashboard with the new system language
 4. Hard-refresh the browser (Ctrl+Shift+R)
 
 > **No HA restart needed.** As of v1.5.16, `generate_dashboard` pushes the new config through Home Assistant's own Lovelace store — the running dashboard reloads live as soon as the service call returns. Older muscle memory ("regenerate, then restart HA") no longer applies; a hard-refresh is enough.
@@ -676,7 +676,7 @@ For all text to appear in the same language:
 ## Troubleshooting
 
 ### Dashboard not appearing
-1. Call `solar_energy_management.generate_dashboard` from Developer Tools > Services
+1. Call `xxx_cristiano.generate_dashboard` from Developer Tools > Services
 2. Hard-refresh your browser (Ctrl+Shift+R)
 
 ### Cards showing "Custom element doesn't exist"
@@ -695,4 +695,4 @@ SEM includes `?v={version}` cache busting on all card URLs. If cards still show 
 This is expected if your system language and user profile language differ. See [Multi-Language Support](#multi-language-support) above. To fix: set both to the same language and regenerate the dashboard.
 
 ### Changed system language but dashboard still in old language
-You must regenerate the dashboard after changing the system language. Go to Developer Tools > Services > `solar_energy_management.generate_dashboard` and call the service, then hard-refresh. The regenerated dashboard takes effect immediately — no HA restart needed (v1.5.16+).
+You must regenerate the dashboard after changing the system language. Go to Developer Tools > Services > `xxx_cristiano.generate_dashboard` and call the service, then hard-refresh. The regenerated dashboard takes effect immediately — no HA restart needed (v1.5.16+).

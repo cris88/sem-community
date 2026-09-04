@@ -4,7 +4,7 @@ SEM is **autodetect-first**: for most hardware it finds the right sensors on its
 your Home Assistant **Energy Dashboard** and the device registry. This guide is for the rest —
 so if a value reads `0`, `unavailable`, or looks wrong, you can see **what SEM expects** and
 **which override to set**. Every override lives on the **dashboard** (SEM Config card /
-`solar_energy_management.set_option`) — there is no config-flow field to hunt for.
+`xxx_cristiano.set_option`) — there is no config-flow field to hunt for.
 
 ## The resolution order (every signal)
 

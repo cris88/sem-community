@@ -33,7 +33,7 @@ This directory contains comprehensive tests for the Solar Energy Management inte
 ### Quick Run (All Tests)
 
 ```bash
-cd custom_components/solar_energy_management
+cd custom_components/xxx_cristiano
 ./run_tests.sh
 ```
 

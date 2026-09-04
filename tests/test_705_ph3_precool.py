@@ -15,7 +15,7 @@ from types import SimpleNamespace
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.comfort_drift import (
+from custom_components.xxx_cristiano.coordinator.comfort_drift import (
     banking_energy_kwh,
 )
 
@@ -63,7 +63,7 @@ class TestTheCoolAskEndToEnd:
     def test_a_warming_room_asks_to_precool_the_full_band(self):
         """A cooling device with an engaged band and learned drifts
         produces the deadline-shaped pre-cool demand."""
-        from custom_components.solar_energy_management.devices.base import (
+        from custom_components.xxx_cristiano.devices.base import (
             ComfortBandMixin,
         )
         dev = SimpleNamespace()

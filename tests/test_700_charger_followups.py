@@ -15,7 +15,7 @@ import logging
 from unittest.mock import MagicMock
 
 
-from custom_components.solar_energy_management.features.device_registry import (
+from custom_components.xxx_cristiano.features.device_registry import (
     UnifiedDeviceRegistry,
 )
 
@@ -25,7 +25,7 @@ from custom_components.solar_energy_management.features.device_registry import (
 class _Reconciler:
     """Bare instance carrying only what the action loop reads."""
     def __new__(cls):
-        from custom_components.solar_energy_management.coordinator.charger_reconciler import (
+        from custom_components.xxx_cristiano.coordinator.charger_reconciler import (
             ChargerReconciler,
         )
         return ChargerReconciler.__new__(ChargerReconciler)
@@ -33,7 +33,7 @@ class _Reconciler:
 
 
 def _kinds():
-    from custom_components.solar_energy_management.coordinator.charger_reconciler import (
+    from custom_components.xxx_cristiano.coordinator.charger_reconciler import (
         ActionKind,
     )
     return ActionKind
@@ -46,7 +46,7 @@ class TestStopUnenforceableRateLimit:
         return rec
 
     def test_warns_once_then_debug(self, caplog):
-        from custom_components.solar_energy_management.coordinator import (
+        from custom_components.xxx_cristiano.coordinator import (
             charger_reconciler as cr,
         )
         rec = self._mk()
@@ -66,7 +66,7 @@ class TestStopUnenforceableRateLimit:
         assert len(debugs) == 4
 
     def test_rearms_after_an_enforceable_action(self, caplog):
-        from custom_components.solar_energy_management.coordinator import (
+        from custom_components.xxx_cristiano.coordinator import (
             charger_reconciler as cr,
         )
         rec = self._mk()

@@ -12,11 +12,11 @@ import re
 
 from unittest.mock import MagicMock, AsyncMock
 
-from custom_components.solar_energy_management.coordinator.types import (
+from custom_components.xxx_cristiano.coordinator.types import (
     SessionData,
     SEMData,
 )
-from custom_components.solar_energy_management.hardware_detection import (
+from custom_components.xxx_cristiano.hardware_detection import (
     _discover_wallbox,
     _discover_keba,
 )

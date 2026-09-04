@@ -32,8 +32,8 @@ jobs:
           path: tmp_src
       - name: Create expected directory structure for hassfest
         run: |
-          mkdir -p custom_components/solar_energy_management
-          rsync -a --exclude='.git' --exclude='.github' --exclude='tmp_src' tmp_src/ custom_components/solar_energy_management/
+          mkdir -p custom_components/xxx_cristiano
+          rsync -a --exclude='.git' --exclude='.github' --exclude='tmp_src' tmp_src/ custom_components/xxx_cristiano/
           rm -rf tmp_src
       - name: Hassfest (with retry on ghcr rate limit)
         uses: nick-fields/retry@v3

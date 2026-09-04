@@ -32,7 +32,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 
 def _enabled(*, global_toggle: bool, modes: list[str]) -> bool:
     """Call the accessor on a stub carrying only what it may read."""
-    from custom_components.solar_energy_management.coordinator.coordinator \
+    from custom_components.xxx_cristiano.coordinator.coordinator \
         import SEMCoordinator
     fake = SimpleNamespace()
     fake._battery_scheduler_config = SimpleNamespace(
@@ -66,7 +66,7 @@ class TestTheOneAccessor:
         """The mode scan existed inline in ``_run_battery_pipeline``. Two
         copies of one rule is how the card and the pipeline come to
         disagree — the same shape as every bug in this file's neighbours."""
-        from custom_components.solar_energy_management.coordinator import (
+        from custom_components.xxx_cristiano.coordinator import (
             coordinator as mod)
         src = pathlib.Path(inspect.getfile(mod)).read_text()
         assert src.count('== "allow_arbitrage"') == 1, (
@@ -81,7 +81,7 @@ class TestThePlanSaysWhetherArbitrageCanAct:
     def test_the_advisor_payload_carries_the_gate(self):
         """``arbitrage`` is published for diagnostics on every stamp; the
         consumer needs to know it is a closed feature's readout."""
-        from custom_components.solar_energy_management.coordinator import (
+        from custom_components.xxx_cristiano.coordinator import (
             coordinator as mod)
         src = inspect.getsource(mod.SEMCoordinator._shadow_energy_plan)
         # the dict literal that builds the published advice

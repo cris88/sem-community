@@ -5,12 +5,12 @@ from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import patch
 
-from custom_components.solar_energy_management.coordinator.active_phase_guard import (
+from custom_components.xxx_cristiano.coordinator.active_phase_guard import (
     ActivePhaseGuard,
     filter_charger_decision,
     update_active_phase_guard,
 )
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     ChargerDecision,
     ChargerIntent,
 )
@@ -110,7 +110,7 @@ def test_evaluator_exception_fails_closed_instead_of_breaking_control_cycle():
     )
 
     with patch(
-        "custom_components.solar_energy_management.coordinator.dual_phase_guard."
+        "custom_components.xxx_cristiano.coordinator.dual_phase_guard."
         "evaluate_dual_phase_guard",
         side_effect=RuntimeError("sensor registry failed"),
     ):
@@ -131,7 +131,7 @@ def test_disabled_guard_skips_measurement_evaluation():
     )
 
     with patch(
-        "custom_components.solar_energy_management.coordinator.dual_phase_guard."
+        "custom_components.xxx_cristiano.coordinator.dual_phase_guard."
         "evaluate_dual_phase_guard",
         side_effect=AssertionError("disabled guard must not read sensors"),
     ) as evaluate:
@@ -469,7 +469,7 @@ def test_cycle_helper_evaluates_once_caches_runtime_snapshot_and_filters():
     raw = _guard(safe=False, fresh=False, reason="grid:l2:unavailable")
 
     with patch(
-        "custom_components.solar_energy_management.coordinator.dual_phase_guard.evaluate_dual_phase_guard",
+        "custom_components.xxx_cristiano.coordinator.dual_phase_guard.evaluate_dual_phase_guard",
         return_value=raw,
     ) as evaluate:
         runtime = update_active_phase_guard(coord)
@@ -489,7 +489,7 @@ def test_cycle_helper_uses_live_observer_mode_over_stale_config_value():
     )
 
     with patch(
-        "custom_components.solar_energy_management.coordinator.dual_phase_guard.evaluate_dual_phase_guard",
+        "custom_components.xxx_cristiano.coordinator.dual_phase_guard.evaluate_dual_phase_guard",
         return_value=_guard(margin=4.0),
     ):
         runtime = update_active_phase_guard(coord)
@@ -506,7 +506,7 @@ def test_grid_only_evaluator_failure_keeps_complete_diagnostic_lane_schema():
     )
 
     with patch(
-        "custom_components.solar_energy_management.coordinator.dual_phase_guard.evaluate_dual_phase_guard",
+        "custom_components.xxx_cristiano.coordinator.dual_phase_guard.evaluate_dual_phase_guard",
         side_effect=RuntimeError("sensor registry unavailable"),
     ):
         runtime = update_active_phase_guard(coord)

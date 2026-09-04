@@ -32,15 +32,15 @@ from unittest.mock import Mock
 import pytest
 from freezegun import freeze_time
 
-from custom_components.solar_energy_management.coordinator.coordinator import (
+from custom_components.xxx_cristiano.coordinator.coordinator import (
     SEMCoordinator,
 )
-from custom_components.solar_energy_management.coordinator.energy_calculator import (
+from custom_components.xxx_cristiano.coordinator.energy_calculator import (
     EV_CATEGORY,
     EnergyCalculator,
 )
-from custom_components.solar_energy_management.coordinator.types import PowerReadings
-from custom_components.solar_energy_management.utils.time_manager import TimeManager
+from custom_components.xxx_cristiano.coordinator.types import PowerReadings
+from custom_components.xxx_cristiano.utils.time_manager import TimeManager
 
 COUNTER = "sensor.wallbox_total_energy"
 COUNTER_B = "sensor.wallbox_b_total_energy"
@@ -300,13 +300,13 @@ class TestStorageRoundTrip658:
     def _round_trip(state):
         """Save then load, exactly as the coordinator does: ``import_*`` on
         every cycle (step 13) and ``export_*`` once on startup."""
-        from custom_components.solar_energy_management.coordinator import storage
+        from custom_components.xxx_cristiano.coordinator import storage
         store = SimpleNamespace(_daily_data={}, _energy_data={})
         storage.SEMStorage.import_energy_calculator_state(store, state)
         return storage.SEMStorage.export_energy_calculator_state(store)
 
     def test_every_emitted_key_survives_the_store(self):
-        from custom_components.solar_energy_management.coordinator import storage
+        from custom_components.xxx_cristiano.coordinator import storage
         emitted = set(_calc(_hass({})).get_state())
         carried = set(storage.CALCULATOR_STATE_KEYS) | {"last_update"}
         dropped = emitted - carried - self.KNOWN_DROPPED
@@ -342,7 +342,7 @@ class TestStorageRoundTrip658:
         """THE #668 class: export and import used to be two hand-written key
         lists, and they had already diverged twice. One list means a key added
         to the save side is on the load side by construction."""
-        from custom_components.solar_energy_management.coordinator import storage
+        from custom_components.xxx_cristiano.coordinator import storage
         import inspect
 
         for fn in (
@@ -365,7 +365,7 @@ class TestStorageRoundTrip658:
     def test_the_drop_list_only_shrinks(self):
         """Anti-rot: if a listed key starts round-tripping, delete it from
         KNOWN_DROPPED rather than leaving a stale exemption behind."""
-        from custom_components.solar_energy_management.coordinator import storage
+        from custom_components.xxx_cristiano.coordinator import storage
         still_dropped = self.KNOWN_DROPPED & set(storage.CALCULATOR_STATE_KEYS)
         assert not still_dropped, (
             f"{sorted(still_dropped)} now survive the store — remove them from "

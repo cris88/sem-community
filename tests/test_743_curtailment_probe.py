@@ -23,7 +23,7 @@ Wiring pins live in TestTheGrantReachesDecide below.
 """
 from __future__ import annotations
 
-from custom_components.solar_energy_management.coordinator.curtailment import (
+from custom_components.xxx_cristiano.coordinator.curtailment import (
     CurtailmentProbe,
     ProbeInputs,
 )

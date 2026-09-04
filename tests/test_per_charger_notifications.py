@@ -24,8 +24,8 @@ from unittest.mock import AsyncMock, MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.consts.states import ChargingState
-from custom_components.solar_energy_management.coordinator.notifications import (
+from custom_components.xxx_cristiano.consts.states import ChargingState
+from custom_components.xxx_cristiano.coordinator.notifications import (
     NotificationManager,
     _FLAP_STABILITY_SECONDS,
 )
@@ -173,7 +173,7 @@ class TestChargerNamePrefix:
 
 
 class TestEventPayload:
-    """The ``solar_energy_management_notification`` HA event now carries
+    """The ``xxx_cristiano_notification`` HA event now carries
     ``charger_id`` and ``charger_name`` keys so automations can
     distinguish per-charger events. ``None`` values stay in the dict for
     consistency rather than being dropped."""

@@ -11,10 +11,10 @@ Covers:
 import pytest
 from unittest.mock import MagicMock, AsyncMock, patch
 
-from custom_components.solar_energy_management.hardware_detection import (
+from custom_components.xxx_cristiano.hardware_detection import (
     discover_ev_charger_from_registry,
 )
-from custom_components.solar_energy_management.coordinator.sensor_reader import (
+from custom_components.xxx_cristiano.coordinator.sensor_reader import (
     SensorReader,
 )
 
@@ -71,7 +71,7 @@ class TestKEBADiscovery:
             _entity("sensor.keba_kecontact_p30_total_energy", "keba", "energy"),
         ]
 
-    @patch("custom_components.solar_energy_management.hardware_detection.entity_registry")
+    @patch("custom_components.xxx_cristiano.hardware_detection.entity_registry")
     def test_keba_discovery(self, mock_er):
         hass = MagicMock()
         mock_er.async_get.return_value = _mock_registry(self._entities())
@@ -114,7 +114,7 @@ class TestEaseeDiscovery:
             _entity("sensor.easee_home_current", "easee", "current", "dev_easee_001"),
         ]
 
-    @patch("custom_components.solar_energy_management.hardware_detection.entity_registry")
+    @patch("custom_components.xxx_cristiano.hardware_detection.entity_registry")
     def test_easee_discovery(self, mock_er):
         hass = MagicMock()
         mock_er.async_get.return_value = _mock_registry(self._entities())
@@ -225,7 +225,7 @@ class TestWallboxDiscovery:
             _entity("switch.wallbox_pulsar_plus_pause_resume", "wallbox"),
         ]
 
-    @patch("custom_components.solar_energy_management.hardware_detection.entity_registry")
+    @patch("custom_components.xxx_cristiano.hardware_detection.entity_registry")
     def test_wallbox_discovery(self, mock_er):
         hass = MagicMock()
         mock_er.async_get.return_value = _mock_registry(self._entities())
@@ -255,7 +255,7 @@ class TestGoEChargerMQTTDiscovery:
             _entity("select.go_echarger_123456_frc_force_state", "goecharger_mqtt"),
         ]
 
-    @patch("custom_components.solar_energy_management.hardware_detection.entity_registry")
+    @patch("custom_components.xxx_cristiano.hardware_detection.entity_registry")
     def test_goe_mqtt_discovery(self, mock_er):
         hass = MagicMock()
         mock_er.async_get.return_value = _mock_registry(self._entities())
@@ -286,7 +286,7 @@ class TestZaptecDiscovery:
             _entity("button.zaptec_charger_resume_charging", "zaptec"),
         ]
 
-    @patch("custom_components.solar_energy_management.hardware_detection.entity_registry")
+    @patch("custom_components.xxx_cristiano.hardware_detection.entity_registry")
     def test_zaptec_discovery(self, mock_er):
         hass = MagicMock()
         mock_er.async_get.return_value = _mock_registry(self._entities())
@@ -307,7 +307,7 @@ class TestChargePointDiscovery:
             _entity("number.chargepoint_home_charging_amperage_limit", "chargepoint"),
         ]
 
-    @patch("custom_components.solar_energy_management.hardware_detection.entity_registry")
+    @patch("custom_components.xxx_cristiano.hardware_detection.entity_registry")
     def test_chargepoint_discovery(self, mock_er):
         hass = MagicMock()
         mock_er.async_get.return_value = _mock_registry(self._entities())
@@ -328,7 +328,7 @@ class TestHeidelbergDiscovery:
             _entity("number.heidelberg_wallbox_charging_current_limit", "heidelberg_energy_control"),
         ]
 
-    @patch("custom_components.solar_energy_management.hardware_detection.entity_registry")
+    @patch("custom_components.xxx_cristiano.hardware_detection.entity_registry")
     def test_heidelberg_discovery(self, mock_er):
         hass = MagicMock()
         mock_er.async_get.return_value = _mock_registry(self._entities())
@@ -350,7 +350,7 @@ class TestOpenWBDiscovery:
             _entity("select.openwb_chargepoint_1_chargemode", "openwb2mqtt"),
         ]
 
-    @patch("custom_components.solar_energy_management.hardware_detection.entity_registry")
+    @patch("custom_components.xxx_cristiano.hardware_detection.entity_registry")
     def test_openwb_discovery(self, mock_er):
         hass = MagicMock()
         mock_er.async_get.return_value = _mock_registry(self._entities())
@@ -487,7 +487,7 @@ class TestChargerServiceCalls:
     @pytest.mark.asyncio
     async def test_keba_set_current(self):
         """KEBA: keba.set_current with {"current": X}."""
-        from custom_components.solar_energy_management.devices.base import CurrentControlDevice
+        from custom_components.xxx_cristiano.devices.base import CurrentControlDevice
         hass = MagicMock()
         hass.services.async_call = AsyncMock()
         dev = CurrentControlDevice(hass, "ev", "EV", charger_service="keba.set_current")
@@ -499,7 +499,7 @@ class TestChargerServiceCalls:
     @pytest.mark.asyncio
     async def test_easee_set_current_with_device_id(self):
         """Easee: easee.set_charger_dynamic_limit with device_id."""
-        from custom_components.solar_energy_management.devices.base import CurrentControlDevice
+        from custom_components.xxx_cristiano.devices.base import CurrentControlDevice
         hass = MagicMock()
         hass.services.async_call = AsyncMock()
         dev = CurrentControlDevice(hass, "ev", "EV",
@@ -514,7 +514,7 @@ class TestChargerServiceCalls:
     @pytest.mark.asyncio
     async def test_zaptec_available_current_param(self):
         """Zaptec: zaptec.limit_current with {"available_current": X, "device_id": Y}."""
-        from custom_components.solar_energy_management.devices.base import CurrentControlDevice
+        from custom_components.xxx_cristiano.devices.base import CurrentControlDevice
         hass = MagicMock()
         hass.services.async_call = AsyncMock()
         dev = CurrentControlDevice(hass, "ev", "EV",
@@ -529,7 +529,7 @@ class TestChargerServiceCalls:
     @pytest.mark.asyncio
     async def test_wallbox_number_entity(self):
         """Wallbox: number.set_value (no service call)."""
-        from custom_components.solar_energy_management.devices.base import CurrentControlDevice
+        from custom_components.xxx_cristiano.devices.base import CurrentControlDevice
         hass = MagicMock()
         hass.services.async_call = AsyncMock()
         dev = CurrentControlDevice(hass, "ev", "EV",

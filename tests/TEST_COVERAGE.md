@@ -173,7 +173,7 @@ pytest tests/test_energy_flow_balance.py::TestEnergyFlowBalance::test_uses_hardw
 
 ### Run with Coverage Report
 ```bash
-pytest tests/ --cov=custom_components.solar_energy_management --cov-report=html
+pytest tests/ --cov=custom_components.xxx_cristiano --cov-report=html
 ```
 
 ### Run Only Fast Tests

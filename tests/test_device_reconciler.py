@@ -5,10 +5,10 @@ from unittest.mock import AsyncMock, MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.devices.base import (
+from custom_components.xxx_cristiano.devices.base import (
     DeviceState, SwitchDevice,
 )
-from custom_components.solar_energy_management.coordinator.device_reconciler import (
+from custom_components.xxx_cristiano.coordinator.device_reconciler import (
     reconcile_device, reconcile_all, OFF_GRACE_S, EXTERNAL_OFF_COOLDOWN_S,
 )
 
@@ -156,7 +156,7 @@ def test_mark_reconciled_off_stamps_both_deactivation_clocks():
 
 @pytest.mark.asyncio
 async def test_climate_observed_on_matches_configured_mode():
-    from custom_components.solar_energy_management.devices.base import ClimateDevice
+    from custom_components.xxx_cristiano.devices.base import ClimateDevice
     states = {"climate.ac": SimpleNamespace(state="cool", attributes={})}
     dev = ClimateDevice(hass=_hass(states), device_id="ac", name="AC",
                         rated_power=1500.0, entity_id="climate.ac", hvac_mode="cool")
@@ -211,7 +211,7 @@ def test_runtime_credited_when_unobservable():
 
 @pytest.mark.asyncio
 async def test_median_filter_rejects_single_cycle_spike():
-    from custom_components.solar_energy_management.coordinator.surplus_controller import (
+    from custom_components.xxx_cristiano.coordinator.surplus_controller import (
         SurplusController,
     )
     sc = SurplusController(_hass())
@@ -230,7 +230,7 @@ async def test_median_filter_rejects_single_cycle_spike():
 
 @pytest.mark.asyncio
 async def test_median_filter_passes_real_trend():
-    from custom_components.solar_energy_management.coordinator.surplus_controller import (
+    from custom_components.xxx_cristiano.coordinator.surplus_controller import (
         SurplusController,
     )
     sc = SurplusController(_hass())
@@ -246,7 +246,7 @@ async def test_median_filter_passes_real_trend():
 # ── Phase 3: desired-state + ownership observability ──
 
 def test_desired_state_model():
-    from custom_components.solar_energy_management.devices.base import (
+    from custom_components.xxx_cristiano.devices.base import (
         DeviceControlMode,
     )
     dev = _switch("on")
@@ -272,7 +272,7 @@ def test_to_dict_exposes_arc_fields():
 
 @pytest.mark.asyncio
 async def test_update_runs_reconcile_pass():
-    from custom_components.solar_energy_management.coordinator.surplus_controller import (
+    from custom_components.xxx_cristiano.coordinator.surplus_controller import (
         SurplusController,
     )
     dev = _switch("off")               # entity reads OFF

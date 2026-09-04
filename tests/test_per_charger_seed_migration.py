@@ -7,8 +7,8 @@ configured value. Behaviour-neutral today (per-charger already falls back to glo
 import pytest
 from unittest.mock import MagicMock
 
-from custom_components.solar_energy_management import async_migrate_entry
-from custom_components.solar_energy_management.config_flow import SolarEnergyManagementConfigFlow
+from custom_components.xxx_cristiano import async_migrate_entry
+from custom_components.xxx_cristiano.config_flow import SolarEnergyManagementConfigFlow
 
 # (#758) The chain ends at whatever the config flow declares — see the note
 # in test_config_flow_migration.py.
@@ -139,8 +139,8 @@ async def test_phase4_phases_seeded_charging_mode_dropped():
 
 def test_phase4_globals_removed_from_descriptions():
     """The converted globals are no longer global entities (#255 Phase 4)."""
-    from custom_components.solar_energy_management.number import NUMBER_TYPES
-    from custom_components.solar_energy_management.select import SELECT_TYPES
+    from custom_components.xxx_cristiano.number import NUMBER_TYPES
+    from custom_components.xxx_cristiano.select import SELECT_TYPES
     assert "ev_phases" not in {n.key for n in NUMBER_TYPES}
     assert "ev_charging_mode" not in {s.key for s in SELECT_TYPES}
     # ev_stall_cooldown removed (dead: value never read)

@@ -22,7 +22,7 @@ from __future__ import annotations
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.retention import (
+from custom_components.xxx_cristiano.coordinator.retention import (
     RETENTION_OFF,
     purgeable_entities,
     retention_is_due,
@@ -124,7 +124,7 @@ class TestRunPurgeActsOnlyOnWhatItMay:
 
     @pytest.mark.asyncio
     async def test_it_purges_only_the_statistics_less_sem_entities(self):
-        from custom_components.solar_energy_management.coordinator import retention as R
+        from custom_components.xxx_cristiano.coordinator import retention as R
         hass = self._FakeHass([
             self._FakeState("sensor.sem_charging_state"),
             self._FakeState("sensor.sem_solar_power", "measurement"),
@@ -142,7 +142,7 @@ class TestRunPurgeActsOnlyOnWhatItMay:
 
     @pytest.mark.asyncio
     async def test_off_calls_nothing_at_all(self):
-        from custom_components.solar_energy_management.coordinator import retention as R
+        from custom_components.xxx_cristiano.coordinator import retention as R
         hass = self._FakeHass([self._FakeState("sensor.sem_charging_state")])
         assert await R.run_purge(hass, 0) == []
         assert hass.calls == []

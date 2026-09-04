@@ -15,7 +15,7 @@ from unittest.mock import AsyncMock, MagicMock
 
 from homeassistant.util import dt as dt_util
 
-from custom_components.solar_energy_management.coordinator.battery_adapters.force_charge import (
+from custom_components.xxx_cristiano.coordinator.battery_adapters.force_charge import (
     BatteryChargeAdapter,
     ChargeCommand,
     ChargeCommandStatus,
@@ -24,7 +24,7 @@ from custom_components.solar_energy_management.coordinator.battery_adapters.forc
     GoodWeChargeAdapter,
     HuaweiChargeAdapter,
 )
-from custom_components.solar_energy_management.coordinator.battery_charge_scheduler import (
+from custom_components.xxx_cristiano.coordinator.battery_charge_scheduler import (
     BatteryChargeScheduler,
     SchedulerConfig,
     SchedulerDecision,
@@ -1044,14 +1044,14 @@ class TestShellRetirement624:
         import importlib, pytest as _pytest
         with _pytest.raises(ModuleNotFoundError):
             importlib.import_module(
-                "custom_components.solar_energy_management.coordinator.battery_charge_adapter")
+                "custom_components.xxx_cristiano.coordinator.battery_charge_adapter")
         with _pytest.raises(ModuleNotFoundError):
             importlib.import_module(
-                "custom_components.solar_energy_management.coordinator.battery_protection")
+                "custom_components.xxx_cristiano.coordinator.battery_protection")
 
     def test_scheduler_is_a_pure_planner(self):
         import inspect
-        from custom_components.solar_energy_management.coordinator.battery_charge_scheduler import (
+        from custom_components.xxx_cristiano.coordinator.battery_charge_scheduler import (
             BatteryChargeScheduler)
         params = list(inspect.signature(BatteryChargeScheduler.__init__).parameters)
         assert "adapter" not in params          # no actuation dependency
@@ -1084,7 +1084,7 @@ class TestStartupRestoreRelocated624:
         attributes=None,
         observer_mode=False,
     ):
-        from custom_components.solar_energy_management.coordinator.actuate_battery import (
+        from custom_components.xxx_cristiano.coordinator.actuate_battery import (
             restore_discharge_limit_on_startup,
         )
         hass = MagicMock()

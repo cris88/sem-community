@@ -3,7 +3,7 @@ autodetected on the battery device) over the throughput estimate."""
 
 from unittest.mock import MagicMock
 
-from custom_components.solar_energy_management.coordinator.coordinator import (
+from custom_components.xxx_cristiano.coordinator.coordinator import (
     SEMCoordinator,
 )
 
@@ -57,10 +57,10 @@ def _reader_with_device(monkeypatch, anchor, device_entities, states):
     owns `device_entities`, with `states` mocked. Uses ``monkeypatch`` so the
     module-level ``er`` patches are RESTORED after the test (a raw assignment
     would pollute the shared entity_registry module for every later test)."""
-    from custom_components.solar_energy_management.coordinator.sensor_reader import (
+    from custom_components.xxx_cristiano.coordinator.sensor_reader import (
         SensorReader,
     )
-    import custom_components.solar_energy_management.coordinator.sensor_reader as sr_mod
+    import custom_components.xxx_cristiano.coordinator.sensor_reader as sr_mod
 
     hass = MagicMock()
     hass.states.get = lambda eid: states.get(eid)

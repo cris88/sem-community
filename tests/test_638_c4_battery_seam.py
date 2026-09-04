@@ -21,16 +21,16 @@ from types import SimpleNamespace
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     BatteryIntent,
     BatteryRuntime,
     BatteryView,
     FleetContext,
 )
-from custom_components.solar_energy_management.coordinator.decide_battery import (
+from custom_components.xxx_cristiano.coordinator.decide_battery import (
     decide_battery,
 )
-from custom_components.solar_energy_management.coordinator.energy_plan_actuation import (
+from custom_components.xxx_cristiano.coordinator.energy_plan_actuation import (
     PlanGate,
 )
 
@@ -114,7 +114,7 @@ class TestScheduledFollowsThePlan:
 @pytest.mark.unit
 class TestTheWindowCheckerIsGone:
     def test_now_in_window_no_longer_exists(self):
-        import custom_components.solar_energy_management.coordinator.decide_battery as db
+        import custom_components.xxx_cristiano.coordinator.decide_battery as db
         assert not hasattr(db, "_now_in_window")
 
 
@@ -125,7 +125,7 @@ class TestTheCoordinatorWiresTheGate:
         _energy_plan_gate helper every other consumer uses — one gate,
         one coverage log."""
         import inspect
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
         src = inspect.getsource(SEMCoordinator._run_battery_pipeline)
@@ -138,7 +138,7 @@ class TestNegativePriceMarksItself:
         """The scheduler's negative-price SCHEDULED must carry the flag
         decide_battery uses to bypass the gate."""
         import inspect
-        from custom_components.solar_energy_management.coordinator.battery_charge_scheduler import (
+        from custom_components.xxx_cristiano.coordinator.battery_charge_scheduler import (
             BatteryChargeScheduler,
         )
         src = inspect.getsource(BatteryChargeScheduler.evaluate)
@@ -154,7 +154,7 @@ class TestTheSchedulerNoLongerPicksWindows:
 
     def test_evaluate_has_no_phantom_ev_params(self):
         import inspect
-        from custom_components.solar_energy_management.coordinator.battery_charge_scheduler import (
+        from custom_components.xxx_cristiano.coordinator.battery_charge_scheduler import (
             BatteryChargeScheduler,
         )
         params = inspect.signature(BatteryChargeScheduler.evaluate).parameters
@@ -162,7 +162,7 @@ class TestTheSchedulerNoLongerPicksWindows:
         assert "ev_max_power_w" not in params
 
     def test_the_decision_has_no_window_fields(self):
-        from custom_components.solar_energy_management.coordinator.battery_charge_scheduler import (
+        from custom_components.xxx_cristiano.coordinator.battery_charge_scheduler import (
             SchedulerDecision, SchedulerState,
         )
         d = SchedulerDecision(state=SchedulerState.IDLE)
@@ -170,7 +170,7 @@ class TestTheSchedulerNoLongerPicksWindows:
         assert not hasattr(d, "schedule")
 
     def test_the_schedule_classes_are_gone(self):
-        import custom_components.solar_energy_management.coordinator.battery_charge_scheduler as bcs
+        import custom_components.xxx_cristiano.coordinator.battery_charge_scheduler as bcs
         assert not hasattr(bcs, "NightChargeSchedule")
         assert not hasattr(bcs, "TimeSlot")
 
@@ -196,7 +196,7 @@ class TestTheScheduleEntityDerivesFromThePlan:
 
     def test_shape_matches_the_old_entity(self):
         from datetime import datetime, timezone
-        from custom_components.solar_energy_management.coordinator.battery_charge_scheduler import (
+        from custom_components.xxx_cristiano.coordinator.battery_charge_scheduler import (
             schedule_view_from_plan,
         )
         now = datetime(2026, 8, 12, 3, 30, tzinfo=timezone.utc)
@@ -214,7 +214,7 @@ class TestTheScheduleEntityDerivesFromThePlan:
 
     def test_no_plan_is_an_empty_dict(self):
         from datetime import datetime, timezone
-        from custom_components.solar_energy_management.coordinator.battery_charge_scheduler import (
+        from custom_components.xxx_cristiano.coordinator.battery_charge_scheduler import (
             schedule_view_from_plan,
         )
         now = datetime(2026, 8, 12, 3, 30, tzinfo=timezone.utc)
@@ -228,7 +228,7 @@ class TestTheVerdictSurvivesTheReboot:
     the evaluation window must still actuate the restored night."""
 
     def test_roundtrip(self):
-        from custom_components.solar_energy_management.coordinator.battery_charge_scheduler import (
+        from custom_components.xxx_cristiano.coordinator.battery_charge_scheduler import (
             SchedulerDecision, SchedulerState,
             restore_battery_verdict, serialize_battery_verdict,
         )
@@ -246,7 +246,7 @@ class TestTheVerdictSurvivesTheReboot:
         assert r.target_soc == 85.0 and r.charge_power_w == 3000.0
 
     def test_non_scheduled_serializes_to_none(self):
-        from custom_components.solar_energy_management.coordinator.battery_charge_scheduler import (
+        from custom_components.xxx_cristiano.coordinator.battery_charge_scheduler import (
             SchedulerDecision, SchedulerState, serialize_battery_verdict,
         )
         assert serialize_battery_verdict(
@@ -254,7 +254,7 @@ class TestTheVerdictSurvivesTheReboot:
         assert serialize_battery_verdict(None) is None
 
     def test_junk_restores_to_nothing(self):
-        from custom_components.solar_energy_management.coordinator.battery_charge_scheduler import (
+        from custom_components.xxx_cristiano.coordinator.battery_charge_scheduler import (
             restore_battery_verdict,
         )
         sched = SimpleNamespace(_decision=None)

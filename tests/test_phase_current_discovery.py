@@ -1,7 +1,7 @@
 """Tests for conservative discovery of direct per-phase grid current sensors."""
 from types import SimpleNamespace
 
-from custom_components.solar_energy_management.coordinator.phase_current_discovery import (
+from custom_components.xxx_cristiano.coordinator.phase_current_discovery import (
     discover_grid_phase_current_entities,
 )
 

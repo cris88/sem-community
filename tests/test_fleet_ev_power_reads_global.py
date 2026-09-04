@@ -264,7 +264,7 @@ class TestFleetEvPowerNewtype:
     """``FleetEvPower`` itself: float subclass with ``.as_fleet_total``."""
 
     def test_is_float_subclass(self):
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             FleetEvPower,
         )
         assert issubclass(FleetEvPower, float)
@@ -273,7 +273,7 @@ class TestFleetEvPowerNewtype:
         """Arithmetic with a regular float must still work — no
         migration cost for the ~15 legitimate fleet reads across
         coordinator/."""
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             FleetEvPower,
         )
         p = FleetEvPower(4140.0)
@@ -283,7 +283,7 @@ class TestFleetEvPowerNewtype:
         assert float(p) == 4140.0
 
     def test_as_fleet_total_returns_plain_float(self):
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             FleetEvPower,
         )
         p = FleetEvPower(4140.0)
@@ -295,7 +295,7 @@ class TestFleetEvPowerNewtype:
         """The reason argument has no runtime effect — it's there for
         readers, ``git blame``, and (future) static analyzers. We
         accept ANY string."""
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             FleetEvPower,
         )
         p = FleetEvPower(100.0)
@@ -307,7 +307,7 @@ class TestFleetEvPowerNewtype:
     def test_default_powerreadings_ev_power_is_fleet_type(self):
         """``PowerReadings.ev_power`` default is a ``FleetEvPower``,
         not a plain float — pins the dataclass field type."""
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             FleetEvPower, PowerReadings,
         )
         r = PowerReadings()
@@ -316,7 +316,7 @@ class TestFleetEvPowerNewtype:
         assert r.ev_power == 0.0
 
     def test_repr_includes_class_name(self):
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             FleetEvPower,
         )
         assert repr(FleetEvPower(4140.0)) == "FleetEvPower(4140.0)"

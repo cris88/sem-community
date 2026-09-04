@@ -72,7 +72,7 @@ class TestPeakLadderStaysCoherent:
 
     def _mgr(self, target=5.0, warning=4.5, emergency=6.0):
         from unittest.mock import MagicMock
-        from custom_components.solar_energy_management.features.load_management import (
+        from custom_components.xxx_cristiano.features.load_management import (
             LoadManagementCoordinator,
         )
         entry = MagicMock()

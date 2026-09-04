@@ -9,7 +9,7 @@ import pytest
 from datetime import datetime, timedelta
 from unittest.mock import MagicMock, patch
 
-from custom_components.solar_energy_management.coordinator.ev_taper_detector import (
+from custom_components.xxx_cristiano.coordinator.ev_taper_detector import (
     EVTaperDetector,
     BUFFER_SIZE,
 )
@@ -516,7 +516,7 @@ class TestBatteryHealth:
 class TestEVConsumptionPredictor:
     def test_ev_profile_observe_and_predict(self):
         """Should learn and predict EV daily consumption per weekday."""
-        from custom_components.solar_energy_management.analytics.consumption_predictor import (
+        from custom_components.xxx_cristiano.analytics.consumption_predictor import (
             ConsumptionPredictor,
         )
         pred = ConsumptionPredictor()
@@ -533,7 +533,7 @@ class TestEVConsumptionPredictor:
 
     def test_ev_profile_persistence(self):
         """EV profile should survive get_state/restore_state."""
-        from custom_components.solar_energy_management.analytics.consumption_predictor import (
+        from custom_components.xxx_cristiano.analytics.consumption_predictor import (
             ConsumptionPredictor,
         )
         pred1 = ConsumptionPredictor()
@@ -551,7 +551,7 @@ class TestEVConsumptionPredictor:
 
     def test_ev_no_data_returns_zero(self):
         """Should return 0 when no EV data observed."""
-        from custom_components.solar_energy_management.analytics.consumption_predictor import (
+        from custom_components.xxx_cristiano.analytics.consumption_predictor import (
             ConsumptionPredictor,
         )
         pred = ConsumptionPredictor()

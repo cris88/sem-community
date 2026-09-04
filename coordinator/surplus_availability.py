@@ -9,7 +9,7 @@ availability signal:
   surplus has stayed above the configurable threshold for a sustain
   period; OFF when it has stayed below the hysteresis floor (80 % of
   the threshold) for the release period.
-- A ``solar_energy_management_surplus`` bus event fired on every
+- A ``xxx_cristiano_surplus`` bus event fired on every
   TRANSITION (never per-cycle — a flapping cloud must not storm the
   automation bus).
 

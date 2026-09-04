@@ -17,7 +17,7 @@ Conservation invariants (pinned in ``test_349_flow_priority_attribution``):
 """
 import pytest
 
-from custom_components.solar_energy_management.coordinator import (
+from custom_components.xxx_cristiano.coordinator import (
     FlowCalculator,
     PowerReadings,
 )

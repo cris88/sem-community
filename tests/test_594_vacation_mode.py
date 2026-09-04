@@ -24,17 +24,17 @@ from unittest.mock import AsyncMock, MagicMock
 import pytest
 from homeassistant.util import dt as dt_util
 
-from custom_components.solar_energy_management.coordinator.coordinator import (
+from custom_components.xxx_cristiano.coordinator.coordinator import (
     SEMCoordinator,
 )
-from custom_components.solar_energy_management.coordinator.types import (
+from custom_components.xxx_cristiano.coordinator.types import (
     SEMData, SurplusControlData,
 )
-from custom_components.solar_energy_management.devices.base import DeviceState
-from custom_components.solar_energy_management.devices.heat_pump_controller import (
+from custom_components.xxx_cristiano.devices.base import DeviceState
+from custom_components.xxx_cristiano.devices.heat_pump_controller import (
     HeatPumpController, SGReadyState,
 )
-from custom_components.solar_energy_management.devices.hot_water_controller import (
+from custom_components.xxx_cristiano.devices.hot_water_controller import (
     HotWaterController,
 )
 

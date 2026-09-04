@@ -26,19 +26,19 @@ from unittest.mock import AsyncMock, MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.charger_reconciler import (
+from custom_components.xxx_cristiano.coordinator.charger_reconciler import (
     ActionKind,
     ChargerReconciler,
     DesiredState,
     ObservedState,
     observe,
 )
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     ChargerDecision,
     ChargerIntent,
     ChargerPower,
 )
-from custom_components.solar_energy_management.devices.base import CurrentControlDevice
+from custom_components.xxx_cristiano.devices.base import CurrentControlDevice
 
 
 def _number_state(min_a=6.0, max_a=16.0):
@@ -222,7 +222,7 @@ class TestRepairIssue:
         dev = _device(min_a=6.0)
         a = _adapter(dev, 4068)
         raised, cleared = [], []
-        mod = "custom_components.solar_energy_management.coordinator.repair_issues"
+        mod = "custom_components.xxx_cristiano.coordinator.repair_issues"
         import importlib
         ri = importlib.import_module(mod)
 

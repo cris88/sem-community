@@ -168,7 +168,7 @@ views:
     @pytest.mark.asyncio
     async def test_service_registration(self, mock_hass, mock_coordinator):
         """Test that services are properly registered."""
-        from custom_components.solar_energy_management import _async_register_services
+        from custom_components.xxx_cristiano import _async_register_services
 
         mock_hass.services.has_service = MagicMock(return_value=False)
         handlers = self._capture_service_handlers(mock_hass)
@@ -189,7 +189,7 @@ views:
     @pytest.mark.asyncio
     async def test_service_handler_valid_service(self, mock_hass, mock_coordinator):
         """Test sync_priorities_from_dashboard handler with valid dashboard file."""
-        from custom_components.solar_energy_management import _async_register_services
+        from custom_components.xxx_cristiano import _async_register_services
 
         mock_hass.services.has_service = MagicMock(return_value=False)
         handlers = self._capture_service_handlers(mock_hass)
@@ -236,7 +236,7 @@ views:
     @pytest.mark.asyncio
     async def test_service_handler_invalid_service(self, mock_hass, mock_coordinator):
         """Test sync_priorities_from_dashboard handles missing dashboard file gracefully."""
-        from custom_components.solar_energy_management import _async_register_services
+        from custom_components.xxx_cristiano import _async_register_services
 
         mock_hass.services.has_service = MagicMock(return_value=False)
         handlers = self._capture_service_handlers(mock_hass)

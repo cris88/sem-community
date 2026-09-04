@@ -43,12 +43,12 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.energy_calculator import (
+from custom_components.xxx_cristiano.coordinator.energy_calculator import (
     COMFORT_SPLIT_IN,
     COMFORT_SPLIT_OUT,
     EnergyCalculator,
 )
-from custom_components.solar_energy_management.coordinator.energy_plan_actuation import (
+from custom_components.xxx_cristiano.coordinator.energy_plan_actuation import (
     PlanGate,
     UNCOVERED,
 )
@@ -65,7 +65,7 @@ def _coord(devices, gate: PlanGate):
     style as test_769_heat_pump_ledger — plus the plan gate the comfort
     split consults. The REAL ``_comfort_split_for`` is bound onto it, so
     the derivation under test is production code, not a test double."""
-    from custom_components.solar_energy_management.coordinator.coordinator import (
+    from custom_components.xxx_cristiano.coordinator.coordinator import (
         SEMCoordinator,
     )
 
@@ -90,7 +90,7 @@ def _zone(did="office_ac", kwh=0.5, comfort_state="willing", label=None):
 
 
 def _file(coord):
-    from custom_components.solar_energy_management.coordinator.coordinator import (
+    from custom_components.xxx_cristiano.coordinator.coordinator import (
         SEMCoordinator,
     )
 
@@ -241,7 +241,7 @@ class TestTheNightSealReportsTheRatio772:
         and logged — the feedback #705 Ph3 banks blind without. Pinned so
         ``get_comfort_split`` can never drift back into an orphan whose
         only caller is a test (#653/#660)."""
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
 
@@ -271,7 +271,7 @@ class TestTheNightSealReportsTheRatio772:
         calc.get_comfort_split.assert_called_once_with("office_ac", TODAY)
 
     def test_a_non_comfort_demand_reads_nothing(self) -> None:
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
 

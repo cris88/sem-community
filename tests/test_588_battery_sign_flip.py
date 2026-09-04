@@ -14,11 +14,11 @@ from __future__ import annotations
 
 from unittest.mock import Mock, MagicMock, patch
 
-from custom_components.solar_energy_management.coordinator.sensor_reader import (
+from custom_components.xxx_cristiano.coordinator.sensor_reader import (
     SensorReader,
     PLATFORM_BATTERY_SIGN_INVERT,
 )
-from custom_components.solar_energy_management.coordinator.types import PowerReadings
+from custom_components.xxx_cristiano.coordinator.types import PowerReadings
 
 
 # ── Helpers ──────────────────────────────────────────────────────────────────
@@ -154,7 +154,7 @@ class TestB1UserFlipFleet:
         r.set_energy_dashboard_config(ed)
 
         # Build a readings with pre-populated batteries dict (mock per-battery reading)
-        from custom_components.solar_energy_management.coordinator.charger_types import BatteryPower
+        from custom_components.xxx_cristiano.coordinator.charger_types import BatteryPower
         readings_base = PowerReadings()
         readings_base.battery_power = 400.0
         readings_base.batteries = {
@@ -369,7 +369,7 @@ class TestH2BrandSeed:
         entry_mock.platform = "goodwe"
         registry_mock.async_get.return_value = entry_mock
         with patch(
-            "custom_components.solar_energy_management.coordinator.sensor_reader.er.async_get",
+            "custom_components.xxx_cristiano.coordinator.sensor_reader.er.async_get",
             return_value=registry_mock,
         ):
             r._seed_battery_sign_from_platform("b1", "sensor.goodwe_battery")
@@ -385,7 +385,7 @@ class TestH2BrandSeed:
         entry_mock.platform = "huawei_solar"
         registry_mock.async_get.return_value = entry_mock
         with patch(
-            "custom_components.solar_energy_management.coordinator.sensor_reader.er.async_get",
+            "custom_components.xxx_cristiano.coordinator.sensor_reader.er.async_get",
             return_value=registry_mock,
         ):
             r._seed_battery_sign_from_platform("b1", "sensor.huawei_battery")
@@ -407,7 +407,7 @@ class TestH2BrandSeed:
         # Prime baseline, then feed 3 clear "negate" votes (discharge growing,
         # power positive → opposite convention) despite the Huawei soft seed.
         with patch(
-            "custom_components.solar_energy_management.coordinator.sensor_reader.er.async_get",
+            "custom_components.xxx_cristiano.coordinator.sensor_reader.er.async_get",
             return_value=registry_mock,
         ):
             r.hass.states.get = lambda eid: {
@@ -436,7 +436,7 @@ class TestH2BrandSeed:
         entry_mock.platform = "my_custom_integration"
         registry_mock.async_get.return_value = entry_mock
         with patch(
-            "custom_components.solar_energy_management.coordinator.sensor_reader.er.async_get",
+            "custom_components.xxx_cristiano.coordinator.sensor_reader.er.async_get",
             return_value=registry_mock,
         ):
             r._seed_battery_sign_from_platform("b1", "sensor.custom_battery")
@@ -450,7 +450,7 @@ class TestH2BrandSeed:
         entry_mock.platform = "goodwe"
         registry_mock.async_get.return_value = entry_mock
         with patch(
-            "custom_components.solar_energy_management.coordinator.sensor_reader.er.async_get",
+            "custom_components.xxx_cristiano.coordinator.sensor_reader.er.async_get",
             return_value=registry_mock,
         ) as mock_er:
             r._seed_battery_sign_from_platform("b1", "sensor.batt")
@@ -470,7 +470,7 @@ class TestH2BrandSeed:
         entry_mock.platform = "goodwe"  # would want to seed as inverted
         registry_mock.async_get.return_value = entry_mock
         with patch(
-            "custom_components.solar_energy_management.coordinator.sensor_reader.er.async_get",
+            "custom_components.xxx_cristiano.coordinator.sensor_reader.er.async_get",
             return_value=registry_mock,
         ):
             r._seed_battery_sign_from_platform("b1", "sensor.batt")
@@ -495,7 +495,7 @@ class TestH2BrandSeed:
         registry_mock.async_get.side_effect = _entry_for
         r.hass.states.get = lambda eid: _make_state(1.0)
         with patch(
-            "custom_components.solar_energy_management.coordinator.sensor_reader.er.async_get",
+            "custom_components.xxx_cristiano.coordinator.sensor_reader.er.async_get",
             return_value=registry_mock,
         ):
             # fleet path threads ed.battery_power as power_entity. Flat counters
@@ -701,13 +701,13 @@ class TestM2DiagSerialisation:
     because HA sensor state must be a scalar and the card renders it as text."""
 
     def test_empty_returns_learning(self):
-        from custom_components.solar_energy_management.coordinator.publish_diag import (
+        from custom_components.xxx_cristiano.coordinator.publish_diag import (
             format_battery_sign_diag as _format_battery_sign_diag,
         )
         assert _format_battery_sign_diag({}, {}) == "learning"
 
     def test_single_battery_bare_value(self):
-        from custom_components.solar_energy_management.coordinator.publish_diag import (
+        from custom_components.xxx_cristiano.coordinator.publish_diag import (
             format_battery_sign_diag as _format_battery_sign_diag,
         )
         out = _format_battery_sign_diag({"__fleet__": True}, {"__fleet__": True})
@@ -715,13 +715,13 @@ class TestM2DiagSerialisation:
         assert isinstance(out, str)
 
     def test_single_battery_learning_suffix(self):
-        from custom_components.solar_energy_management.coordinator.publish_diag import (
+        from custom_components.xxx_cristiano.coordinator.publish_diag import (
             format_battery_sign_diag as _format_battery_sign_diag,
         )
         assert _format_battery_sign_diag({"b1": False}, {"b1": False}) == "normal (learning)"
 
     def test_multi_battery_is_string_not_dict(self):
-        from custom_components.solar_energy_management.coordinator.publish_diag import (
+        from custom_components.xxx_cristiano.coordinator.publish_diag import (
             format_battery_sign_diag as _format_battery_sign_diag,
         )
         out = _format_battery_sign_diag(
@@ -732,7 +732,7 @@ class TestM2DiagSerialisation:
         assert "{" not in out and "[object" not in out
 
     def test_multi_battery_learning_suffix_per_bid(self):
-        from custom_components.solar_energy_management.coordinator.publish_diag import (
+        from custom_components.xxx_cristiano.coordinator.publish_diag import (
             format_battery_sign_diag as _format_battery_sign_diag,
         )
         out = _format_battery_sign_diag(

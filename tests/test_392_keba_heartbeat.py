@@ -19,7 +19,7 @@ from unittest.mock import AsyncMock, MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.devices.base import (
+from custom_components.xxx_cristiano.devices.base import (
     CurrentControlDevice,
     DeviceState,
     WRITE_HEARTBEAT_INTERVAL_S,
@@ -54,7 +54,7 @@ def device(mock_hass):
 def _set_clock(monkeypatch, t: float) -> None:
     """Pin time.monotonic so the heartbeat window is deterministic."""
     monkeypatch.setattr(
-        "custom_components.solar_energy_management.devices.base.time.monotonic",
+        "custom_components.xxx_cristiano.devices.base.time.monotonic",
         lambda: t,
     )
 

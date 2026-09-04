@@ -21,7 +21,7 @@ investigation.
 
 from unittest.mock import MagicMock
 
-from custom_components.solar_energy_management.coordinator.forecast_reader import (
+from custom_components.xxx_cristiano.coordinator.forecast_reader import (
     ForecastReader,
 )
 
@@ -120,7 +120,7 @@ class TestAMissedPreferenceIsRetried:
         return r
 
     def test_a_source_that_appears_later_is_picked_up(self):
-        from custom_components.solar_energy_management.coordinator.forecast_reader import (
+        from custom_components.xxx_cristiano.coordinator.forecast_reader import (
             OPEN_METEO_SOLAR_PLATFORM, SOLCAST_PLATFORM,
         )
         r = self._reader_with({SOLCAST_PLATFORM})
@@ -138,7 +138,7 @@ class TestAMissedPreferenceIsRetried:
         assert r.honoured is True
 
     def test_a_honoured_preference_does_not_keep_retrying(self):
-        from custom_components.solar_energy_management.coordinator.forecast_reader import (
+        from custom_components.xxx_cristiano.coordinator.forecast_reader import (
             OPEN_METEO_SOLAR_PLATFORM,
         )
         r = self._reader_with({OPEN_METEO_SOLAR_PLATFORM})

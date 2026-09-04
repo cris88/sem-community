@@ -32,7 +32,7 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.energy_calculator import (
+from custom_components.xxx_cristiano.coordinator.energy_calculator import (
     EnergyCalculator,
 )
 
@@ -229,7 +229,7 @@ class TestTheNightWindowLiesInsideTheGate:
     def _window(sunrise_utc, sunset_utc, **config):
         from unittest.mock import MagicMock as MM
 
-        from custom_components.solar_energy_management.utils.time_manager import (
+        from custom_components.xxx_cristiano.utils.time_manager import (
             TimeManager,
         )
 

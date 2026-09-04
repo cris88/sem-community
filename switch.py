@@ -276,7 +276,7 @@ class SEMSolarSwitch(CoordinatorEntity, SwitchEntity, RestoreEntity):
         """(#764) The observer switch carries observer mode's WOULD
         decisions — the standard simulation surface. A fresh reader gets
         the current per-device would-state without history; a sim bridge
-        subscribes to the ``solar_energy_management_observer_decision``
+        subscribes to the ``xxx_cristiano_observer_decision``
         event for the edges. Empty when observing is off: the map would
         be stale the moment live actuation resumes."""
         if self.entity_description.key != "observer_mode":

@@ -3,12 +3,12 @@ import pytest
 from unittest.mock import Mock, patch
 from datetime import datetime
 
-from custom_components.solar_energy_management.coordinator import (
+from custom_components.xxx_cristiano.coordinator import (
     ChargingStateMachine,
     ChargingContext,
 )
-from custom_components.solar_energy_management.const import ChargingState
-from custom_components.solar_energy_management.utils import TimeManager
+from custom_components.xxx_cristiano.const import ChargingState
+from custom_components.xxx_cristiano.utils import TimeManager
 
 
 @pytest.fixture

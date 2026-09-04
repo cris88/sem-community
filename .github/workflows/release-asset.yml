@@ -27,7 +27,7 @@ permissions:
 
 jobs:
   attach-zip:
-    name: Build and attach solar_energy_management.zip
+    name: Build and attach xxx_cristiano.zip
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -35,14 +35,14 @@ jobs:
           ref: ${{ github.event.release.tag_name }}
 
       - name: Build the zip
-        run: bash scripts/build_release_zip.sh solar_energy_management.zip
+        run: bash scripts/build_release_zip.sh xxx_cristiano.zip
 
       - name: Verify it is installable before publishing it
-        run: python3 scripts/verify_release_zip.py solar_energy_management.zip
+        run: python3 scripts/verify_release_zip.py xxx_cristiano.zip
 
       - name: Attach to the release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release upload "${{ github.event.release.tag_name }}" \
-            solar_energy_management.zip --clobber
+            xxx_cristiano.zip --clobber

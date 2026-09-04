@@ -13,11 +13,11 @@ import pytest
 from types import SimpleNamespace
 from unittest.mock import AsyncMock, MagicMock
 
-from custom_components.solar_energy_management.features.device_registry import (
+from custom_components.xxx_cristiano.features.device_registry import (
     UnifiedDeviceRegistry,
 )
-from custom_components.solar_energy_management.devices.base import DeviceControlMode
-from custom_components.solar_energy_management.coordinator.surplus_availability import (
+from custom_components.xxx_cristiano.devices.base import DeviceControlMode
+from custom_components.xxx_cristiano.coordinator.surplus_availability import (
     SurplusAvailability,
     SUSTAIN_ON_SECONDS,
     SUSTAIN_OFF_SECONDS,
@@ -70,7 +70,7 @@ SPEC = {
 # ---------------------------------------------------------------------------
 
 def _ud(energy, switch, power=None, name="Dev", prio=1):
-    from custom_components.solar_energy_management.features.device_registry import (
+    from custom_components.xxx_cristiano.features.device_registry import (
         UnifiedDevice,
     )
     return UnifiedDevice(
@@ -83,7 +83,7 @@ def test_explicit_rated_power_wins_over_autodiscovered(registry):
     """A register_surplus_device rated_power must show on the card even when an
     auto-discovered ED device covers the SAME switch (reporter: power_rating
     stuck at 0 W because the live-sensor autodiscovered row shadowed it)."""
-    from custom_components.solar_energy_management.devices.base import SwitchDevice
+    from custom_components.xxx_cristiano.devices.base import SwitchDevice
     ud = _ud("sensor.piscina_energy_2", "switch.piscina_2",
              power="sensor.piscina_power", name="Pool")
     registry._devices = [ud]
@@ -105,7 +105,7 @@ def test_explicit_rated_power_wins_over_autodiscovered(registry):
 def test_autodiscovered_shows_calibrated_rating_not_live_zero(registry):
     """An OFF auto-discovered device shows its device rated_power (self-
     calibrated), not the raw 0 W live reading."""
-    from custom_components.solar_energy_management.devices.base import SwitchDevice
+    from custom_components.xxx_cristiano.devices.base import SwitchDevice
     ud = _ud("sensor.heater_energy", "switch.heater", power="sensor.heater_power")
     registry._devices = [ud]
     registry.hass.states.get = lambda e: SimpleNamespace(state="0")  # off
@@ -138,7 +138,7 @@ def test_autodiscovered_falls_back_to_live_when_no_rating(registry):
 def test_ed_sync_spares_service_registered_id(registry):
     """_sync_to_surplus_controller must not unregister a live device whose id
     is service-registered, even though it carries the energy_dashboard_ prefix."""
-    from custom_components.solar_energy_management.devices.base import SwitchDevice
+    from custom_components.xxx_cristiano.devices.base import SwitchDevice
     did = "energy_dashboard_piscina_energy_2"
     registry._service_registrations = {did: {
         "entity_id": "switch.piscina_2", "name": "Pool", "priority": 1,
@@ -158,7 +158,7 @@ def test_ed_sync_spares_service_registered_id(registry):
 def test_ed_sync_does_not_shadow_service_entity(registry):
     """A discovery row whose control entity is service-registered under a
     DIFFERENT id must not spawn a second device driving the same switch."""
-    from custom_components.solar_energy_management.devices.base import SwitchDevice
+    from custom_components.xxx_cristiano.devices.base import SwitchDevice
     registry._service_registrations = {"pool": {
         "entity_id": "switch.piscina_2", "name": "Pool", "priority": 1,
         "rated_power": 710, "control_mode": "surplus"}}
@@ -220,7 +220,7 @@ CLIMATE_SPEC = {
 @pytest.mark.asyncio
 async def test_register_climate_builds_climate_device(registry):
     """(#569) A climate spec builds a ClimateDevice, not a SwitchDevice."""
-    from custom_components.solar_energy_management.devices.base import ClimateDevice
+    from custom_components.xxx_cristiano.devices.base import ClimateDevice
     summary = await registry.async_register_service_device(dict(CLIMATE_SPEC))
     device = registry._surplus_controller.get_device("living_ac")
     assert isinstance(device, ClimateDevice)
@@ -236,7 +236,7 @@ async def test_register_climate_builds_climate_device(registry):
 async def test_climate_rehydrates_as_climate_device_after_restart(registry):
     """(#569) After a restart, the persisted climate spec re-owns as a
     ClimateDevice (not a SwitchDevice)."""
-    from custom_components.solar_energy_management.devices.base import ClimateDevice
+    from custom_components.xxx_cristiano.devices.base import ClimateDevice
     await registry.async_register_service_device(dict(CLIMATE_SPEC))
     # Simulate restart: wipe live devices, keep persisted registrations.
     registry._surplus_controller._devices.clear()

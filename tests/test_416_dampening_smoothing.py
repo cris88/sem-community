@@ -17,7 +17,7 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.forecast_tracker import (
+from custom_components.xxx_cristiano.coordinator.forecast_tracker import (
     ForecastTracker,
 )
 
@@ -41,7 +41,7 @@ def _run_cycle(t, now, actual_kwh):
     """Drive one _calculate_dampening_factor cycle at a frozen time."""
     t._today_actual = actual_kwh
     with patch(
-        "custom_components.solar_energy_management.coordinator.forecast_tracker.dt_util"
+        "custom_components.xxx_cristiano.coordinator.forecast_tracker.dt_util"
     ) as mock_dt:
         mock_dt.now.return_value = now
         mock_dt.DEFAULT_TIME_ZONE = TZ
@@ -99,7 +99,7 @@ def test_ema_resets_at_day_rollover():
     _run_cycle(t, _dt(12, 0), actual_kwh=15.0)
     assert t._smoothed_normalized_ratio is not None
     with patch(
-        "custom_components.solar_energy_management.coordinator.forecast_tracker.dt_util"
+        "custom_components.xxx_cristiano.coordinator.forecast_tracker.dt_util"
     ) as mock_dt:
         mock_dt.now.return_value = _dt(0, 5, day=19)
         mock_dt.DEFAULT_TIME_ZONE = TZ
@@ -143,7 +143,7 @@ def test_sun_hours_daytime_uses_todays_sunrise():
     t = ForecastTracker()
     t._hass = hass
     with patch(
-        "custom_components.solar_energy_management.coordinator.forecast_tracker.dt_util"
+        "custom_components.xxx_cristiano.coordinator.forecast_tracker.dt_util"
     ) as mock_dt:
         mock_dt.now.return_value = _dt(12, 0, day=18)
         mock_dt.DEFAULT_TIME_ZONE = TZ
@@ -163,7 +163,7 @@ def test_sun_hours_after_sunset_rolls_both_back():
     t = ForecastTracker()
     t._hass = hass
     with patch(
-        "custom_components.solar_energy_management.coordinator.forecast_tracker.dt_util"
+        "custom_components.xxx_cristiano.coordinator.forecast_tracker.dt_util"
     ) as mock_dt:
         mock_dt.now.return_value = _dt(22, 0, day=18)
         mock_dt.DEFAULT_TIME_ZONE = TZ
@@ -182,7 +182,7 @@ def test_sun_hours_pre_sunrise_unchanged():
     t = ForecastTracker()
     t._hass = hass
     with patch(
-        "custom_components.solar_energy_management.coordinator.forecast_tracker.dt_util"
+        "custom_components.xxx_cristiano.coordinator.forecast_tracker.dt_util"
     ) as mock_dt:
         mock_dt.now.return_value = _dt(4, 0, day=18)
         mock_dt.DEFAULT_TIME_ZONE = TZ

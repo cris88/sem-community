@@ -16,14 +16,14 @@ Each mode has its own test class. Tests pin:
 """
 import pytest
 
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     ChargerEnergy,
     ChargerIntent,
     ChargerPower,
     ChargerView,
     FleetContext,
 )
-from custom_components.solar_energy_management.coordinator.decide import (
+from custom_components.xxx_cristiano.coordinator.decide import (
     MODE_STRATEGIES,
     _idle_bridgeable,
     amps_from_watts,
@@ -32,7 +32,7 @@ from custom_components.solar_energy_management.coordinator.decide import (
     self_consumption_surplus_w,
     soc_zone,
 )
-from custom_components.solar_energy_management.coordinator.plan_verdict import (
+from custom_components.xxx_cristiano.coordinator.plan_verdict import (
     NO_OPINION,
     PlanVerdict,
 )
@@ -600,7 +600,7 @@ class TestModeRegistryComplete:
     """Every charge mode in EV_CHARGE_MODES has a strategy."""
 
     def test_all_five_modes_registered(self):
-        from custom_components.solar_energy_management.consts.ev_charge_modes import (
+        from custom_components.xxx_cristiano.consts.ev_charge_modes import (
             EV_CHARGE_MODES,
         )
         for mode in EV_CHARGE_MODES:

@@ -7,16 +7,16 @@ mode and the multi-charger cascade inherit the behavior for free.
 """
 from __future__ import annotations
 
-from custom_components.solar_energy_management.coordinator.build_view import (
+from custom_components.xxx_cristiano.coordinator.build_view import (
     build_charger_view,
 )
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     FleetCycleState,
 )
-from custom_components.solar_energy_management.coordinator.decide import (
+from custom_components.xxx_cristiano.coordinator.decide import (
     self_consumption_surplus_w,
 )
-from custom_components.solar_energy_management.coordinator.types import (
+from custom_components.xxx_cristiano.coordinator.types import (
     PowerReadings,
 )
 

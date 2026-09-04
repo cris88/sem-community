@@ -30,7 +30,7 @@ import pytest
 
 
 def _keba_device(has=("disable", "set_energy", "enable", "set_current")):
-    from custom_components.solar_energy_management.devices.base import (
+    from custom_components.xxx_cristiano.devices.base import (
         CurrentControlDevice,
     )
     d = CurrentControlDevice.__new__(CurrentControlDevice)

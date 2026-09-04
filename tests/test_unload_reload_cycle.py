@@ -32,7 +32,7 @@ pytestmark = pytest.mark.skipif(
     reason="pytest-homeassistant-custom-component not installed; CI runs these",
 )
 
-from custom_components.solar_energy_management.const import DOMAIN
+from custom_components.xxx_cristiano.const import DOMAIN
 
 
 _SERVICES = (
@@ -145,7 +145,7 @@ async def test_unload_clears_surplus_controller_devices(
     # #656 — unload parks the detached devices for a possible removal. Nothing
     # here removes the entry, so drop the stash rather than leaving this
     # MagicMock (and the hass it closes over) alive in a module-level dict.
-    import custom_components.solar_energy_management as sem
+    import custom_components.xxx_cristiano as sem
     sem._PENDING_LOAD_TEARDOWN.pop(sem_config_entry.entry_id, None)
 
 

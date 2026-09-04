@@ -17,10 +17,10 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.surplus_controller import (
+from custom_components.xxx_cristiano.coordinator.surplus_controller import (
     compute_load_intent,
 )
-from custom_components.solar_energy_management.devices.base import (
+from custom_components.xxx_cristiano.devices.base import (
     DeviceControlMode,
 )
 
@@ -72,7 +72,7 @@ class TestTheStartReserve:
 @pytest.mark.unit
 class TestTheGoalSurfaceCarriesIt:
     def test_start_reserve_is_a_settable_goal(self):
-        from custom_components.solar_energy_management.features.device_registry import (
+        from custom_components.xxx_cristiano.features.device_registry import (
             UnifiedDeviceRegistry,
         )
         assert "start_reserve_w" in UnifiedDeviceRegistry.GOAL_PROPERTIES

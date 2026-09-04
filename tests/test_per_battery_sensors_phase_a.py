@@ -23,10 +23,10 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     BatteryPower,
 )
-from custom_components.solar_energy_management.coordinator.types import (
+from custom_components.xxx_cristiano.coordinator.types import (
     SEMData,
 )
 
@@ -97,7 +97,7 @@ class TestSensorReaderSlugAssignment:
     ``battery_power_list`` order — not the source entity name."""
 
     def test_short_slug_keys_in_order(self):
-        from custom_components.solar_energy_management.coordinator.sensor_reader import (
+        from custom_components.xxx_cristiano.coordinator.sensor_reader import (
             SensorReader,
         )
 
@@ -167,7 +167,7 @@ class TestSensorReaderSlugAssignment:
         """``battery_power_list`` of length 1 stays in the legacy
         single-sensor path — no per-battery dict population, no
         per-battery sensors, today's PROD configs unchanged."""
-        from custom_components.solar_energy_management.coordinator.sensor_reader import (
+        from custom_components.xxx_cristiano.coordinator.sensor_reader import (
             SensorReader,
         )
 

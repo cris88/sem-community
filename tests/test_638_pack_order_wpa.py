@@ -20,11 +20,11 @@ import re
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.energy_planner import (
+from custom_components.xxx_cristiano.coordinator.energy_planner import (
     Demand,
 )
 # (#758) see synthetic_night.py — a flat-price fixture, not a shipping API.
-from custom_components.solar_energy_management.tests.synthetic_night import (
+from custom_components.xxx_cristiano.tests.synthetic_night import (
     PriceSlot, pack_flat_night,
 )
 
@@ -100,7 +100,7 @@ class _Power:
 
 
 def _coord(chargers, amps=0, ema=None):
-    from custom_components.solar_energy_management.coordinator.coordinator import (
+    from custom_components.xxx_cristiano.coordinator.coordinator import (
         SEMCoordinator,
     )
     c = SEMCoordinator.__new__(SEMCoordinator)
@@ -266,7 +266,7 @@ class TestWattsPerAmpSurvivesARestart:
         )
 
     def test_storage_round_trip(self):
-        from custom_components.solar_energy_management.coordinator.storage import (
+        from custom_components.xxx_cristiano.coordinator.storage import (
             SEMStorage,
         )
         st = SEMStorage.__new__(SEMStorage)

@@ -21,7 +21,7 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.ev_tariff_planner import (
+from custom_components.xxx_cristiano.coordinator.ev_tariff_planner import (
     plan_night_charge,
 )
 
@@ -84,7 +84,7 @@ class TestTheCallerNeverTouchesTheTariff:
         """The hysteresis damped the retired selector's own flapping.
         Nothing may recreate its state dict."""
         import inspect
-        from custom_components.solar_energy_management.coordinator.ev_control import (
+        from custom_components.xxx_cristiano.coordinator.ev_control import (
             EVControlMixin,
         )
         src = inspect.getsource(EVControlMixin._compute_night_plan)
@@ -107,12 +107,12 @@ class TestEvDemandsCarryTheAntiCycleWindow:
     demands pack with min_run/min_gap like loads always did."""
 
     def test_the_packed_ev_demand_has_min_run_and_min_gap(self, freeze_targets):
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             SEMCoordinator,
         )
         fake = _fake_self()
         captured = {}
-        import custom_components.solar_energy_management.coordinator.energy_planner as onp
+        import custom_components.xxx_cristiano.coordinator.energy_planner as onp
         real_pack = onp.pack_night
 
         def spy(demands, ledger, **kw):

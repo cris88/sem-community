@@ -28,7 +28,7 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.diagnostics import (
+from custom_components.xxx_cristiano.diagnostics import (
     async_get_config_entry_diagnostics,
 )
 
@@ -54,7 +54,7 @@ def _diag_entry():
     e.entry_id = "test_entry_378"
     e.version = 7
     e.title = "Solar Energy Management"
-    e.domain = "solar_energy_management"
+    e.domain = "xxx_cristiano"
     e.data = {"battery_capacity_kwh": 10}
     e.options = {}
     return e
@@ -102,7 +102,7 @@ async def test_per_source_lists_field_present_in_diagnostics(
 
     _diag_coordinator._energy_dashboard_config = ed
     _diag_entry.runtime_data = _diag_coordinator
-    _diag_mock_hass.data = {"solar_energy_management": {_diag_entry.entry_id: _diag_coordinator}}
+    _diag_mock_hass.data = {"xxx_cristiano": {_diag_entry.entry_id: _diag_coordinator}}
 
     # Seed states for the per-battery sensors so per_source_readings
     # has something to surface.
@@ -180,7 +180,7 @@ async def test_missing_entity_surfaces_as_missing_state(
 
     _diag_coordinator._energy_dashboard_config = ed
     _diag_entry.runtime_data = _diag_coordinator
-    _diag_mock_hass.data = {"solar_energy_management": {_diag_entry.entry_id: _diag_coordinator}}
+    _diag_mock_hass.data = {"xxx_cristiano": {_diag_entry.entry_id: _diag_coordinator}}
 
     _diag_mock_hass.states.get = MagicMock(
         side_effect=lambda eid: MagicMock(

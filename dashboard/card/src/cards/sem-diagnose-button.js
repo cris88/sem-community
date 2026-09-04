@@ -2,7 +2,7 @@
  * SEM Diagnose Button (#432)
  *
  * Per-section diagnostic button + modal for the Configuration tab. Click
- * → calls the ``solar_energy_management.diagnose`` service with the
+ * → calls the ``xxx_cristiano.diagnose`` service with the
  * configured section name → opens a modal showing the focused payload
  * (config + state + recent SEM log lines) with a Copy-to-clipboard
  * button. The user pastes the result on GitHub Discussions; the
@@ -69,7 +69,7 @@ class SEMDiagnoseButton extends SEMLitBase {
         this._payload = null;
         try {
             const resp = await this._hass.callService(
-                'solar_energy_management', 'diagnose',
+                'xxx_cristiano', 'diagnose',
                 { section: this.section || 'all' },
                 undefined, undefined, true,  // returnResponse
             );

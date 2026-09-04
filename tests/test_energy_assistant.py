@@ -2,7 +2,7 @@
 from unittest.mock import patch
 from datetime import date, datetime, time, timedelta
 
-from custom_components.solar_energy_management.analytics.energy_assistant import (
+from custom_components.xxx_cristiano.analytics.energy_assistant import (
     EnergyAssistant,
     EnergyAssistantData,
 )
@@ -191,7 +191,7 @@ class TestTipRotation:
         """Calls spaced past the rotation interval rotate through tips.
         (#829: rotation is time-based now — per-cycle rotation wrote 6k
         recorder rows a day, so the test drives the clock explicitly.)"""
-        import custom_components.solar_energy_management.analytics.energy_assistant as ea_mod
+        import custom_components.xxx_cristiano.analytics.energy_assistant as ea_mod
         clock = {"t": 0.0}
         monkeypatch.setattr(ea_mod.time, "monotonic", lambda: clock["t"])
         ea = EnergyAssistant(mock_hass)
@@ -243,7 +243,7 @@ class TestDailyStatsTrend:
         for i in range(7):
             day = date.today() - timedelta(days=6 - i)
             with patch(
-                "custom_components.solar_energy_management.analytics"
+                "custom_components.xxx_cristiano.analytics"
                 ".energy_assistant.dt_util"
             ) as mock_dt:
                 # (#645) the day key comes from HA's clock now, not date.today()
@@ -263,7 +263,7 @@ class TestDailyStatsTrend:
         for i in range(7):
             day = date.today() - timedelta(days=6 - i)
             with patch(
-                "custom_components.solar_energy_management.analytics"
+                "custom_components.xxx_cristiano.analytics"
                 ".energy_assistant.dt_util"
             ) as mock_dt:
                 # (#645) the day key comes from HA's clock now, not date.today()
@@ -283,7 +283,7 @@ class TestDailyStatsTrend:
         for i in range(7):
             day = date.today() - timedelta(days=6 - i)
             with patch(
-                "custom_components.solar_energy_management.analytics"
+                "custom_components.xxx_cristiano.analytics"
                 ".energy_assistant.dt_util"
             ) as mock_dt:
                 # (#645) the day key comes from HA's clock now, not date.today()
@@ -303,7 +303,7 @@ class TestDailyStatsTrend:
         for i in range(35):
             day = date.today() - timedelta(days=34 - i)
             with patch(
-                "custom_components.solar_energy_management.analytics"
+                "custom_components.xxx_cristiano.analytics"
                 ".energy_assistant.dt_util"
             ) as mock_dt:
                 # (#645) the day key comes from HA's clock now, not date.today()

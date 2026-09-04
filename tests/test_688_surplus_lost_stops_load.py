@@ -19,10 +19,10 @@ desired-state twin (``compute_load_intent`` → "no source available").
 import pytest
 from unittest.mock import MagicMock, AsyncMock
 
-from custom_components.solar_energy_management.coordinator.surplus_controller import (
+from custom_components.xxx_cristiano.coordinator.surplus_controller import (
     SurplusController,
 )
-from custom_components.solar_energy_management.devices.base import DeviceControlMode
+from custom_components.xxx_cristiano.devices.base import DeviceControlMode
 
 
 def _mock(**kw):

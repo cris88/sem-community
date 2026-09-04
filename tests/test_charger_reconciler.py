@@ -10,13 +10,13 @@ from __future__ import annotations
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.charger_reconciler import (
+from custom_components.xxx_cristiano.coordinator.charger_reconciler import (
     ActionKind,
     DesiredState,
     ObservedState,
     desired_from_decision,
 )
-from custom_components.solar_energy_management.coordinator.charger_types import (
+from custom_components.xxx_cristiano.coordinator.charger_types import (
     ChargerDecision,
     ChargerIntent,
 )
@@ -43,7 +43,7 @@ def test_desired_from_decision_maps_every_intent():
     assert desired_from_decision(_decision(ChargerIntent.CHARGE_MAX)) == (DesiredState.CHARGE, 0)
 
 
-from custom_components.solar_energy_management.coordinator.charger_reconciler import (
+from custom_components.xxx_cristiano.coordinator.charger_reconciler import (
     Action, ActionKind, ChargerReconciler, ObservedState,
 )
 
@@ -164,7 +164,7 @@ def test_charge_drift_rewrites():
 # ─────────────────────────────────────────────────────────────────
 
 from unittest.mock import AsyncMock, MagicMock
-from custom_components.solar_energy_management.coordinator.charger_types import ChargerPower
+from custom_components.xxx_cristiano.coordinator.charger_types import ChargerPower
 
 
 def _mock_adapter(max_a=32):
@@ -217,7 +217,7 @@ async def test_apply_charge_max_resolves_hardware_max():
 # Task 4 — wire reconciler into actuate() as optional parameter
 # ─────────────────────────────────────────────────────────────────
 
-from custom_components.solar_energy_management.coordinator.actuate import actuate
+from custom_components.xxx_cristiano.coordinator.actuate import actuate
 
 
 @pytest.mark.asyncio
@@ -341,7 +341,7 @@ async def test_charge_max_drift_corrects():
 # the current forever with the contactor open → commanded 16A, 0W (#536).
 # The reconciler must reconcile the ACTUAL enable-switch state.
 
-from custom_components.solar_energy_management.coordinator.charger_reconciler import (
+from custom_components.xxx_cristiano.coordinator.charger_reconciler import (
     ActionKind as _AK, ObservedState as _OS,
 )
 
@@ -423,8 +423,8 @@ async def test_apply_no_ensure_enabled_when_switch_on():
 
 # ─── #536 adapter-level enable_state / ensure_enabled (real methods) ───
 from types import SimpleNamespace
-from custom_components.solar_energy_management.devices.base import CurrentControlDevice
-from custom_components.solar_energy_management.coordinator.charger_adapters import adapter_for
+from custom_components.xxx_cristiano.devices.base import CurrentControlDevice
+from custom_components.xxx_cristiano.coordinator.charger_adapters import adapter_for
 
 
 def _wallbox_device(switch_state):

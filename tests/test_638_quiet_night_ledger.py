@@ -25,10 +25,10 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.coordinator import (
+from custom_components.xxx_cristiano.coordinator.coordinator import (
     SEMCoordinator,
 )
-from custom_components.solar_energy_management.coordinator import ev_night_targets
+from custom_components.xxx_cristiano.coordinator import ev_night_targets
 
 from .test_638_shadow_mode import (  # noqa: F401 — _freeze_now is autouse
     _fake_self, _idle_load, _power, _scheduler, _freeze_now,
@@ -127,7 +127,7 @@ def test_the_quiet_night_still_says_nothing_planned(no_ev_targets):
     Found on the .175 campaign minutes after the ledger fix went live —
     the unit tests kept passing because they hand-built the old shape.
     """
-    from custom_components.solar_energy_management.coordinator \
+    from custom_components.xxx_cristiano.coordinator \
         .energy_plan_actuation import plan_gate
     from datetime import datetime, timedelta
     plan = _quiet_plan()

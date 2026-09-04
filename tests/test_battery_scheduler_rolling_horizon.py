@@ -19,23 +19,23 @@ from unittest.mock import AsyncMock, MagicMock, patch
 
 from homeassistant.util import dt as dt_util
 
-from custom_components.solar_energy_management.coordinator.battery_adapters.force_charge import (
+from custom_components.xxx_cristiano.coordinator.battery_adapters.force_charge import (
     BatteryChargeAdapter,
 )
-from custom_components.solar_energy_management.coordinator.battery_charge_scheduler import (
+from custom_components.xxx_cristiano.coordinator.battery_charge_scheduler import (
     BatteryChargeScheduler,
     SchedulerConfig,
     SchedulerDecision,
     SchedulerState,
 )
-from custom_components.solar_energy_management.tariff.tariff_provider import (
+from custom_components.xxx_cristiano.tariff.tariff_provider import (
     DynamicTariffProvider,
     PriceLevel,
     PricePoint,
 )
 
 
-DT_UTIL_PATH = "custom_components.solar_energy_management.tariff.tariff_provider.dt_util"
+DT_UTIL_PATH = "custom_components.xxx_cristiano.tariff.tariff_provider.dt_util"
 
 
 # ---------------------------------------------------------------------------
@@ -508,9 +508,9 @@ class TestSchedulerConfigRework:
 # Coordinator rate derivation (integration-style)
 # ---------------------------------------------------------------------------
 
-from custom_components.solar_energy_management.coordinator import SEMCoordinator
+from custom_components.xxx_cristiano.coordinator import SEMCoordinator
 
-COORD_DT_PATH = "custom_components.solar_energy_management.coordinator.coordinator.dt_util"
+COORD_DT_PATH = "custom_components.xxx_cristiano.coordinator.coordinator.dt_util"
 
 
 def _build_rate_coordinator(provider, now, forecast_today=4.0, forecast_tomorrow=8.0):
@@ -662,7 +662,7 @@ class TestCoordinatorRateDerivation:
 # ---------------------------------------------------------------------------
 
 SCHED_DT_PATH = (
-    "custom_components.solar_energy_management.coordinator."
+    "custom_components.xxx_cristiano.coordinator."
     "battery_charge_scheduler.dt_util"
 )
 
@@ -842,20 +842,20 @@ class TestCfgRateFalsyZero:
     """#485 F4: a configured 0.0 rate is a value, not a missing key."""
 
     def test_zero_is_respected(self):
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             _cfg_rate,
         )
         assert _cfg_rate({"electricity_import_rate": 0.0},
                          "electricity_import_rate", default=0.30) == 0.0
 
     def test_missing_falls_back(self):
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             _cfg_rate,
         )
         assert _cfg_rate({}, "electricity_import_rate", default=0.30) == 0.30
 
     def test_chained_keys(self):
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             _cfg_rate,
         )
         assert _cfg_rate(
@@ -864,7 +864,7 @@ class TestCfgRateFalsyZero:
         ) == 0.0
 
     def test_non_numeric_skipped(self):
-        from custom_components.solar_energy_management.coordinator.coordinator import (
+        from custom_components.xxx_cristiano.coordinator.coordinator import (
             _cfg_rate,
         )
         assert _cfg_rate({"electricity_import_rate": "abc"},

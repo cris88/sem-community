@@ -14,10 +14,10 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.solar_energy_management.coordinator.energy_calculator import (
+from custom_components.xxx_cristiano.coordinator.energy_calculator import (
     EnergyCalculator,
 )
-from custom_components.solar_energy_management.coordinator.types import (
+from custom_components.xxx_cristiano.coordinator.types import (
     EnergyTotals,
 )
 
@@ -54,7 +54,7 @@ class TestTheGuessCarriesItsFlag:
         assert costs.roi_install_date_estimated is False
 
     def test_the_flag_reaches_the_published_result(self) -> None:
-        from custom_components.solar_energy_management.coordinator.types import (
+        from custom_components.xxx_cristiano.coordinator.types import (
             SEMData,
         )
         data = SEMData()
@@ -67,7 +67,7 @@ class TestTheFlagRidesTheSensors:
     def _attrs(self, key, estimated):
         from unittest.mock import MagicMock
         from homeassistant.components.sensor import SensorEntityDescription
-        from custom_components.solar_energy_management.sensor import (
+        from custom_components.xxx_cristiano.sensor import (
             SEMSolarSensor,
         )
         coordinator = MagicMock()
