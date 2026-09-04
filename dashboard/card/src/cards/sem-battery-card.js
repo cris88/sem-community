@@ -13,6 +13,7 @@
 import { SEMLitBase, html, css, nothing } from '../base/sem-lit-base.js';
 import { semTheme, semFormatPower, semGetCurrency, semCardSurfaceCSS, SEM_COLORS, semDefineCard } from '../base/sem-shared.js';
 import { temperatureUnit } from '../util/temperature.js';
+import { batteryEta, formatBatteryEta } from '../util/battery-eta.js';
 
 const DEFAULT_PREFIX = 'sensor.sem_';
 
@@ -222,26 +223,6 @@ class SEMBatteryCard extends SEMLitBase {
         `;
     }
 
-    _fmtHours(h) {
-        if (h == null || !isFinite(h) || h <= 0) return '—';
-        if (h < 1) return `${Math.round(h * 60)} min`;
-        const hh = Math.floor(h);
-        const mm = Math.round((h - hh) * 60);
-        return mm === 0 ? `${hh} h` : `${hh} h ${mm} min`;
-    }
-
-    // Derived ETA — no per-battery energy sensor needed: charge time to
-    // 100% or discharge time to empty from SOC × capacity ÷ current power.
-    _batteryEta(soc, capacity, power) {
-        if (soc == null || capacity <= 0 || Math.abs(power) < 50) return null;
-        if (power > 50) {
-            const kwhToFull = (100 - soc) / 100 * capacity;
-            return { key: 'until_full', text: this._fmtHours(kwhToFull / (power / 1000)) };
-        }
-        const kwhToEmpty = soc / 100 * capacity;
-        return { key: 'until_empty', text: this._fmtHours(kwhToEmpty / (Math.abs(power) / 1000)) };
-    }
-
     // Mode dropdown + reserve stepper for a battery (#523). Shared by the
     // per-battery sections (multi-battery) and the fleet hero (single battery).
     // Renders nothing when the backend mode entity doesn't exist.
@@ -313,7 +294,7 @@ class SEMBatteryCard extends SEMLitBase {
 
         // Derived metrics (no extra backend sensors): stored energy and ETA.
         const stored = (soc != null && capacity > 0) ? (soc / 100) * capacity : null;
-        const eta = this._batteryEta(soc, capacity, power);
+        const eta = batteryEta(soc, capacity, power);
 
         return html`
             <div class="battery-section">
@@ -353,7 +334,7 @@ class SEMBatteryCard extends SEMLitBase {
                         ${eta ? html`
                             <div class="bs-row">
                                 <span class="bs-label">${this._t(eta.key)}</span>
-                                <span class="bs-val">${eta.text}</span>
+                                <span class="bs-val">${formatBatteryEta(eta.hours)}</span>
                             </div>
                         ` : nothing}
                     </div>

@@ -29,6 +29,7 @@ import {
 } from '../base/sem-shared.js';
 import { nightArcPos } from '../util/night-arc.js';
 import { formatTemperatureLabel } from '../util/temperature.js';
+import { batteryEta, formatBatteryEta } from '../util/battery-eta.js';
 
 const DEFAULT_PREFIX = 'sensor.sem_';
 
@@ -41,7 +42,7 @@ const WATCHED_SUFFIXES = [
     'home_consumption_power',  // card reads the held sensor, not a residual
     'daily_solar_energy', 'daily_battery_charge_energy', 'daily_battery_discharge_energy',
     'daily_ev_energy', 'daily_home_energy', 'daily_grid_import_energy', 'daily_grid_export_energy',
-    'forecast_today_kwh', 'controllable_devices_count',
+    'forecast_today_kwh', 'controllable_devices_count', 'diag_battery_capacity',
 ];
 
 // Synodic month + a known new-moon epoch, used only when sensor.moon isn't
@@ -732,6 +733,10 @@ class SEMSystemDiagramCard extends SEMLitBase {
         const evKwh      = `${todayLbl} ${this._valStr('daily_ev_energy')} kWh`;
         const homeKwh    = `${todayLbl} ${this._val('daily_home_energy').toFixed(1)} kWh`;
         const battKwh    = `+${this._val('daily_battery_charge_energy').toFixed(1)} / -${this._val('daily_battery_discharge_energy').toFixed(1)} kWh`;
+        const eta = batteryEta(soc, this._val('diag_battery_capacity'), battery);
+        const battEta = eta
+            ? `${this._t(eta.key)} · ${formatBatteryEta(eta.hours)}`
+            : '';
         const gridKwh    = `↓${this._val('daily_grid_import_energy').toFixed(1)} / ↑${this._val('daily_grid_export_energy').toFixed(1)} kWh`;
 
         // Inverter status. #564 — this is the INVERTER node, so show the
@@ -1041,7 +1046,10 @@ class SEMSystemDiagramCard extends SEMLitBase {
                     <text x="${L.B.cx}" y="${L.B.labelY + fv * 1.0 + fl + fs + 2}" class="clickable"
                           @click=${() => this._showMoreInfo('daily_battery_charge_energy')}
                           text-anchor="middle" font-family="${F}" font-size="${fs + 1}"
-                          fill="#4db6ac" opacity="0.6" font-weight="600">${battKwh}</text>` : nothing}
+                          fill="#4db6ac" opacity="0.6" font-weight="600">${battKwh}</text>
+                    ${battEta ? svg`<text x="${L.B.cx}" y="${L.B.labelY + fv * 1.0 + fl + (fs + 2) * 2}"
+                          text-anchor="middle" font-family="${F}" font-size="${fs}"
+                          fill="${battStateFill}" opacity="0.75" font-weight="600">${battEta}</text>` : nothing}` : nothing}
 
                     <!-- Grid -->
                     <g filter="url(#glowGrid)" class="clickable" @click=${() => this._showMoreInfo('grid_import_power')}>
